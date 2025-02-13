@@ -1,0 +1,6 @@
+@CarRescueSystem_HostAddress = http://localhost:5210
+
+GET {{CarRescueSystem_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
