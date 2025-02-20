@@ -1,0 +1,810 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\HOC\\SWD\\CarRescueSystem\\CarRescueSystemProject\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{8CCD1F63-19E9-42BB-A040-69ABC74BE046}|CarRescueSystem\\CarRescueSystem.csproj|d:\\hoc\\swd\\carrescuesystem\\carrescuesystemproject\\carrescuesystem\\controller\\bookingcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8CCD1F63-19E9-42BB-A040-69ABC74BE046}|CarRescueSystem\\CarRescueSystem.csproj|solutionrelative:carrescuesystem\\controller\\bookingcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A5BBD019-E4E0-4FAB-99EF-9F67F5C878BC}|CarRescueSystem.Common\\CarRescueSystem.Common.csproj|d:\\hoc\\swd\\carrescuesystem\\carrescuesystemproject\\carrescuesystem.common\\dto\\startbookingdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A5BBD019-E4E0-4FAB-99EF-9F67F5C878BC}|CarRescueSystem.Common\\CarRescueSystem.Common.csproj|solutionrelative:carrescuesystem.common\\dto\\startbookingdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8CCD1F63-19E9-42BB-A040-69ABC74BE046}|CarRescueSystem\\CarRescueSystem.csproj|d:\\hoc\\swd\\carrescuesystem\\carrescuesystemproject\\carrescuesystem\\controller\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8CCD1F63-19E9-42BB-A040-69ABC74BE046}|CarRescueSystem\\CarRescueSystem.csproj|solutionrelative:carrescuesystem\\controller\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{003BA891-36AB-4FA0-B727-3B10DEC3676E}|CarRescueSystem.BLL\\CarRescueSystem.BLL.csproj|d:\\hoc\\swd\\carrescuesystem\\carrescuesystemproject\\carrescuesystem.bll\\service\\implement\\bookingservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{003BA891-36AB-4FA0-B727-3B10DEC3676E}|CarRescueSystem.BLL\\CarRescueSystem.BLL.csproj|solutionrelative:carrescuesystem.bll\\service\\implement\\bookingservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{003BA891-36AB-4FA0-B727-3B10DEC3676E}|CarRescueSystem.BLL\\CarRescueSystem.BLL.csproj|d:\\hoc\\swd\\carrescuesystem\\carrescuesystemproject\\carrescuesystem.bll\\service\\implement\\authservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{003BA891-36AB-4FA0-B727-3B10DEC3676E}|CarRescueSystem.BLL\\CarRescueSystem.BLL.csproj|solutionrelative:carrescuesystem.bll\\service\\implement\\authservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8CCD1F63-19E9-42BB-A040-69ABC74BE046}|CarRescueSystem\\CarRescueSystem.csproj|d:\\hoc\\swd\\carrescuesystem\\carrescuesystemproject\\carrescuesystem\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{8CCD1F63-19E9-42BB-A040-69ABC74BE046}|CarRescueSystem\\CarRescueSystem.csproj|solutionrelative:carrescuesystem\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8CCD1F63-19E9-42BB-A040-69ABC74BE046}|CarRescueSystem\\CarRescueSystem.csproj|d:\\hoc\\swd\\carrescuesystem\\carrescuesystemproject\\carrescuesystem\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8CCD1F63-19E9-42BB-A040-69ABC74BE046}|CarRescueSystem\\CarRescueSystem.csproj|solutionrelative:carrescuesystem\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FB7FF3BE-D708-4CEE-849E-576B587C202C}|CarRescueSystem.DAL\\CarRescueSystem.DAL.csproj|d:\\hoc\\swd\\carrescuesystem\\carrescuesystemproject\\carrescuesystem.dal\\repository\\implement\\serviceofbookingrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FB7FF3BE-D708-4CEE-849E-576B587C202C}|CarRescueSystem.DAL\\CarRescueSystem.DAL.csproj|solutionrelative:carrescuesystem.dal\\repository\\implement\\serviceofbookingrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FB7FF3BE-D708-4CEE-849E-576B587C202C}|CarRescueSystem.DAL\\CarRescueSystem.DAL.csproj|d:\\hoc\\swd\\carrescuesystem\\carrescuesystemproject\\carrescuesystem.dal\\repository\\interface\\iserviceofbookingrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FB7FF3BE-D708-4CEE-849E-576B587C202C}|CarRescueSystem.DAL\\CarRescueSystem.DAL.csproj|solutionrelative:carrescuesystem.dal\\repository\\interface\\iserviceofbookingrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{003BA891-36AB-4FA0-B727-3B10DEC3676E}|CarRescueSystem.BLL\\CarRescueSystem.BLL.csproj|d:\\hoc\\swd\\carrescuesystem\\carrescuesystemproject\\carrescuesystem.bll\\service\\interface\\ibookingservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{003BA891-36AB-4FA0-B727-3B10DEC3676E}|CarRescueSystem.BLL\\CarRescueSystem.BLL.csproj|solutionrelative:carrescuesystem.bll\\service\\interface\\ibookingservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FB7FF3BE-D708-4CEE-849E-576B587C202C}|CarRescueSystem.DAL\\CarRescueSystem.DAL.csproj|d:\\hoc\\swd\\carrescuesystem\\carrescuesystemproject\\carrescuesystem.dal\\unitofwork\\unitofwork.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FB7FF3BE-D708-4CEE-849E-576B587C202C}|CarRescueSystem.DAL\\CarRescueSystem.DAL.csproj|solutionrelative:carrescuesystem.dal\\unitofwork\\unitofwork.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FB7FF3BE-D708-4CEE-849E-576B587C202C}|CarRescueSystem.DAL\\CarRescueSystem.DAL.csproj|d:\\hoc\\swd\\carrescuesystem\\carrescuesystemproject\\carrescuesystem.dal\\unitofwork\\iunitofwork.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FB7FF3BE-D708-4CEE-849E-576B587C202C}|CarRescueSystem.DAL\\CarRescueSystem.DAL.csproj|solutionrelative:carrescuesystem.dal\\unitofwork\\iunitofwork.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FB7FF3BE-D708-4CEE-849E-576B587C202C}|CarRescueSystem.DAL\\CarRescueSystem.DAL.csproj|d:\\hoc\\swd\\carrescuesystem\\carrescuesystemproject\\carrescuesystem.dal\\repository\\implement\\servicerepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FB7FF3BE-D708-4CEE-849E-576B587C202C}|CarRescueSystem.DAL\\CarRescueSystem.DAL.csproj|solutionrelative:carrescuesystem.dal\\repository\\implement\\servicerepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FB7FF3BE-D708-4CEE-849E-576B587C202C}|CarRescueSystem.DAL\\CarRescueSystem.DAL.csproj|d:\\hoc\\swd\\carrescuesystem\\carrescuesystemproject\\carrescuesystem.dal\\repository\\implement\\rolerepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FB7FF3BE-D708-4CEE-849E-576B587C202C}|CarRescueSystem.DAL\\CarRescueSystem.DAL.csproj|solutionrelative:carrescuesystem.dal\\repository\\implement\\rolerepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FB7FF3BE-D708-4CEE-849E-576B587C202C}|CarRescueSystem.DAL\\CarRescueSystem.DAL.csproj|d:\\hoc\\swd\\carrescuesystem\\carrescuesystemproject\\carrescuesystem.dal\\repository\\interface\\iservicerepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FB7FF3BE-D708-4CEE-849E-576B587C202C}|CarRescueSystem.DAL\\CarRescueSystem.DAL.csproj|solutionrelative:carrescuesystem.dal\\repository\\interface\\iservicerepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FB7FF3BE-D708-4CEE-849E-576B587C202C}|CarRescueSystem.DAL\\CarRescueSystem.DAL.csproj|d:\\hoc\\swd\\carrescuesystem\\carrescuesystemproject\\carrescuesystem.dal\\model\\refreshtoken.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FB7FF3BE-D708-4CEE-849E-576B587C202C}|CarRescueSystem.DAL\\CarRescueSystem.DAL.csproj|solutionrelative:carrescuesystem.dal\\model\\refreshtoken.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FB7FF3BE-D708-4CEE-849E-576B587C202C}|CarRescueSystem.DAL\\CarRescueSystem.DAL.csproj|d:\\hoc\\swd\\carrescuesystem\\carrescuesystemproject\\carrescuesystem.dal\\repository\\implement\\bookingstaffrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FB7FF3BE-D708-4CEE-849E-576B587C202C}|CarRescueSystem.DAL\\CarRescueSystem.DAL.csproj|solutionrelative:carrescuesystem.dal\\repository\\implement\\bookingstaffrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FB7FF3BE-D708-4CEE-849E-576B587C202C}|CarRescueSystem.DAL\\CarRescueSystem.DAL.csproj|d:\\hoc\\swd\\carrescuesystem\\carrescuesystemproject\\carrescuesystem.dal\\data\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FB7FF3BE-D708-4CEE-849E-576B587C202C}|CarRescueSystem.DAL\\CarRescueSystem.DAL.csproj|solutionrelative:carrescuesystem.dal\\data\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FB7FF3BE-D708-4CEE-849E-576B587C202C}|CarRescueSystem.DAL\\CarRescueSystem.DAL.csproj|d:\\hoc\\swd\\carrescuesystem\\carrescuesystemproject\\carrescuesystem.dal\\model\\package.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FB7FF3BE-D708-4CEE-849E-576B587C202C}|CarRescueSystem.DAL\\CarRescueSystem.DAL.csproj|solutionrelative:carrescuesystem.dal\\model\\package.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FB7FF3BE-D708-4CEE-849E-576B587C202C}|CarRescueSystem.DAL\\CarRescueSystem.DAL.csproj|d:\\hoc\\swd\\carrescuesystem\\carrescuesystemproject\\carrescuesystem.dal\\repository\\interface\\ibookingstaffrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FB7FF3BE-D708-4CEE-849E-576B587C202C}|CarRescueSystem.DAL\\CarRescueSystem.DAL.csproj|solutionrelative:carrescuesystem.dal\\repository\\interface\\ibookingstaffrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FB7FF3BE-D708-4CEE-849E-576B587C202C}|CarRescueSystem.DAL\\CarRescueSystem.DAL.csproj|d:\\hoc\\swd\\carrescuesystem\\carrescuesystemproject\\carrescuesystem.dal\\model\\booking.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FB7FF3BE-D708-4CEE-849E-576B587C202C}|CarRescueSystem.DAL\\CarRescueSystem.DAL.csproj|solutionrelative:carrescuesystem.dal\\model\\booking.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FB7FF3BE-D708-4CEE-849E-576B587C202C}|CarRescueSystem.DAL\\CarRescueSystem.DAL.csproj|d:\\hoc\\swd\\carrescuesystem\\carrescuesystemproject\\carrescuesystem.dal\\repository\\implement\\userrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FB7FF3BE-D708-4CEE-849E-576B587C202C}|CarRescueSystem.DAL\\CarRescueSystem.DAL.csproj|solutionrelative:carrescuesystem.dal\\repository\\implement\\userrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FB7FF3BE-D708-4CEE-849E-576B587C202C}|CarRescueSystem.DAL\\CarRescueSystem.DAL.csproj|d:\\hoc\\swd\\carrescuesystem\\carrescuesystemproject\\carrescuesystem.dal\\model\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FB7FF3BE-D708-4CEE-849E-576B587C202C}|CarRescueSystem.DAL\\CarRescueSystem.DAL.csproj|solutionrelative:carrescuesystem.dal\\model\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FB7FF3BE-D708-4CEE-849E-576B587C202C}|CarRescueSystem.DAL\\CarRescueSystem.DAL.csproj|d:\\hoc\\swd\\carrescuesystem\\carrescuesystemproject\\carrescuesystem.dal\\repository\\interface\\iuserrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FB7FF3BE-D708-4CEE-849E-576B587C202C}|CarRescueSystem.DAL\\CarRescueSystem.DAL.csproj|solutionrelative:carrescuesystem.dal\\repository\\interface\\iuserrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FB7FF3BE-D708-4CEE-849E-576B587C202C}|CarRescueSystem.DAL\\CarRescueSystem.DAL.csproj|d:\\hoc\\swd\\carrescuesystem\\carrescuesystemproject\\carrescuesystem.dal\\model\\bookingstaff.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FB7FF3BE-D708-4CEE-849E-576B587C202C}|CarRescueSystem.DAL\\CarRescueSystem.DAL.csproj|solutionrelative:carrescuesystem.dal\\model\\bookingstaff.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FB7FF3BE-D708-4CEE-849E-576B587C202C}|CarRescueSystem.DAL\\CarRescueSystem.DAL.csproj|d:\\hoc\\swd\\carrescuesystem\\carrescuesystemproject\\carrescuesystem.dal\\repository\\implement\\vehiclerepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FB7FF3BE-D708-4CEE-849E-576B587C202C}|CarRescueSystem.DAL\\CarRescueSystem.DAL.csproj|solutionrelative:carrescuesystem.dal\\repository\\implement\\vehiclerepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FB7FF3BE-D708-4CEE-849E-576B587C202C}|CarRescueSystem.DAL\\CarRescueSystem.DAL.csproj|d:\\hoc\\swd\\carrescuesystem\\carrescuesystemproject\\carrescuesystem.dal\\repository\\implement\\bookingrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FB7FF3BE-D708-4CEE-849E-576B587C202C}|CarRescueSystem.DAL\\CarRescueSystem.DAL.csproj|solutionrelative:carrescuesystem.dal\\repository\\implement\\bookingrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FB7FF3BE-D708-4CEE-849E-576B587C202C}|CarRescueSystem.DAL\\CarRescueSystem.DAL.csproj|d:\\hoc\\swd\\carrescuesystem\\carrescuesystemproject\\carrescuesystem.dal\\repository\\interface\\ivehiclerepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FB7FF3BE-D708-4CEE-849E-576B587C202C}|CarRescueSystem.DAL\\CarRescueSystem.DAL.csproj|solutionrelative:carrescuesystem.dal\\repository\\interface\\ivehiclerepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FB7FF3BE-D708-4CEE-849E-576B587C202C}|CarRescueSystem.DAL\\CarRescueSystem.DAL.csproj|d:\\hoc\\swd\\carrescuesystem\\carrescuesystemproject\\carrescuesystem.dal\\repository\\interface\\ibookingrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FB7FF3BE-D708-4CEE-849E-576B587C202C}|CarRescueSystem.DAL\\CarRescueSystem.DAL.csproj|solutionrelative:carrescuesystem.dal\\repository\\interface\\ibookingrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{003BA891-36AB-4FA0-B727-3B10DEC3676E}|CarRescueSystem.BLL\\CarRescueSystem.BLL.csproj|d:\\hoc\\swd\\carrescuesystem\\carrescuesystemproject\\carrescuesystem.bll\\utilities\\userutility.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{003BA891-36AB-4FA0-B727-3B10DEC3676E}|CarRescueSystem.BLL\\CarRescueSystem.BLL.csproj|solutionrelative:carrescuesystem.bll\\utilities\\userutility.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A5BBD019-E4E0-4FAB-99EF-9F67F5C878BC}|CarRescueSystem.Common\\CarRescueSystem.Common.csproj|d:\\hoc\\swd\\carrescuesystem\\carrescuesystemproject\\carrescuesystem.common\\dto\\creatingbookingdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A5BBD019-E4E0-4FAB-99EF-9F67F5C878BC}|CarRescueSystem.Common\\CarRescueSystem.Common.csproj|solutionrelative:carrescuesystem.common\\dto\\creatingbookingdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{003BA891-36AB-4FA0-B727-3B10DEC3676E}|CarRescueSystem.BLL\\CarRescueSystem.BLL.csproj|d:\\hoc\\swd\\carrescuesystem\\carrescuesystemproject\\carrescuesystem.bll\\service\\interface\\iauthservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{003BA891-36AB-4FA0-B727-3B10DEC3676E}|CarRescueSystem.BLL\\CarRescueSystem.BLL.csproj|solutionrelative:carrescuesystem.bll\\service\\interface\\iauthservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A5BBD019-E4E0-4FAB-99EF-9F67F5C878BC}|CarRescueSystem.Common\\CarRescueSystem.Common.csproj|d:\\hoc\\swd\\carrescuesystem\\carrescuesystemproject\\carrescuesystem.common\\dto\\responsedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A5BBD019-E4E0-4FAB-99EF-9F67F5C878BC}|CarRescueSystem.Common\\CarRescueSystem.Common.csproj|solutionrelative:carrescuesystem.common\\dto\\responsedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FB7FF3BE-D708-4CEE-849E-576B587C202C}|CarRescueSystem.DAL\\CarRescueSystem.DAL.csproj|d:\\hoc\\swd\\carrescuesystem\\carrescuesystemproject\\carrescuesystem.dal\\model\\servicepackage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FB7FF3BE-D708-4CEE-849E-576B587C202C}|CarRescueSystem.DAL\\CarRescueSystem.DAL.csproj|solutionrelative:carrescuesystem.dal\\model\\servicepackage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FB7FF3BE-D708-4CEE-849E-576B587C202C}|CarRescueSystem.DAL\\CarRescueSystem.DAL.csproj|d:\\hoc\\swd\\carrescuesystem\\carrescuesystemproject\\carrescuesystem.dal\\model\\serviceofbooking.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FB7FF3BE-D708-4CEE-849E-576B587C202C}|CarRescueSystem.DAL\\CarRescueSystem.DAL.csproj|solutionrelative:carrescuesystem.dal\\model\\serviceofbooking.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FB7FF3BE-D708-4CEE-849E-576B587C202C}|CarRescueSystem.DAL\\CarRescueSystem.DAL.csproj|d:\\hoc\\swd\\carrescuesystem\\carrescuesystemproject\\carrescuesystem.dal\\model\\service.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FB7FF3BE-D708-4CEE-849E-576B587C202C}|CarRescueSystem.DAL\\CarRescueSystem.DAL.csproj|solutionrelative:carrescuesystem.dal\\model\\service.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FB7FF3BE-D708-4CEE-849E-576B587C202C}|CarRescueSystem.DAL\\CarRescueSystem.DAL.csproj|d:\\hoc\\swd\\carrescuesystem\\carrescuesystemproject\\carrescuesystem.dal\\model\\vehicle.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FB7FF3BE-D708-4CEE-849E-576B587C202C}|CarRescueSystem.DAL\\CarRescueSystem.DAL.csproj|solutionrelative:carrescuesystem.dal\\model\\vehicle.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FB7FF3BE-D708-4CEE-849E-576B587C202C}|CarRescueSystem.DAL\\CarRescueSystem.DAL.csproj|d:\\hoc\\swd\\carrescuesystem\\carrescuesystemproject\\carrescuesystem.dal\\model\\role.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FB7FF3BE-D708-4CEE-849E-576B587C202C}|CarRescueSystem.DAL\\CarRescueSystem.DAL.csproj|solutionrelative:carrescuesystem.dal\\model\\role.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FB7FF3BE-D708-4CEE-849E-576B587C202C}|CarRescueSystem.DAL\\CarRescueSystem.DAL.csproj|d:\\hoc\\swd\\carrescuesystem\\carrescuesystemproject\\carrescuesystem.dal\\repository\\implement\\tokenrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FB7FF3BE-D708-4CEE-849E-576B587C202C}|CarRescueSystem.DAL\\CarRescueSystem.DAL.csproj|solutionrelative:carrescuesystem.dal\\repository\\implement\\tokenrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FB7FF3BE-D708-4CEE-849E-576B587C202C}|CarRescueSystem.DAL\\CarRescueSystem.DAL.csproj|d:\\hoc\\swd\\carrescuesystem\\carrescuesystemproject\\carrescuesystem.dal\\repository\\interface\\itokenrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FB7FF3BE-D708-4CEE-849E-576B587C202C}|CarRescueSystem.DAL\\CarRescueSystem.DAL.csproj|solutionrelative:carrescuesystem.dal\\repository\\interface\\itokenrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A5BBD019-E4E0-4FAB-99EF-9F67F5C878BC}|CarRescueSystem.Common\\CarRescueSystem.Common.csproj|d:\\hoc\\swd\\carrescuesystem\\carrescuesystemproject\\carrescuesystem.common\\dto\\tokendto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A5BBD019-E4E0-4FAB-99EF-9F67F5C878BC}|CarRescueSystem.Common\\CarRescueSystem.Common.csproj|solutionrelative:carrescuesystem.common\\dto\\tokendto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A5BBD019-E4E0-4FAB-99EF-9F67F5C878BC}|CarRescueSystem.Common\\CarRescueSystem.Common.csproj|d:\\hoc\\swd\\carrescuesystem\\carrescuesystemproject\\carrescuesystem.common\\dto\\logindto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A5BBD019-E4E0-4FAB-99EF-9F67F5C878BC}|CarRescueSystem.Common\\CarRescueSystem.Common.csproj|solutionrelative:carrescuesystem.common\\dto\\logindto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FB7FF3BE-D708-4CEE-849E-576B587C202C}|CarRescueSystem.DAL\\CarRescueSystem.DAL.csproj|d:\\hoc\\swd\\carrescuesystem\\carrescuesystemproject\\carrescuesystem.dal\\repository\\implement\\genericrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FB7FF3BE-D708-4CEE-849E-576B587C202C}|CarRescueSystem.DAL\\CarRescueSystem.DAL.csproj|solutionrelative:carrescuesystem.dal\\repository\\implement\\genericrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FB7FF3BE-D708-4CEE-849E-576B587C202C}|CarRescueSystem.DAL\\CarRescueSystem.DAL.csproj|d:\\hoc\\swd\\carrescuesystem\\carrescuesystemproject\\carrescuesystem.dal\\repository\\interface\\igenericrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FB7FF3BE-D708-4CEE-849E-576B587C202C}|CarRescueSystem.DAL\\CarRescueSystem.DAL.csproj|solutionrelative:carrescuesystem.dal\\repository\\interface\\igenericrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A5BBD019-E4E0-4FAB-99EF-9F67F5C878BC}|CarRescueSystem.Common\\CarRescueSystem.Common.csproj|d:\\hoc\\swd\\carrescuesystem\\carrescuesystemproject\\carrescuesystem.common\\settings\\jwtsettingmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A5BBD019-E4E0-4FAB-99EF-9F67F5C878BC}|CarRescueSystem.Common\\CarRescueSystem.Common.csproj|solutionrelative:carrescuesystem.common\\settings\\jwtsettingmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A5BBD019-E4E0-4FAB-99EF-9F67F5C878BC}|CarRescueSystem.Common\\CarRescueSystem.Common.csproj|d:\\hoc\\swd\\carrescuesystem\\carrescuesystemproject\\carrescuesystem.common\\constants\\jwtconstant.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A5BBD019-E4E0-4FAB-99EF-9F67F5C878BC}|CarRescueSystem.Common\\CarRescueSystem.Common.csproj|solutionrelative:carrescuesystem.common\\constants\\jwtconstant.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{003BA891-36AB-4FA0-B727-3B10DEC3676E}|CarRescueSystem.BLL\\CarRescueSystem.BLL.csproj|d:\\hoc\\swd\\carrescuesystem\\carrescuesystemproject\\carrescuesystem.bll\\service\\implement\\jwtprovider.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{003BA891-36AB-4FA0-B727-3B10DEC3676E}|CarRescueSystem.BLL\\CarRescueSystem.BLL.csproj|solutionrelative:carrescuesystem.bll\\service\\implement\\jwtprovider.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 2,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "StartBookingDTO.cs",
+              "DocumentMoniker": "D:\\HOC\\SWD\\CarRescueSystem\\CarRescueSystemProject\\CarRescueSystem.Common\\DTO\\StartBookingDTO.cs",
+              "RelativeDocumentMoniker": "CarRescueSystem.Common\\DTO\\StartBookingDTO.cs",
+              "ToolTip": "D:\\HOC\\SWD\\CarRescueSystem\\CarRescueSystemProject\\CarRescueSystem.Common\\DTO\\StartBookingDTO.cs",
+              "RelativeToolTip": "CarRescueSystem.Common\\DTO\\StartBookingDTO.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-20T07:08:17.456Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "AuthController.cs",
+              "DocumentMoniker": "D:\\HOC\\SWD\\CarRescueSystem\\CarRescueSystemProject\\CarRescueSystem\\Controller\\AuthController.cs",
+              "RelativeDocumentMoniker": "CarRescueSystem\\Controller\\AuthController.cs",
+              "ToolTip": "D:\\HOC\\SWD\\CarRescueSystem\\CarRescueSystemProject\\CarRescueSystem\\Controller\\AuthController.cs",
+              "RelativeToolTip": "CarRescueSystem\\Controller\\AuthController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-20T07:07:59.09Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "BookingController.cs",
+              "DocumentMoniker": "D:\\HOC\\SWD\\CarRescueSystem\\CarRescueSystemProject\\CarRescueSystem\\Controller\\BookingController.cs",
+              "RelativeDocumentMoniker": "CarRescueSystem\\Controller\\BookingController.cs",
+              "ToolTip": "D:\\HOC\\SWD\\CarRescueSystem\\CarRescueSystemProject\\CarRescueSystem\\Controller\\BookingController.cs",
+              "RelativeToolTip": "CarRescueSystem\\Controller\\BookingController.cs",
+              "ViewState": "AgIAACYAAAAAAAAAAAAgwDIAAAAWAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-20T07:05:26.014Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "D:\\HOC\\SWD\\CarRescueSystem\\CarRescueSystemProject\\CarRescueSystem\\appsettings.json",
+              "RelativeDocumentMoniker": "CarRescueSystem\\appsettings.json",
+              "ToolTip": "D:\\HOC\\SWD\\CarRescueSystem\\CarRescueSystemProject\\CarRescueSystem\\appsettings.json",
+              "RelativeToolTip": "CarRescueSystem\\appsettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-02-20T07:04:48.796Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Program.cs",
+              "DocumentMoniker": "D:\\HOC\\SWD\\CarRescueSystem\\CarRescueSystemProject\\CarRescueSystem\\Program.cs",
+              "RelativeDocumentMoniker": "CarRescueSystem\\Program.cs",
+              "ToolTip": "D:\\HOC\\SWD\\CarRescueSystem\\CarRescueSystemProject\\CarRescueSystem\\Program.cs",
+              "RelativeToolTip": "CarRescueSystem\\Program.cs",
+              "ViewState": "AgIAACQAAAAAAAAAAAAAACMAAAA+AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-20T07:03:31.417Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "IServiceOfBookingRepository.cs",
+              "DocumentMoniker": "D:\\HOC\\SWD\\CarRescueSystem\\CarRescueSystemProject\\CarRescueSystem.DAL\\Repository\\Interface\\IServiceOfBookingRepository.cs",
+              "RelativeDocumentMoniker": "CarRescueSystem.DAL\\Repository\\Interface\\IServiceOfBookingRepository.cs",
+              "ToolTip": "D:\\HOC\\SWD\\CarRescueSystem\\CarRescueSystemProject\\CarRescueSystem.DAL\\Repository\\Interface\\IServiceOfBookingRepository.cs",
+              "RelativeToolTip": "CarRescueSystem.DAL\\Repository\\Interface\\IServiceOfBookingRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAA5AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-20T06:57:44.419Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "ServiceOfBookingRepository.cs",
+              "DocumentMoniker": "D:\\HOC\\SWD\\CarRescueSystem\\CarRescueSystemProject\\CarRescueSystem.DAL\\Repository\\Implement\\ServiceOfBookingRepository.cs",
+              "RelativeDocumentMoniker": "CarRescueSystem.DAL\\Repository\\Implement\\ServiceOfBookingRepository.cs",
+              "ToolTip": "D:\\HOC\\SWD\\CarRescueSystem\\CarRescueSystemProject\\CarRescueSystem.DAL\\Repository\\Implement\\ServiceOfBookingRepository.cs",
+              "RelativeToolTip": "CarRescueSystem.DAL\\Repository\\Implement\\ServiceOfBookingRepository.cs",
+              "ViewState": "AgIAAAwAAAAAAAAAAAAAAB0AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-20T06:57:39.821Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "IServiceRepository.cs",
+              "DocumentMoniker": "D:\\HOC\\SWD\\CarRescueSystem\\CarRescueSystemProject\\CarRescueSystem.DAL\\Repository\\Interface\\IServiceRepository.cs",
+              "RelativeDocumentMoniker": "CarRescueSystem.DAL\\Repository\\Interface\\IServiceRepository.cs",
+              "ToolTip": "D:\\HOC\\SWD\\CarRescueSystem\\CarRescueSystemProject\\CarRescueSystem.DAL\\Repository\\Interface\\IServiceRepository.cs",
+              "RelativeToolTip": "CarRescueSystem.DAL\\Repository\\Interface\\IServiceRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAABFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-20T06:55:33.961Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "ServiceRepository.cs",
+              "DocumentMoniker": "D:\\HOC\\SWD\\CarRescueSystem\\CarRescueSystemProject\\CarRescueSystem.DAL\\Repository\\Implement\\ServiceRepository.cs",
+              "RelativeDocumentMoniker": "CarRescueSystem.DAL\\Repository\\Implement\\ServiceRepository.cs",
+              "ToolTip": "D:\\HOC\\SWD\\CarRescueSystem\\CarRescueSystemProject\\CarRescueSystem.DAL\\Repository\\Implement\\ServiceRepository.cs",
+              "RelativeToolTip": "CarRescueSystem.DAL\\Repository\\Implement\\ServiceRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAAEAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-20T06:55:23.196Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "BookingStaffRepository.cs",
+              "DocumentMoniker": "D:\\HOC\\SWD\\CarRescueSystem\\CarRescueSystemProject\\CarRescueSystem.DAL\\Repository\\Implement\\BookingStaffRepository.cs",
+              "RelativeDocumentMoniker": "CarRescueSystem.DAL\\Repository\\Implement\\BookingStaffRepository.cs",
+              "ToolTip": "D:\\HOC\\SWD\\CarRescueSystem\\CarRescueSystemProject\\CarRescueSystem.DAL\\Repository\\Implement\\BookingStaffRepository.cs",
+              "RelativeToolTip": "CarRescueSystem.DAL\\Repository\\Implement\\BookingStaffRepository.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAABgAAAAnAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-20T06:45:35.508Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "IBookingStaffRepository.cs",
+              "DocumentMoniker": "D:\\HOC\\SWD\\CarRescueSystem\\CarRescueSystemProject\\CarRescueSystem.DAL\\Repository\\Interface\\IBookingStaffRepository.cs",
+              "RelativeDocumentMoniker": "CarRescueSystem.DAL\\Repository\\Interface\\IBookingStaffRepository.cs",
+              "ToolTip": "D:\\HOC\\SWD\\CarRescueSystem\\CarRescueSystemProject\\CarRescueSystem.DAL\\Repository\\Interface\\IBookingStaffRepository.cs",
+              "RelativeToolTip": "CarRescueSystem.DAL\\Repository\\Interface\\IBookingStaffRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-20T06:45:04.272Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "RoleRepository.cs",
+              "DocumentMoniker": "D:\\HOC\\SWD\\CarRescueSystem\\CarRescueSystemProject\\CarRescueSystem.DAL\\Repository\\Implement\\RoleRepository.cs",
+              "RelativeDocumentMoniker": "CarRescueSystem.DAL\\Repository\\Implement\\RoleRepository.cs",
+              "ToolTip": "D:\\HOC\\SWD\\CarRescueSystem\\CarRescueSystemProject\\CarRescueSystem.DAL\\Repository\\Implement\\RoleRepository.cs",
+              "RelativeToolTip": "CarRescueSystem.DAL\\Repository\\Implement\\RoleRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAAEAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-20T06:35:20.3Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 28,
+              "Title": "IBookingRepository.cs",
+              "DocumentMoniker": "D:\\HOC\\SWD\\CarRescueSystem\\CarRescueSystemProject\\CarRescueSystem.DAL\\Repository\\Interface\\IBookingRepository.cs",
+              "RelativeDocumentMoniker": "CarRescueSystem.DAL\\Repository\\Interface\\IBookingRepository.cs",
+              "ToolTip": "D:\\HOC\\SWD\\CarRescueSystem\\CarRescueSystemProject\\CarRescueSystem.DAL\\Repository\\Interface\\IBookingRepository.cs",
+              "RelativeToolTip": "CarRescueSystem.DAL\\Repository\\Interface\\IBookingRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAABEAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-20T06:35:12.433Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 26,
+              "Title": "BookingRepository.cs",
+              "DocumentMoniker": "D:\\HOC\\SWD\\CarRescueSystem\\CarRescueSystemProject\\CarRescueSystem.DAL\\Repository\\Implement\\BookingRepository.cs",
+              "RelativeDocumentMoniker": "CarRescueSystem.DAL\\Repository\\Implement\\BookingRepository.cs",
+              "ToolTip": "D:\\HOC\\SWD\\CarRescueSystem\\CarRescueSystemProject\\CarRescueSystem.DAL\\Repository\\Implement\\BookingRepository.cs",
+              "RelativeToolTip": "CarRescueSystem.DAL\\Repository\\Implement\\BookingRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAAEAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-20T06:35:07.785Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 27,
+              "Title": "IVehicleRepository.cs",
+              "DocumentMoniker": "D:\\HOC\\SWD\\CarRescueSystem\\CarRescueSystemProject\\CarRescueSystem.DAL\\Repository\\Interface\\IVehicleRepository.cs",
+              "RelativeDocumentMoniker": "CarRescueSystem.DAL\\Repository\\Interface\\IVehicleRepository.cs",
+              "ToolTip": "D:\\HOC\\SWD\\CarRescueSystem\\CarRescueSystemProject\\CarRescueSystem.DAL\\Repository\\Interface\\IVehicleRepository.cs",
+              "RelativeToolTip": "CarRescueSystem.DAL\\Repository\\Interface\\IVehicleRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAABEAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-20T06:34:42.523Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 25,
+              "Title": "VehicleRepository.cs",
+              "DocumentMoniker": "D:\\HOC\\SWD\\CarRescueSystem\\CarRescueSystemProject\\CarRescueSystem.DAL\\Repository\\Implement\\VehicleRepository.cs",
+              "RelativeDocumentMoniker": "CarRescueSystem.DAL\\Repository\\Implement\\VehicleRepository.cs",
+              "ToolTip": "D:\\HOC\\SWD\\CarRescueSystem\\CarRescueSystemProject\\CarRescueSystem.DAL\\Repository\\Implement\\VehicleRepository.cs",
+              "RelativeToolTip": "CarRescueSystem.DAL\\Repository\\Implement\\VehicleRepository.cs",
+              "ViewState": "AgIAAAEAAAAAAAAAAAAQwBIAAAAEAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-20T06:34:30.633Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 29,
+              "Title": "UserUtility.cs",
+              "DocumentMoniker": "D:\\HOC\\SWD\\CarRescueSystem\\CarRescueSystemProject\\CarRescueSystem.BLL\\Utilities\\UserUtility.cs",
+              "RelativeDocumentMoniker": "CarRescueSystem.BLL\\Utilities\\UserUtility.cs",
+              "ToolTip": "D:\\HOC\\SWD\\CarRescueSystem\\CarRescueSystemProject\\CarRescueSystem.BLL\\Utilities\\UserUtility.cs",
+              "RelativeToolTip": "CarRescueSystem.BLL\\Utilities\\UserUtility.cs",
+              "ViewState": "AgIAAAsAAAAAAAAAAAAAwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-20T06:29:54.017Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 30,
+              "Title": "CreatingBookingDTO.cs",
+              "DocumentMoniker": "D:\\HOC\\SWD\\CarRescueSystem\\CarRescueSystemProject\\CarRescueSystem.Common\\DTO\\CreatingBookingDTO.cs",
+              "RelativeDocumentMoniker": "CarRescueSystem.Common\\DTO\\CreatingBookingDTO.cs",
+              "ToolTip": "D:\\HOC\\SWD\\CarRescueSystem\\CarRescueSystemProject\\CarRescueSystem.Common\\DTO\\CreatingBookingDTO.cs",
+              "RelativeToolTip": "CarRescueSystem.Common\\DTO\\CreatingBookingDTO.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAAAsAAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-20T06:27:19.651Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "BookingService.cs",
+              "DocumentMoniker": "D:\\HOC\\SWD\\CarRescueSystem\\CarRescueSystemProject\\CarRescueSystem.BLL\\Service\\Implement\\BookingService.cs",
+              "RelativeDocumentMoniker": "CarRescueSystem.BLL\\Service\\Implement\\BookingService.cs",
+              "ToolTip": "D:\\HOC\\SWD\\CarRescueSystem\\CarRescueSystemProject\\CarRescueSystem.BLL\\Service\\Implement\\BookingService.cs",
+              "RelativeToolTip": "CarRescueSystem.BLL\\Service\\Implement\\BookingService.cs",
+              "ViewState": "AgIAAHwAAAAAAAAAAAAkwBsAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-20T06:25:31.445Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "IBookingService.cs",
+              "DocumentMoniker": "D:\\HOC\\SWD\\CarRescueSystem\\CarRescueSystemProject\\CarRescueSystem.BLL\\Service\\Interface\\IBookingService.cs",
+              "RelativeDocumentMoniker": "CarRescueSystem.BLL\\Service\\Interface\\IBookingService.cs",
+              "ToolTip": "D:\\HOC\\SWD\\CarRescueSystem\\CarRescueSystemProject\\CarRescueSystem.BLL\\Service\\Interface\\IBookingService.cs",
+              "RelativeToolTip": "CarRescueSystem.BLL\\Service\\Interface\\IBookingService.cs",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAuwBMAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-20T06:25:25.497Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 24,
+              "Title": "BookingStaff.cs",
+              "DocumentMoniker": "D:\\HOC\\SWD\\CarRescueSystem\\CarRescueSystemProject\\CarRescueSystem.DAL\\Model\\BookingStaff.cs",
+              "RelativeDocumentMoniker": "CarRescueSystem.DAL\\Model\\BookingStaff.cs",
+              "ToolTip": "D:\\HOC\\SWD\\CarRescueSystem\\CarRescueSystemProject\\CarRescueSystem.DAL\\Model\\BookingStaff.cs",
+              "RelativeToolTip": "CarRescueSystem.DAL\\Model\\BookingStaff.cs",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAAABEAAAArAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-20T06:00:31.049Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 33,
+              "Title": "ServicePackage.cs",
+              "DocumentMoniker": "D:\\HOC\\SWD\\CarRescueSystem\\CarRescueSystemProject\\CarRescueSystem.DAL\\Model\\ServicePackage.cs",
+              "RelativeDocumentMoniker": "CarRescueSystem.DAL\\Model\\ServicePackage.cs",
+              "ToolTip": "D:\\HOC\\SWD\\CarRescueSystem\\CarRescueSystemProject\\CarRescueSystem.DAL\\Model\\ServicePackage.cs",
+              "RelativeToolTip": "CarRescueSystem.DAL\\Model\\ServicePackage.cs",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAAABcAAAA0AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-20T05:49:53.126Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "Package.cs",
+              "DocumentMoniker": "D:\\HOC\\SWD\\CarRescueSystem\\CarRescueSystemProject\\CarRescueSystem.DAL\\Model\\Package.cs",
+              "RelativeDocumentMoniker": "CarRescueSystem.DAL\\Model\\Package.cs",
+              "ToolTip": "D:\\HOC\\SWD\\CarRescueSystem\\CarRescueSystemProject\\CarRescueSystem.DAL\\Model\\Package.cs",
+              "RelativeToolTip": "CarRescueSystem.DAL\\Model\\Package.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAABcAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-20T05:49:28.386Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 34,
+              "Title": "ServiceOfBooking.cs",
+              "DocumentMoniker": "D:\\HOC\\SWD\\CarRescueSystem\\CarRescueSystemProject\\CarRescueSystem.DAL\\Model\\ServiceOfBooking.cs",
+              "RelativeDocumentMoniker": "CarRescueSystem.DAL\\Model\\ServiceOfBooking.cs",
+              "ToolTip": "D:\\HOC\\SWD\\CarRescueSystem\\CarRescueSystemProject\\CarRescueSystem.DAL\\Model\\ServiceOfBooking.cs",
+              "RelativeToolTip": "CarRescueSystem.DAL\\Model\\ServiceOfBooking.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAABEAAAArAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-20T05:49:09.213Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 35,
+              "Title": "Service.cs",
+              "DocumentMoniker": "D:\\HOC\\SWD\\CarRescueSystem\\CarRescueSystemProject\\CarRescueSystem.DAL\\Model\\Service.cs",
+              "RelativeDocumentMoniker": "CarRescueSystem.DAL\\Model\\Service.cs",
+              "ToolTip": "D:\\HOC\\SWD\\CarRescueSystem\\CarRescueSystemProject\\CarRescueSystem.DAL\\Model\\Service.cs",
+              "RelativeToolTip": "CarRescueSystem.DAL\\Model\\Service.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAAxAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-20T05:48:44.754Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 20,
+              "Title": "Booking.cs",
+              "DocumentMoniker": "D:\\HOC\\SWD\\CarRescueSystem\\CarRescueSystemProject\\CarRescueSystem.DAL\\Model\\Booking.cs",
+              "RelativeDocumentMoniker": "CarRescueSystem.DAL\\Model\\Booking.cs",
+              "ToolTip": "D:\\HOC\\SWD\\CarRescueSystem\\CarRescueSystemProject\\CarRescueSystem.DAL\\Model\\Booking.cs",
+              "RelativeToolTip": "CarRescueSystem.DAL\\Model\\Booking.cs",
+              "ViewState": "AgIAAB4AAAAAAAAAAAAqwCMAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-20T05:47:58.146Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 36,
+              "Title": "Vehicle.cs",
+              "DocumentMoniker": "D:\\HOC\\SWD\\CarRescueSystem\\CarRescueSystemProject\\CarRescueSystem.DAL\\Model\\Vehicle.cs",
+              "RelativeDocumentMoniker": "CarRescueSystem.DAL\\Model\\Vehicle.cs",
+              "ToolTip": "D:\\HOC\\SWD\\CarRescueSystem\\CarRescueSystemProject\\CarRescueSystem.DAL\\Model\\Vehicle.cs",
+              "RelativeToolTip": "CarRescueSystem.DAL\\Model\\Vehicle.cs",
+              "ViewState": "AgIAAAsAAAAAAAAAAAAAwBwAAAASAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-20T05:47:09.749Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 37,
+              "Title": "Role.cs",
+              "DocumentMoniker": "D:\\HOC\\SWD\\CarRescueSystem\\CarRescueSystemProject\\CarRescueSystem.DAL\\Model\\Role.cs",
+              "RelativeDocumentMoniker": "CarRescueSystem.DAL\\Model\\Role.cs",
+              "ToolTip": "D:\\HOC\\SWD\\CarRescueSystem\\CarRescueSystemProject\\CarRescueSystem.DAL\\Model\\Role.cs",
+              "RelativeToolTip": "CarRescueSystem.DAL\\Model\\Role.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAABTAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-20T05:42:47.092Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 22,
+              "Title": "User.cs",
+              "DocumentMoniker": "D:\\HOC\\SWD\\CarRescueSystem\\CarRescueSystemProject\\CarRescueSystem.DAL\\Model\\User.cs",
+              "RelativeDocumentMoniker": "CarRescueSystem.DAL\\Model\\User.cs",
+              "ToolTip": "D:\\HOC\\SWD\\CarRescueSystem\\CarRescueSystemProject\\CarRescueSystem.DAL\\Model\\User.cs",
+              "RelativeToolTip": "CarRescueSystem.DAL\\Model\\User.cs",
+              "ViewState": "AgIAABIAAAAAAAAAAAAYwCQAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-17T03:38:10.882Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 38,
+              "Title": "TokenRepository.cs",
+              "DocumentMoniker": "D:\\HOC\\SWD\\CarRescueSystem\\CarRescueSystemProject\\CarRescueSystem.DAL\\Repository\\Implement\\TokenRepository.cs",
+              "RelativeDocumentMoniker": "CarRescueSystem.DAL\\Repository\\Implement\\TokenRepository.cs",
+              "ToolTip": "D:\\HOC\\SWD\\CarRescueSystem\\CarRescueSystemProject\\CarRescueSystem.DAL\\Repository\\Implement\\TokenRepository.cs",
+              "RelativeToolTip": "CarRescueSystem.DAL\\Repository\\Implement\\TokenRepository.cs",
+              "ViewState": "AgIAAAwAAAAAAAAAAAAAACcAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-17T03:31:45.358Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 39,
+              "Title": "ITokenRepository.cs",
+              "DocumentMoniker": "D:\\HOC\\SWD\\CarRescueSystem\\CarRescueSystemProject\\CarRescueSystem.DAL\\Repository\\Interface\\ITokenRepository.cs",
+              "RelativeDocumentMoniker": "CarRescueSystem.DAL\\Repository\\Interface\\ITokenRepository.cs",
+              "ToolTip": "D:\\HOC\\SWD\\CarRescueSystem\\CarRescueSystemProject\\CarRescueSystem.DAL\\Repository\\Interface\\ITokenRepository.cs",
+              "RelativeToolTip": "CarRescueSystem.DAL\\Repository\\Interface\\ITokenRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAABJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-17T03:31:30.672Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 40,
+              "Title": "TokenDTO.cs",
+              "DocumentMoniker": "D:\\HOC\\SWD\\CarRescueSystem\\CarRescueSystemProject\\CarRescueSystem.Common\\DTO\\TokenDTO.cs",
+              "RelativeDocumentMoniker": "CarRescueSystem.Common\\DTO\\TokenDTO.cs",
+              "ToolTip": "D:\\HOC\\SWD\\CarRescueSystem\\CarRescueSystemProject\\CarRescueSystem.Common\\DTO\\TokenDTO.cs",
+              "RelativeToolTip": "CarRescueSystem.Common\\DTO\\TokenDTO.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-17T03:25:44.235Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "RefreshToken.cs",
+              "DocumentMoniker": "D:\\HOC\\SWD\\CarRescueSystem\\CarRescueSystemProject\\CarRescueSystem.DAL\\Model\\RefreshToken.cs",
+              "RelativeDocumentMoniker": "CarRescueSystem.DAL\\Model\\RefreshToken.cs",
+              "ToolTip": "D:\\HOC\\SWD\\CarRescueSystem\\CarRescueSystemProject\\CarRescueSystem.DAL\\Model\\RefreshToken.cs",
+              "RelativeToolTip": "CarRescueSystem.DAL\\Model\\RefreshToken.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAABOAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-17T03:24:27.393Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "ApplicationDbContext.cs",
+              "DocumentMoniker": "D:\\HOC\\SWD\\CarRescueSystem\\CarRescueSystemProject\\CarRescueSystem.DAL\\Data\\ApplicationDbContext.cs",
+              "RelativeDocumentMoniker": "CarRescueSystem.DAL\\Data\\ApplicationDbContext.cs",
+              "ToolTip": "D:\\HOC\\SWD\\CarRescueSystem\\CarRescueSystemProject\\CarRescueSystem.DAL\\Data\\ApplicationDbContext.cs",
+              "RelativeToolTip": "CarRescueSystem.DAL\\Data\\ApplicationDbContext.cs",
+              "ViewState": "AgIAAFMAAAAAAAAAAAArwGIAAAAbAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-17T03:12:03.102Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 21,
+              "Title": "UserRepository.cs",
+              "DocumentMoniker": "D:\\HOC\\SWD\\CarRescueSystem\\CarRescueSystemProject\\CarRescueSystem.DAL\\Repository\\Implement\\UserRepository.cs",
+              "RelativeDocumentMoniker": "CarRescueSystem.DAL\\Repository\\Implement\\UserRepository.cs",
+              "ToolTip": "D:\\HOC\\SWD\\CarRescueSystem\\CarRescueSystemProject\\CarRescueSystem.DAL\\Repository\\Implement\\UserRepository.cs",
+              "RelativeToolTip": "CarRescueSystem.DAL\\Repository\\Implement\\UserRepository.cs",
+              "ViewState": "AgIAAAcAAAAAAAAAAAAkwB4AAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-17T03:10:49.658Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 23,
+              "Title": "IUserRepository.cs",
+              "DocumentMoniker": "D:\\HOC\\SWD\\CarRescueSystem\\CarRescueSystemProject\\CarRescueSystem.DAL\\Repository\\Interface\\IUserRepository.cs",
+              "RelativeDocumentMoniker": "CarRescueSystem.DAL\\Repository\\Interface\\IUserRepository.cs",
+              "ToolTip": "D:\\HOC\\SWD\\CarRescueSystem\\CarRescueSystemProject\\CarRescueSystem.DAL\\Repository\\Interface\\IUserRepository.cs",
+              "RelativeToolTip": "CarRescueSystem.DAL\\Repository\\Interface\\IUserRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-17T03:10:37.058Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 41,
+              "Title": "LoginDTO.cs",
+              "DocumentMoniker": "D:\\HOC\\SWD\\CarRescueSystem\\CarRescueSystemProject\\CarRescueSystem.Common\\DTO\\LoginDTO.cs",
+              "RelativeDocumentMoniker": "CarRescueSystem.Common\\DTO\\LoginDTO.cs",
+              "ToolTip": "D:\\HOC\\SWD\\CarRescueSystem\\CarRescueSystemProject\\CarRescueSystem.Common\\DTO\\LoginDTO.cs",
+              "RelativeToolTip": "CarRescueSystem.Common\\DTO\\LoginDTO.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-17T03:08:29.665Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "UnitOfWork.cs",
+              "DocumentMoniker": "D:\\HOC\\SWD\\CarRescueSystem\\CarRescueSystemProject\\CarRescueSystem.DAL\\UnitOfWork\\UnitOfWork.cs",
+              "RelativeDocumentMoniker": "CarRescueSystem.DAL\\UnitOfWork\\UnitOfWork.cs",
+              "ToolTip": "D:\\HOC\\SWD\\CarRescueSystem\\CarRescueSystemProject\\CarRescueSystem.DAL\\UnitOfWork\\UnitOfWork.cs",
+              "RelativeToolTip": "CarRescueSystem.DAL\\UnitOfWork\\UnitOfWork.cs",
+              "ViewState": "AgIAAA8AAAAAAAAAAAAAABkAAABMAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-17T03:04:32.369Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "IUnitOfWork.cs",
+              "DocumentMoniker": "D:\\HOC\\SWD\\CarRescueSystem\\CarRescueSystemProject\\CarRescueSystem.DAL\\UnitOfWork\\IUnitOfWork.cs",
+              "RelativeDocumentMoniker": "CarRescueSystem.DAL\\UnitOfWork\\IUnitOfWork.cs",
+              "ToolTip": "D:\\HOC\\SWD\\CarRescueSystem\\CarRescueSystemProject\\CarRescueSystem.DAL\\UnitOfWork\\IUnitOfWork.cs",
+              "RelativeToolTip": "CarRescueSystem.DAL\\UnitOfWork\\IUnitOfWork.cs",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAAABQAAABBAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-17T03:04:21.188Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 42,
+              "Title": "GenericRepository.cs",
+              "DocumentMoniker": "D:\\HOC\\SWD\\CarRescueSystem\\CarRescueSystemProject\\CarRescueSystem.DAL\\Repository\\Implement\\GenericRepository.cs",
+              "RelativeDocumentMoniker": "CarRescueSystem.DAL\\Repository\\Implement\\GenericRepository.cs",
+              "ToolTip": "D:\\HOC\\SWD\\CarRescueSystem\\CarRescueSystemProject\\CarRescueSystem.DAL\\Repository\\Implement\\GenericRepository.cs",
+              "RelativeToolTip": "CarRescueSystem.DAL\\Repository\\Implement\\GenericRepository.cs",
+              "ViewState": "AgIAAIQAAAAAAAAAAAAAAJIAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-17T03:03:58.324Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 43,
+              "Title": "IGenericRepository.cs",
+              "DocumentMoniker": "D:\\HOC\\SWD\\CarRescueSystem\\CarRescueSystemProject\\CarRescueSystem.DAL\\Repository\\Interface\\IGenericRepository.cs",
+              "RelativeDocumentMoniker": "CarRescueSystem.DAL\\Repository\\Interface\\IGenericRepository.cs",
+              "ToolTip": "D:\\HOC\\SWD\\CarRescueSystem\\CarRescueSystemProject\\CarRescueSystem.DAL\\Repository\\Interface\\IGenericRepository.cs",
+              "RelativeToolTip": "CarRescueSystem.DAL\\Repository\\Interface\\IGenericRepository.cs",
+              "ViewState": "AgIAABsAAAAAAAAAAAAAACEAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-17T03:03:39.815Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "AuthService.cs",
+              "DocumentMoniker": "D:\\HOC\\SWD\\CarRescueSystem\\CarRescueSystemProject\\CarRescueSystem.BLL\\Service\\Implement\\AuthService.cs",
+              "RelativeDocumentMoniker": "CarRescueSystem.BLL\\Service\\Implement\\AuthService.cs",
+              "ToolTip": "D:\\HOC\\SWD\\CarRescueSystem\\CarRescueSystemProject\\CarRescueSystem.BLL\\Service\\Implement\\AuthService.cs",
+              "RelativeToolTip": "CarRescueSystem.BLL\\Service\\Implement\\AuthService.cs",
+              "ViewState": "AgIAALsAAAAAAAAAAAAkwHEAAAAuAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-17T03:00:34.053Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 32,
+              "Title": "ResponseDTO.cs",
+              "DocumentMoniker": "D:\\HOC\\SWD\\CarRescueSystem\\CarRescueSystemProject\\CarRescueSystem.Common\\DTO\\ResponseDTO.cs",
+              "RelativeDocumentMoniker": "CarRescueSystem.Common\\DTO\\ResponseDTO.cs",
+              "ToolTip": "D:\\HOC\\SWD\\CarRescueSystem\\CarRescueSystemProject\\CarRescueSystem.Common\\DTO\\ResponseDTO.cs",
+              "RelativeToolTip": "CarRescueSystem.Common\\DTO\\ResponseDTO.cs",
+              "ViewState": "AgIAAAQAAAAAAAAAAAAiwB0AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-17T03:00:22.103Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 31,
+              "Title": "IAuthService.cs",
+              "DocumentMoniker": "D:\\HOC\\SWD\\CarRescueSystem\\CarRescueSystemProject\\CarRescueSystem.BLL\\Service\\Interface\\IAuthService.cs",
+              "RelativeDocumentMoniker": "CarRescueSystem.BLL\\Service\\Interface\\IAuthService.cs",
+              "ToolTip": "D:\\HOC\\SWD\\CarRescueSystem\\CarRescueSystemProject\\CarRescueSystem.BLL\\Service\\Interface\\IAuthService.cs",
+              "RelativeToolTip": "CarRescueSystem.BLL\\Service\\Interface\\IAuthService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAA+AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-17T02:59:40.781Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 44,
+              "Title": "JwtSettingModel.cs",
+              "DocumentMoniker": "D:\\HOC\\SWD\\CarRescueSystem\\CarRescueSystemProject\\CarRescueSystem.Common\\Settings\\JwtSettingModel.cs",
+              "RelativeDocumentMoniker": "CarRescueSystem.Common\\Settings\\JwtSettingModel.cs",
+              "ToolTip": "D:\\HOC\\SWD\\CarRescueSystem\\CarRescueSystemProject\\CarRescueSystem.Common\\Settings\\JwtSettingModel.cs",
+              "RelativeToolTip": "CarRescueSystem.Common\\Settings\\JwtSettingModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACQAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-17T02:57:41.389Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 45,
+              "Title": "JwtConstant.cs",
+              "DocumentMoniker": "D:\\HOC\\SWD\\CarRescueSystem\\CarRescueSystemProject\\CarRescueSystem.Common\\Constants\\JwtConstant.cs",
+              "RelativeDocumentMoniker": "CarRescueSystem.Common\\Constants\\JwtConstant.cs",
+              "ToolTip": "D:\\HOC\\SWD\\CarRescueSystem\\CarRescueSystemProject\\CarRescueSystem.Common\\Constants\\JwtConstant.cs",
+              "RelativeToolTip": "CarRescueSystem.Common\\Constants\\JwtConstant.cs",
+              "ViewState": "AgIAAAwAAAAAAAAAAAAAACYAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-17T02:57:24.373Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 46,
+              "Title": "JwtProvider.cs",
+              "DocumentMoniker": "D:\\HOC\\SWD\\CarRescueSystem\\CarRescueSystemProject\\CarRescueSystem.BLL\\Service\\Implement\\JwtProvider.cs",
+              "RelativeDocumentMoniker": "CarRescueSystem.BLL\\Service\\Implement\\JwtProvider.cs",
+              "ToolTip": "D:\\HOC\\SWD\\CarRescueSystem\\CarRescueSystemProject\\CarRescueSystem.BLL\\Service\\Implement\\JwtProvider.cs",
+              "RelativeToolTip": "CarRescueSystem.BLL\\Service\\Implement\\JwtProvider.cs",
+              "ViewState": "AgIAAEAAAAAAAAAAAAAAAFMAAAAaAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-17T02:55:35.691Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

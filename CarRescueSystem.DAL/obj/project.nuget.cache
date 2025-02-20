@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "A/1QT867yP8=",
+  "dgSpecHash": "O3g4laU28fU=",
   "success": true,
-  "projectFilePath": "E:\\KÌ 7 MÃI ĐỈNH\\SWD392\\project\\CarRescueSystem.DAL\\CarRescueSystem.DAL.csproj",
+  "projectFilePath": "D:\\HOC\\SWD\\CarRescueSystem\\CarRescueSystemProject\\CarRescueSystem.DAL\\CarRescueSystem.DAL.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\dangl\\.nuget\\packages\\azure.core\\1.38.0\\azure.core.1.38.0.nupkg.sha512",
     "C:\\Users\\dangl\\.nuget\\packages\\azure.identity\\1.11.4\\azure.identity.1.11.4.nupkg.sha512",

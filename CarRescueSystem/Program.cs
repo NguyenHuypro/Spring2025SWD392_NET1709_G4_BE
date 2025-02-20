@@ -33,6 +33,7 @@ builder.Services.AddSwaggerGen();
 //Add các dịch vụ
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 builder.Services.AddScoped<IAuthService, AuthService>();
+builder.Services.AddScoped<IBookingService, BookingService>();
 builder.Services.AddScoped<UserUtility>();
 
 // Đăng ký DbSeeder vào DI container
