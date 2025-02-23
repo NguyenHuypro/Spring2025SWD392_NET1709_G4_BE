@@ -20,6 +20,7 @@ namespace CarRescueSystem.DAL.Data
         public DbSet<ServiceOfBooking> ServiceOfBookings { get; set; }
         public DbSet<BookingStaff> BookingStaffs { get; set; }
         public DbSet<ServicePackage> ServicePackages { get; set; }
+        public DbSet<UserPackage> UserPackages { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -34,6 +35,7 @@ namespace CarRescueSystem.DAL.Data
             modelBuilder.Entity<ServiceOfBooking>().HasKey(sb => sb.ServiceOfBookingId);
             modelBuilder.Entity<BookingStaff>().HasKey(bs => bs.BookingStaffId);
             modelBuilder.Entity<ServicePackage>().HasKey(sp => sp.ServicePackageId);
+            modelBuilder.Entity<UserPackage>().HasKey(s => s.UserPackageId);
 
             // 🔹 User - Role (1-N)
             modelBuilder.Entity<User>()
@@ -108,11 +110,20 @@ namespace CarRescueSystem.DAL.Data
                 .WithMany(p => p.ServicePackages)
                 .HasForeignKey(sp => sp.PackageID)
                 .OnDelete(DeleteBehavior.Cascade);
-            //User 1-1 Package
-            modelBuilder.Entity<User>()
-    .HasOne(u => u.Package)
-    .WithOne(p => p.User)
-    .HasForeignKey<Package>(p => p.UserId);
+            //User N-N Package
+            modelBuilder.Entity<UserPackage>()
+                .HasKey(up => new { up.UserId, up.PackageId });
+
+            modelBuilder.Entity<UserPackage>()
+                .HasOne(up => up.User)
+                .WithMany(u => u.UserPackages)
+                .HasForeignKey(up => up.UserId);
+
+            modelBuilder.Entity<UserPackage>()
+                .HasOne(up => up.Package)
+                .WithMany(p => p.UserPackages)
+                .HasForeignKey(up => up.PackageId);
+
 
 
             // 🔹 Định dạng kiểu tiền tệ

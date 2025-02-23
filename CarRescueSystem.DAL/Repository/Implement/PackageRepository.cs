@@ -18,12 +18,7 @@ namespace CarRescueSystem.DAL.Repository.Implement
             _context = context;
         }
 
-        public async Task<Package?> GetUserPackageAsync(Guid userId)
-        {
-            return await _context.Packages
-                .Include(p => p.ServicePackages) // Load danh sách dịch vụ trong package
-                .FirstOrDefaultAsync(p => p.UserId == userId );
-        }
+        
 
         public async Task<ServicePackage?> GetServiceInPackageAsync(Guid packageId, Guid serviceId)
         {

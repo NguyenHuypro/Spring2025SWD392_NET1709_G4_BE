@@ -165,11 +165,15 @@ namespace CarRescueSystem.BLL.Service.Implement
 
         public async Task<ResponseDTO> AddServiceToBookingAsync(Guid bookingId, List<Guid> serviceIds)
         {
-            var booking = await _unitOfWork.BookingRepo.GetByIdAsync(bookingId);
+            var booking = await _unitOfWork.BookingRepo.GetByIdWithBookingStaffsAsync(bookingId);
             if (booking == null)
                 return new ResponseDTO("Booking not found", 404, false);
 
+            var userId = booking.CustomerId;
+            var userPackages = await _unitOfWork.UserPackageRepo.GetUserPackagesListAsync(userId);
+
             decimal totalPrice = 0;
+            decimal totalDiscount = 0; // Tổng số tiền giảm giá từ package
 
             foreach (var serviceId in serviceIds)
             {
@@ -190,20 +194,45 @@ namespace CarRescueSystem.BLL.Service.Implement
                     await _unitOfWork.ServiceOfBookingRepo.AddAsync(newService);
                 }
 
-                // Kiểm tra giảm giá nếu có Package
-                var hasPackage = await _unitOfWork.ServiceOfBookingRepo.ServiceInPackageAsync(serviceId);
-                decimal finalPrice = hasPackage ? service.ServicePrice * 0.9m : service.ServicePrice; // Giảm 10% nếu có package
-                totalPrice += finalPrice;
+                decimal originalPrice = service.ServicePrice;
+                decimal discountAmount = 0; // Mặc định không giảm
+
+                if (userPackages != null && userPackages.Any())
+                {
+                    // Kiểm tra trong các package có service này không
+                    foreach (var userPackage in userPackages)
+                    {
+                        var serviceInPackage = await _unitOfWork.PackageRepo.GetServiceInPackageAsync(userPackage.PackageId, serviceId);
+                        if (serviceInPackage != null && userPackage.Quantity > 0)
+                        {
+                            // Giảm 20% số tiền dịch vụ
+                            discountAmount = originalPrice * 0.2m;
+
+                            // Trừ số lần sử dụng của package
+                            userPackage.Quantity -= 1;
+                            await _unitOfWork.UserPackageRepo.UpdateAsync(userPackage);
+                            break; // Chỉ sử dụng giảm giá từ 1 package
+                        }
+                    }
+                }
+
+                totalDiscount += discountAmount;
+                totalPrice += (originalPrice - discountAmount);
             }
 
             // Cập nhật tổng giá Booking
-            booking.TotalPrice = totalPrice;
+            booking.TotalPrice += totalPrice;
             await _unitOfWork.BookingRepo.UpdateAsync(booking);
-
             await _unitOfWork.SaveChangeAsync();
 
-            return new ResponseDTO("Services added and total price updated", 200, true, totalPrice);
+            return new ResponseDTO("Services added and total price updated", 200, true, new
+            {
+                TotalPrice = totalPrice,
+                TotalDiscount = totalDiscount
+            });
         }
+
+
 
         public async Task<ResponseDTO> CompleteOrCancelBookingAsync(Guid bookingId, bool isCompleted)
         {
