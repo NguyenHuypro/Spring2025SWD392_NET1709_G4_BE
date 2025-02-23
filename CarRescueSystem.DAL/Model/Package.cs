@@ -15,8 +15,13 @@ namespace CarRescueSystem.DAL.Model
         [Required, MaxLength(100)]
         public string PackageName { get; set; }
 
+        [Required]
+        public decimal PackagePrice { get; set; }
+
+
+
         public virtual ICollection<ServicePackage> ServicePackages { get; set; } = new HashSet<ServicePackage>();
         // Danh sách các Booking sử dụng Package này
-        public virtual ICollection<Booking> Bookings { get; set; } = new HashSet<Booking>();
+        
     }
 }

@@ -6,16 +6,25 @@ using System.Threading.Tasks;
 using CarRescueSystem.DAL.Data;
 using CarRescueSystem.DAL.Model;
 using CarRescueSystem.DAL.Repository.Interface;
+using Microsoft.EntityFrameworkCore;
 
 namespace CarRescueSystem.DAL.Repository.Implement
 {
-    internal class BookingRepository : GenericRepository<Booking>, IBookingRepository
+    public class BookingRepository : GenericRepository<Booking>, IBookingRepository
     {
         private readonly ApplicationDbContext _context;
         public BookingRepository(ApplicationDbContext context) : base(context)
         {
             _context = context;
         }
-    
+
+        public async Task<Booking> GetByIdWithBookingStaffsAsync(Guid bookingId)
+        {
+            return await _context.Bookings
+                .Include(b => b.BookingStaffs) // Load danh sách BookingStaffs
+                    .ThenInclude(bs => bs.Staff)
+                .FirstOrDefaultAsync(b => b.BookingId == bookingId);
+        }
+
     }
 }

@@ -1,5 +1,6 @@
 ﻿using CarRescueSystem.BLL.Service.Interface;
 using CarRescueSystem.Common.DTO;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CarRescueSystem.Controller
@@ -18,6 +19,7 @@ namespace CarRescueSystem.Controller
         /// <summary>
         /// Đăng nhập người dùng
         /// </summary>
+        [AllowAnonymous]
         [HttpPost("login")]
         public async Task<IActionResult> Login([FromBody] LoginDTO loginDTO)
         {
@@ -28,6 +30,7 @@ namespace CarRescueSystem.Controller
         /// <summary>
         /// Đăng ký người dùng
         /// </summary>
+        [AllowAnonymous]
         [HttpPost("register")]
         public async Task<IActionResult> Register([FromBody] RegisterDTO registerDTO)
         {
@@ -61,6 +64,7 @@ namespace CarRescueSystem.Controller
         /// <summary>
         /// Đăng xuất và thu hồi RefreshToken
         /// </summary>
+        
         [HttpPost("logout")]
         public async Task<IActionResult> Logout([FromBody] string refreshToken)
         {

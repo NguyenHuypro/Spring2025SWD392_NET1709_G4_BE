@@ -17,8 +17,7 @@ namespace CarRescueSystem.DAL.Model
         [ForeignKey("User")]
         public Guid CustomerId { get; set; }
 
-        [Required]
-        [ForeignKey("Vehicle")]
+        
         public Guid? VehicleId { get; set; }
 
 
@@ -30,17 +29,17 @@ namespace CarRescueSystem.DAL.Model
         public decimal? TotalPrice { get; set; }
 
         public virtual User Customer { get; set; }
-        public virtual Vehicle Vehicle { get; set; }
+        public virtual Vehicle? Vehicle { get; set; }
         public DateTime CreatedAt { get; set; }
         public DateTime? StartAt { get; set; } // Có thể null nếu chưa bắt đầu
 
-
+        public Guid? PackageId { get; set; }
         public virtual Package? Package { get; set; } // Liên kết với Package
 
         // Danh sách staff phụ trách booking này
-        public virtual ICollection<BookingStaff> Staffs { get; set; } = new HashSet<BookingStaff>();
+        public virtual ICollection<BookingStaff> BookingStaffs { get; set; } = new HashSet<BookingStaff>();
 
-        public virtual ICollection<ServiceOfBooking> Services { get; set; } = new HashSet<ServiceOfBooking>();
+        public virtual ICollection<ServiceOfBooking> ServiceBookings { get; set; } = new HashSet<ServiceOfBooking>();
     }
     public enum BookingStatus
     {

@@ -29,9 +29,11 @@ namespace CarRescueSystem.DAL.Model
         public string PasswordSalt { get; set; }
 
         public virtual Role Role { get; set; }
+
+
         public StaffStatus ?StaffStatus { get; set; }
         // Quan hệ với BookingStaff (Staff phụ trách bookings)
-        public virtual ICollection<BookingStaff> AssignedBookings { get; set; } = new HashSet<BookingStaff>();
+        public virtual ICollection<BookingStaff> BookingsStaffs { get; set; } = new HashSet<BookingStaff>();
     }
     public enum StaffStatus
     {

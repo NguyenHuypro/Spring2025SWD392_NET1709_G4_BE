@@ -18,7 +18,7 @@ namespace CarRescueSystem.DAL.Model
         [Required]
         public decimal ServicePrice { get; set; }
 
-        public virtual ICollection<ServiceOfBooking> ServiceBookings { get; set; } = new HashSet<ServiceOfBooking>();
+        public virtual ICollection<ServiceOfBooking> ServiceOfBookings { get; set; } = new HashSet<ServiceOfBooking>();
         public virtual ICollection<ServicePackage> ServicePackages { get; set; } = new HashSet<ServicePackage>();
     }
 }

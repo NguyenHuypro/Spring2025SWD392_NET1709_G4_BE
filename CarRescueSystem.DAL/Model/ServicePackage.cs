@@ -21,6 +21,8 @@ namespace CarRescueSystem.DAL.Model
         [ForeignKey("Package")]
         public Guid PackageID { get; set; }
 
+        public int Quantity { get; set; }
+
         public virtual Service Service { get; set; }
         public virtual Package Package { get; set; }
     }

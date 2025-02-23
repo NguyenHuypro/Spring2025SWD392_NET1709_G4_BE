@@ -9,5 +9,7 @@ namespace CarRescueSystem.DAL.Repository.Interface
 {
     public interface IBookingRepository : IGenericRepository<Booking>
     {
+        Task<Booking> GetByIdWithBookingStaffsAsync(Guid bookingId);
+
     }
 }

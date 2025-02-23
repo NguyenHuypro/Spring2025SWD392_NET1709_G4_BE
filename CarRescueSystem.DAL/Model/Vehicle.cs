@@ -30,5 +30,7 @@ namespace CarRescueSystem.DAL.Model
         public int NumberOfSeats { get; set; }
 
         public virtual User Customer { get; set; }
+        
+
     }
 }

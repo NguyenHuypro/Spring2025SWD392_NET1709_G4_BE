@@ -154,24 +154,13 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "CarRescueSystem.API.Controllers.BookingController",
-    "Method": "StartBooking",
-    "RelativePath": "api/Booking/start/{bookingId}",
-    "HttpMethod": "PUT",
+    "ContainingType": "CarRescueSystem.API.Controllers.ServiceRescueController",
+    "Method": "GetAllServices",
+    "RelativePath": "api/ServiceRescue/get-all",
+    "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
-    "Parameters": [
-      {
-        "Name": "bookingId",
-        "Type": "System.Guid",
-        "IsRequired": true
-      },
-      {
-        "Name": "dto",
-        "Type": "CarRescueSystem.Common.DTO.StartBookingDTO",
-        "IsRequired": true
-      }
-    ],
+    "Parameters": [],
     "ReturnTypes": []
   }
 ]

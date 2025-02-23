@@ -35,7 +35,7 @@ namespace CarRescueSystem.BLL.Service.Implement
                 {
                     return new ResponseDTO("Customer not found", 404, false);
                 }
-
+                    
                 // Kiểm tra VehicleId hợp lệ (nếu có)
                 Vehicle? vehicle = null;
                 if (request.VehicleId.HasValue)
@@ -62,6 +62,7 @@ namespace CarRescueSystem.BLL.Service.Implement
 
                 // Lưu vào DB
                 await _unitOfWork.BookingRepo.AddAsync(newBooking);
+                await _unitOfWork.SaveChangeAsync();
 
                 // Trả về ResponseDTO
                 return new ResponseDTO("Booking created successfully", 201, true, newBooking);
@@ -93,6 +94,7 @@ namespace CarRescueSystem.BLL.Service.Implement
 
                 // 4️⃣ Lưu vào database
                 await _unitOfWork.BookingRepo.UpdateAsync(booking);
+                await _unitOfWork.SaveChangeAsync();
 
                 return new ResponseDTO("Booking confirmed successfully", 200, true);
             }
@@ -150,7 +152,9 @@ namespace CarRescueSystem.BLL.Service.Implement
                 booking.StartAt = DateTime.UtcNow;
                 await _unitOfWork.BookingRepo.UpdateAsync(booking);
 
-                return new ResponseDTO($"Assigned {activeStaffs.Count} staff to booking and updated status to InProgress", 200, true, assignedStaffs);
+                await _unitOfWork.SaveChangeAsync();
+
+                return new ResponseDTO($"Assigned {activeStaffs.Count} staff to booking and updated status to InProgress", 200, true);
             }
             catch (Exception ex)
             {
@@ -196,17 +200,30 @@ namespace CarRescueSystem.BLL.Service.Implement
             booking.TotalPrice = totalPrice;
             await _unitOfWork.BookingRepo.UpdateAsync(booking);
 
-            return new ResponseDTO("Services added and total price updated", 200, true, booking);
+            await _unitOfWork.SaveChangeAsync();
+
+            return new ResponseDTO("Services added and total price updated", 200, true, totalPrice);
         }
 
         public async Task<ResponseDTO> CompleteOrCancelBookingAsync(Guid bookingId, bool isCompleted)
         {
-            var booking = await _unitOfWork.BookingRepo.GetByIdAsync(bookingId);
+            var booking = await _unitOfWork.BookingRepo.GetByIdWithBookingStaffsAsync(bookingId);
             if (booking == null)
                 return new ResponseDTO("Booking not found", 404, false);
 
             booking.Status = isCompleted ? BookingStatus.Completed : BookingStatus.Cancelled;
             await _unitOfWork.BookingRepo.UpdateAsync(booking);
+
+            foreach (var staffBooking in booking.BookingStaffs)
+            {
+                var staff = await _unitOfWork.UserRepo.GetByIdAsync(staffBooking.StaffId);
+                
+                staff.StaffStatus = StaffStatus.Active;
+                await _unitOfWork.UserRepo.UpdateAsync(staff);
+                
+            }
+
+            await _unitOfWork.SaveChangeAsync();
 
             string message = isCompleted ? "Booking completed successfully" : "Booking cancelled";
             return new ResponseDTO(message, 200, true);

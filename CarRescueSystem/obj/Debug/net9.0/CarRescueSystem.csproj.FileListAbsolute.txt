@@ -498,3 +498,10 @@ D:\HOC\SWD\CarRescueSystem\CarRescueSystemProject\CarRescueSystem\obj\Debug\net9
 D:\HOC\SWD\CarRescueSystem\CarRescueSystemProject\CarRescueSystem\obj\Debug\net9.0\CarRescueSystem.pdb
 D:\HOC\SWD\CarRescueSystem\CarRescueSystemProject\CarRescueSystem\obj\Debug\net9.0\CarRescueSystem.genruntimeconfig.cache
 D:\HOC\SWD\CarRescueSystem\CarRescueSystemProject\CarRescueSystem\obj\Debug\net9.0\ref\CarRescueSystem.dll
+D:\HOC\SWD\CarRescueSystem\CarRescueSystemProject\CarRescueSystem\bin\Debug\net9.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+D:\HOC\SWD\CarRescueSystem\CarRescueSystemProject\CarRescueSystem\bin\Debug\net9.0\Microsoft.AspNetCore.Authorization.dll
+D:\HOC\SWD\CarRescueSystem\CarRescueSystemProject\CarRescueSystem\bin\Debug\net9.0\Microsoft.AspNetCore.Metadata.dll
+D:\HOC\SWD\CarRescueSystem\CarRescueSystemProject\CarRescueSystem\bin\Debug\net9.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+D:\HOC\SWD\CarRescueSystem\CarRescueSystemProject\CarRescueSystem\bin\Debug\net9.0\Microsoft.Extensions.Logging.Abstractions.dll
+D:\HOC\SWD\CarRescueSystem\CarRescueSystemProject\CarRescueSystem\bin\Debug\net9.0\Microsoft.Extensions.Options.dll
+D:\HOC\SWD\CarRescueSystem\CarRescueSystemProject\CarRescueSystem\bin\Debug\net9.0\Microsoft.Extensions.Primitives.dll

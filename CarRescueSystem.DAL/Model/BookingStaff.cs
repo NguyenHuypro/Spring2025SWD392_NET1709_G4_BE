@@ -5,6 +5,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Text.Json.Serialization;
 
 namespace CarRescueSystem.DAL.Model
 {
@@ -23,6 +24,7 @@ namespace CarRescueSystem.DAL.Model
 
         public DateTime AssignedAt { get; set; } = DateTime.UtcNow; // Thời điểm được giao
 
+        [JsonIgnore]
         public virtual Booking Booking { get; set; }
         public virtual User Staff { get; set; }
     }

@@ -1,8 +1,8 @@
 {
   "openapi": "3.0.1",
   "info": {
-    "title": "CarRescueSystem",
-    "version": "1.0"
+    "title": "Car Rescue API",
+    "version": "v1"
   },
   "paths": {
     "/api/auth/login": {
@@ -206,48 +206,6 @@
         }
       }
     },
-    "/api/Booking/start/{bookingId}": {
-      "put": {
-        "tags": [
-          "Booking"
-        ],
-        "parameters": [
-          {
-            "name": "bookingId",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "format": "uuid"
-            }
-          }
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/StartBookingDTO"
-              }
-            },
-            "text/json": {
-              "schema": {
-                "$ref": "#/components/schemas/StartBookingDTO"
-              }
-            },
-            "application/*+json": {
-              "schema": {
-                "$ref": "#/components/schemas/StartBookingDTO"
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
     "/api/Booking/add-service/{bookingId}": {
       "post": {
         "tags": [
@@ -331,6 +289,18 @@
           }
         }
       }
+    },
+    "/api/ServiceRescue/get-all": {
+      "get": {
+        "tags": [
+          "ServiceRescue"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
     }
   },
   "components": {
@@ -407,16 +377,6 @@
         },
         "additionalProperties": false
       },
-      "StartBookingDTO": {
-        "type": "object",
-        "properties": {
-          "staffId": {
-            "type": "string",
-            "format": "uuid"
-          }
-        },
-        "additionalProperties": false
-      },
       "TokenDTO": {
         "type": "object",
         "properties": {
@@ -431,6 +391,19 @@
         },
         "additionalProperties": false
       }
+    },
+    "securitySchemes": {
+      "Bearer": {
+        "type": "http",
+        "description": "Nhập token theo định dạng: Bearer {your JWT token}",
+        "scheme": "bearer",
+        "bearerFormat": "JWT"
+      }
     }
-  }
+  },
+  "security": [
+    {
+      "Bearer": [ ]
+    }
+  ]
 }

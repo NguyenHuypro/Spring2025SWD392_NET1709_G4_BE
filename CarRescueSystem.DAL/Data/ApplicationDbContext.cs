@@ -1,10 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using CarRescueSystem.DAL.Model;
 using Microsoft.EntityFrameworkCore;
+using CarRescueSystem.DAL.Model;
 
 namespace CarRescueSystem.DAL.Data
 {
@@ -12,92 +9,124 @@ namespace CarRescueSystem.DAL.Data
     {
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options) { }
 
+        // DbSet cho các bảng
         public DbSet<User> Users { get; set; }
-        public DbSet<RefreshToken> RefreshTokens { get; set; }
         public DbSet<Role> Roles { get; set; }
-        public DbSet<Booking> Bookings { get; set; } // ✅ Thêm Booking
-        public DbSet<Vehicle> Vehicles { get; set; } // ✅ Thêm Vehicle
-        public DbSet<Service> Services { get; set; } // ✅ Thêm Service
-        public DbSet<Package> Packages { get; set; } // ✅ Thêm Package
-        public DbSet<ServiceOfBooking> ServiceOfBookings { get; set; } // ✅ Thêm ServiceOfBooking
-        public DbSet<BookingStaff> BookingStaffs { get; set; } // ✅ Thêm BookingStaff
-        public DbSet<ServicePackage> ServicePackages { get; set; } // ✅ Thêm Service-Package
+        public DbSet<RefreshToken> RefreshTokens { get; set; }
+        public DbSet<Booking> Bookings { get; set; }
+        public DbSet<Vehicle> Vehicles { get; set; }
+        public DbSet<Service> Services { get; set; }
+        public DbSet<Package> Packages { get; set; }
+        public DbSet<ServiceOfBooking> ServiceOfBookings { get; set; }
+        public DbSet<BookingStaff> BookingStaffs { get; set; }
+        public DbSet<ServicePackage> ServicePackages { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            // 🔹 Thiết lập khóa chính
             modelBuilder.Entity<User>().HasKey(u => u.UserId);
+            modelBuilder.Entity<Role>().HasKey(r => r.RoleID);
             modelBuilder.Entity<RefreshToken>().HasKey(rt => rt.RefreshTokenId);
+            modelBuilder.Entity<Booking>().HasKey(b => b.BookingId);
+            modelBuilder.Entity<Vehicle>().HasKey(v => v.VehicleId);
+            modelBuilder.Entity<Service>().HasKey(s => s.ServiceId);
+            modelBuilder.Entity<Package>().HasKey(p => p.PackageId);
+            modelBuilder.Entity<ServiceOfBooking>().HasKey(sb => sb.ServiceOfBookingId);
+            modelBuilder.Entity<BookingStaff>().HasKey(bs => bs.BookingStaffId);
+            modelBuilder.Entity<ServicePackage>().HasKey(sp => sp.ServicePackageId);
 
-            // Token
-            modelBuilder.Entity<RefreshToken>()
-                .HasIndex(rt => rt.UserId);
+            // 🔹 User - Role (1-N)
+            modelBuilder.Entity<User>()
+                .HasOne(u => u.Role)
+                .WithMany(r => r.Users)
+                .HasForeignKey(u => u.RoleID)
+                .OnDelete(DeleteBehavior.Restrict);
 
+            // 🔹 User - RefreshToken (1-N)
             modelBuilder.Entity<RefreshToken>()
                 .HasOne<User>()
                 .WithMany()
                 .HasForeignKey(rt => rt.UserId)
                 .OnDelete(DeleteBehavior.Cascade);
 
-            // User - Role
-            modelBuilder.Entity<User>()
-                .HasOne(u => u.Role)
-                .WithMany(r => r.Users)
-                .HasForeignKey(u => u.RoleID);
-
-            // Booking - Customer (User)
+            // 🔹 Booking - User (Customer) (1-N)
             modelBuilder.Entity<Booking>()
                 .HasOne(b => b.Customer)
                 .WithMany()
-                .HasForeignKey(b => b.CustomerId);
+                .HasForeignKey(b => b.CustomerId)
+                .OnDelete(DeleteBehavior.Restrict);
 
-            // Booking - Vehicle
+            // 🔹 Booking - Vehicle (1-N)
             modelBuilder.Entity<Booking>()
                 .HasOne(b => b.Vehicle)
                 .WithMany()
                 .HasForeignKey(b => b.VehicleId)
-                .OnDelete(DeleteBehavior.SetNull); // Nếu xóa xe thì Booking không bị mất
+                .OnDelete(DeleteBehavior.SetNull);
 
-            // Booking - Service (N-N)
-            modelBuilder.Entity<ServiceOfBooking>()
-                .HasKey(sb => new { sb.BookingId, sb.ServiceId });
-
-            modelBuilder.Entity<ServiceOfBooking>()
-                .HasOne(sb => sb.Booking)
-                .WithMany(b => b.Services)
-                .HasForeignKey(sb => sb.BookingId);
-
-            modelBuilder.Entity<ServiceOfBooking>()
-                .HasOne(sb => sb.Service)
+            // 🔹 Booking - Package (1-N)
+            modelBuilder.Entity<Booking>()
+                .HasOne(b => b.Package)
                 .WithMany()
-                .HasForeignKey(sb => sb.ServiceId);
+                .HasForeignKey(b => b.PackageId)
+                .OnDelete(DeleteBehavior.SetNull);
 
-            // Booking - Staff (1-N)
-            modelBuilder.Entity<BookingStaff>()
-                .HasKey(bs => new { bs.BookingId, bs.StaffId });
-
+            // 🔹 Booking - Staff (N-N)
             modelBuilder.Entity<BookingStaff>()
                 .HasOne(bs => bs.Booking)
-                .WithMany()
-                .HasForeignKey(bs => bs.BookingId);
+                .WithMany(b => b.BookingStaffs)
+                .HasForeignKey(bs => bs.BookingId)
+                .OnDelete(DeleteBehavior.Cascade);
 
             modelBuilder.Entity<BookingStaff>()
                 .HasOne(bs => bs.Staff)
-                .WithMany()
-                .HasForeignKey(bs => bs.StaffId);
+                .WithMany(u => u.BookingsStaffs)
+                .HasForeignKey(bs => bs.StaffId)
+                .OnDelete(DeleteBehavior.Cascade);
 
-            // Service - Package (N-N)
-            modelBuilder.Entity<ServicePackage>()
-                .HasKey(sp => new { sp.ServiceId, sp.PackageID });
+            // 🔹 Booking - Service (N-N)
+            modelBuilder.Entity<ServiceOfBooking>()
+                .HasOne(sb => sb.Booking)
+                .WithMany(b => b.ServiceBookings)
+                .HasForeignKey(sb => sb.BookingId)
+                .OnDelete(DeleteBehavior.Cascade);
 
+            modelBuilder.Entity<ServiceOfBooking>()
+                .HasOne(sb => sb.Service)
+                .WithMany(s => s.ServiceOfBookings)
+                .HasForeignKey(sb => sb.ServiceId)
+                .OnDelete(DeleteBehavior.Cascade);
+
+            // 🔹 Service - Package (N-N)
             modelBuilder.Entity<ServicePackage>()
                 .HasOne(sp => sp.Service)
-                .WithMany()
-                .HasForeignKey(sp => sp.ServiceId);
+                .WithMany(s => s.ServicePackages)
+                .HasForeignKey(sp => sp.ServiceId)
+                .OnDelete(DeleteBehavior.Cascade);
 
             modelBuilder.Entity<ServicePackage>()
                 .HasOne(sp => sp.Package)
-                .WithMany()
-                .HasForeignKey(sp => sp.PackageID);
+                .WithMany(p => p.ServicePackages)
+                .HasForeignKey(sp => sp.PackageID)
+                .OnDelete(DeleteBehavior.Cascade);
+            //User 1-1 Package
+            modelBuilder.Entity<User>()
+    .HasOne(u => u.Package)
+    .WithOne(p => p.User)
+    .HasForeignKey<Package>(p => p.UserId);
+
+
+            // 🔹 Định dạng kiểu tiền tệ
+            modelBuilder.Entity<Service>()
+                .Property(s => s.ServicePrice)
+                .HasColumnType("decimal(18,2)");
+
+            modelBuilder.Entity<Package>()
+                .Property(p => p.PackagePrice)
+                .HasColumnType("decimal(18,2)");
+
+            modelBuilder.Entity<Booking>()
+                .Property(b => b.TotalPrice)
+                .HasColumnType("decimal(18,2)");
 
             base.OnModelCreating(modelBuilder);
 
