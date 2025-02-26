@@ -15,3 +15,21 @@ E:\KÌ 7 MÃI ĐỈNH\SWD392\project\CarRescueSystem.BLL\obj\Release\net9.0\CarR
 E:\KÌ 7 MÃI ĐỈNH\SWD392\project\CarRescueSystem.BLL\obj\Release\net9.0\refint\CarRescueSystem.BLL.dll
 E:\KÌ 7 MÃI ĐỈNH\SWD392\project\CarRescueSystem.BLL\obj\Release\net9.0\CarRescueSystem.BLL.pdb
 E:\KÌ 7 MÃI ĐỈNH\SWD392\project\CarRescueSystem.BLL\obj\Release\net9.0\ref\CarRescueSystem.BLL.dll
+C:\Users\Kaz\Desktop\code\SWDSU25\Spring2025SWD392_NET1709_G4_BE\CarRescueSystem.BLL\bin\Release\net9.0\CarRescueSystem.BLL.deps.json
+C:\Users\Kaz\Desktop\code\SWDSU25\Spring2025SWD392_NET1709_G4_BE\CarRescueSystem.BLL\bin\Release\net9.0\CarRescueSystem.BLL.dll
+C:\Users\Kaz\Desktop\code\SWDSU25\Spring2025SWD392_NET1709_G4_BE\CarRescueSystem.BLL\bin\Release\net9.0\CarRescueSystem.BLL.pdb
+C:\Users\Kaz\Desktop\code\SWDSU25\Spring2025SWD392_NET1709_G4_BE\CarRescueSystem.BLL\bin\Release\net9.0\CarRescueSystem.Common.dll
+C:\Users\Kaz\Desktop\code\SWDSU25\Spring2025SWD392_NET1709_G4_BE\CarRescueSystem.BLL\bin\Release\net9.0\CarRescueSystem.DAL.dll
+C:\Users\Kaz\Desktop\code\SWDSU25\Spring2025SWD392_NET1709_G4_BE\CarRescueSystem.BLL\bin\Release\net9.0\CarRescueSystem.Common.pdb
+C:\Users\Kaz\Desktop\code\SWDSU25\Spring2025SWD392_NET1709_G4_BE\CarRescueSystem.BLL\bin\Release\net9.0\CarRescueSystem.DAL.pdb
+C:\Users\Kaz\Desktop\code\SWDSU25\Spring2025SWD392_NET1709_G4_BE\CarRescueSystem.BLL\obj\Release\net9.0\CarRescueSystem.BLL.csproj.AssemblyReference.cache
+C:\Users\Kaz\Desktop\code\SWDSU25\Spring2025SWD392_NET1709_G4_BE\CarRescueSystem.BLL\obj\Release\net9.0\CarRescueSystem.BLL.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Kaz\Desktop\code\SWDSU25\Spring2025SWD392_NET1709_G4_BE\CarRescueSystem.BLL\obj\Release\net9.0\CarRescueSystem.BLL.AssemblyInfoInputs.cache
+C:\Users\Kaz\Desktop\code\SWDSU25\Spring2025SWD392_NET1709_G4_BE\CarRescueSystem.BLL\obj\Release\net9.0\CarRescueSystem.BLL.AssemblyInfo.cs
+C:\Users\Kaz\Desktop\code\SWDSU25\Spring2025SWD392_NET1709_G4_BE\CarRescueSystem.BLL\obj\Release\net9.0\CarRescueSystem.BLL.csproj.CoreCompileInputs.cache
+C:\Users\Kaz\Desktop\code\SWDSU25\Spring2025SWD392_NET1709_G4_BE\CarRescueSystem.BLL\obj\Release\net9.0\CarRescueSystem.BLL.sourcelink.json
+C:\Users\Kaz\Desktop\code\SWDSU25\Spring2025SWD392_NET1709_G4_BE\CarRescueSystem.BLL\obj\Release\net9.0\CarRescu.4D093542.Up2Date
+C:\Users\Kaz\Desktop\code\SWDSU25\Spring2025SWD392_NET1709_G4_BE\CarRescueSystem.BLL\obj\Release\net9.0\CarRescueSystem.BLL.dll
+C:\Users\Kaz\Desktop\code\SWDSU25\Spring2025SWD392_NET1709_G4_BE\CarRescueSystem.BLL\obj\Release\net9.0\refint\CarRescueSystem.BLL.dll
+C:\Users\Kaz\Desktop\code\SWDSU25\Spring2025SWD392_NET1709_G4_BE\CarRescueSystem.BLL\obj\Release\net9.0\CarRescueSystem.BLL.pdb
+C:\Users\Kaz\Desktop\code\SWDSU25\Spring2025SWD392_NET1709_G4_BE\CarRescueSystem.BLL\obj\Release\net9.0\ref\CarRescueSystem.BLL.dll

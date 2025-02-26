@@ -15,3 +15,21 @@ E:\KÌ 7 MÃI ĐỈNH\SWD392\project\CarRescueSystem.DAL\obj\Release\net9.0\refi
 E:\KÌ 7 MÃI ĐỈNH\SWD392\project\CarRescueSystem.DAL\obj\Release\net9.0\CarRescueSystem.DAL.pdb
 E:\KÌ 7 MÃI ĐỈNH\SWD392\project\CarRescueSystem.DAL\obj\Release\net9.0\CarRescueSystem.DAL.genruntimeconfig.cache
 E:\KÌ 7 MÃI ĐỈNH\SWD392\project\CarRescueSystem.DAL\obj\Release\net9.0\ref\CarRescueSystem.DAL.dll
+C:\Users\Kaz\Desktop\code\SWDSU25\Spring2025SWD392_NET1709_G4_BE\CarRescueSystem.DAL\bin\Release\net9.0\CarRescueSystem.DAL.deps.json
+C:\Users\Kaz\Desktop\code\SWDSU25\Spring2025SWD392_NET1709_G4_BE\CarRescueSystem.DAL\bin\Release\net9.0\CarRescueSystem.DAL.runtimeconfig.json
+C:\Users\Kaz\Desktop\code\SWDSU25\Spring2025SWD392_NET1709_G4_BE\CarRescueSystem.DAL\bin\Release\net9.0\CarRescueSystem.DAL.dll
+C:\Users\Kaz\Desktop\code\SWDSU25\Spring2025SWD392_NET1709_G4_BE\CarRescueSystem.DAL\bin\Release\net9.0\CarRescueSystem.DAL.pdb
+C:\Users\Kaz\Desktop\code\SWDSU25\Spring2025SWD392_NET1709_G4_BE\CarRescueSystem.DAL\bin\Release\net9.0\CarRescueSystem.Common.dll
+C:\Users\Kaz\Desktop\code\SWDSU25\Spring2025SWD392_NET1709_G4_BE\CarRescueSystem.DAL\bin\Release\net9.0\CarRescueSystem.Common.pdb
+C:\Users\Kaz\Desktop\code\SWDSU25\Spring2025SWD392_NET1709_G4_BE\CarRescueSystem.DAL\obj\Release\net9.0\CarRescueSystem.DAL.csproj.AssemblyReference.cache
+C:\Users\Kaz\Desktop\code\SWDSU25\Spring2025SWD392_NET1709_G4_BE\CarRescueSystem.DAL\obj\Release\net9.0\CarRescueSystem.DAL.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Kaz\Desktop\code\SWDSU25\Spring2025SWD392_NET1709_G4_BE\CarRescueSystem.DAL\obj\Release\net9.0\CarRescueSystem.DAL.AssemblyInfoInputs.cache
+C:\Users\Kaz\Desktop\code\SWDSU25\Spring2025SWD392_NET1709_G4_BE\CarRescueSystem.DAL\obj\Release\net9.0\CarRescueSystem.DAL.AssemblyInfo.cs
+C:\Users\Kaz\Desktop\code\SWDSU25\Spring2025SWD392_NET1709_G4_BE\CarRescueSystem.DAL\obj\Release\net9.0\CarRescueSystem.DAL.csproj.CoreCompileInputs.cache
+C:\Users\Kaz\Desktop\code\SWDSU25\Spring2025SWD392_NET1709_G4_BE\CarRescueSystem.DAL\obj\Release\net9.0\CarRescueSystem.DAL.sourcelink.json
+C:\Users\Kaz\Desktop\code\SWDSU25\Spring2025SWD392_NET1709_G4_BE\CarRescueSystem.DAL\obj\Release\net9.0\CarRescu.1A583DC0.Up2Date
+C:\Users\Kaz\Desktop\code\SWDSU25\Spring2025SWD392_NET1709_G4_BE\CarRescueSystem.DAL\obj\Release\net9.0\CarRescueSystem.DAL.dll
+C:\Users\Kaz\Desktop\code\SWDSU25\Spring2025SWD392_NET1709_G4_BE\CarRescueSystem.DAL\obj\Release\net9.0\refint\CarRescueSystem.DAL.dll
+C:\Users\Kaz\Desktop\code\SWDSU25\Spring2025SWD392_NET1709_G4_BE\CarRescueSystem.DAL\obj\Release\net9.0\CarRescueSystem.DAL.pdb
+C:\Users\Kaz\Desktop\code\SWDSU25\Spring2025SWD392_NET1709_G4_BE\CarRescueSystem.DAL\obj\Release\net9.0\CarRescueSystem.DAL.genruntimeconfig.cache
+C:\Users\Kaz\Desktop\code\SWDSU25\Spring2025SWD392_NET1709_G4_BE\CarRescueSystem.DAL\obj\Release\net9.0\ref\CarRescueSystem.DAL.dll

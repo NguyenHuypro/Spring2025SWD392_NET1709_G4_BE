@@ -352,6 +352,9 @@ namespace CarRescueSystem.DAL.Migrations
                     b.Property<Guid>("PackageID")
                         .HasColumnType("uniqueidentifier");
 
+                    b.Property<int>("Quantity")
+                        .HasColumnType("int");
+
                     b.Property<Guid>("ServiceId")
                         .HasColumnType("uniqueidentifier");
 
@@ -368,258 +371,301 @@ namespace CarRescueSystem.DAL.Migrations
                         {
                             ServicePackageId = new Guid("12345678-90ab-cdef-1234-567890abcdef"),
                             PackageID = new Guid("11111111-2222-3333-4444-555555555555"),
+                            Quantity = 0,
                             ServiceId = new Guid("a1e2c3d4-5f6a-7b8c-9d0e-1f2a3b4c5d6e")
                         },
                         new
                         {
                             ServicePackageId = new Guid("22345678-90ab-cdef-1234-567890abcdef"),
                             PackageID = new Guid("11111111-2222-3333-4444-555555555555"),
+                            Quantity = 0,
                             ServiceId = new Guid("b2d3e4f5-6a7b-8c9d-0e1f-2a3b4c5d6e7f")
                         },
                         new
                         {
                             ServicePackageId = new Guid("32345678-90ab-cdef-1234-567890abcdef"),
                             PackageID = new Guid("11111111-2222-3333-4444-555555555555"),
+                            Quantity = 0,
                             ServiceId = new Guid("c3d4e5f6-7a8b-9c0d-1e2f-3a4b5c6d7e8f")
                         },
                         new
                         {
                             ServicePackageId = new Guid("42345678-90ab-cdef-1234-567890abcdef"),
                             PackageID = new Guid("11111111-2222-3333-4444-555555555555"),
+                            Quantity = 0,
                             ServiceId = new Guid("d4e5f6a7-8b9c-0d1e-2f3a-4b5c6d7e8f9a")
                         },
                         new
                         {
                             ServicePackageId = new Guid("52345678-90ab-cdef-1234-567890abcdef"),
                             PackageID = new Guid("11111111-2222-3333-4444-555555555555"),
+                            Quantity = 0,
                             ServiceId = new Guid("e5f6a7b8-9c0d-1e2f-3a4b-5c6d7e8f9a0b")
                         },
                         new
                         {
                             ServicePackageId = new Guid("62345678-90ab-cdef-1234-567890abcdef"),
                             PackageID = new Guid("11111111-2222-3333-4444-555555555555"),
+                            Quantity = 0,
                             ServiceId = new Guid("f6a7b8c9-0d1e-2f3a-4b5c-6d7e8f9a0b1c")
                         },
                         new
                         {
                             ServicePackageId = new Guid("72345678-90ab-cdef-1234-567890abcdef"),
                             PackageID = new Guid("11111111-2222-3333-4444-555555555555"),
+                            Quantity = 0,
                             ServiceId = new Guid("d0e1f2a3-4b5c-6d7e-8f9a-0b1c2d3e4f5a")
                         },
                         new
                         {
                             ServicePackageId = new Guid("82345678-90ab-cdef-1234-567890abcdef"),
                             PackageID = new Guid("11111111-2222-3333-4444-555555555555"),
+                            Quantity = 0,
                             ServiceId = new Guid("e1f2a3b4-5c6d-7e8f-9a0b-1c2d3e4f5a6b")
                         },
                         new
                         {
                             ServicePackageId = new Guid("92345678-90ab-cdef-1234-567890abcdef"),
                             PackageID = new Guid("11111111-2222-3333-4444-555555555555"),
+                            Quantity = 0,
                             ServiceId = new Guid("f2a3b4c5-6d7e-8f9a-0b1c-2d3e4f5a6b7c")
                         },
                         new
                         {
                             ServicePackageId = new Guid("a2345678-90ab-cdef-1234-567890abcdef"),
                             PackageID = new Guid("11111111-2222-3333-4444-555555555555"),
+                            Quantity = 0,
                             ServiceId = new Guid("e7f8a9b0-1c2d-3e4f-5a6b-7c8d9e0f1a2b")
                         },
                         new
                         {
                             ServicePackageId = new Guid("23456789-0abc-def1-2345-67890abcdefa"),
                             PackageID = new Guid("66666666-7777-8888-9999-000000000000"),
+                            Quantity = 0,
                             ServiceId = new Guid("a1e2c3d4-5f6a-7b8c-9d0e-1f2a3b4c5d6e")
                         },
                         new
                         {
                             ServicePackageId = new Guid("b3456789-0abc-def1-2345-67890abcdefa"),
                             PackageID = new Guid("66666666-7777-8888-9999-000000000000"),
+                            Quantity = 0,
                             ServiceId = new Guid("b2d3e4f5-6a7b-8c9d-0e1f-2a3b4c5d6e7f")
                         },
                         new
                         {
                             ServicePackageId = new Guid("c3456789-0abc-def1-2345-67890abcdefa"),
                             PackageID = new Guid("66666666-7777-8888-9999-000000000000"),
+                            Quantity = 0,
                             ServiceId = new Guid("c3d4e5f6-7a8b-9c0d-1e2f-3a4b5c6d7e8f")
                         },
                         new
                         {
                             ServicePackageId = new Guid("d3456789-0abc-def1-2345-67890abcdefa"),
                             PackageID = new Guid("66666666-7777-8888-9999-000000000000"),
+                            Quantity = 0,
                             ServiceId = new Guid("d4e5f6a7-8b9c-0d1e-2f3a-4b5c6d7e8f9a")
                         },
                         new
                         {
                             ServicePackageId = new Guid("e3456789-0abc-def1-2345-67890abcdefa"),
                             PackageID = new Guid("66666666-7777-8888-9999-000000000000"),
+                            Quantity = 0,
                             ServiceId = new Guid("e5f6a7b8-9c0d-1e2f-3a4b-5c6d7e8f9a0b")
                         },
                         new
                         {
                             ServicePackageId = new Guid("f3456789-0abc-def1-2345-67890abcdefa"),
                             PackageID = new Guid("66666666-7777-8888-9999-000000000000"),
+                            Quantity = 0,
                             ServiceId = new Guid("f6a7b8c9-0d1e-2f3a-4b5c-6d7e8f9a0b1c")
                         },
                         new
                         {
                             ServicePackageId = new Guid("13456789-0abc-def1-2345-67890abcdefa"),
                             PackageID = new Guid("66666666-7777-8888-9999-000000000000"),
+                            Quantity = 0,
                             ServiceId = new Guid("a7b8c9d0-1e2f-3a4b-5c6d-7e8f9a0b1c2d")
                         },
                         new
                         {
                             ServicePackageId = new Guid("23456789-0abc-def1-2345-67890abcdefb"),
                             PackageID = new Guid("66666666-7777-8888-9999-000000000000"),
+                            Quantity = 0,
                             ServiceId = new Guid("b8c9d0e1-2f3a-4b5c-6d7e-8f9a0b1c2d3e")
                         },
                         new
                         {
                             ServicePackageId = new Guid("33456789-0abc-def1-2345-67890abcdefb"),
                             PackageID = new Guid("66666666-7777-8888-9999-000000000000"),
+                            Quantity = 0,
                             ServiceId = new Guid("c9d0e1f2-3a4b-5c6d-7e8f-9a0b1c2d3e4f")
                         },
                         new
                         {
                             ServicePackageId = new Guid("43456789-0abc-def1-2345-67890abcdefb"),
                             PackageID = new Guid("66666666-7777-8888-9999-000000000000"),
+                            Quantity = 0,
                             ServiceId = new Guid("d0e1f2a3-4b5c-6d7e-8f9a-0b1c2d3e4f5a")
                         },
                         new
                         {
                             ServicePackageId = new Guid("53456789-0abc-def1-2345-67890abcdefb"),
                             PackageID = new Guid("66666666-7777-8888-9999-000000000000"),
+                            Quantity = 0,
                             ServiceId = new Guid("e1f2a3b4-5c6d-7e8f-9a0b-1c2d3e4f5a6b")
                         },
                         new
                         {
                             ServicePackageId = new Guid("63456789-0abc-def1-2345-67890abcdefb"),
                             PackageID = new Guid("66666666-7777-8888-9999-000000000000"),
+                            Quantity = 0,
                             ServiceId = new Guid("f2a3b4c5-6d7e-8f9a-0b1c-2d3e4f5a6b7c")
                         },
                         new
                         {
                             ServicePackageId = new Guid("73456789-0abc-def1-2345-67890abcdefb"),
                             PackageID = new Guid("66666666-7777-8888-9999-000000000000"),
+                            Quantity = 0,
                             ServiceId = new Guid("a3b4c5d6-7e8f-9a0b-1c2d-3e4f5a6b7c8d")
                         },
                         new
                         {
                             ServicePackageId = new Guid("83456789-0abc-def1-2345-67890abcdefb"),
                             PackageID = new Guid("66666666-7777-8888-9999-000000000000"),
+                            Quantity = 0,
                             ServiceId = new Guid("b4c5d6e7-8f9a-0b1c-2d3e-4f5a6b7c8d9e")
                         },
                         new
                         {
                             ServicePackageId = new Guid("93456789-0abc-def1-2345-67890abcdefb"),
                             PackageID = new Guid("66666666-7777-8888-9999-000000000000"),
+                            Quantity = 0,
                             ServiceId = new Guid("c5d6e7f8-9a0b-1c2d-3e4f-5a6b7c8d9e0f")
                         },
                         new
                         {
                             ServicePackageId = new Guid("a3456789-0abc-def1-2345-67890abcdefb"),
                             PackageID = new Guid("66666666-7777-8888-9999-000000000000"),
+                            Quantity = 0,
                             ServiceId = new Guid("e7f8a9b0-1c2d-3e4f-5a6b-7c8d9e0f1a2b")
                         },
                         new
                         {
                             ServicePackageId = new Guid("34567890-abcd-ef12-3456-7890abcdefab"),
                             PackageID = new Guid("aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee"),
+                            Quantity = 0,
                             ServiceId = new Guid("a1e2c3d4-5f6a-7b8c-9d0e-1f2a3b4c5d6e")
                         },
                         new
                         {
                             ServicePackageId = new Guid("b4567890-abcd-ef12-3456-7890abcdefab"),
                             PackageID = new Guid("aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee"),
+                            Quantity = 0,
                             ServiceId = new Guid("b2d3e4f5-6a7b-8c9d-0e1f-2a3b4c5d6e7f")
                         },
                         new
                         {
                             ServicePackageId = new Guid("c4567890-abcd-ef12-3456-7890abcdefab"),
                             PackageID = new Guid("aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee"),
+                            Quantity = 0,
                             ServiceId = new Guid("c3d4e5f6-7a8b-9c0d-1e2f-3a4b5c6d7e8f")
                         },
                         new
                         {
                             ServicePackageId = new Guid("d4567890-abcd-ef12-3456-7890abcdefab"),
                             PackageID = new Guid("aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee"),
+                            Quantity = 0,
                             ServiceId = new Guid("d4e5f6a7-8b9c-0d1e-2f3a-4b5c6d7e8f9a")
                         },
                         new
                         {
                             ServicePackageId = new Guid("e4567890-abcd-ef12-3456-7890abcdefab"),
                             PackageID = new Guid("aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee"),
+                            Quantity = 0,
                             ServiceId = new Guid("e5f6a7b8-9c0d-1e2f-3a4b-5c6d7e8f9a0b")
                         },
                         new
                         {
                             ServicePackageId = new Guid("f4567890-abcd-ef12-3456-7890abcdefab"),
                             PackageID = new Guid("aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee"),
+                            Quantity = 0,
                             ServiceId = new Guid("f6a7b8c9-0d1e-2f3a-4b5c-6d7e8f9a0b1c")
                         },
                         new
                         {
                             ServicePackageId = new Guid("14567890-abcd-ef12-3456-7890abcdefab"),
                             PackageID = new Guid("aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee"),
+                            Quantity = 0,
                             ServiceId = new Guid("a7b8c9d0-1e2f-3a4b-5c6d-7e8f9a0b1c2d")
                         },
                         new
                         {
                             ServicePackageId = new Guid("24567890-abcd-ef12-3456-7890abcdefab"),
                             PackageID = new Guid("aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee"),
+                            Quantity = 0,
                             ServiceId = new Guid("b8c9d0e1-2f3a-4b5c-6d7e-8f9a0b1c2d3e")
                         },
                         new
                         {
                             ServicePackageId = new Guid("34567890-abcd-ef12-3456-7890abcdefac"),
                             PackageID = new Guid("aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee"),
+                            Quantity = 0,
                             ServiceId = new Guid("c9d0e1f2-3a4b-5c6d-7e8f-9a0b1c2d3e4f")
                         },
                         new
                         {
                             ServicePackageId = new Guid("44567890-abcd-ef12-3456-7890abcdefac"),
                             PackageID = new Guid("aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee"),
+                            Quantity = 0,
                             ServiceId = new Guid("d0e1f2a3-4b5c-6d7e-8f9a-0b1c2d3e4f5a")
                         },
                         new
                         {
                             ServicePackageId = new Guid("54567890-abcd-ef12-3456-7890abcdefac"),
                             PackageID = new Guid("aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee"),
+                            Quantity = 0,
                             ServiceId = new Guid("e1f2a3b4-5c6d-7e8f-9a0b-1c2d3e4f5a6b")
                         },
                         new
                         {
                             ServicePackageId = new Guid("64567890-abcd-ef12-3456-7890abcdefac"),
                             PackageID = new Guid("aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee"),
+                            Quantity = 0,
                             ServiceId = new Guid("f2a3b4c5-6d7e-8f9a-0b1c-2d3e4f5a6b7c")
                         },
                         new
                         {
                             ServicePackageId = new Guid("74567890-abcd-ef12-3456-7890abcdefac"),
                             PackageID = new Guid("aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee"),
+                            Quantity = 0,
                             ServiceId = new Guid("a3b4c5d6-7e8f-9a0b-1c2d-3e4f5a6b7c8d")
                         },
                         new
                         {
                             ServicePackageId = new Guid("84567890-abcd-ef12-3456-7890abcdefac"),
                             PackageID = new Guid("aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee"),
+                            Quantity = 0,
                             ServiceId = new Guid("b4c5d6e7-8f9a-0b1c-2d3e-4f5a6b7c8d9e")
                         },
                         new
                         {
                             ServicePackageId = new Guid("94567890-abcd-ef12-3456-7890abcdefac"),
                             PackageID = new Guid("aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee"),
+                            Quantity = 0,
                             ServiceId = new Guid("c5d6e7f8-9a0b-1c2d-3e4f-5a6b7c8d9e0f")
                         },
                         new
                         {
                             ServicePackageId = new Guid("a4567890-abcd-ef12-3456-7890abcdefac"),
                             PackageID = new Guid("aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee"),
+                            Quantity = 0,
                             ServiceId = new Guid("d6e7f8a9-0b1c-2d3e-4f5a-6b7c8d9e0f1a")
                         },
                         new
                         {
                             ServicePackageId = new Guid("b4567890-abcd-ef12-3456-7890abcdefac"),
                             PackageID = new Guid("aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee"),
+                            Quantity = 0,
                             ServiceId = new Guid("e7f8a9b0-1c2d-3e4f-5a6b-7c8d9e0f1a2b")
                         });
                 });
@@ -717,6 +763,30 @@ namespace CarRescueSystem.DAL.Migrations
                             PhoneNumber = "0999888777",
                             RoleID = new Guid("d1d2d3d4-e5e6-f7f8-a9a0-b1b2b3b4b5b6")
                         });
+                });
+
+            modelBuilder.Entity("CarRescueSystem.DAL.Model.UserPackage", b =>
+                {
+                    b.Property<Guid>("UserId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("PackageId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("Quantity")
+                        .HasColumnType("int");
+
+                    b.Property<Guid>("UserPackageId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("UserId", "PackageId");
+
+                    b.HasIndex("PackageId");
+
+                    b.ToTable("UserPackages");
                 });
 
             modelBuilder.Entity("CarRescueSystem.DAL.Model.Vehicle", b =>
@@ -866,6 +936,25 @@ namespace CarRescueSystem.DAL.Migrations
                     b.Navigation("Role");
                 });
 
+            modelBuilder.Entity("CarRescueSystem.DAL.Model.UserPackage", b =>
+                {
+                    b.HasOne("CarRescueSystem.DAL.Model.Package", "Package")
+                        .WithMany("UserPackages")
+                        .HasForeignKey("PackageId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("CarRescueSystem.DAL.Model.User", "User")
+                        .WithMany("UserPackages")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Package");
+
+                    b.Navigation("User");
+                });
+
             modelBuilder.Entity("CarRescueSystem.DAL.Model.Vehicle", b =>
                 {
                     b.HasOne("CarRescueSystem.DAL.Model.User", "Customer")
@@ -887,6 +976,8 @@ namespace CarRescueSystem.DAL.Migrations
             modelBuilder.Entity("CarRescueSystem.DAL.Model.Package", b =>
                 {
                     b.Navigation("ServicePackages");
+
+                    b.Navigation("UserPackages");
                 });
 
             modelBuilder.Entity("CarRescueSystem.DAL.Model.Role", b =>
@@ -904,6 +995,8 @@ namespace CarRescueSystem.DAL.Migrations
             modelBuilder.Entity("CarRescueSystem.DAL.Model.User", b =>
                 {
                     b.Navigation("BookingsStaffs");
+
+                    b.Navigation("UserPackages");
                 });
 #pragma warning restore 612, 618
         }

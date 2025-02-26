@@ -4,6 +4,9 @@ using CarRescueSystem.BLL.Utilities;
 using CarRescueSystem.Common.Settings;
 using CarRescueSystem.DAL;
 using CarRescueSystem.DAL.Data;
+using CarRescueSystem.DAL.Repository;
+using CarRescueSystem.DAL.Repository.Implement;
+using CarRescueSystem.DAL.Repository.Interface;
 using CarRescueSystem.DAL.UnitOfWork;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
@@ -21,15 +24,17 @@ builder.Services.AddCors(options =>
     options.AddPolicy("AllowReactApp",
         policy =>
         {
-            policy.WithOrigins("http://localhost:3000") // URL React chạy trên cổng 3000
+            policy.WithOrigins("http://localhost:3000","http://localhost:5210") // URL React chạy trên cổng 3000 , 5210 chay local
                   .AllowAnyHeader()
                   .AllowAnyMethod();
+                  
         });
 });
 
 // Setup SQL Server Database
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")
+    ));
 
 // Cấu hình Authentication với JWT
 var secretKey = Encoding.UTF8.GetBytes(JwtSettingModel.SecretKey);
@@ -101,9 +106,14 @@ builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 builder.Services.AddScoped<IAuthService, AuthService>();
 builder.Services.AddScoped<IBookingService, BookingService>();
 builder.Services.AddScoped<IServiceRescueService, ServiceRescueService>();
+builder.Services.AddScoped<IVehicleRepository, VehicleRepository>();
+builder.Services.AddScoped<IVehicleService, VehicleService>();
 builder.Services.AddScoped<UserUtility>();
+builder.Services.AddAutoMapper(typeof(VehicleProfile));
 builder.Services.AddScoped<DbSeeder>();
 builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+
+
 
 var app = builder.Build();
 
@@ -131,4 +141,4 @@ app.MapControllers();
 
 
 
-app.Run();
+app.Run(); 

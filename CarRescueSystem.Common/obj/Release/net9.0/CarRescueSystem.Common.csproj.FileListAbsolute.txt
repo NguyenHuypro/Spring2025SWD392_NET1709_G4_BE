@@ -9,3 +9,15 @@ E:\KÌ 7 MÃI ĐỈNH\SWD392\project\CarRescueSystem.Common\obj\Release\net9.0\C
 E:\KÌ 7 MÃI ĐỈNH\SWD392\project\CarRescueSystem.Common\obj\Release\net9.0\refint\CarRescueSystem.Common.dll
 E:\KÌ 7 MÃI ĐỈNH\SWD392\project\CarRescueSystem.Common\obj\Release\net9.0\CarRescueSystem.Common.pdb
 E:\KÌ 7 MÃI ĐỈNH\SWD392\project\CarRescueSystem.Common\obj\Release\net9.0\ref\CarRescueSystem.Common.dll
+C:\Users\Kaz\Desktop\code\SWDSU25\Spring2025SWD392_NET1709_G4_BE\CarRescueSystem.Common\bin\Release\net9.0\CarRescueSystem.Common.deps.json
+C:\Users\Kaz\Desktop\code\SWDSU25\Spring2025SWD392_NET1709_G4_BE\CarRescueSystem.Common\bin\Release\net9.0\CarRescueSystem.Common.dll
+C:\Users\Kaz\Desktop\code\SWDSU25\Spring2025SWD392_NET1709_G4_BE\CarRescueSystem.Common\bin\Release\net9.0\CarRescueSystem.Common.pdb
+C:\Users\Kaz\Desktop\code\SWDSU25\Spring2025SWD392_NET1709_G4_BE\CarRescueSystem.Common\obj\Release\net9.0\CarRescueSystem.Common.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Kaz\Desktop\code\SWDSU25\Spring2025SWD392_NET1709_G4_BE\CarRescueSystem.Common\obj\Release\net9.0\CarRescueSystem.Common.AssemblyInfoInputs.cache
+C:\Users\Kaz\Desktop\code\SWDSU25\Spring2025SWD392_NET1709_G4_BE\CarRescueSystem.Common\obj\Release\net9.0\CarRescueSystem.Common.AssemblyInfo.cs
+C:\Users\Kaz\Desktop\code\SWDSU25\Spring2025SWD392_NET1709_G4_BE\CarRescueSystem.Common\obj\Release\net9.0\CarRescueSystem.Common.csproj.CoreCompileInputs.cache
+C:\Users\Kaz\Desktop\code\SWDSU25\Spring2025SWD392_NET1709_G4_BE\CarRescueSystem.Common\obj\Release\net9.0\CarRescueSystem.Common.sourcelink.json
+C:\Users\Kaz\Desktop\code\SWDSU25\Spring2025SWD392_NET1709_G4_BE\CarRescueSystem.Common\obj\Release\net9.0\CarRescueSystem.Common.dll
+C:\Users\Kaz\Desktop\code\SWDSU25\Spring2025SWD392_NET1709_G4_BE\CarRescueSystem.Common\obj\Release\net9.0\refint\CarRescueSystem.Common.dll
+C:\Users\Kaz\Desktop\code\SWDSU25\Spring2025SWD392_NET1709_G4_BE\CarRescueSystem.Common\obj\Release\net9.0\CarRescueSystem.Common.pdb
+C:\Users\Kaz\Desktop\code\SWDSU25\Spring2025SWD392_NET1709_G4_BE\CarRescueSystem.Common\obj\Release\net9.0\ref\CarRescueSystem.Common.dll
