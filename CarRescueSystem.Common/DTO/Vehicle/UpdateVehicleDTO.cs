@@ -6,5 +6,7 @@ namespace CarRescueSystem.Common.DTO.Vehicle
         public string VehicleColor { get; set; }
         public string VehicleBrand { get; set; }
         public int NumberOfSeats { get; set; }
+
+        public string LicensePlate{ get; set; }
     }
 } 

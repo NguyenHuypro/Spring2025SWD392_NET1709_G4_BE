@@ -3,141 +3,129 @@ using AutoMapper;
 using CarRescueSystem.Common.DTO.Vehicle;
 using CarRescueSystem.DAL.Model;
 using CarRescueSystem.BLL.Service.Interface;
+using CarRescueSystem.DAL.UnitOfWork;
+using CarRescueSystem.BLL.Utilities;
+using CarRescueSystem.Common.DTO;
 
 namespace CarRescueSystem.BLL.Service.Implement
 {
     public class VehicleService : IVehicleService
     {
         private readonly IVehicleRepository _repository;
-        private readonly IMapper _mapper;
+        private readonly IUnitOfWork _unitOfWork;
+        private readonly UserUtility _userUtility;
 
-        public VehicleService(IVehicleRepository repository, IMapper mapper)
+        public VehicleService(IVehicleRepository repository, IUnitOfWork unitOfWork, UserUtility userUtility)
         {
             _repository = repository;
-            _mapper = mapper;
+            _unitOfWork = unitOfWork;
+            _userUtility = userUtility;
         }
 
-        public async Task<VehicleResponse> CreateAsync(CreateVehicleDTO createDto)
+        public async Task<ResponseDTO> CreateCar(CreateVehicleDTO request)
         {
             try
             {
-                var vehicle = _mapper.Map<Vehicle>(createDto);
-                var created = await _repository.AddAsync(vehicle);
-                return new VehicleResponse
+                //check customer
+                var customer = await _unitOfWork.UserRepo.GetByIdAsync(_userUtility.GetUserIdFromToken());
+                if (customer == null)
                 {
-                    Success = true,
-                    Message = "Vehicle created successfully",
-                    Data = _mapper.Map<VehicleDTO>(created)
+                    return new ResponseDTO("Customer not found", 404, false);
+                }
+                var vehicle = new Vehicle{
+                    CustomerId = request.CustomerId,
+                    VehicleId = Guid.NewGuid(),
+                    VehicleName = request.VehicleName,
+                    VehicleColor = request.VehicleColor,
+                    VehicleBrand = request.VehicleBrand,
+                    NumberOfSeats = request.NumberOfSeats,
+                    LicensePlate = request.LicensePlate
                 };
+                await _unitOfWork.VehicleRepo.AddAsync(vehicle);
+                await _unitOfWork.SaveChangeAsync();
+
+                // Trả về ResponseDTO
+                return new ResponseDTO("Vehicle created successfully", 201, true, vehicle);
             }
-            catch (Exception ex)
+                catch (Exception ex)
             {
-                return new VehicleResponse
-                {
-                    Success = false,
-                    Message = $"Error creating vehicle: {ex.Message}"
-                };
+                return new ResponseDTO($"Error: {ex.Message}", 500, false);
             }
         }
 
-        public async Task<VehicleResponse> GetByIdAsync(Guid id)
+        public async Task<ResponseDTO> GetVehicleByIDAsync(Guid id)
         {
             try
             {
-                var vehicle = await _repository.GetByIdAsync(id);
+                var vehicle = await _unitOfWork.VehicleRepo.GetByIdAsync(id);
                 if (vehicle == null)
-                    return new VehicleResponse
-                    {
-                        Success = false,
-                        Message = $"Vehicle with ID {id} not found"
-                    };
+                    return new ResponseDTO($"Error: {"No Vehicle with this id found!"}", 404, false);
 
-                return new VehicleResponse
-                {
-                    Success = true,
-                    Data = _mapper.Map<VehicleDTO>(vehicle)
-                };
+                return new ResponseDTO("Vehicle found successfully", 201, true, vehicle);
             }
             catch (Exception ex)
             {
-                return new VehicleResponse
-                {
-                    Success = false,
-                    Message = $"Error retrieving vehicle: {ex.Message}"
-                };
+                return new ResponseDTO($"Error: {ex.Message}", 500, false);
             }
         }
 
-        public async Task<VehicleListResponse> GetAllAsync()
+        public async Task<ResponseDTO> GetAllVehicleAsync()
         {
             try
             {
-                var vehicles = await _repository.ToListAsync();
-                return new VehicleListResponse
-                {
-                    Success = true,
-                    Data = _mapper.Map<IEnumerable<VehicleDTO>>(vehicles)
-                };
+                var vehicles = await _unitOfWork.VehicleRepo.ToListAsync();
+                 if (vehicles == null)
+                    return new ResponseDTO($"Error: {"No Vehicle found!"}", 404, false);
+
+                return new ResponseDTO("Vehicle found successfully", 201, true, vehicles);
             }
             catch (Exception ex)
             {
-                return new VehicleListResponse
-                {
-                    Success = false,
-                    Message = $"Error retrieving vehicles: {ex.Message}"
-                };
+                return new ResponseDTO($"Error: {ex.Message}", 500, false);
             }
         }
 
-        public async Task<VehicleResponse> UpdateAsync(Guid id, UpdateVehicleDTO updateDto)
+        public async Task<ResponseDTO> UpdateAsync(Guid id, UpdateVehicleDTO request)
+        {
+            try
+            {      
+                var oldvehicle = await _unitOfWork.VehicleRepo.GetByIdAsync(id);
+                if (oldvehicle == null)
+                    return new ResponseDTO($"Error: {"No Vehicle with this id found!"}", 404, false);
+                    //update oldvehicle
+                    oldvehicle.VehicleName = request.VehicleName;
+                    oldvehicle.VehicleColor = request.VehicleColor;
+                    oldvehicle.VehicleBrand = request.VehicleBrand;
+                    oldvehicle.NumberOfSeats = request.NumberOfSeats;
+                    oldvehicle.LicensePlate = request.LicensePlate;
+                
+
+                var updated = await _unitOfWork.VehicleRepo.UpdateAsync(oldvehicle);
+                 await _unitOfWork.SaveChangeAsync(); // Ensure changes are persisted
+
+                return new ResponseDTO("Vehicle updated successfully", 200, true);
+            }
+            catch (Exception ex)
+            {
+                return new ResponseDTO($"Error: {ex.Message}", 500, false);
+            }
+        }
+
+        public async Task<ResponseDTO> DeleteAsync(Guid id)
         {
             try
             {
-                var vehicle = await _repository.GetByIdAsync(id);
+                var vehicle = await _unitOfWork.VehicleRepo.GetByIdAsync(id);
                 if (vehicle == null)
-                    return new VehicleResponse
-                    {
-                        Success = false,
-                        Message = $"Vehicle with ID {id} not found"
-                    };
+                    return new ResponseDTO($"Error: {"No Vehicle with this id found!"}", 404, false);
+                await _unitOfWork.VehicleRepo.DeleteAsync(id);
+                await _unitOfWork.SaveChangeAsync();
 
-                _mapper.Map(updateDto, vehicle);
-                var updated = await _repository.UpdateAsync(vehicle);
-                return new VehicleResponse
-                {
-                    Success = true,
-                    Message = "Vehicle updated successfully",
-                    Data = _mapper.Map<VehicleDTO>(updated)
-                };
+                return new ResponseDTO("Vehicle deleted successfully", 200, true);
             }
             catch (Exception ex)
             {
-                return new VehicleResponse
-                {
-                    Success = false,
-                    Message = $"Error updating vehicle: {ex.Message}"
-                };
-            }
-        }
-
-        public async Task<VehicleResponse> DeleteAsync(Guid id)
-        {
-            try
-            {
-                await _repository.DeleteAsync(id);
-                return new VehicleResponse
-                {
-                    Success = true,
-                    Message = "Vehicle deleted successfully"
-                };
-            }
-            catch (Exception ex)
-            {
-                return new VehicleResponse
-                {
-                    Success = false,
-                    Message = $"Error deleting vehicle: {ex.Message}"
-                };
+                return new ResponseDTO($"Error: {ex.Message}", 500, false);
             }
         }
     }

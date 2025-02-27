@@ -28,7 +28,8 @@ namespace CarRescueSystem.DAL.Model
 
         [Required]
         public int NumberOfSeats { get; set; }
-
+        [Required, MaxLength(15)]
+        public string LicensePlate { get; set; }
         public virtual User Customer { get; set; }
         
 

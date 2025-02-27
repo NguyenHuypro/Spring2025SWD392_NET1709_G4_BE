@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("CarRescueSystem.DAL")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+97f3507fe8ffce41687011e57b6189cc747f0399")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+f0f6ef4d9fae94b364d2cbb8870578bafee5f201")]
 [assembly: System.Reflection.AssemblyProductAttribute("CarRescueSystem.DAL")]
 [assembly: System.Reflection.AssemblyTitleAttribute("CarRescueSystem.DAL")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

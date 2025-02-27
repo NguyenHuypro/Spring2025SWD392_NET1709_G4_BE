@@ -1,4 +1,5 @@
 using CarRescueSystem.BLL.Service.Interface;
+using CarRescueSystem.Common.DTO;
 using CarRescueSystem.Common.DTO.Vehicle;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -18,46 +19,39 @@ namespace CarRescueSystem.Controller
         }
 
         [HttpPost("create")]
-        public async Task<ActionResult<VehicleResponse>> Create([FromBody] CreateVehicleDTO createDto)
+         //[Authorize(Roles = "Customer", "Receptionist")] // Customer tạo Car, Recep tạo Car khi nhận Emergency(Car không trong hệ thống)
+        public async Task<IActionResult> CreateCar([FromBody] CreateVehicleDTO createVehicleDTO)
         {
-            var response = await _vehicleService.CreateAsync(createDto);
-            if (!response.Success)
-                return BadRequest(response);
-            return CreatedAtAction(nameof(GetById), new { id = response.Data.VehicleId }, response);
+            var response = await _vehicleService.CreateCar(createVehicleDTO);
+            return StatusCode(response.StatusCode, response);
         }
 
         [HttpGet("get/{id}")]
         public async Task<ActionResult<VehicleResponse>> GetById(Guid id)
         {
-            var response = await _vehicleService.GetByIdAsync(id);
-            if (!response.Success)
-                return NotFound(response);
-            return Ok(response);
+            var response = await _vehicleService.GetVehicleByIDAsync(id);
+            return StatusCode(response.StatusCode, response);
         }
 
         [HttpGet("get-all")]
         public async Task<ActionResult<VehicleListResponse>> GetAll()
         {
-            var response = await _vehicleService.GetAllAsync();
-            return Ok(response);
+            var response = await _vehicleService.GetAllVehicleAsync();
+            return StatusCode(response.StatusCode, response);
         }
 
         [HttpPut("update/{id}")]
         public async Task<ActionResult<VehicleResponse>> Update(Guid id, [FromBody] UpdateVehicleDTO updateDto)
         {
             var response = await _vehicleService.UpdateAsync(id, updateDto);
-            if (!response.Success)
-                return NotFound(response);
-            return Ok(response);
+            return StatusCode(response.StatusCode, response);
         }
 
         [HttpDelete("delete/{id}")]
         public async Task<ActionResult<VehicleResponse>> Delete(Guid id)
         {
             var response = await _vehicleService.DeleteAsync(id);
-            if (!response.Success)
-                return NotFound(response);
-            return Ok(response);
+            return StatusCode(response.StatusCode, response);
         }
     }
 } 
