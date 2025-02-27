@@ -11,10 +11,11 @@
 using System;
 using System.Reflection;
 
+[assembly: Microsoft.Extensions.Configuration.UserSecrets.UserSecretsIdAttribute("63f14f41-a214-48a2-a6fd-21c9d4023e89")]
 [assembly: System.Reflection.AssemblyCompanyAttribute("CarRescueSystem")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+7cf44e73f9833130945969ebff1e415a8514c686")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+97f3507fe8ffce41687011e57b6189cc747f0399")]
 [assembly: System.Reflection.AssemblyProductAttribute("CarRescueSystem")]
 [assembly: System.Reflection.AssemblyTitleAttribute("CarRescueSystem")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

@@ -46,18 +46,27 @@ namespace CarRescueSystem.BLL.Service.Implement
                         return new ResponseDTO("Vehicle not found", 404, false);
                     }
                 }
+                var userPackages = await _unitOfWork.UserPackageRepo.GetUserPackagesListAsync(request.CustomerId);
+                Guid? packageId = null;
+
+                if (userPackages != null && userPackages.Any())
+                {
+                    packageId = userPackages.First().PackageId; // Lấy PackageId đầu tiên
+                }
+
 
                 // Tạo Booking mới
                 var newBooking = new Booking
                 {
                     BookingId = Guid.NewGuid(),
                     CustomerId = request.CustomerId,
-                    VehicleId = request.VehicleId ,
+                    VehicleId = request.VehicleId,
                     Description = request.Description,
                     Evidence = request.Evidence,
                     Location = request.Location,
                     CreatedAt = DateTime.UtcNow,
-                    Status = BookingStatus.Pending
+                    Status = BookingStatus.Pending,
+                    PackageId = packageId
                 };
 
                 // Lưu vào DB
@@ -221,7 +230,7 @@ namespace CarRescueSystem.BLL.Service.Implement
             }
 
             // Cập nhật tổng giá Booking
-            booking.TotalPrice += totalPrice;
+            booking.TotalPrice = totalPrice;
             await _unitOfWork.BookingRepo.UpdateAsync(booking);
             await _unitOfWork.SaveChangeAsync();
 
