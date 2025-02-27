@@ -30,7 +30,7 @@ namespace CarRescueSystem.BLL.Service.Implement
                 var customer = await _unitOfWork.UserRepo.GetByIdAsync(_userUtility.GetUserIdFromToken());
                 if (customer == null)
                 {
-                    return new ResponseDTO("Customer not found", 404, false);
+                    return new ResponseDTO("User not found", 404, false);
                 }
                 var vehicle = new Vehicle{
                     CustomerId = request.CustomerId,
