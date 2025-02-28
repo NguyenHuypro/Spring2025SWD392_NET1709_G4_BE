@@ -10,5 +10,9 @@ namespace CarRescueSystem.BLL.Service.Interface
     public interface IServiceRescueService
     {
         Task<ResponseDTO> GetAllService();
+        Task<ResponseDTO> GetServiceById(Guid serviceId);
+        Task<ResponseDTO> CreateService(ServiceDTO serviceDTO);
+        Task<ResponseDTO> UpdateService(Guid serviceId, ServiceDTO serviceDTO);
+        Task<ResponseDTO> DeleteService(Guid serviceId);
     }
 }

@@ -36,6 +36,8 @@ namespace CarRescueSystem.DAL.Model
         public virtual ICollection<BookingStaff> BookingsStaffs { get; set; } = new HashSet<BookingStaff>();
         // Quan hệ N-N với Package thông qua bảng UserPackage
         public ICollection<UserPackage> UserPackages { get; set; }
+        // Quan hệ 1-N với bảng Schedule
+        public virtual ICollection<Schedule> Schedules { get; set; } = new HashSet<Schedule>();
     }
     public enum StaffStatus
     {

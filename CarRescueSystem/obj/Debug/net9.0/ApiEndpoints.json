@@ -154,6 +154,137 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "CarRescueSystem.API.Controllers.BookingController",
+    "Method": "GetAllBooking",
+    "RelativePath": "api/Booking/getAll",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "CarRescueSystem.API.Controllers.BookingController",
+    "Method": "GetBookingByCustomerId",
+    "RelativePath": "api/Booking/getByCustomerId",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "CarRescueSystem.Controllers.ScheduleController",
+    "Method": "CreateSchedule",
+    "RelativePath": "api/Schedule/create",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "scheduleDto",
+        "Type": "CarRescueSystem.Common.DTO.ScheduleDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "CarRescueSystem.Controllers.ScheduleController",
+    "Method": "DeleteSchedule",
+    "RelativePath": "api/Schedule/delete/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Guid",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "CarRescueSystem.Controllers.ScheduleController",
+    "Method": "GetAllSchedules",
+    "RelativePath": "api/Schedule/getAll",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "CarRescueSystem.Controllers.ScheduleController",
+    "Method": "GetSchedulesByDate",
+    "RelativePath": "api/Schedule/getByDate",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "date",
+        "Type": "System.DateTime",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "CarRescueSystem.Controllers.ScheduleController",
+    "Method": "GetScheduleById",
+    "RelativePath": "api/Schedule/getById/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Guid",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "CarRescueSystem.Controllers.ScheduleController",
+    "Method": "GetSchedulesByStaff",
+    "RelativePath": "api/Schedule/getByStaff",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "staffId",
+        "Type": "System.Nullable\u00601[[System.Guid, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "CarRescueSystem.Controllers.ScheduleController",
+    "Method": "UpdateSchedule",
+    "RelativePath": "api/Schedule/update/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Guid",
+        "IsRequired": true
+      },
+      {
+        "Name": "scheduleDto",
+        "Type": "CarRescueSystem.Common.DTO.ScheduleDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "CarRescueSystem.API.Controllers.ServiceRescueController",
     "Method": "GetAllServices",
     "RelativePath": "api/ServiceRescue/get-all",
@@ -199,5 +330,124 @@
       }
     ],
     "ReturnTypes": []
+  },
+  {
+    "ContainingType": "CarRescueSystem.Controller.VehicleController",
+    "Method": "CreateCar",
+    "RelativePath": "api/Vehicle/create",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "createVehicleDTO",
+        "Type": "CarRescueSystem.Common.DTO.Vehicle.CreateVehicleDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "CarRescueSystem.Controller.VehicleController",
+    "Method": "Delete",
+    "RelativePath": "api/Vehicle/delete/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Guid",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "CarRescueSystem.Common.DTO.Vehicle.VehicleResponse",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "CarRescueSystem.Controller.VehicleController",
+    "Method": "GetAll",
+    "RelativePath": "api/Vehicle/get-all",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "CarRescueSystem.Common.DTO.Vehicle.VehicleListResponse",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "CarRescueSystem.Controller.VehicleController",
+    "Method": "GetById",
+    "RelativePath": "api/Vehicle/get/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Guid",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "CarRescueSystem.Common.DTO.Vehicle.VehicleResponse",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "CarRescueSystem.Controller.VehicleController",
+    "Method": "Update",
+    "RelativePath": "api/Vehicle/update/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Guid",
+        "IsRequired": true
+      },
+      {
+        "Name": "updateDto",
+        "Type": "CarRescueSystem.Common.DTO.Vehicle.UpdateVehicleDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "CarRescueSystem.Common.DTO.Vehicle.VehicleResponse",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
   }
 ]

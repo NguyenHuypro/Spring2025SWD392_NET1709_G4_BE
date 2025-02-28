@@ -12,5 +12,7 @@ namespace CarRescueSystem.BLL.Service.Interface
         
         Task<ResponseDTO> CreatePackageForUser(Guid packageId);
         Task<ResponseDTO> CreatePackageForAdmin(Guid userId, Guid packageId);
+        Task<ResponseDTO> UpdatePackage(Guid userId, Guid packageId, int newQuantity);
+        Task<ResponseDTO> DeletePackage(Guid userId, Guid packageId);
     }
 }

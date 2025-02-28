@@ -30,6 +30,7 @@ namespace CarRescueSystem.DAL.Model
 
         public virtual User Customer { get; set; }
         public virtual Vehicle? Vehicle { get; set; }
+       
         public DateTime CreatedAt { get; set; }
         public DateTime? StartAt { get; set; } // Có thể null nếu chưa bắt đầu
 

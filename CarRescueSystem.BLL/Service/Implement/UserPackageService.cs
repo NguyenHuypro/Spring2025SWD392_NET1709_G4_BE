@@ -4,7 +4,6 @@ using CarRescueSystem.BLL.Service.Interface;
 using CarRescueSystem.BLL.Utilities;
 using CarRescueSystem.Common.DTO;
 using CarRescueSystem.DAL.Model;
-
 using CarRescueSystem.DAL.Repository.Interface;
 using CarRescueSystem.DAL.UnitOfWork;
 
@@ -35,7 +34,6 @@ namespace CarRescueSystem.BLL.Service.Implement
                 // Nếu user đã có package, tăng thêm 50 lần sử dụng
                 userPackage.Quantity += ADDITIONAL_QUANTITY;
                 await _unitOfWork.UserPackageRepo.UpdateAsync(userPackage);
-
             }
             else
             {
@@ -45,7 +43,7 @@ namespace CarRescueSystem.BLL.Service.Implement
                     UserId = userId,
                     PackageId = packageId,
                     Quantity = ADDITIONAL_QUANTITY,
-                    CreatedAt = DateTime.UtcNow
+                    CreatedAt = DateTime.UtcNow,
                 };
                 await _unitOfWork.UserPackageRepo.AddAsync(userPackage);
             }
@@ -67,6 +65,36 @@ namespace CarRescueSystem.BLL.Service.Implement
             return await CreatePackage(userId, packageId);
         }
 
-      
+        // Cập nhật số lượng package cho user (Admin hoặc User có quyền)
+        public async Task<ResponseDTO> UpdatePackage(Guid userId, Guid packageId, int newQuantity)
+        {
+            if (newQuantity <= 0)
+                return new ResponseDTO("Quantity must be greater than 0", 400, false);
+
+            var userPackage = await _unitOfWork.UserPackageRepo.GetUserPackagesAsync(userId, packageId);
+            if (userPackage == null)
+                return new ResponseDTO("Package not found for this user", 404, false);
+
+            // Cập nhật số lượng mới
+            userPackage.Quantity = newQuantity;
+            await _unitOfWork.UserPackageRepo.UpdateAsync(userPackage);
+            await _unitOfWork.SaveChangeAsync();
+
+            return new ResponseDTO("Package updated successfully", 200, true);
+        }
+
+        // Xóa package khỏi user (Admin hoặc User có quyền)
+        public async Task<ResponseDTO> DeletePackage(Guid userId, Guid packageId)
+        {
+            var userPackage = await _unitOfWork.UserPackageRepo.GetUserPackagesAsync(userId, packageId);
+            if (userPackage == null)
+                return new ResponseDTO("Package not found for this user", 404, false);
+
+            // Xóa package khỏi user
+            await _unitOfWork.UserPackageRepo.DeleteAsync(userPackage.UserPackageId);
+            await _unitOfWork.SaveChangeAsync();
+
+            return new ResponseDTO("Package deleted successfully", 200, true);
+        }
     }
 }

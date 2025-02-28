@@ -66,7 +66,8 @@ namespace CarRescueSystem.BLL.Service.Implement
                     Location = request.Location,
                     CreatedAt = DateTime.UtcNow,
                     Status = BookingStatus.Pending,
-                    PackageId = packageId
+                    PackageId = packageId,
+                    
                 };
 
                 // Lưu vào DB
@@ -266,7 +267,22 @@ namespace CarRescueSystem.BLL.Service.Implement
             string message = isCompleted ? "Booking completed successfully" : "Booking cancelled";
             return new ResponseDTO(message, 200, true);
         }
+        public async Task<ResponseDTO> GetAllBookingAsync()
+        {
+            var bookings =  _unitOfWork.BookingRepo.GetAll();
+            return new ResponseDTO("Successfully retrieved all bookings", 200, true, bookings);
+        }
 
+        public async Task<ResponseDTO> GetBookingByCustomerIdAsync(Guid? customerId = null)
+        {
+            if (customerId == null)
+            {
+                customerId = _userUtility.GetUserIdFromToken();
+            }
+
+            var bookings = await _unitOfWork.BookingRepo.GetBookingsByCustomerIdAsync(customerId.Value);
+            return new ResponseDTO("Successfully retrieved customer bookings", 200, true, bookings);
+        }
 
     }
 

@@ -16,7 +16,8 @@ namespace CarRescueSystem.BLL.Service.Interface
         Task<ResponseDTO> AddServiceToBookingAsync(Guid bookingId, List<Guid> serviceIds);
         Task<ResponseDTO> CompleteOrCancelBookingAsync(Guid bookingId, bool isCompleted);
 
-
+        Task<ResponseDTO> GetAllBookingAsync();
+        Task<ResponseDTO> GetBookingByCustomerIdAsync(Guid? customerId = null);
 
 
     }

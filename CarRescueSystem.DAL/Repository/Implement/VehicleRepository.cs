@@ -16,6 +16,6 @@ namespace CarRescueSystem.DAL.Repository.Implement
         {
             _context = context;
         }
-    
+        
     }
 }

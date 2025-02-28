@@ -71,5 +71,19 @@ namespace CarRescueSystem.API.Controllers
             var response = await _bookingService.CompleteOrCancelBookingAsync(bookingId, isCompleted);
             return StatusCode(response.StatusCode, response);
         }
+
+        [HttpGet("getAll")]
+        public async Task<IActionResult> GetAllBooking()
+        {
+            var response = await _bookingService.GetAllBookingAsync();
+            return StatusCode(response.StatusCode, response);
+        }
+
+        [HttpGet("getByCustomerId")]
+        public async Task<IActionResult> GetBookingByCustomerId()
+        {
+            var response = await _bookingService.GetBookingByCustomerIdAsync();
+            return StatusCode(response.StatusCode, response);
+        }
     }
 }

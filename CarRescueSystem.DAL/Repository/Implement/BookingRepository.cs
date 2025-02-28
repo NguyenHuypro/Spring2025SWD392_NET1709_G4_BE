@@ -26,5 +26,10 @@ namespace CarRescueSystem.DAL.Repository.Implement
                 .FirstOrDefaultAsync(b => b.BookingId == bookingId);
         }
 
+        public async Task<IEnumerable<Booking>> GetBookingsByCustomerIdAsync(Guid customerId)
+        {
+            return await _context.Bookings.Where(b => b.CustomerId == customerId).ToListAsync();
+        }
+
     }
 }

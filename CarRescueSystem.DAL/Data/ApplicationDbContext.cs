@@ -21,6 +21,7 @@ namespace CarRescueSystem.DAL.Data
         public DbSet<BookingStaff> BookingStaffs { get; set; }
         public DbSet<ServicePackage> ServicePackages { get; set; }
         public DbSet<UserPackage> UserPackages { get; set; }
+        public DbSet<Schedule> Schedules {  get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

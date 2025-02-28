@@ -199,6 +199,31 @@ namespace CarRescueSystem.DAL.Migrations
                         });
                 });
 
+            modelBuilder.Entity("CarRescueSystem.DAL.Model.Schedule", b =>
+                {
+                    b.Property<Guid>("ScheduleId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime>("EndTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("Shift")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("StartTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<Guid>("UserId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("ScheduleId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("Schedules");
+                });
+
             modelBuilder.Entity("CarRescueSystem.DAL.Model.Service", b =>
                 {
                     b.Property<Guid>("ServiceId")
@@ -798,6 +823,11 @@ namespace CarRescueSystem.DAL.Migrations
                     b.Property<Guid>("CustomerId")
                         .HasColumnType("uniqueidentifier");
 
+                    b.Property<string>("LicensePlate")
+                        .IsRequired()
+                        .HasMaxLength(15)
+                        .HasColumnType("nvarchar(15)");
+
                     b.Property<int>("NumberOfSeats")
                         .HasColumnType("int");
 
@@ -827,6 +857,7 @@ namespace CarRescueSystem.DAL.Migrations
                         {
                             VehicleId = new Guid("12345678-90ab-cdef-1234-567890abcdef"),
                             CustomerId = new Guid("b2dab1c3-6d48-4b23-8369-2d1c9c828f22"),
+                            LicensePlate = "30G-49344",
                             NumberOfSeats = 4,
                             VehicleBrand = "Test",
                             VehicleColor = "Test",
@@ -885,6 +916,17 @@ namespace CarRescueSystem.DAL.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("CarRescueSystem.DAL.Model.Schedule", b =>
+                {
+                    b.HasOne("CarRescueSystem.DAL.Model.User", "Staff")
+                        .WithMany("Schedules")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Staff");
                 });
 
             modelBuilder.Entity("CarRescueSystem.DAL.Model.ServiceOfBooking", b =>
@@ -995,6 +1037,8 @@ namespace CarRescueSystem.DAL.Migrations
             modelBuilder.Entity("CarRescueSystem.DAL.Model.User", b =>
                 {
                     b.Navigation("BookingsStaffs");
+
+                    b.Navigation("Schedules");
 
                     b.Navigation("UserPackages");
                 });

@@ -24,6 +24,17 @@
           "CarRescueSystem.dll": {}
         }
       },
+      "AutoMapper/14.0.0": {
+        "dependencies": {
+          "Microsoft.Extensions.Options": "9.0.2"
+        },
+        "runtime": {
+          "lib/net8.0/AutoMapper.dll": {
+            "assemblyVersion": "14.0.0.0",
+            "fileVersion": "14.0.0.0"
+          }
+        }
+      },
       "Azure.Core/1.38.0": {
         "dependencies": {
           "Microsoft.Bcl.AsyncInterfaces": "7.0.0",
@@ -578,9 +589,32 @@
           "Microsoft.Extensions.Primitives": "9.0.2"
         }
       },
+      "Microsoft.Extensions.Configuration/9.0.0": {
+        "dependencies": {
+          "Microsoft.Extensions.Configuration.Abstractions": "9.0.1",
+          "Microsoft.Extensions.Primitives": "9.0.2"
+        }
+      },
       "Microsoft.Extensions.Configuration.Abstractions/9.0.1": {
         "dependencies": {
           "Microsoft.Extensions.Primitives": "9.0.2"
+        }
+      },
+      "Microsoft.Extensions.Configuration.FileExtensions/9.0.0": {
+        "dependencies": {
+          "Microsoft.Extensions.Configuration": "9.0.0",
+          "Microsoft.Extensions.Configuration.Abstractions": "9.0.1",
+          "Microsoft.Extensions.FileProviders.Abstractions": "9.0.0",
+          "Microsoft.Extensions.FileProviders.Physical": "9.0.0",
+          "Microsoft.Extensions.Primitives": "9.0.2"
+        }
+      },
+      "Microsoft.Extensions.Configuration.Json/9.0.0": {
+        "dependencies": {
+          "Microsoft.Extensions.Configuration": "9.0.0",
+          "Microsoft.Extensions.Configuration.Abstractions": "9.0.1",
+          "Microsoft.Extensions.Configuration.FileExtensions": "9.0.0",
+          "Microsoft.Extensions.FileProviders.Abstractions": "9.0.0"
         }
       },
       "Microsoft.Extensions.DependencyInjection/9.0.1": {
@@ -604,6 +638,19 @@
           }
         }
       },
+      "Microsoft.Extensions.FileProviders.Abstractions/9.0.0": {
+        "dependencies": {
+          "Microsoft.Extensions.Primitives": "9.0.2"
+        }
+      },
+      "Microsoft.Extensions.FileProviders.Physical/9.0.0": {
+        "dependencies": {
+          "Microsoft.Extensions.FileProviders.Abstractions": "9.0.0",
+          "Microsoft.Extensions.FileSystemGlobbing": "9.0.0",
+          "Microsoft.Extensions.Primitives": "9.0.2"
+        }
+      },
+      "Microsoft.Extensions.FileSystemGlobbing/9.0.0": {},
       "Microsoft.Extensions.Logging/9.0.1": {
         "dependencies": {
           "Microsoft.Extensions.DependencyInjection": "9.0.1",
@@ -1061,6 +1108,7 @@
       },
       "CarRescueSystem.BLL/1.0.0": {
         "dependencies": {
+          "AutoMapper": "14.0.0",
           "BCrypt.Net-Next": "4.0.3",
           "CarRescueSystem.Common": "1.0.0",
           "CarRescueSystem.DAL": "1.0.0",
@@ -1086,7 +1134,9 @@
         "dependencies": {
           "CarRescueSystem.Common": "1.0.0",
           "Microsoft.EntityFrameworkCore": "9.0.1",
-          "Microsoft.EntityFrameworkCore.SqlServer": "9.0.1"
+          "Microsoft.EntityFrameworkCore.SqlServer": "9.0.1",
+          "Microsoft.Extensions.Configuration": "9.0.0",
+          "Microsoft.Extensions.Configuration.Json": "9.0.0"
         },
         "runtime": {
           "CarRescueSystem.DAL.dll": {
@@ -1102,6 +1152,13 @@
       "type": "project",
       "serviceable": false,
       "sha512": ""
+    },
+    "AutoMapper/14.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-OC+1neAPM4oCCqQj3g2GJ2shziNNhOkxmNB9cVS8jtx4JbgmRzLcUOxB9Tsz6cVPHugdkHgCaCrTjjSI0Z5sCQ==",
+      "path": "automapper/14.0.0",
+      "hashPath": "automapper.14.0.0.nupkg.sha512"
     },
     "Azure.Core/1.38.0": {
       "type": "package",
@@ -1313,12 +1370,33 @@
       "path": "microsoft.extensions.caching.memory/9.0.1",
       "hashPath": "microsoft.extensions.caching.memory.9.0.1.nupkg.sha512"
     },
+    "Microsoft.Extensions.Configuration/9.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-YIMO9T3JL8MeEXgVozKt2v79hquo/EFtnY0vgxmLnUvk1Rei/halI7kOWZL2RBeV9FMGzgM9LZA8CVaNwFMaNA==",
+      "path": "microsoft.extensions.configuration/9.0.0",
+      "hashPath": "microsoft.extensions.configuration.9.0.0.nupkg.sha512"
+    },
     "Microsoft.Extensions.Configuration.Abstractions/9.0.1": {
       "type": "package",
       "serviceable": true,
       "sha512": "sha512-+4hfFIY1UjBCXFTTOd+ojlDPq6mep3h5Vq5SYE3Pjucr7dNXmq4S/6P/LoVnZFz2e/5gWp/om4svUFgznfULcA==",
       "path": "microsoft.extensions.configuration.abstractions/9.0.1",
       "hashPath": "microsoft.extensions.configuration.abstractions.9.0.1.nupkg.sha512"
+    },
+    "Microsoft.Extensions.Configuration.FileExtensions/9.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-4EK93Jcd2lQG4GY6PAw8jGss0ZzFP0vPc1J85mES5fKNuDTqgFXHba9onBw2s18fs3I4vdo2AWyfD1mPAxWSQQ==",
+      "path": "microsoft.extensions.configuration.fileextensions/9.0.0",
+      "hashPath": "microsoft.extensions.configuration.fileextensions.9.0.0.nupkg.sha512"
+    },
+    "Microsoft.Extensions.Configuration.Json/9.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-WiTK0LrnsqmedrbzwL7f4ZUo+/wByqy2eKab39I380i2rd8ImfCRMrtkqJVGDmfqlkP/YzhckVOwPc5MPrSNpg==",
+      "path": "microsoft.extensions.configuration.json/9.0.0",
+      "hashPath": "microsoft.extensions.configuration.json.9.0.0.nupkg.sha512"
     },
     "Microsoft.Extensions.DependencyInjection/9.0.1": {
       "type": "package",
@@ -1340,6 +1418,27 @@
       "sha512": "sha512-FHPy9cbb0y09riEpsrU5XYpOgf4nTfHj7a0m1wLC5DosGtjJn9g03gGg1GTJmEdRFBQrJwbwTnHqLCdNLsoYgA==",
       "path": "microsoft.extensions.dependencymodel/9.0.1",
       "hashPath": "microsoft.extensions.dependencymodel.9.0.1.nupkg.sha512"
+    },
+    "Microsoft.Extensions.FileProviders.Abstractions/9.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-uK439QzYR0q2emLVtYzwyK3x+T5bTY4yWsd/k/ZUS9LR6Sflp8MIdhGXW8kQCd86dQD4tLqvcbLkku8qHY263Q==",
+      "path": "microsoft.extensions.fileproviders.abstractions/9.0.0",
+      "hashPath": "microsoft.extensions.fileproviders.abstractions.9.0.0.nupkg.sha512"
+    },
+    "Microsoft.Extensions.FileProviders.Physical/9.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-3+ZUSpOSmie+o8NnLIRqCxSh65XL/ExU7JYnFOg58awDRlY3lVpZ9A369jkoZL1rpsq7LDhEfkn2ghhGaY1y5Q==",
+      "path": "microsoft.extensions.fileproviders.physical/9.0.0",
+      "hashPath": "microsoft.extensions.fileproviders.physical.9.0.0.nupkg.sha512"
+    },
+    "Microsoft.Extensions.FileSystemGlobbing/9.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-jGFKZiXs2HNseK3NK/rfwHNNovER71jSj4BD1a/649ml9+h6oEtYd0GSALZDNW8jZ2Rh+oAeadOa6sagYW1F2A==",
+      "path": "microsoft.extensions.filesystemglobbing/9.0.0",
+      "hashPath": "microsoft.extensions.filesystemglobbing.9.0.0.nupkg.sha512"
     },
     "Microsoft.Extensions.Logging/9.0.1": {
       "type": "package",

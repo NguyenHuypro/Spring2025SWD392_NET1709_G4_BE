@@ -285,6 +285,7 @@ namespace CarRescueSystem.DAL.Data
                 VehicleColor = "Test",
                 VehicleBrand = "Test",
                 NumberOfSeats = 4,
+                LicensePlate = "30G-49344"
             }
             );
         }

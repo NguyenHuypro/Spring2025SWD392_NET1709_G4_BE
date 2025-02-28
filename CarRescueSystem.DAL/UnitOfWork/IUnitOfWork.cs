@@ -21,6 +21,7 @@ namespace CarRescueSystem.DAL.UnitOfWork
         IServiceOfBookingRepository ServiceOfBookingRepo { get; }
         IPackageRepository PackageRepo { get; }
         IUserPackageRepository UserPackageRepo { get; }
+        IScheduleRepository ScheduleRepo { get; }
         Task<int> SaveAsync();
         Task<bool> SaveChangeAsync();
     }
