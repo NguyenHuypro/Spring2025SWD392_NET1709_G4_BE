@@ -32,10 +32,22 @@ builder.Services.AddCors(options =>
 });
 
 // Setup SQL Server Database
+//builder.Services.AddDbContext<ApplicationDbContext>(options =>
+//    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")),
+//    ServiceLifetime.Scoped
+//);
+
+//Setup MySQL Server Database
+var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
+
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")),
-    ServiceLifetime.Scoped
+    options.UseMySql(connectionString,
+        ServerVersion.AutoDetect(connectionString), // Tự động nhận diện phiên bản
+        b => b.MigrationsAssembly("CarRescueSystem.DAL")
+    )
 );
+
+
 
 
 Console.WriteLine("Current Connection String: " + builder.Configuration.GetConnectionString("DefaultConnection"));
