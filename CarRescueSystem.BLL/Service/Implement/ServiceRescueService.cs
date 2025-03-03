@@ -24,6 +24,7 @@ namespace CarRescueSystem.BLL.Service.Implement
             try
             {
                 var listService = await _unitOfWork.ServiceRepo.GetAll().ToListAsync();
+                
 
                 if (listService == null || !listService.Any())
                 {
@@ -37,7 +38,7 @@ namespace CarRescueSystem.BLL.Service.Implement
                     ServicePrice = s.ServicePrice
                 }).ToList();
 
-                return new ResponseDTO("Successfully retrieved service list.", 200, true, serviceDTOs);
+                return new ResponseDTO("Successfully retrieved service list.", 200, true);
             }
             catch (Exception ex)
             {
@@ -64,7 +65,7 @@ namespace CarRescueSystem.BLL.Service.Implement
                     ServicePrice = service.ServicePrice
                 };
 
-                return new ResponseDTO("Successfully retrieved service.", 200, true, serviceDTO);
+                return new ResponseDTO("Successfully retrieved service.", 200, true);
             }
             catch (Exception ex)
             {
@@ -101,7 +102,7 @@ namespace CarRescueSystem.BLL.Service.Implement
                     ServicePrice = service.ServicePrice
                 };
 
-                return new ResponseDTO("Service created successfully.", 201, true, createdServiceDTO);
+                return new ResponseDTO("Service created successfully.", 201, true);
             }
             catch (Exception ex)
             {
@@ -135,7 +136,7 @@ namespace CarRescueSystem.BLL.Service.Implement
                     ServicePrice = service.ServicePrice
                 };
 
-                return new ResponseDTO("Service updated successfully.", 200, true, updatedServiceDTO);
+                return new ResponseDTO("Service updated successfully.", 200, true);
             }
             catch (Exception ex)
             {

@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "SP5T2bwF7k4=",
+  "dgSpecHash": "oBPi71LmSVs=",
   "success": true,
   "projectFilePath": "D:\\HOC\\SWD\\CarRescueSystem\\CarRescueSystemProject\\CarRescueSystem\\CarRescueSystem.csproj",
   "expectedPackageFiles": [
@@ -83,6 +83,7 @@
     "C:\\Users\\dangl\\.nuget\\packages\\system.io.pipelines\\7.0.0\\system.io.pipelines.7.0.0.nupkg.sha512",
     "C:\\Users\\dangl\\.nuget\\packages\\system.memory\\4.5.4\\system.memory.4.5.4.nupkg.sha512",
     "C:\\Users\\dangl\\.nuget\\packages\\system.memory.data\\1.0.2\\system.memory.data.1.0.2.nupkg.sha512",
+    "C:\\Users\\dangl\\.nuget\\packages\\system.net.http.json\\9.0.2\\system.net.http.json.9.0.2.nupkg.sha512",
     "C:\\Users\\dangl\\.nuget\\packages\\system.numerics.vectors\\4.5.0\\system.numerics.vectors.4.5.0.nupkg.sha512",
     "C:\\Users\\dangl\\.nuget\\packages\\system.reflection.metadata\\7.0.0\\system.reflection.metadata.7.0.0.nupkg.sha512",
     "C:\\Users\\dangl\\.nuget\\packages\\system.runtime.caching\\6.0.0\\system.runtime.caching.6.0.0.nupkg.sha512",

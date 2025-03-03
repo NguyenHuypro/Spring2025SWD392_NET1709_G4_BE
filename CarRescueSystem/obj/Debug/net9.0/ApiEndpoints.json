@@ -96,6 +96,11 @@
         "Name": "bookingId",
         "Type": "System.Guid",
         "IsRequired": true
+      },
+      {
+        "Name": "staffIds",
+        "Type": "System.Collections.Generic.List\u00601[[System.Guid, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": true
       }
     ],
     "ReturnTypes": []
@@ -171,6 +176,85 @@
     "IsController": true,
     "Order": 0,
     "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "CarRescueSystem.API.Controllers.PackageController",
+    "Method": "GetPackageById",
+    "RelativePath": "api/Package/{packageId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "packageId",
+        "Type": "System.Guid",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "CarRescueSystem.API.Controllers.PackageController",
+    "Method": "CreatePackage",
+    "RelativePath": "api/Package/create",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "packageDTO",
+        "Type": "CarRescueSystem.Common.DTO.PackageDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "CarRescueSystem.API.Controllers.PackageController",
+    "Method": "DeletePackage",
+    "RelativePath": "api/Package/delete/{packageId}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "packageId",
+        "Type": "System.Guid",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "CarRescueSystem.API.Controllers.PackageController",
+    "Method": "GetAllPackages",
+    "RelativePath": "api/Package/get-all",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "CarRescueSystem.API.Controllers.PackageController",
+    "Method": "UpdatePackage",
+    "RelativePath": "api/Package/update/{packageId}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "packageId",
+        "Type": "System.Guid",
+        "IsRequired": true
+      },
+      {
+        "Name": "packageDTO",
+        "Type": "CarRescueSystem.Common.DTO.PackageDTO",
+        "IsRequired": true
+      }
+    ],
     "ReturnTypes": []
   },
   {
@@ -286,6 +370,54 @@
   },
   {
     "ContainingType": "CarRescueSystem.API.Controllers.ServiceRescueController",
+    "Method": "GetServiceById",
+    "RelativePath": "api/ServiceRescue/{serviceId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "serviceId",
+        "Type": "System.Guid",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "CarRescueSystem.API.Controllers.ServiceRescueController",
+    "Method": "CreateService",
+    "RelativePath": "api/ServiceRescue/create",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "serviceDTO",
+        "Type": "CarRescueSystem.Common.DTO.ServiceDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "CarRescueSystem.API.Controllers.ServiceRescueController",
+    "Method": "DeleteService",
+    "RelativePath": "api/ServiceRescue/delete/{serviceId}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "serviceId",
+        "Type": "System.Guid",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "CarRescueSystem.API.Controllers.ServiceRescueController",
     "Method": "GetAllServices",
     "RelativePath": "api/ServiceRescue/get-all",
     "HttpMethod": "GET",
@@ -295,38 +427,22 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "CarRescueSystem.Controller.UserPackageController",
-    "Method": "CreatePackageForAdmin",
-    "RelativePath": "api/UserPackage/admin/create",
-    "HttpMethod": "POST",
+    "ContainingType": "CarRescueSystem.API.Controllers.ServiceRescueController",
+    "Method": "UpdateService",
+    "RelativePath": "api/ServiceRescue/update/{serviceId}",
+    "HttpMethod": "PUT",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "userId",
+        "Name": "serviceId",
         "Type": "System.Guid",
-        "IsRequired": false
+        "IsRequired": true
       },
       {
-        "Name": "packageId",
-        "Type": "System.Guid",
-        "IsRequired": false
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "CarRescueSystem.Controller.UserPackageController",
-    "Method": "CreatePackageForUser",
-    "RelativePath": "api/UserPackage/user/create",
-    "HttpMethod": "POST",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "packageId",
-        "Type": "System.Guid",
-        "IsRequired": false
+        "Name": "serviceDTO",
+        "Type": "CarRescueSystem.Common.DTO.ServiceDTO",
+        "IsRequired": true
       }
     ],
     "ReturnTypes": []
@@ -361,17 +477,7 @@
         "IsRequired": true
       }
     ],
-    "ReturnTypes": [
-      {
-        "Type": "CarRescueSystem.Common.DTO.Vehicle.VehicleResponse",
-        "MediaTypes": [
-          "text/plain",
-          "application/json",
-          "text/json"
-        ],
-        "StatusCode": 200
-      }
-    ]
+    "ReturnTypes": []
   },
   {
     "ContainingType": "CarRescueSystem.Controller.VehicleController",
@@ -381,17 +487,7 @@
     "IsController": true,
     "Order": 0,
     "Parameters": [],
-    "ReturnTypes": [
-      {
-        "Type": "CarRescueSystem.Common.DTO.Vehicle.VehicleListResponse",
-        "MediaTypes": [
-          "text/plain",
-          "application/json",
-          "text/json"
-        ],
-        "StatusCode": 200
-      }
-    ]
+    "ReturnTypes": []
   },
   {
     "ContainingType": "CarRescueSystem.Controller.VehicleController",
@@ -407,17 +503,60 @@
         "IsRequired": true
       }
     ],
-    "ReturnTypes": [
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "CarRescueSystem.Controller.VehicleController",
+    "Method": "GetVehiclePackage",
+    "RelativePath": "api/Vehicle/package/{vehicleId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
       {
-        "Type": "CarRescueSystem.Common.DTO.Vehicle.VehicleResponse",
-        "MediaTypes": [
-          "text/plain",
-          "application/json",
-          "text/json"
-        ],
-        "StatusCode": 200
+        "Name": "vehicleId",
+        "Type": "System.Guid",
+        "IsRequired": true
       }
-    ]
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "CarRescueSystem.Controller.VehicleController",
+    "Method": "PurchasePackage",
+    "RelativePath": "api/Vehicle/purchase-package",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "vehicleId",
+        "Type": "System.Guid",
+        "IsRequired": false
+      },
+      {
+        "Name": "packageId",
+        "Type": "System.Guid",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "CarRescueSystem.Controller.VehicleController",
+    "Method": "RemovePackage",
+    "RelativePath": "api/Vehicle/remove-package/{vehicleId}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "vehicleId",
+        "Type": "System.Guid",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
   },
   {
     "ContainingType": "CarRescueSystem.Controller.VehicleController",
@@ -438,16 +577,27 @@
         "IsRequired": true
       }
     ],
-    "ReturnTypes": [
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "CarRescueSystem.Controller.VehicleController",
+    "Method": "UpgradePackage",
+    "RelativePath": "api/Vehicle/upgrade-package",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
       {
-        "Type": "CarRescueSystem.Common.DTO.Vehicle.VehicleResponse",
-        "MediaTypes": [
-          "text/plain",
-          "application/json",
-          "text/json"
-        ],
-        "StatusCode": 200
+        "Name": "vehicleId",
+        "Type": "System.Guid",
+        "IsRequired": false
+      },
+      {
+        "Name": "newPackageId",
+        "Type": "System.Guid",
+        "IsRequired": false
       }
-    ]
+    ],
+    "ReturnTypes": []
   }
 ]

@@ -22,5 +22,7 @@ namespace CarRescueSystem.Common.DTO
 
         [Required(ErrorMessage = "Location is required")]
         public string Location { get; set; }
+        public string? LicensePlate { get; set; }
+        public string? PhoneNumber { get; set; }
     }
 }

@@ -35,13 +35,17 @@ namespace CarRescueSystem.DAL.Model
         // Quan hệ với BookingStaff (Staff phụ trách bookings)
         public virtual ICollection<BookingStaff> BookingsStaffs { get; set; } = new HashSet<BookingStaff>();
         // Quan hệ N-N với Package thông qua bảng UserPackage
-        public ICollection<UserPackage> UserPackages { get; set; }
+       
+
+        // 🆕 Nhân viên thuộc về một trạm cứu hộ
+        public Guid? RescueStationId { get; set; }
+        public virtual RescueStation? RescueStation { get; set; }
         // Quan hệ 1-N với bảng Schedule
         public virtual ICollection<Schedule> Schedules { get; set; } = new HashSet<Schedule>();
     }
     public enum StaffStatus
     {
-        Active,
-        Inactive,
+        ACTIVE,
+        INACTIVE,
     }
 }

@@ -26,6 +26,10 @@ namespace CarRescueSystem.DAL.Model
         public string Evidence { get; set; }
         public string Location { get; set; }
 
+        // Thêm tọa độ để tính khoảng cách
+        public double? Latitude { get; set; }
+        public double? Longitude { get; set; }
+
         public decimal? TotalPrice { get; set; }
 
         public virtual User Customer { get; set; }
@@ -34,6 +38,13 @@ namespace CarRescueSystem.DAL.Model
         public DateTime CreatedAt { get; set; }
         public DateTime? StartAt { get; set; } // Có thể null nếu chưa bắt đầu
 
+        //user
+
+        public string? LicensePlate { get; set; }
+        public string? PhoneNumber { get; set; }
+
+       //
+
         public Guid? PackageId { get; set; }
         public virtual Package? Package { get; set; } // Liên kết với Package
 
@@ -41,13 +52,21 @@ namespace CarRescueSystem.DAL.Model
         public virtual ICollection<BookingStaff> BookingStaffs { get; set; } = new HashSet<BookingStaff>();
 
         public virtual ICollection<ServiceOfBooking> ServiceBookings { get; set; } = new HashSet<ServiceOfBooking>();
+
+        // 🆕 Thêm quan hệ với RescueStation
+        public Guid? RescueStationId { get; set; } // Trạm cứu hộ gần nhất
+        public virtual RescueStation? RescueStation { get; set; }
     }
     public enum BookingStatus
     {
-        Pending,
-        Confirmed,
-        InProgress,
-        Cancelled,
-        Completed
+        PENDING,
+        CONFIRMED,
+        INPROGRESS,
+        CANCELLED,
+        COMPLETE
     }
 }
+
+
+
+//AIzaSyA8SeiRUqFhXUClPTM8Ljw_yTC0ahmRPTE

@@ -103,6 +103,12 @@ namespace CarRescueSystem.DAL.Data
 
         // Vehicle ID mới
         private static readonly Guid VehicleCustomerTestId = Guid.Parse("12345678-90AB-CDEF-1234-567890ABCDEF");
+        // ID của các trạm cứu hộ
+        private static readonly Guid RescueStationId1 = Guid.Parse("A1B2C3D4-E5F6-7890-1234-56789ABCDEF1");
+        private static readonly Guid RescueStationId2 = Guid.Parse("A1B2C3D4-E5F6-7890-1234-56789ABCDEF2");
+        private static readonly Guid RescueStationId3 = Guid.Parse("A1B2C3D4-E5F6-7890-1234-56789ABCDEF3");
+        private static readonly Guid RescueStationId4 = Guid.Parse("A1B2C3D4-E5F6-7890-1234-56789ABCDEF4");
+        private static readonly Guid RescueStationId5 = Guid.Parse("A1B2C3D4-E5F6-7890-1234-56789ABCDEF5");
 
         public DbSeeder(ApplicationDbContext context)
         {
@@ -116,6 +122,8 @@ namespace CarRescueSystem.DAL.Data
             SeedPackages(modelBuilder);
             SeedServicePackage(modelBuilder);
             SeedVehicle(modelBuilder);
+            SeedRescueStations(modelBuilder);
+            SeedWallet(modelBuilder);
         }
         private static void SeedUser(ModelBuilder modelBuilder)
         {
@@ -151,7 +159,9 @@ namespace CarRescueSystem.DAL.Data
                     PasswordSalt = "",
                     PhoneNumber = "0999888777",
                     RoleID = new Guid("B1B2B3B4-C5C6-D7D8-E9E0-F1F2F3F4F5F6"),
-                    StaffStatus = StaffStatus.Active
+                    StaffStatus = StaffStatus.ACTIVE,
+                    RescueStationId = RescueStationId1
+
                 },
                 new User
                 {
@@ -162,7 +172,9 @@ namespace CarRescueSystem.DAL.Data
                     PasswordSalt = "",
                     PhoneNumber = "0999888777",
                     RoleID = new Guid("B1B2B3B4-C5C6-D7D8-E9E0-F1F2F3F4F5F6"),
-                    StaffStatus = StaffStatus.Active
+                    StaffStatus = StaffStatus.ACTIVE,
+                    RescueStationId = RescueStationId1
+
                 },
                 new User
                 {
@@ -173,16 +185,113 @@ namespace CarRescueSystem.DAL.Data
                     PasswordSalt = "",
                     PhoneNumber = "0999888777",
                     RoleID = new Guid("D1D2D3D4-E5E6-F7F8-A9A0-B1B2B3B4B5B6")
-                }
+                },
+                new User
+                {
+                    UserId = Guid.Parse("F1DAB1C3-6D48-4B23-8369-2D1C9C828F26"),
+                    FullName = "Test Staff 3",
+                    Email = "testStaff3@gmail.com",
+                    PasswordHash = fixedHashedPassword,
+                    PasswordSalt = "",
+                    PhoneNumber = "0999888773",
+                    RoleID = StaffRole,
+                    StaffStatus = StaffStatus.ACTIVE,
+                    RescueStationId = RescueStationId2
+                },
+            new User
+            {
+                UserId = Guid.Parse("F2DAB1C3-6D48-4B23-8369-2D1C9C828F27"),
+                FullName = "Test Staff 4",
+                Email = "testStaff4@gmail.com",
+                PasswordHash = fixedHashedPassword,
+                PasswordSalt = "",
+                PhoneNumber = "0999888774",
+                RoleID = StaffRole,
+                StaffStatus = StaffStatus.ACTIVE,
+                RescueStationId = RescueStationId2
+            },
+            new User
+            {
+                UserId = Guid.Parse("F3DAB1C3-6D48-4B23-8369-2D1C9C828F28"),
+                FullName = "Test Staff 5",
+                Email = "testStaff5@gmail.com",
+                PasswordHash = fixedHashedPassword,
+                PasswordSalt = "",
+                PhoneNumber = "0999888775",
+                RoleID = StaffRole,
+                StaffStatus = StaffStatus.ACTIVE,
+                RescueStationId = RescueStationId3
+            },
+            new User
+            {
+                UserId = Guid.Parse("F4DAB1C3-6D48-4B23-8369-2D1C9C828F29"),
+                FullName = "Test Staff 6",
+                Email = "testStaff6@gmail.com",
+                PasswordHash = fixedHashedPassword,
+                PasswordSalt = "",
+                PhoneNumber = "0999888776",
+                RoleID = StaffRole,
+                StaffStatus = StaffStatus.ACTIVE,
+                RescueStationId = RescueStationId3
+            },
+            new User
+            {
+                UserId = Guid.Parse("F5DAB1C3-6D48-4B23-8369-2D1C9C828F30"),
+                FullName = "Test Staff 7",
+                Email = "testStaff7@gmail.com",
+                PasswordHash = fixedHashedPassword,
+                PasswordSalt = "",
+                PhoneNumber = "0999888778",
+                RoleID = StaffRole,
+                StaffStatus = StaffStatus.ACTIVE,
+                RescueStationId = RescueStationId4
+            },
+            new User
+            {
+                UserId = Guid.Parse("F6DAB1C3-6D48-4B23-8369-2D1C9C828F31"),
+                FullName = "Test Staff 8",
+                Email = "testStaff8@gmail.com",
+                PasswordHash = fixedHashedPassword,
+                PasswordSalt = "",
+                PhoneNumber = "0999888779",
+                RoleID = StaffRole,
+                StaffStatus = StaffStatus.ACTIVE,
+                RescueStationId = RescueStationId4
+            },
+            new User
+            {
+                UserId = Guid.Parse("F7DAB1C3-6D48-4B23-8369-2D1C9C828F32"),
+                FullName = "Test Staff 9",
+                Email = "testStaff9@gmail.com",
+                PasswordHash = fixedHashedPassword,
+                PasswordSalt = "",
+                PhoneNumber = "0999888780",
+                RoleID = StaffRole,
+                StaffStatus = StaffStatus.ACTIVE,
+                RescueStationId = RescueStationId5
+            },
+            new User
+            {
+                UserId = Guid.Parse("F8DAB1C3-6D48-4B23-8369-2D1C9C828F33"),
+                FullName = "Test Staff 10",
+                Email = "testStaff10@gmail.com",
+                PasswordHash = fixedHashedPassword,
+                PasswordSalt = "",
+                PhoneNumber = "0999888781",
+                RoleID = StaffRole,
+                StaffStatus = StaffStatus.ACTIVE,
+                RescueStationId = RescueStationId5
+            }
+
                 );
         }
         private static void SeedRoles(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Role>().HasData(
-                new Role { RoleID = CustomerRole, RoleName = "Customer" },
-                new Role { RoleID = StaffRole, RoleName = "Staff" },
-                new Role { RoleID = AdminRole, RoleName = "Admin" },
-                new Role { RoleID = ReceptionistRole, RoleName = "Receptionist" }
+                new Role { RoleID = CustomerRole, RoleName = "CUSTOMER" },
+                new Role { RoleID = StaffRole, RoleName = "STAFF" },
+                new Role { RoleID = AdminRole, RoleName = "ADMIN" },
+                new Role { RoleID = ReceptionistRole, RoleName = "RECEPTIONIST" }
             );
             
         }
@@ -286,6 +395,70 @@ namespace CarRescueSystem.DAL.Data
                 VehicleBrand = "Test",
                 NumberOfSeats = 4,
                 LicensePlate = "30G-49344"
+            }
+            );
+        }
+        private static void SeedRescueStations(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<RescueStation>().HasData(
+                new RescueStation
+                {
+                    RescueStationId = RescueStationId1,
+                    Name = "Trạm Cứu Hộ Quận 1",
+                    Address = "86 Đinh Tiên Hoàng, Đa Kao, Quận 1, TP.HCM",
+                    Latitude = 10.782222,
+                    Longitude = 106.699722,
+                    PhoneNumber = "02812345678",
+                    Email = "rescue.q1@carrescue.vn"
+                },
+                new RescueStation
+                {
+                    RescueStationId = RescueStationId2,
+                    Name = "Trạm Cứu Hộ Quận 3",
+                    Address = "273 Nguyễn Thiện Thuật, Phường 1, Quận 3, TP.HCM",
+                    Latitude = 10.770049,
+                    Longitude = 106.682846,
+                    PhoneNumber = "02812345679",
+                    Email = "rescue.q3@carrescue.vn"
+                },
+                new RescueStation
+                {
+                    RescueStationId = RescueStationId3,
+                    Name = "Trạm Cứu Hộ Quận 5",
+                    Address = "161 Trần Hưng Đạo, Phường 10, Quận 5, TP.HCM",
+                    Latitude = 10.754345,
+                    Longitude = 106.663983,
+                    PhoneNumber = "02812345680",
+                    Email = "rescue.q5@carrescue.vn"
+                },
+                new RescueStation
+                {
+                    RescueStationId = RescueStationId4,
+                    Name = "Trạm Cứu Hộ Quận 7",
+                    Address = "502 Nguyễn Văn Linh, Tân Phong, Quận 7, TP.HCM",
+                    Latitude = 10.730745,
+                    Longitude = 106.721640,
+                    PhoneNumber = "02812345681",
+                    Email = "rescue.q7@carrescue.vn"
+                },
+                new RescueStation
+                {
+                    RescueStationId = RescueStationId5,
+                    Name = "Trạm Cứu Hộ Quận Bình Thạnh",
+                    Address = "208 Xô Viết Nghệ Tĩnh, Phường 21, Bình Thạnh, TP.HCM",
+                    Latitude = 10.803537,
+                    Longitude = 106.713179,
+                    PhoneNumber = "02812345682",
+                    Email = "rescue.bt@carrescue.vn"
+                }
+            );
+        }
+        private static void SeedWallet(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Wallet>().HasData(new Wallet
+            {
+                UserId = UserIDTest,
+                Balance = 50000000
             }
             );
         }

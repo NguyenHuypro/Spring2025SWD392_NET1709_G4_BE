@@ -17,57 +17,71 @@ namespace CarRescueSystem.BLL.Service.Implement
     {
         private readonly IUnitOfWork _unitOfWork;
         private readonly UserUtility _userUtility;
+        private readonly IOsmService _osmService;
+        private readonly IRescueStationService _rescueStationService;
+        private readonly IStaffService _staffService;
+        private readonly IWalletService _walletService;
 
-        public BookingService(IUnitOfWork unitOfWork, UserUtility userUtility)
+        public BookingService(IUnitOfWork unitOfWork, UserUtility userUtility, IOsmService osmService, IRescueStationService rescueStationService, IStaffService staffService, IWalletService walletService)
         {
             _unitOfWork = unitOfWork;
             _userUtility = userUtility;
+            _osmService = osmService;
+            _rescueStationService = rescueStationService;
+            _staffService = staffService;
+            _walletService = walletService;
         }
 
         public async Task<ResponseDTO> CreateBookingAsync(CreatingBookingDTO request)
         {
             try
             {
-               
                 // Kiểm tra Customer có tồn tại không
                 var customer = await _unitOfWork.UserRepo.GetByIdAsync(_userUtility.GetUserIdFromToken());
                 if (customer == null)
                 {
                     return new ResponseDTO("Customer not found", 404, false);
                 }
-                    
-                // Kiểm tra VehicleId hợp lệ (nếu có)
+
+                // Kiểm tra VehicleId hoặc LicensePlate hợp lệ để lấy PackageId
                 Vehicle? vehicle = null;
-                if (request.VehicleId.HasValue)
-                {
-                    vehicle = await _unitOfWork.VehicleRepo.GetByIdAsync(request.VehicleId.Value);
-                    if (vehicle == null)
-                    {
-                        return new ResponseDTO("Vehicle not found", 404, false);
-                    }
-                }
-                var userPackages = await _unitOfWork.UserPackageRepo.GetUserPackagesListAsync(request.CustomerId);
                 Guid? packageId = null;
 
-                if (userPackages != null && userPackages.Any())
+                if (request.VehicleId.HasValue)
                 {
-                    packageId = userPackages.First().PackageId; // Lấy PackageId đầu tiên
+                    // Tìm vehicle theo VehicleId
+                    vehicle = await _unitOfWork.VehicleRepo.GetByIdAsync(request.VehicleId.Value);
                 }
 
+                // Nếu không tìm thấy vehicle bằng VehicleId, thử tìm bằng LicensePlate
+                if (vehicle == null && !string.IsNullOrEmpty(request.LicensePlate))
+                {
+                    vehicle = await _unitOfWork.VehicleRepo.GetByLicensePlateAsync(request.LicensePlate);
+                }
+
+                // Nếu tìm được vehicle, lấy PackageId
+                if (vehicle != null)
+                {
+                    packageId = vehicle.PackageId;
+                }
+
+                // Mã hóa location để tránh lỗi ký tự đặc biệt
+                string encodedAddress = Uri.EscapeDataString(request.Location);
 
                 // Tạo Booking mới
                 var newBooking = new Booking
                 {
                     BookingId = Guid.NewGuid(),
                     CustomerId = request.CustomerId,
-                    VehicleId = request.VehicleId,
+                    VehicleId = vehicle?.VehicleId,  
                     Description = request.Description,
                     Evidence = request.Evidence,
-                    Location = request.Location,
+                    Location = encodedAddress,
                     CreatedAt = DateTime.UtcNow,
-                    Status = BookingStatus.Pending,
-                    PackageId = packageId,
-                    
+                    Status = BookingStatus.PENDING,
+                    PackageId = packageId, 
+                    LicensePlate = request.LicensePlate,
+                    PhoneNumber = request.PhoneNumber  
                 };
 
                 // Lưu vào DB
@@ -82,6 +96,8 @@ namespace CarRescueSystem.BLL.Service.Implement
                 return new ResponseDTO($"Error: {ex.Message}", 500, false);
             }
         }
+
+
         public async Task<ResponseDTO> ConfirmBookingAsync(Guid bookingId)
         {
             try
@@ -94,19 +110,58 @@ namespace CarRescueSystem.BLL.Service.Implement
                 }
 
                 // 2️⃣ Kiểm tra trạng thái Booking (Chỉ cập nhật nếu là Pending)
-                if (booking.Status != BookingStatus.Pending)
+                if (booking.Status != BookingStatus.PENDING)
                 {
                     return new ResponseDTO("Booking is not in a valid state for confirmation", 400, false);
                 }
 
-                // 3️⃣ Cập nhật trạng thái Booking → Confirmed
-                booking.Status = BookingStatus.Confirmed;
+                var coordinates = await _osmService.GetCoordinatesFromAddressAsync(booking.Location);
+                if (coordinates == null)
+                {
+                    return new ResponseDTO("Failed to retrieve coordinates for booking location", 400, false);
+                }
 
-                // 4️⃣ Lưu vào database
+                // ✅ Luôn cập nhật tọa độ
+                booking.Latitude = coordinates.Latitude;
+                booking.Longitude = coordinates.Longitude;
+
+
+                // 4️⃣ Tìm trạm cứu hộ gần nhất
+                var nearestStation = await _rescueStationService.FindNearestStationAsync(booking.Latitude ?? 0.0, booking.Longitude ?? 0.0);
+                if (nearestStation == null)
+                {
+                    return new ResponseDTO("No rescue station found nearby", 404, false);
+                }
+
+                // 5️⃣ Chọn nhân viên phù hợp từ trạm đó
+                var availableStaff = await _staffService.GetAvailableStaffAsync(nearestStation.RescueStationId);
+                if (availableStaff == null || !availableStaff.Any())
+                {
+                    return new ResponseDTO("No available staff at the nearest rescue station", 404, false);
+                }
+
+                // 6️⃣ Cập nhật thông tin RescueStationId và Staff cho Booking
+                booking.Status = BookingStatus.CONFIRMED;
+                booking.RescueStationId = nearestStation.RescueStationId;
+
+                // ✅ Thêm tất cả nhân viên vào BookingStaff
+                var bookingStaffList = availableStaff.Select(staff => new BookingStaff
+                {
+                    BookingId = booking.BookingId,
+                    StaffId = staff.UserId
+                }).ToList();
+                Console.WriteLine(booking.Latitude);
+                Console.WriteLine(booking.Longitude);
+                await _unitOfWork.BookingStaffRepo.AddRangeAsync(bookingStaffList);
                 await _unitOfWork.BookingRepo.UpdateAsync(booking);
                 await _unitOfWork.SaveChangeAsync();
 
-                return new ResponseDTO("Booking confirmed successfully", 200, true);
+                return new ResponseDTO("Booking confirmed and assigned to nearest rescue station", 200, true, new
+                {
+                    BookingId = booking.BookingId,
+                    RescueStation = nearestStation.Name,
+                    AssignedStaffIds = bookingStaffList.Select(bs => bs.StaffId).ToList() // Trả về danh sách StaffId
+                });
             }
             catch (Exception ex)
             {
@@ -114,7 +169,9 @@ namespace CarRescueSystem.BLL.Service.Implement
             }
         }
 
-        public async Task<ResponseDTO> AssignStaffToBookingAsync(Guid bookingId)
+
+
+        public async Task<ResponseDTO> AssignStaffToBookingAsync(Guid bookingId, List<Guid> staffIds)
         {
             try
             {
@@ -126,23 +183,29 @@ namespace CarRescueSystem.BLL.Service.Implement
                 }
 
                 // 2️⃣ Kiểm tra trạng thái Booking (Chỉ assign staff khi đã Confirmed)
-                if (booking.Status != BookingStatus.Confirmed)
+                if (booking.Status != BookingStatus.CONFIRMED)
                 {
                     return new ResponseDTO("Booking is not confirmed yet", 400, false);
                 }
 
-                // 3️⃣ Lấy danh sách 2 staff Active
-                var activeStaffs = await _unitOfWork.UserRepo.GetActiveStaffsAsync(2);
-                if (activeStaffs.Count < 2)
+                // 3️⃣ Kiểm tra danh sách staff có hợp lệ không
+                if (staffIds == null || !staffIds.Any())
                 {
-                    return new ResponseDTO("Not enough active staff available", 400, false);
+                    return new ResponseDTO("Staff ID list is empty", 400, false);
+                }
+
+                // 4️⃣ Lấy danh sách staff theo ID
+                var selectedStaffs = await _unitOfWork.UserRepo.GetUsersByIdsAsync(staffIds);
+                if (selectedStaffs.Count != staffIds.Count)
+                {
+                    return new ResponseDTO("One or more staff IDs are invalid", 400, false);
                 }
 
                 var assignedStaffs = new List<BookingStaff>();
 
-                foreach (var staff in activeStaffs)
+                foreach (var staff in selectedStaffs)
                 {
-                    // 4️⃣ Gán Staff vào Booking
+                    // 5️⃣ Gán Staff vào Booking
                     var bookingStaff = new BookingStaff
                     {
                         BookingStaffId = Guid.NewGuid(),
@@ -152,19 +215,19 @@ namespace CarRescueSystem.BLL.Service.Implement
                     assignedStaffs.Add(bookingStaff);
                     await _unitOfWork.BookingStaffRepo.AddAsync(bookingStaff);
 
-                    // 5️⃣ Cập nhật trạng thái Staff → Inactive
-                    staff.StaffStatus = StaffStatus.Inactive;
+                    // 6️⃣ Cập nhật trạng thái Staff → Inactive
+                    staff.StaffStatus = StaffStatus.INACTIVE;
                     await _unitOfWork.UserRepo.UpdateAsync(staff);
                 }
 
-                // 6️⃣ Cập nhật trạng thái Booking → InProgress
-                booking.Status = BookingStatus.InProgress;
+                // 7️⃣ Cập nhật trạng thái Booking → InProgress
+                booking.Status = BookingStatus.INPROGRESS;
                 booking.StartAt = DateTime.UtcNow;
                 await _unitOfWork.BookingRepo.UpdateAsync(booking);
 
                 await _unitOfWork.SaveChangeAsync();
 
-                return new ResponseDTO($"Assigned {activeStaffs.Count} staff to booking and updated status to InProgress", 200, true);
+                return new ResponseDTO($"Assigned {selectedStaffs.Count} staff to booking and updated status to InProgress", 200, true);
             }
             catch (Exception ex)
             {
@@ -173,17 +236,35 @@ namespace CarRescueSystem.BLL.Service.Implement
         }
 
 
+
         public async Task<ResponseDTO> AddServiceToBookingAsync(Guid bookingId, List<Guid> serviceIds)
         {
             var booking = await _unitOfWork.BookingRepo.GetByIdWithBookingStaffsAsync(bookingId);
             if (booking == null)
                 return new ResponseDTO("Booking not found", 404, false);
 
-            var userId = booking.CustomerId;
-            var userPackages = await _unitOfWork.UserPackageRepo.GetUserPackagesListAsync(userId);
-
             decimal totalPrice = 0;
-            decimal totalDiscount = 0; // Tổng số tiền giảm giá từ package
+            decimal totalDiscount = 0;
+
+            // Kiểm tra xem Booking có Vehicle không
+            Vehicle? vehicle = null;
+            Guid? packageId = null;
+            bool isPackageExpired = true; // Giả định gói đã hết hạn
+
+            if (booking.VehicleId.HasValue)
+            {
+                vehicle = await _unitOfWork.VehicleRepo.GetByIdAsync(booking.VehicleId.Value);
+                if (vehicle != null)
+                {
+                    packageId = vehicle.PackageId;
+
+                    // Kiểm tra nếu gói dịch vụ còn hạn sử dụng
+                    if (vehicle.ExpirationDate.HasValue && vehicle.ExpirationDate.Value >= DateTime.UtcNow)
+                    {
+                        isPackageExpired = false; // Gói còn hạn
+                    }
+                }
+            }
 
             foreach (var serviceId in serviceIds)
             {
@@ -191,11 +272,10 @@ namespace CarRescueSystem.BLL.Service.Implement
                 var service = await _unitOfWork.ServiceRepo.GetByIdAsync(serviceId);
                 if (service == null) continue;
 
-                // Kiểm tra xem service đã có trong booking chưa
+                // Kiểm tra service đã có trong booking chưa
                 var existingService = await _unitOfWork.ServiceOfBookingRepo.GetByBookingAndServiceAsync(bookingId, serviceId);
                 if (existingService == null)
                 {
-                    // Thêm service vào booking
                     var newService = new ServiceOfBooking
                     {
                         BookingId = bookingId,
@@ -205,24 +285,16 @@ namespace CarRescueSystem.BLL.Service.Implement
                 }
 
                 decimal originalPrice = service.ServicePrice;
-                decimal discountAmount = 0; // Mặc định không giảm
+                decimal discountAmount = 0;
 
-                if (userPackages != null && userPackages.Any())
+                // Nếu xe có package và gói còn hạn, kiểm tra xem service có trong package không
+                if (packageId.HasValue && !isPackageExpired)
                 {
-                    // Kiểm tra trong các package có service này không
-                    foreach (var userPackage in userPackages)
+                    var serviceInPackage = await _unitOfWork.PackageRepo.GetServiceInPackageAsync(packageId.Value, serviceId);
+                    if (serviceInPackage != null)
                     {
-                        var serviceInPackage = await _unitOfWork.PackageRepo.GetServiceInPackageAsync(userPackage.PackageId, serviceId);
-                        if (serviceInPackage != null && userPackage.Quantity > 0)
-                        {
-                            // Giảm 20% số tiền dịch vụ
-                            discountAmount = originalPrice * 0.2m;
-
-                            // Trừ số lần sử dụng của package
-                            userPackage.Quantity -= 1;
-                            await _unitOfWork.UserPackageRepo.UpdateAsync(userPackage);
-                            break; // Chỉ sử dụng giảm giá từ 1 package
-                        }
+                        // Giảm giá 20% nếu service có trong package và gói còn hạn
+                        discountAmount = originalPrice * 0.2m;
                     }
                 }
 
@@ -238,7 +310,8 @@ namespace CarRescueSystem.BLL.Service.Implement
             return new ResponseDTO("Services added and total price updated", 200, true, new
             {
                 TotalPrice = totalPrice,
-                TotalDiscount = totalDiscount
+                TotalDiscount = totalDiscount,
+                PackageExpired = isPackageExpired // Trả về thông tin gói có hết hạn không
             });
         }
 
@@ -250,23 +323,52 @@ namespace CarRescueSystem.BLL.Service.Implement
             if (booking == null)
                 return new ResponseDTO("Booking not found", 404, false);
 
-            booking.Status = isCompleted ? BookingStatus.Completed : BookingStatus.Cancelled;
+            if (isCompleted)
+            {
+                // 🛠 **Kiểm tra số dư trong ví khách hàng**
+                var response = await _walletService.GetWalletByUserId(booking.CustomerId);
+                var wallet = response.Result as Wallet;
+                if (wallet.Balance < booking.TotalPrice)
+                {
+                    return new ResponseDTO("Not enough balance to complete the booking", 400, false);
+                }
+
+                // 💰 **Trừ tiền nếu đủ số dư**
+                if (!booking.TotalPrice.HasValue)
+                {
+                    return new ResponseDTO("Total price is not set", 400, false);
+                }
+                var deductResponse = await _walletService.DeductAmount(booking.CustomerId, booking.TotalPrice.Value);
+
+                if (!deductResponse.IsSuccess)
+                {
+                    return new ResponseDTO("Payment failed", 400, false);
+                }
+
+                booking.Status = BookingStatus.COMPLETE;
+            }
+            else
+            {
+                // ❌ Nếu bị hủy, chỉ cập nhật trạng thái
+                booking.Status = BookingStatus.CANCELLED;
+            }
+
             await _unitOfWork.BookingRepo.UpdateAsync(booking);
 
+            // ✅ **Kích hoạt lại nhân viên**
             foreach (var staffBooking in booking.BookingStaffs)
             {
                 var staff = await _unitOfWork.UserRepo.GetByIdAsync(staffBooking.StaffId);
-                
-                staff.StaffStatus = StaffStatus.Active;
+                staff.StaffStatus = StaffStatus.ACTIVE;
                 await _unitOfWork.UserRepo.UpdateAsync(staff);
-                
             }
 
             await _unitOfWork.SaveChangeAsync();
 
-            string message = isCompleted ? "Booking completed successfully" : "Booking cancelled";
+            string message = isCompleted ? "Booking completed successfully and payment processed" : "Booking cancelled";
             return new ResponseDTO(message, 200, true);
         }
+
         public async Task<ResponseDTO> GetAllBookingAsync()
         {
             var bookings =  _unitOfWork.BookingRepo.GetAll();

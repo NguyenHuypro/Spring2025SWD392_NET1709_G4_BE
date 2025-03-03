@@ -12,7 +12,7 @@ namespace CarRescueSystem.BLL.Service.Interface
     {
         Task<ResponseDTO> CreateBookingAsync(CreatingBookingDTO creatingBookingDTO);
         Task<ResponseDTO> ConfirmBookingAsync(Guid bookingId); // Recep nhận đơn
-        Task<ResponseDTO> AssignStaffToBookingAsync(Guid bookingId);
+        Task<ResponseDTO> AssignStaffToBookingAsync(Guid bookingId, List<Guid> staffIds);
         Task<ResponseDTO> AddServiceToBookingAsync(Guid bookingId, List<Guid> serviceIds);
         Task<ResponseDTO> CompleteOrCancelBookingAsync(Guid bookingId, bool isCompleted);
 

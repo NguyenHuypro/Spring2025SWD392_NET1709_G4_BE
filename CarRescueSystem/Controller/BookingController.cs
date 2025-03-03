@@ -44,11 +44,12 @@ namespace CarRescueSystem.API.Controllers
         /// </summary>
         [HttpPut("assign-staff/{bookingId}")]
         //[Authorize(Roles = "Receptionist")] // Chỉ Receptionist có quyền
-        public async Task<IActionResult> AssignStaff(Guid bookingId)
+        public async Task<IActionResult> AssignStaff(Guid bookingId, [FromBody] List<Guid> staffIds)
         {
-            var response = await _bookingService.AssignStaffToBookingAsync(bookingId);
+            var response = await _bookingService.AssignStaffToBookingAsync(bookingId, staffIds);
             return StatusCode(response.StatusCode, response);
         }
+
 
         /// <summary>
         /// Staff thêm dịch vụ vào Booking

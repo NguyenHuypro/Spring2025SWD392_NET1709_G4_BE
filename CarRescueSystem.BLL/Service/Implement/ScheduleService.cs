@@ -81,7 +81,7 @@ namespace CarRescueSystem.BLL.Service.Implement
                 UserId = scheduleDto.UserId,
                 StartTime = scheduleDto.StartTime,
                 EndTime = scheduleDto.EndTime,
-                Shift = Enum.TryParse<ShiftType>(scheduleDto.Shift, out var shiftType) ? shiftType : ShiftType.Morning
+                Shift = Enum.TryParse<ShiftType>(scheduleDto.Shift, out var shiftType) ? shiftType : ShiftType.MORBING,
             };
 
             await _unitOfWork.ScheduleRepo.AddAsync(newSchedule);

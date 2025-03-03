@@ -21,9 +21,9 @@ namespace CarRescueSystem.DAL.Model
 
 
         public virtual ICollection<ServicePackage> ServicePackages { get; set; } = new HashSet<ServicePackage>();
-        // Danh sách các Booking sử dụng Package này
-        // Quan hệ N-N với User thông qua bảng UserPackage
-        public ICollection<UserPackage> UserPackages { get; set; }
-
+        // Một Package có thể được sử dụng bởi nhiều Vehicle (1-N)
+        public virtual ICollection<Vehicle> Vehicles { get; set; } = new HashSet<Vehicle>();
     }
+
 }
+

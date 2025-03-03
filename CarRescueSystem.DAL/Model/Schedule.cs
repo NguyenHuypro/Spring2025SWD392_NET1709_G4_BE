@@ -28,7 +28,7 @@ namespace CarRescueSystem.DAL.Model
 
     public enum ShiftType
     {
-        Morning,
-        Evening
+        MORBING,
+        EVENING
     }
 }

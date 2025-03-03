@@ -32,7 +32,15 @@ namespace CarRescueSystem.DAL.Model
         [Required, MaxLength(15)]
         public string LicensePlate { get; set; }
         public virtual User Customer { get; set; }
-        
+
+        // Gói dịch vụ hiện tại của xe (quan hệ 1-N)
+        [ForeignKey("Package")]
+        public Guid? PackageId { get; set; }
+        public virtual Package? Package { get; set; }
+
+        // 🆕 Ngày hết hạn của gói dịch vụ
+        public DateTime? ExpirationDate { get; set; }
+
 
     }
 }

@@ -25,8 +25,11 @@ namespace CarRescueSystem.DAL.UnitOfWork
             ServiceRepo = new ServiceRepository(_context);
             ServiceOfBookingRepo = new ServiceOfBookingRepository(_context);
             PackageRepo = new PackageRepository(_context);
-            UserPackageRepo = new UserPackageRepository(_context);
+       
             ScheduleRepo = new ScheduleRepository(_context);
+            RescueStationRepo = new RescueStationRepository(_context);
+            WalletRepo = new WalletRepository(_context);
+            TransactionRepo = new TransactionRepository(_context);
         }
         public IUserRepository UserRepo { get; private set; }
         public ITokenRepository TokenRepo { get; private set; }
@@ -37,8 +40,12 @@ namespace CarRescueSystem.DAL.UnitOfWork
         public IServiceRepository ServiceRepo { get; private set; }
         public IServiceOfBookingRepository ServiceOfBookingRepo { get; private set; }
         public IPackageRepository PackageRepo { get; private set; }
-        public IUserPackageRepository UserPackageRepo { get; private set; }
+       
         public IScheduleRepository ScheduleRepo { get; private set; }
+        public IRescueStationRepository RescueStationRepo { get; private set; }
+        public IWalletRepository WalletRepo { get; private set; }
+        public ITransactionRepository TransactionRepo { get; private set; }
+     
         public async Task<int> SaveAsync()
         {
             return await _context.SaveChangesAsync();

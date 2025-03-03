@@ -24,7 +24,7 @@ builder.Services.AddCors(options =>
     options.AddPolicy("AllowReactApp",
         policy =>
         {
-            policy.WithOrigins("http://localhost:3000","http://localhost:5210") // URL React chạy trên cổng 3000 , 5210 chay local
+            policy.WithOrigins("http://localhost:3000","http://localhost:5210", "http://localhost:5173") // URL React chạy trên cổng 3000 , 5210 chay local
                   .AllowAnyHeader()
                   .AllowAnyMethod();
                   
@@ -33,8 +33,10 @@ builder.Services.AddCors(options =>
 
 // Setup SQL Server Database
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")
-    ));
+    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")),
+    ServiceLifetime.Scoped
+);
+
 
 Console.WriteLine("Current Connection String: " + builder.Configuration.GetConnectionString("DefaultConnection"));
 
@@ -108,10 +110,17 @@ builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 builder.Services.AddScoped<IAuthService, AuthService>();
 builder.Services.AddScoped<IBookingService, BookingService>();
 builder.Services.AddScoped<IServiceRescueService, ServiceRescueService>();
-builder.Services.AddScoped<IVehicleRepository, VehicleRepository>();
+
 builder.Services.AddScoped<IVehicleService, VehicleService>();
-builder.Services.AddScoped<IUserPackageService, UserPackageService>();
+builder.Services.AddScoped<IRescueStationService, RescueStationService>();
+builder.Services.AddScoped<IStaffService, StaffService>();
+builder.Services.AddScoped<IPackageService, PackageService>();
+builder.Services.AddScoped<IWalletService, WalletService>();
+builder.Services.AddScoped<ITransactionService, TransactionService>();
+
 builder.Services.AddScoped<IScheduleService,  ScheduleService>();
+builder.Services.AddHttpClient<IOsmService, OsmService>();
+
 builder.Services.AddScoped<UserUtility>();
 builder.Services.AddAutoMapper(typeof(VehicleProfile));
 builder.Services.AddScoped<DbSeeder>();

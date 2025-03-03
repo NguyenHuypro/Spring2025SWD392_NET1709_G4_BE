@@ -31,18 +31,33 @@ namespace CarRescueSystem.DAL.Repository.Implement
             if (packageService == null)
                 return false;
 
-            if (packageService.Quantity > 1)
-            {
-                packageService.Quantity -= 1; // Giảm số lượng nếu còn
-            }
-            else
-            {
+            
                 _context.ServicePackages.Remove(packageService); // Xóa nếu hết số lượng
-            }
+            
 
             await _context.SaveChangesAsync();
             return true;
         }
+        public async Task<bool> AddServiceToPackageAsync(Guid packageId, List<Guid> serviceIds)
+        {
+            var package = await _context.Packages.FindAsync(packageId);
+            if (package == null) return false;
+
+            var services = _context.Services.Where(s => serviceIds.Contains(s.ServiceId)).ToList();
+            if (!services.Any()) return false;
+
+            var servicePackages = services.Select(service => new ServicePackage
+            {
+                ServicePackageId = Guid.NewGuid(),
+                PackageID = packageId,
+                ServiceId = service.ServiceId
+            }).ToList();
+
+            await _context.ServicePackages.AddRangeAsync(servicePackages);
+            await _context.SaveChangesAsync();
+            return true;
+        }
+
 
 
     }

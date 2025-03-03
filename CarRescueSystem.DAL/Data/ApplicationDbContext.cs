@@ -20,8 +20,11 @@ namespace CarRescueSystem.DAL.Data
         public DbSet<ServiceOfBooking> ServiceOfBookings { get; set; }
         public DbSet<BookingStaff> BookingStaffs { get; set; }
         public DbSet<ServicePackage> ServicePackages { get; set; }
-        public DbSet<UserPackage> UserPackages { get; set; }
+
         public DbSet<Schedule> Schedules {  get; set; }
+        public DbSet<RescueStation> RescueStations { get; set; }
+        public DbSet<Wallet> Wallets { get; set; }
+        public DbSet<Transaction> Transactions { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -36,7 +39,8 @@ namespace CarRescueSystem.DAL.Data
             modelBuilder.Entity<ServiceOfBooking>().HasKey(sb => sb.ServiceOfBookingId);
             modelBuilder.Entity<BookingStaff>().HasKey(bs => bs.BookingStaffId);
             modelBuilder.Entity<ServicePackage>().HasKey(sp => sp.ServicePackageId);
-            modelBuilder.Entity<UserPackage>().HasKey(s => s.UserPackageId);
+            modelBuilder.Entity<Transaction>().HasKey(b => b.TransactionId);
+            modelBuilder.Entity<Wallet>().HasKey(u => u.UserId);
 
             // 🔹 User - Role (1-N)
             modelBuilder.Entity<User>()
@@ -111,20 +115,7 @@ namespace CarRescueSystem.DAL.Data
                 .WithMany(p => p.ServicePackages)
                 .HasForeignKey(sp => sp.PackageID)
                 .OnDelete(DeleteBehavior.Cascade);
-            //User N-N Package
-            modelBuilder.Entity<UserPackage>()
-                .HasKey(up => new { up.UserId, up.PackageId });
-
-            modelBuilder.Entity<UserPackage>()
-                .HasOne(up => up.User)
-                .WithMany(u => u.UserPackages)
-                .HasForeignKey(up => up.UserId);
-
-            modelBuilder.Entity<UserPackage>()
-                .HasOne(up => up.Package)
-                .WithMany(p => p.UserPackages)
-                .HasForeignKey(up => up.PackageId);
-
+            
 
 
             // 🔹 Định dạng kiểu tiền tệ
@@ -139,6 +130,27 @@ namespace CarRescueSystem.DAL.Data
             modelBuilder.Entity<Booking>()
                 .Property(b => b.TotalPrice)
                 .HasColumnType("decimal(18,2)");
+
+
+            // Quan hệ giữa Booking và RescueStation (1-N)
+            modelBuilder.Entity<Booking>()
+                .HasOne(b => b.RescueStation)
+                .WithMany(r => r.Bookings)
+                .HasForeignKey(b => b.RescueStationId)
+                .OnDelete(DeleteBehavior.SetNull);
+
+            // Quan hệ giữa User (Staff) và RescueStation (1-N)
+            modelBuilder.Entity<User>()
+                .HasOne(u => u.RescueStation)
+                .WithMany(r => r.Staffs)
+                .HasForeignKey(u => u.RescueStationId)
+                .OnDelete(DeleteBehavior.SetNull);
+
+            //user - transaction
+            modelBuilder.Entity<Transaction>()
+            .HasOne(t => t.Wallet)
+            .WithMany()
+            .HasForeignKey(t => t.UserId);
 
             base.OnModelCreating(modelBuilder);
 

@@ -24,6 +24,10 @@ namespace CarRescueSystem.DAL.Repository.Implement
                 .Where(bs => bs.BookingId == bookingId)
                 .FirstOrDefaultAsync();
         }
+        public async Task AddRangeAsync(IEnumerable<BookingStaff> entities)
+        {
+            await _context.BookingStaffs.AddRangeAsync(entities);
+        }
 
     }
 }
