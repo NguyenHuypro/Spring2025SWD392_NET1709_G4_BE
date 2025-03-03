@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "E:\\KÌ 7 MÃI ĐỈNH\\SWD392\\project\\CarRescueSystem\\CarRescueSystem.csproj": {}
+    "D:\\HOC\\SWD\\CarRescueSystem\\CarRescueSystemProject\\CarRescueSystem\\CarRescueSystem.csproj": {}
   },
   "projects": {
-    "E:\\KÌ 7 MÃI ĐỈNH\\SWD392\\project\\CarRescueSystem.BLL\\CarRescueSystem.BLL.csproj": {
+    "D:\\HOC\\SWD\\CarRescueSystem\\CarRescueSystemProject\\CarRescueSystem.BLL\\CarRescueSystem.BLL.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\KÌ 7 MÃI ĐỈNH\\SWD392\\project\\CarRescueSystem.BLL\\CarRescueSystem.BLL.csproj",
+        "projectUniqueName": "D:\\HOC\\SWD\\CarRescueSystem\\CarRescueSystemProject\\CarRescueSystem.BLL\\CarRescueSystem.BLL.csproj",
         "projectName": "CarRescueSystem.BLL",
-        "projectPath": "E:\\KÌ 7 MÃI ĐỈNH\\SWD392\\project\\CarRescueSystem.BLL\\CarRescueSystem.BLL.csproj",
+        "projectPath": "D:\\HOC\\SWD\\CarRescueSystem\\CarRescueSystemProject\\CarRescueSystem.BLL\\CarRescueSystem.BLL.csproj",
         "packagesPath": "C:\\Users\\dangl\\.nuget\\packages\\",
-        "outputPath": "E:\\KÌ 7 MÃI ĐỈNH\\SWD392\\project\\CarRescueSystem.BLL\\obj\\",
+        "outputPath": "D:\\HOC\\SWD\\CarRescueSystem\\CarRescueSystemProject\\CarRescueSystem.BLL\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -33,11 +33,11 @@
           "net9.0": {
             "targetAlias": "net9.0",
             "projectReferences": {
-              "E:\\KÌ 7 MÃI ĐỈNH\\SWD392\\project\\CarRescueSystem.Common\\CarRescueSystem.Common.csproj": {
-                "projectPath": "E:\\KÌ 7 MÃI ĐỈNH\\SWD392\\project\\CarRescueSystem.Common\\CarRescueSystem.Common.csproj"
+              "D:\\HOC\\SWD\\CarRescueSystem\\CarRescueSystemProject\\CarRescueSystem.Common\\CarRescueSystem.Common.csproj": {
+                "projectPath": "D:\\HOC\\SWD\\CarRescueSystem\\CarRescueSystemProject\\CarRescueSystem.Common\\CarRescueSystem.Common.csproj"
               },
-              "E:\\KÌ 7 MÃI ĐỈNH\\SWD392\\project\\CarRescueSystem.DAL\\CarRescueSystem.DAL.csproj": {
-                "projectPath": "E:\\KÌ 7 MÃI ĐỈNH\\SWD392\\project\\CarRescueSystem.DAL\\CarRescueSystem.DAL.csproj"
+              "D:\\HOC\\SWD\\CarRescueSystem\\CarRescueSystemProject\\CarRescueSystem.DAL\\CarRescueSystem.DAL.csproj": {
+                "projectPath": "D:\\HOC\\SWD\\CarRescueSystem\\CarRescueSystemProject\\CarRescueSystem.DAL\\CarRescueSystem.DAL.csproj"
               }
             }
           }
@@ -58,6 +58,10 @@
         "net9.0": {
           "targetAlias": "net9.0",
           "dependencies": {
+            "AutoMapper": {
+              "target": "Package",
+              "version": "[14.0.0, )"
+            },
             "BCrypt.Net-Next": {
               "target": "Package",
               "version": "[4.0.3, )"
@@ -91,14 +95,14 @@
         }
       }
     },
-    "E:\\KÌ 7 MÃI ĐỈNH\\SWD392\\project\\CarRescueSystem.Common\\CarRescueSystem.Common.csproj": {
+    "D:\\HOC\\SWD\\CarRescueSystem\\CarRescueSystemProject\\CarRescueSystem.Common\\CarRescueSystem.Common.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\KÌ 7 MÃI ĐỈNH\\SWD392\\project\\CarRescueSystem.Common\\CarRescueSystem.Common.csproj",
+        "projectUniqueName": "D:\\HOC\\SWD\\CarRescueSystem\\CarRescueSystemProject\\CarRescueSystem.Common\\CarRescueSystem.Common.csproj",
         "projectName": "CarRescueSystem.Common",
-        "projectPath": "E:\\KÌ 7 MÃI ĐỈNH\\SWD392\\project\\CarRescueSystem.Common\\CarRescueSystem.Common.csproj",
+        "projectPath": "D:\\HOC\\SWD\\CarRescueSystem\\CarRescueSystemProject\\CarRescueSystem.Common\\CarRescueSystem.Common.csproj",
         "packagesPath": "C:\\Users\\dangl\\.nuget\\packages\\",
-        "outputPath": "E:\\KÌ 7 MÃI ĐỈNH\\SWD392\\project\\CarRescueSystem.Common\\obj\\",
+        "outputPath": "D:\\HOC\\SWD\\CarRescueSystem\\CarRescueSystemProject\\CarRescueSystem.Common\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -157,14 +161,14 @@
         }
       }
     },
-    "E:\\KÌ 7 MÃI ĐỈNH\\SWD392\\project\\CarRescueSystem.DAL\\CarRescueSystem.DAL.csproj": {
+    "D:\\HOC\\SWD\\CarRescueSystem\\CarRescueSystemProject\\CarRescueSystem.DAL\\CarRescueSystem.DAL.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\KÌ 7 MÃI ĐỈNH\\SWD392\\project\\CarRescueSystem.DAL\\CarRescueSystem.DAL.csproj",
+        "projectUniqueName": "D:\\HOC\\SWD\\CarRescueSystem\\CarRescueSystemProject\\CarRescueSystem.DAL\\CarRescueSystem.DAL.csproj",
         "projectName": "CarRescueSystem.DAL",
-        "projectPath": "E:\\KÌ 7 MÃI ĐỈNH\\SWD392\\project\\CarRescueSystem.DAL\\CarRescueSystem.DAL.csproj",
+        "projectPath": "D:\\HOC\\SWD\\CarRescueSystem\\CarRescueSystemProject\\CarRescueSystem.DAL\\CarRescueSystem.DAL.csproj",
         "packagesPath": "C:\\Users\\dangl\\.nuget\\packages\\",
-        "outputPath": "E:\\KÌ 7 MÃI ĐỈNH\\SWD392\\project\\CarRescueSystem.DAL\\obj\\",
+        "outputPath": "D:\\HOC\\SWD\\CarRescueSystem\\CarRescueSystemProject\\CarRescueSystem.DAL\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -186,8 +190,8 @@
           "net9.0": {
             "targetAlias": "net9.0",
             "projectReferences": {
-              "E:\\KÌ 7 MÃI ĐỈNH\\SWD392\\project\\CarRescueSystem.Common\\CarRescueSystem.Common.csproj": {
-                "projectPath": "E:\\KÌ 7 MÃI ĐỈNH\\SWD392\\project\\CarRescueSystem.Common\\CarRescueSystem.Common.csproj"
+              "D:\\HOC\\SWD\\CarRescueSystem\\CarRescueSystemProject\\CarRescueSystem.Common\\CarRescueSystem.Common.csproj": {
+                "projectPath": "D:\\HOC\\SWD\\CarRescueSystem\\CarRescueSystemProject\\CarRescueSystem.Common\\CarRescueSystem.Common.csproj"
               }
             }
           }
@@ -210,23 +214,35 @@
           "dependencies": {
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
-              "version": "[9.0.1, )"
+              "version": "[9.0.2, )"
             },
             "Microsoft.EntityFrameworkCore.Design": {
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
               "suppressParent": "All",
               "target": "Package",
-              "version": "[9.0.1, )"
+              "version": "[9.0.2, )"
             },
             "Microsoft.EntityFrameworkCore.SqlServer": {
               "target": "Package",
-              "version": "[9.0.1, )"
+              "version": "[9.0.2, )"
             },
             "Microsoft.EntityFrameworkCore.Tools": {
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
               "suppressParent": "All",
               "target": "Package",
-              "version": "[9.0.1, )"
+              "version": "[9.0.2, )"
+            },
+            "Microsoft.Extensions.Configuration": {
+              "target": "Package",
+              "version": "[9.0.2, )"
+            },
+            "Microsoft.Extensions.Configuration.Json": {
+              "target": "Package",
+              "version": "[9.0.2, )"
+            },
+            "Pomelo.EntityFrameworkCore.MySql": {
+              "target": "Package",
+              "version": "[9.0.0-preview.3.efcore.9.0.0, )"
             }
           },
           "imports": [
@@ -249,14 +265,14 @@
         }
       }
     },
-    "E:\\KÌ 7 MÃI ĐỈNH\\SWD392\\project\\CarRescueSystem\\CarRescueSystem.csproj": {
+    "D:\\HOC\\SWD\\CarRescueSystem\\CarRescueSystemProject\\CarRescueSystem\\CarRescueSystem.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\KÌ 7 MÃI ĐỈNH\\SWD392\\project\\CarRescueSystem\\CarRescueSystem.csproj",
+        "projectUniqueName": "D:\\HOC\\SWD\\CarRescueSystem\\CarRescueSystemProject\\CarRescueSystem\\CarRescueSystem.csproj",
         "projectName": "CarRescueSystem",
-        "projectPath": "E:\\KÌ 7 MÃI ĐỈNH\\SWD392\\project\\CarRescueSystem\\CarRescueSystem.csproj",
+        "projectPath": "D:\\HOC\\SWD\\CarRescueSystem\\CarRescueSystemProject\\CarRescueSystem\\CarRescueSystem.csproj",
         "packagesPath": "C:\\Users\\dangl\\.nuget\\packages\\",
-        "outputPath": "E:\\KÌ 7 MÃI ĐỈNH\\SWD392\\project\\CarRescueSystem\\obj\\",
+        "outputPath": "D:\\HOC\\SWD\\CarRescueSystem\\CarRescueSystemProject\\CarRescueSystem\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -278,14 +294,14 @@
           "net9.0": {
             "targetAlias": "net9.0",
             "projectReferences": {
-              "E:\\KÌ 7 MÃI ĐỈNH\\SWD392\\project\\CarRescueSystem.BLL\\CarRescueSystem.BLL.csproj": {
-                "projectPath": "E:\\KÌ 7 MÃI ĐỈNH\\SWD392\\project\\CarRescueSystem.BLL\\CarRescueSystem.BLL.csproj"
+              "D:\\HOC\\SWD\\CarRescueSystem\\CarRescueSystemProject\\CarRescueSystem.BLL\\CarRescueSystem.BLL.csproj": {
+                "projectPath": "D:\\HOC\\SWD\\CarRescueSystem\\CarRescueSystemProject\\CarRescueSystem.BLL\\CarRescueSystem.BLL.csproj"
               },
-              "E:\\KÌ 7 MÃI ĐỈNH\\SWD392\\project\\CarRescueSystem.Common\\CarRescueSystem.Common.csproj": {
-                "projectPath": "E:\\KÌ 7 MÃI ĐỈNH\\SWD392\\project\\CarRescueSystem.Common\\CarRescueSystem.Common.csproj"
+              "D:\\HOC\\SWD\\CarRescueSystem\\CarRescueSystemProject\\CarRescueSystem.Common\\CarRescueSystem.Common.csproj": {
+                "projectPath": "D:\\HOC\\SWD\\CarRescueSystem\\CarRescueSystemProject\\CarRescueSystem.Common\\CarRescueSystem.Common.csproj"
               },
-              "E:\\KÌ 7 MÃI ĐỈNH\\SWD392\\project\\CarRescueSystem.DAL\\CarRescueSystem.DAL.csproj": {
-                "projectPath": "E:\\KÌ 7 MÃI ĐỈNH\\SWD392\\project\\CarRescueSystem.DAL\\CarRescueSystem.DAL.csproj"
+              "D:\\HOC\\SWD\\CarRescueSystem\\CarRescueSystemProject\\CarRescueSystem.DAL\\CarRescueSystem.DAL.csproj": {
+                "projectPath": "D:\\HOC\\SWD\\CarRescueSystem\\CarRescueSystemProject\\CarRescueSystem.DAL\\CarRescueSystem.DAL.csproj"
               }
             }
           }
@@ -310,19 +326,51 @@
               "target": "Package",
               "version": "[4.0.3, )"
             },
+            "Microsoft.AspNetCore.Authentication.JwtBearer": {
+              "target": "Package",
+              "version": "[9.0.2, )"
+            },
+            "Microsoft.AspNetCore.Authorization": {
+              "target": "Package",
+              "version": "[9.0.2, )"
+            },
             "Microsoft.AspNetCore.OpenApi": {
               "target": "Package",
               "version": "[9.0.1, )"
+            },
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[9.0.2, )"
             },
             "Microsoft.EntityFrameworkCore.Design": {
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
               "suppressParent": "All",
               "target": "Package",
-              "version": "[9.0.1, )"
+              "version": "[9.0.2, )"
+            },
+            "Microsoft.EntityFrameworkCore.Relational": {
+              "target": "Package",
+              "version": "[9.0.2, )"
+            },
+            "Microsoft.IdentityModel.Tokens": {
+              "target": "Package",
+              "version": "[8.6.0, )"
+            },
+            "Pomelo.EntityFrameworkCore.MySql": {
+              "target": "Package",
+              "version": "[9.0.0-preview.3.efcore.9.0.0, )"
             },
             "Swashbuckle.AspNetCore": {
               "target": "Package",
               "version": "[7.2.0, )"
+            },
+            "System.IdentityModel.Tokens.Jwt": {
+              "target": "Package",
+              "version": "[8.6.0, )"
+            },
+            "System.Net.Http.Json": {
+              "target": "Package",
+              "version": "[9.0.2, )"
             }
           },
           "imports": [

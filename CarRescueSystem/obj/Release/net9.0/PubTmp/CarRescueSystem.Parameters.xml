@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <parameters>
   <parameter name="IIS Web Application Name" description="" value="CarRescueSystem" tags="IisApp">
-    <parameterEntry kind="ProviderPath" scope="IisApp" match="^E:\\KÌ\ 7\ MÃI\ ĐỈNH\\SWD392\\project\\CarRescueSystem\\obj\\Release\\net9\.0\\PubTmp\\Out\\$" />
+    <parameterEntry kind="ProviderPath" scope="IisApp" match="^D:\\HOC\\SWD\\CarRescueSystem\\CarRescueSystemProject\\CarRescueSystem\\obj\\Release\\net9\.0\\PubTmp\\Out\\$" />
   </parameter>
 </parameters>

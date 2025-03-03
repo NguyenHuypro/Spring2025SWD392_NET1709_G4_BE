@@ -166,7 +166,8 @@ namespace CarRescueSystem.BLL.Service.Implement
                     PasswordHash = hashedPassword,
                     PasswordSalt = salt,
                     PhoneNumber = registerDTO.Phone, // Thêm số điện thoại vào user
-                    RoleID = new Guid("C3DAB1C3-6D48-4B23-8369-2D1C9C828F22"),
+                    //RoleID = new Guid("C3DAB1C3-6D48-4B23-8369-2D1C9C828F22"),
+                    RoleID = new Guid("A1A2A3A4-B5B6-C7C8-D9D0-E1E2E3E4E5E6")
                 };
                 //save
                 await _unitOfWork.UserRepo.AddAsync(newUser);

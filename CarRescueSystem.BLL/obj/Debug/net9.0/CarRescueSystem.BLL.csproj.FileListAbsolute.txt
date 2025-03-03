@@ -1,17 +1,18 @@
-E:\KÌ 7 MÃI ĐỈNH\SWD392\project\CarRescueSystem.BLL\bin\Debug\net9.0\CarRescueSystem.BLL.deps.json
-E:\KÌ 7 MÃI ĐỈNH\SWD392\project\CarRescueSystem.BLL\bin\Debug\net9.0\CarRescueSystem.BLL.dll
-E:\KÌ 7 MÃI ĐỈNH\SWD392\project\CarRescueSystem.BLL\bin\Debug\net9.0\CarRescueSystem.BLL.pdb
-E:\KÌ 7 MÃI ĐỈNH\SWD392\project\CarRescueSystem.BLL\bin\Debug\net9.0\CarRescueSystem.Common.dll
-E:\KÌ 7 MÃI ĐỈNH\SWD392\project\CarRescueSystem.BLL\bin\Debug\net9.0\CarRescueSystem.Common.pdb
-E:\KÌ 7 MÃI ĐỈNH\SWD392\project\CarRescueSystem.BLL\obj\Debug\net9.0\CarRescueSystem.BLL.csproj.AssemblyReference.cache
-E:\KÌ 7 MÃI ĐỈNH\SWD392\project\CarRescueSystem.BLL\obj\Debug\net9.0\CarRescueSystem.BLL.GeneratedMSBuildEditorConfig.editorconfig
-E:\KÌ 7 MÃI ĐỈNH\SWD392\project\CarRescueSystem.BLL\obj\Debug\net9.0\CarRescueSystem.BLL.AssemblyInfoInputs.cache
-E:\KÌ 7 MÃI ĐỈNH\SWD392\project\CarRescueSystem.BLL\obj\Debug\net9.0\CarRescueSystem.BLL.AssemblyInfo.cs
-E:\KÌ 7 MÃI ĐỈNH\SWD392\project\CarRescueSystem.BLL\obj\Debug\net9.0\CarRescueSystem.BLL.csproj.CoreCompileInputs.cache
-E:\KÌ 7 MÃI ĐỈNH\SWD392\project\CarRescueSystem.BLL\obj\Debug\net9.0\CarRescu.4D093542.Up2Date
-E:\KÌ 7 MÃI ĐỈNH\SWD392\project\CarRescueSystem.BLL\obj\Debug\net9.0\CarRescueSystem.BLL.dll
-E:\KÌ 7 MÃI ĐỈNH\SWD392\project\CarRescueSystem.BLL\obj\Debug\net9.0\refint\CarRescueSystem.BLL.dll
-E:\KÌ 7 MÃI ĐỈNH\SWD392\project\CarRescueSystem.BLL\obj\Debug\net9.0\CarRescueSystem.BLL.pdb
-E:\KÌ 7 MÃI ĐỈNH\SWD392\project\CarRescueSystem.BLL\obj\Debug\net9.0\ref\CarRescueSystem.BLL.dll
-E:\KÌ 7 MÃI ĐỈNH\SWD392\project\CarRescueSystem.BLL\bin\Debug\net9.0\CarRescueSystem.DAL.dll
-E:\KÌ 7 MÃI ĐỈNH\SWD392\project\CarRescueSystem.BLL\bin\Debug\net9.0\CarRescueSystem.DAL.pdb
+D:\HOC\SWD\CarRescueSystem\CarRescueSystemProject\CarRescueSystem.BLL\bin\Debug\net9.0\CarRescueSystem.BLL.deps.json
+D:\HOC\SWD\CarRescueSystem\CarRescueSystemProject\CarRescueSystem.BLL\bin\Debug\net9.0\CarRescueSystem.BLL.dll
+D:\HOC\SWD\CarRescueSystem\CarRescueSystemProject\CarRescueSystem.BLL\bin\Debug\net9.0\CarRescueSystem.BLL.pdb
+D:\HOC\SWD\CarRescueSystem\CarRescueSystemProject\CarRescueSystem.BLL\bin\Debug\net9.0\CarRescueSystem.Common.dll
+D:\HOC\SWD\CarRescueSystem\CarRescueSystemProject\CarRescueSystem.BLL\bin\Debug\net9.0\CarRescueSystem.DAL.dll
+D:\HOC\SWD\CarRescueSystem\CarRescueSystemProject\CarRescueSystem.BLL\bin\Debug\net9.0\CarRescueSystem.Common.pdb
+D:\HOC\SWD\CarRescueSystem\CarRescueSystemProject\CarRescueSystem.BLL\bin\Debug\net9.0\CarRescueSystem.DAL.pdb
+D:\HOC\SWD\CarRescueSystem\CarRescueSystemProject\CarRescueSystem.BLL\obj\Debug\net9.0\CarRescueSystem.BLL.csproj.AssemblyReference.cache
+D:\HOC\SWD\CarRescueSystem\CarRescueSystemProject\CarRescueSystem.BLL\obj\Debug\net9.0\CarRescueSystem.BLL.GeneratedMSBuildEditorConfig.editorconfig
+D:\HOC\SWD\CarRescueSystem\CarRescueSystemProject\CarRescueSystem.BLL\obj\Debug\net9.0\CarRescueSystem.BLL.AssemblyInfoInputs.cache
+D:\HOC\SWD\CarRescueSystem\CarRescueSystemProject\CarRescueSystem.BLL\obj\Debug\net9.0\CarRescueSystem.BLL.AssemblyInfo.cs
+D:\HOC\SWD\CarRescueSystem\CarRescueSystemProject\CarRescueSystem.BLL\obj\Debug\net9.0\CarRescueSystem.BLL.csproj.CoreCompileInputs.cache
+D:\HOC\SWD\CarRescueSystem\CarRescueSystemProject\CarRescueSystem.BLL\obj\Debug\net9.0\CarRescueSystem.BLL.sourcelink.json
+D:\HOC\SWD\CarRescueSystem\CarRescueSystemProject\CarRescueSystem.BLL\obj\Debug\net9.0\CarRescu.4D093542.Up2Date
+D:\HOC\SWD\CarRescueSystem\CarRescueSystemProject\CarRescueSystem.BLL\obj\Debug\net9.0\CarRescueSystem.BLL.dll
+D:\HOC\SWD\CarRescueSystem\CarRescueSystemProject\CarRescueSystem.BLL\obj\Debug\net9.0\refint\CarRescueSystem.BLL.dll
+D:\HOC\SWD\CarRescueSystem\CarRescueSystemProject\CarRescueSystem.BLL\obj\Debug\net9.0\CarRescueSystem.BLL.pdb
+D:\HOC\SWD\CarRescueSystem\CarRescueSystemProject\CarRescueSystem.BLL\obj\Debug\net9.0\ref\CarRescueSystem.BLL.dll

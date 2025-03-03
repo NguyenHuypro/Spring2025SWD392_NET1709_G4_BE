@@ -1,6 +1,9 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\CarRescueSystem",
+    "\\CarRescueSystem\\Controller"
   ],
+  "SelectedNode": "\\CarRescueSystem\\Controller\\UserPackageController.cs",
   "PreviewInSolutionExplorer": false
 }

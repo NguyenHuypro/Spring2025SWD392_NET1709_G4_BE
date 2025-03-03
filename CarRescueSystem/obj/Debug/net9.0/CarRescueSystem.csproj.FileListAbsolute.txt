@@ -1,166 +1,191 @@
-E:\KÌ 7 MÃI ĐỈNH\SWD392\project\CarRescueSystem\obj\Debug\net9.0\CarRescueSystem.csproj.AssemblyReference.cache
-E:\KÌ 7 MÃI ĐỈNH\SWD392\project\CarRescueSystem\obj\Debug\net9.0\CarRescueSystem.GeneratedMSBuildEditorConfig.editorconfig
-E:\KÌ 7 MÃI ĐỈNH\SWD392\project\CarRescueSystem\obj\Debug\net9.0\CarRescueSystem.AssemblyInfoInputs.cache
-E:\KÌ 7 MÃI ĐỈNH\SWD392\project\CarRescueSystem\obj\Debug\net9.0\CarRescueSystem.AssemblyInfo.cs
-E:\KÌ 7 MÃI ĐỈNH\SWD392\project\CarRescueSystem\obj\Debug\net9.0\CarRescueSystem.csproj.CoreCompileInputs.cache
-E:\KÌ 7 MÃI ĐỈNH\SWD392\project\CarRescueSystem\obj\Debug\net9.0\CarRescueSystem.MvcApplicationPartsAssemblyInfo.cache
-E:\KÌ 7 MÃI ĐỈNH\SWD392\project\CarRescueSystem\bin\Debug\net9.0\appsettings.Development.json
-E:\KÌ 7 MÃI ĐỈNH\SWD392\project\CarRescueSystem\bin\Debug\net9.0\appsettings.json
-E:\KÌ 7 MÃI ĐỈNH\SWD392\project\CarRescueSystem\bin\Debug\net9.0\CarRescueSystem.staticwebassets.endpoints.json
-E:\KÌ 7 MÃI ĐỈNH\SWD392\project\CarRescueSystem\bin\Debug\net9.0\CarRescueSystem.exe
-E:\KÌ 7 MÃI ĐỈNH\SWD392\project\CarRescueSystem\bin\Debug\net9.0\CarRescueSystem.deps.json
-E:\KÌ 7 MÃI ĐỈNH\SWD392\project\CarRescueSystem\bin\Debug\net9.0\CarRescueSystem.runtimeconfig.json
-E:\KÌ 7 MÃI ĐỈNH\SWD392\project\CarRescueSystem\bin\Debug\net9.0\CarRescueSystem.dll
-E:\KÌ 7 MÃI ĐỈNH\SWD392\project\CarRescueSystem\bin\Debug\net9.0\CarRescueSystem.pdb
-E:\KÌ 7 MÃI ĐỈNH\SWD392\project\CarRescueSystem\bin\Debug\net9.0\Azure.Core.dll
-E:\KÌ 7 MÃI ĐỈNH\SWD392\project\CarRescueSystem\bin\Debug\net9.0\Azure.Identity.dll
-E:\KÌ 7 MÃI ĐỈNH\SWD392\project\CarRescueSystem\bin\Debug\net9.0\Microsoft.AspNetCore.OpenApi.dll
-E:\KÌ 7 MÃI ĐỈNH\SWD392\project\CarRescueSystem\bin\Debug\net9.0\Microsoft.Bcl.AsyncInterfaces.dll
-E:\KÌ 7 MÃI ĐỈNH\SWD392\project\CarRescueSystem\bin\Debug\net9.0\Microsoft.Data.SqlClient.dll
-E:\KÌ 7 MÃI ĐỈNH\SWD392\project\CarRescueSystem\bin\Debug\net9.0\Microsoft.EntityFrameworkCore.dll
-E:\KÌ 7 MÃI ĐỈNH\SWD392\project\CarRescueSystem\bin\Debug\net9.0\Microsoft.EntityFrameworkCore.Abstractions.dll
-E:\KÌ 7 MÃI ĐỈNH\SWD392\project\CarRescueSystem\bin\Debug\net9.0\Microsoft.EntityFrameworkCore.Relational.dll
-E:\KÌ 7 MÃI ĐỈNH\SWD392\project\CarRescueSystem\bin\Debug\net9.0\Microsoft.EntityFrameworkCore.SqlServer.dll
-E:\KÌ 7 MÃI ĐỈNH\SWD392\project\CarRescueSystem\bin\Debug\net9.0\Microsoft.Identity.Client.dll
-E:\KÌ 7 MÃI ĐỈNH\SWD392\project\CarRescueSystem\bin\Debug\net9.0\Microsoft.Identity.Client.Extensions.Msal.dll
-E:\KÌ 7 MÃI ĐỈNH\SWD392\project\CarRescueSystem\bin\Debug\net9.0\Microsoft.IdentityModel.Abstractions.dll
-E:\KÌ 7 MÃI ĐỈNH\SWD392\project\CarRescueSystem\bin\Debug\net9.0\Microsoft.IdentityModel.JsonWebTokens.dll
-E:\KÌ 7 MÃI ĐỈNH\SWD392\project\CarRescueSystem\bin\Debug\net9.0\Microsoft.IdentityModel.Logging.dll
-E:\KÌ 7 MÃI ĐỈNH\SWD392\project\CarRescueSystem\bin\Debug\net9.0\Microsoft.IdentityModel.Protocols.dll
-E:\KÌ 7 MÃI ĐỈNH\SWD392\project\CarRescueSystem\bin\Debug\net9.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
-E:\KÌ 7 MÃI ĐỈNH\SWD392\project\CarRescueSystem\bin\Debug\net9.0\Microsoft.IdentityModel.Tokens.dll
-E:\KÌ 7 MÃI ĐỈNH\SWD392\project\CarRescueSystem\bin\Debug\net9.0\Microsoft.OpenApi.dll
-E:\KÌ 7 MÃI ĐỈNH\SWD392\project\CarRescueSystem\bin\Debug\net9.0\Microsoft.SqlServer.Server.dll
-E:\KÌ 7 MÃI ĐỈNH\SWD392\project\CarRescueSystem\bin\Debug\net9.0\Microsoft.Win32.SystemEvents.dll
-E:\KÌ 7 MÃI ĐỈNH\SWD392\project\CarRescueSystem\bin\Debug\net9.0\Swashbuckle.AspNetCore.Swagger.dll
-E:\KÌ 7 MÃI ĐỈNH\SWD392\project\CarRescueSystem\bin\Debug\net9.0\Swashbuckle.AspNetCore.SwaggerGen.dll
-E:\KÌ 7 MÃI ĐỈNH\SWD392\project\CarRescueSystem\bin\Debug\net9.0\Swashbuckle.AspNetCore.SwaggerUI.dll
-E:\KÌ 7 MÃI ĐỈNH\SWD392\project\CarRescueSystem\bin\Debug\net9.0\System.ClientModel.dll
-E:\KÌ 7 MÃI ĐỈNH\SWD392\project\CarRescueSystem\bin\Debug\net9.0\System.Configuration.ConfigurationManager.dll
-E:\KÌ 7 MÃI ĐỈNH\SWD392\project\CarRescueSystem\bin\Debug\net9.0\System.Drawing.Common.dll
-E:\KÌ 7 MÃI ĐỈNH\SWD392\project\CarRescueSystem\bin\Debug\net9.0\System.IdentityModel.Tokens.Jwt.dll
-E:\KÌ 7 MÃI ĐỈNH\SWD392\project\CarRescueSystem\bin\Debug\net9.0\System.Memory.Data.dll
-E:\KÌ 7 MÃI ĐỈNH\SWD392\project\CarRescueSystem\bin\Debug\net9.0\System.Runtime.Caching.dll
-E:\KÌ 7 MÃI ĐỈNH\SWD392\project\CarRescueSystem\bin\Debug\net9.0\System.Security.Cryptography.ProtectedData.dll
-E:\KÌ 7 MÃI ĐỈNH\SWD392\project\CarRescueSystem\bin\Debug\net9.0\System.Security.Permissions.dll
-E:\KÌ 7 MÃI ĐỈNH\SWD392\project\CarRescueSystem\bin\Debug\net9.0\System.Windows.Extensions.dll
-E:\KÌ 7 MÃI ĐỈNH\SWD392\project\CarRescueSystem\bin\Debug\net9.0\runtimes\unix\lib\net6.0\Microsoft.Data.SqlClient.dll
-E:\KÌ 7 MÃI ĐỈNH\SWD392\project\CarRescueSystem\bin\Debug\net9.0\runtimes\win\lib\net6.0\Microsoft.Data.SqlClient.dll
-E:\KÌ 7 MÃI ĐỈNH\SWD392\project\CarRescueSystem\bin\Debug\net9.0\runtimes\win-arm\native\Microsoft.Data.SqlClient.SNI.dll
-E:\KÌ 7 MÃI ĐỈNH\SWD392\project\CarRescueSystem\bin\Debug\net9.0\runtimes\win-arm64\native\Microsoft.Data.SqlClient.SNI.dll
-E:\KÌ 7 MÃI ĐỈNH\SWD392\project\CarRescueSystem\bin\Debug\net9.0\runtimes\win-x64\native\Microsoft.Data.SqlClient.SNI.dll
-E:\KÌ 7 MÃI ĐỈNH\SWD392\project\CarRescueSystem\bin\Debug\net9.0\runtimes\win-x86\native\Microsoft.Data.SqlClient.SNI.dll
-E:\KÌ 7 MÃI ĐỈNH\SWD392\project\CarRescueSystem\bin\Debug\net9.0\runtimes\win\lib\net6.0\Microsoft.Win32.SystemEvents.dll
-E:\KÌ 7 MÃI ĐỈNH\SWD392\project\CarRescueSystem\bin\Debug\net9.0\runtimes\unix\lib\net6.0\System.Drawing.Common.dll
-E:\KÌ 7 MÃI ĐỈNH\SWD392\project\CarRescueSystem\bin\Debug\net9.0\runtimes\win\lib\net6.0\System.Drawing.Common.dll
-E:\KÌ 7 MÃI ĐỈNH\SWD392\project\CarRescueSystem\bin\Debug\net9.0\runtimes\win\lib\net6.0\System.Runtime.Caching.dll
-E:\KÌ 7 MÃI ĐỈNH\SWD392\project\CarRescueSystem\bin\Debug\net9.0\runtimes\win\lib\net6.0\System.Security.Cryptography.ProtectedData.dll
-E:\KÌ 7 MÃI ĐỈNH\SWD392\project\CarRescueSystem\bin\Debug\net9.0\runtimes\win\lib\net6.0\System.Windows.Extensions.dll
-E:\KÌ 7 MÃI ĐỈNH\SWD392\project\CarRescueSystem\bin\Debug\net9.0\CarRescueSystem.BLL.dll
-E:\KÌ 7 MÃI ĐỈNH\SWD392\project\CarRescueSystem\bin\Debug\net9.0\CarRescueSystem.Common.dll
-E:\KÌ 7 MÃI ĐỈNH\SWD392\project\CarRescueSystem\bin\Debug\net9.0\CarRescueSystem.DAL.dll
-E:\KÌ 7 MÃI ĐỈNH\SWD392\project\CarRescueSystem\bin\Debug\net9.0\CarRescueSystem.BLL.pdb
-E:\KÌ 7 MÃI ĐỈNH\SWD392\project\CarRescueSystem\bin\Debug\net9.0\CarRescueSystem.DAL.pdb
-E:\KÌ 7 MÃI ĐỈNH\SWD392\project\CarRescueSystem\bin\Debug\net9.0\CarRescueSystem.Common.pdb
-E:\KÌ 7 MÃI ĐỈNH\SWD392\project\CarRescueSystem\obj\Debug\net9.0\scopedcss\bundle\CarRescueSystem.styles.css
-E:\KÌ 7 MÃI ĐỈNH\SWD392\project\CarRescueSystem\obj\Debug\net9.0\staticwebassets.build.json
-E:\KÌ 7 MÃI ĐỈNH\SWD392\project\CarRescueSystem\obj\Debug\net9.0\staticwebassets.development.json
-E:\KÌ 7 MÃI ĐỈNH\SWD392\project\CarRescueSystem\obj\Debug\net9.0\staticwebassets.build.endpoints.json
-E:\KÌ 7 MÃI ĐỈNH\SWD392\project\CarRescueSystem\obj\Debug\net9.0\staticwebassets\msbuild.CarRescueSystem.Microsoft.AspNetCore.StaticWebAssets.props
-E:\KÌ 7 MÃI ĐỈNH\SWD392\project\CarRescueSystem\obj\Debug\net9.0\staticwebassets\msbuild.CarRescueSystem.Microsoft.AspNetCore.StaticWebAssetEndpoints.props
-E:\KÌ 7 MÃI ĐỈNH\SWD392\project\CarRescueSystem\obj\Debug\net9.0\staticwebassets\msbuild.build.CarRescueSystem.props
-E:\KÌ 7 MÃI ĐỈNH\SWD392\project\CarRescueSystem\obj\Debug\net9.0\staticwebassets\msbuild.buildMultiTargeting.CarRescueSystem.props
-E:\KÌ 7 MÃI ĐỈNH\SWD392\project\CarRescueSystem\obj\Debug\net9.0\staticwebassets\msbuild.buildTransitive.CarRescueSystem.props
-E:\KÌ 7 MÃI ĐỈNH\SWD392\project\CarRescueSystem\obj\Debug\net9.0\staticwebassets.pack.json
-E:\KÌ 7 MÃI ĐỈNH\SWD392\project\CarRescueSystem\obj\Debug\net9.0\CarRescu.E4816C73.Up2Date
-E:\KÌ 7 MÃI ĐỈNH\SWD392\project\CarRescueSystem\obj\Debug\net9.0\CarRescueSystem.dll
-E:\KÌ 7 MÃI ĐỈNH\SWD392\project\CarRescueSystem\obj\Debug\net9.0\refint\CarRescueSystem.dll
-E:\KÌ 7 MÃI ĐỈNH\SWD392\project\CarRescueSystem\obj\Debug\net9.0\CarRescueSystem.pdb
-E:\KÌ 7 MÃI ĐỈNH\SWD392\project\CarRescueSystem\obj\Debug\net9.0\CarRescueSystem.genruntimeconfig.cache
-E:\KÌ 7 MÃI ĐỈNH\SWD392\project\CarRescueSystem\obj\Debug\net9.0\ref\CarRescueSystem.dll
-E:\KÌ 7 MÃI ĐỈNH\SWD392\project\CarRescueSystem\obj\Debug\net9.0\CarRescueSystem.MvcApplicationPartsAssemblyInfo.cs
-E:\KÌ 7 MÃI ĐỈNH\SWD392\project\CarRescueSystem\obj\Debug\net9.0\staticwebassets.upToDateCheck.txt
-E:\KÌ 7 MÃI ĐỈNH\SWD392\project\CarRescueSystem\bin\Debug\net9.0\Humanizer.dll
-E:\KÌ 7 MÃI ĐỈNH\SWD392\project\CarRescueSystem\bin\Debug\net9.0\Microsoft.Build.Locator.dll
-E:\KÌ 7 MÃI ĐỈNH\SWD392\project\CarRescueSystem\bin\Debug\net9.0\Microsoft.CodeAnalysis.dll
-E:\KÌ 7 MÃI ĐỈNH\SWD392\project\CarRescueSystem\bin\Debug\net9.0\Microsoft.CodeAnalysis.CSharp.dll
-E:\KÌ 7 MÃI ĐỈNH\SWD392\project\CarRescueSystem\bin\Debug\net9.0\Microsoft.CodeAnalysis.CSharp.Workspaces.dll
-E:\KÌ 7 MÃI ĐỈNH\SWD392\project\CarRescueSystem\bin\Debug\net9.0\Microsoft.CodeAnalysis.Workspaces.dll
-E:\KÌ 7 MÃI ĐỈNH\SWD392\project\CarRescueSystem\bin\Debug\net9.0\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.dll
-E:\KÌ 7 MÃI ĐỈNH\SWD392\project\CarRescueSystem\bin\Debug\net9.0\Microsoft.CodeAnalysis.Workspaces.MSBuild.dll
-E:\KÌ 7 MÃI ĐỈNH\SWD392\project\CarRescueSystem\bin\Debug\net9.0\Microsoft.EntityFrameworkCore.Design.dll
-E:\KÌ 7 MÃI ĐỈNH\SWD392\project\CarRescueSystem\bin\Debug\net9.0\Microsoft.Extensions.DependencyModel.dll
-E:\KÌ 7 MÃI ĐỈNH\SWD392\project\CarRescueSystem\bin\Debug\net9.0\Mono.TextTemplating.dll
-E:\KÌ 7 MÃI ĐỈNH\SWD392\project\CarRescueSystem\bin\Debug\net9.0\System.CodeDom.dll
-E:\KÌ 7 MÃI ĐỈNH\SWD392\project\CarRescueSystem\bin\Debug\net9.0\System.Composition.AttributedModel.dll
-E:\KÌ 7 MÃI ĐỈNH\SWD392\project\CarRescueSystem\bin\Debug\net9.0\System.Composition.Convention.dll
-E:\KÌ 7 MÃI ĐỈNH\SWD392\project\CarRescueSystem\bin\Debug\net9.0\System.Composition.Hosting.dll
-E:\KÌ 7 MÃI ĐỈNH\SWD392\project\CarRescueSystem\bin\Debug\net9.0\System.Composition.Runtime.dll
-E:\KÌ 7 MÃI ĐỈNH\SWD392\project\CarRescueSystem\bin\Debug\net9.0\System.Composition.TypedParts.dll
-E:\KÌ 7 MÃI ĐỈNH\SWD392\project\CarRescueSystem\bin\Debug\net9.0\cs\Microsoft.CodeAnalysis.resources.dll
-E:\KÌ 7 MÃI ĐỈNH\SWD392\project\CarRescueSystem\bin\Debug\net9.0\de\Microsoft.CodeAnalysis.resources.dll
-E:\KÌ 7 MÃI ĐỈNH\SWD392\project\CarRescueSystem\bin\Debug\net9.0\es\Microsoft.CodeAnalysis.resources.dll
-E:\KÌ 7 MÃI ĐỈNH\SWD392\project\CarRescueSystem\bin\Debug\net9.0\fr\Microsoft.CodeAnalysis.resources.dll
-E:\KÌ 7 MÃI ĐỈNH\SWD392\project\CarRescueSystem\bin\Debug\net9.0\it\Microsoft.CodeAnalysis.resources.dll
-E:\KÌ 7 MÃI ĐỈNH\SWD392\project\CarRescueSystem\bin\Debug\net9.0\ja\Microsoft.CodeAnalysis.resources.dll
-E:\KÌ 7 MÃI ĐỈNH\SWD392\project\CarRescueSystem\bin\Debug\net9.0\ko\Microsoft.CodeAnalysis.resources.dll
-E:\KÌ 7 MÃI ĐỈNH\SWD392\project\CarRescueSystem\bin\Debug\net9.0\pl\Microsoft.CodeAnalysis.resources.dll
-E:\KÌ 7 MÃI ĐỈNH\SWD392\project\CarRescueSystem\bin\Debug\net9.0\pt-BR\Microsoft.CodeAnalysis.resources.dll
-E:\KÌ 7 MÃI ĐỈNH\SWD392\project\CarRescueSystem\bin\Debug\net9.0\ru\Microsoft.CodeAnalysis.resources.dll
-E:\KÌ 7 MÃI ĐỈNH\SWD392\project\CarRescueSystem\bin\Debug\net9.0\tr\Microsoft.CodeAnalysis.resources.dll
-E:\KÌ 7 MÃI ĐỈNH\SWD392\project\CarRescueSystem\bin\Debug\net9.0\zh-Hans\Microsoft.CodeAnalysis.resources.dll
-E:\KÌ 7 MÃI ĐỈNH\SWD392\project\CarRescueSystem\bin\Debug\net9.0\zh-Hant\Microsoft.CodeAnalysis.resources.dll
-E:\KÌ 7 MÃI ĐỈNH\SWD392\project\CarRescueSystem\bin\Debug\net9.0\cs\Microsoft.CodeAnalysis.CSharp.resources.dll
-E:\KÌ 7 MÃI ĐỈNH\SWD392\project\CarRescueSystem\bin\Debug\net9.0\de\Microsoft.CodeAnalysis.CSharp.resources.dll
-E:\KÌ 7 MÃI ĐỈNH\SWD392\project\CarRescueSystem\bin\Debug\net9.0\es\Microsoft.CodeAnalysis.CSharp.resources.dll
-E:\KÌ 7 MÃI ĐỈNH\SWD392\project\CarRescueSystem\bin\Debug\net9.0\fr\Microsoft.CodeAnalysis.CSharp.resources.dll
-E:\KÌ 7 MÃI ĐỈNH\SWD392\project\CarRescueSystem\bin\Debug\net9.0\it\Microsoft.CodeAnalysis.CSharp.resources.dll
-E:\KÌ 7 MÃI ĐỈNH\SWD392\project\CarRescueSystem\bin\Debug\net9.0\ja\Microsoft.CodeAnalysis.CSharp.resources.dll
-E:\KÌ 7 MÃI ĐỈNH\SWD392\project\CarRescueSystem\bin\Debug\net9.0\ko\Microsoft.CodeAnalysis.CSharp.resources.dll
-E:\KÌ 7 MÃI ĐỈNH\SWD392\project\CarRescueSystem\bin\Debug\net9.0\pl\Microsoft.CodeAnalysis.CSharp.resources.dll
-E:\KÌ 7 MÃI ĐỈNH\SWD392\project\CarRescueSystem\bin\Debug\net9.0\pt-BR\Microsoft.CodeAnalysis.CSharp.resources.dll
-E:\KÌ 7 MÃI ĐỈNH\SWD392\project\CarRescueSystem\bin\Debug\net9.0\ru\Microsoft.CodeAnalysis.CSharp.resources.dll
-E:\KÌ 7 MÃI ĐỈNH\SWD392\project\CarRescueSystem\bin\Debug\net9.0\tr\Microsoft.CodeAnalysis.CSharp.resources.dll
-E:\KÌ 7 MÃI ĐỈNH\SWD392\project\CarRescueSystem\bin\Debug\net9.0\zh-Hans\Microsoft.CodeAnalysis.CSharp.resources.dll
-E:\KÌ 7 MÃI ĐỈNH\SWD392\project\CarRescueSystem\bin\Debug\net9.0\zh-Hant\Microsoft.CodeAnalysis.CSharp.resources.dll
-E:\KÌ 7 MÃI ĐỈNH\SWD392\project\CarRescueSystem\bin\Debug\net9.0\cs\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
-E:\KÌ 7 MÃI ĐỈNH\SWD392\project\CarRescueSystem\bin\Debug\net9.0\de\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
-E:\KÌ 7 MÃI ĐỈNH\SWD392\project\CarRescueSystem\bin\Debug\net9.0\es\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
-E:\KÌ 7 MÃI ĐỈNH\SWD392\project\CarRescueSystem\bin\Debug\net9.0\fr\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
-E:\KÌ 7 MÃI ĐỈNH\SWD392\project\CarRescueSystem\bin\Debug\net9.0\it\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
-E:\KÌ 7 MÃI ĐỈNH\SWD392\project\CarRescueSystem\bin\Debug\net9.0\ja\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
-E:\KÌ 7 MÃI ĐỈNH\SWD392\project\CarRescueSystem\bin\Debug\net9.0\ko\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
-E:\KÌ 7 MÃI ĐỈNH\SWD392\project\CarRescueSystem\bin\Debug\net9.0\pl\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
-E:\KÌ 7 MÃI ĐỈNH\SWD392\project\CarRescueSystem\bin\Debug\net9.0\pt-BR\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
-E:\KÌ 7 MÃI ĐỈNH\SWD392\project\CarRescueSystem\bin\Debug\net9.0\ru\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
-E:\KÌ 7 MÃI ĐỈNH\SWD392\project\CarRescueSystem\bin\Debug\net9.0\tr\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
-E:\KÌ 7 MÃI ĐỈNH\SWD392\project\CarRescueSystem\bin\Debug\net9.0\zh-Hans\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
-E:\KÌ 7 MÃI ĐỈNH\SWD392\project\CarRescueSystem\bin\Debug\net9.0\zh-Hant\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
-E:\KÌ 7 MÃI ĐỈNH\SWD392\project\CarRescueSystem\bin\Debug\net9.0\cs\Microsoft.CodeAnalysis.Workspaces.resources.dll
-E:\KÌ 7 MÃI ĐỈNH\SWD392\project\CarRescueSystem\bin\Debug\net9.0\de\Microsoft.CodeAnalysis.Workspaces.resources.dll
-E:\KÌ 7 MÃI ĐỈNH\SWD392\project\CarRescueSystem\bin\Debug\net9.0\es\Microsoft.CodeAnalysis.Workspaces.resources.dll
-E:\KÌ 7 MÃI ĐỈNH\SWD392\project\CarRescueSystem\bin\Debug\net9.0\fr\Microsoft.CodeAnalysis.Workspaces.resources.dll
-E:\KÌ 7 MÃI ĐỈNH\SWD392\project\CarRescueSystem\bin\Debug\net9.0\it\Microsoft.CodeAnalysis.Workspaces.resources.dll
-E:\KÌ 7 MÃI ĐỈNH\SWD392\project\CarRescueSystem\bin\Debug\net9.0\ja\Microsoft.CodeAnalysis.Workspaces.resources.dll
-E:\KÌ 7 MÃI ĐỈNH\SWD392\project\CarRescueSystem\bin\Debug\net9.0\ko\Microsoft.CodeAnalysis.Workspaces.resources.dll
-E:\KÌ 7 MÃI ĐỈNH\SWD392\project\CarRescueSystem\bin\Debug\net9.0\pl\Microsoft.CodeAnalysis.Workspaces.resources.dll
-E:\KÌ 7 MÃI ĐỈNH\SWD392\project\CarRescueSystem\bin\Debug\net9.0\pt-BR\Microsoft.CodeAnalysis.Workspaces.resources.dll
-E:\KÌ 7 MÃI ĐỈNH\SWD392\project\CarRescueSystem\bin\Debug\net9.0\ru\Microsoft.CodeAnalysis.Workspaces.resources.dll
-E:\KÌ 7 MÃI ĐỈNH\SWD392\project\CarRescueSystem\bin\Debug\net9.0\tr\Microsoft.CodeAnalysis.Workspaces.resources.dll
-E:\KÌ 7 MÃI ĐỈNH\SWD392\project\CarRescueSystem\bin\Debug\net9.0\zh-Hans\Microsoft.CodeAnalysis.Workspaces.resources.dll
-E:\KÌ 7 MÃI ĐỈNH\SWD392\project\CarRescueSystem\bin\Debug\net9.0\zh-Hant\Microsoft.CodeAnalysis.Workspaces.resources.dll
-E:\KÌ 7 MÃI ĐỈNH\SWD392\project\CarRescueSystem\bin\Debug\net9.0\cs\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
-E:\KÌ 7 MÃI ĐỈNH\SWD392\project\CarRescueSystem\bin\Debug\net9.0\de\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
-E:\KÌ 7 MÃI ĐỈNH\SWD392\project\CarRescueSystem\bin\Debug\net9.0\es\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
-E:\KÌ 7 MÃI ĐỈNH\SWD392\project\CarRescueSystem\bin\Debug\net9.0\fr\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
-E:\KÌ 7 MÃI ĐỈNH\SWD392\project\CarRescueSystem\bin\Debug\net9.0\it\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
-E:\KÌ 7 MÃI ĐỈNH\SWD392\project\CarRescueSystem\bin\Debug\net9.0\ja\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
-E:\KÌ 7 MÃI ĐỈNH\SWD392\project\CarRescueSystem\bin\Debug\net9.0\ko\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
-E:\KÌ 7 MÃI ĐỈNH\SWD392\project\CarRescueSystem\bin\Debug\net9.0\pl\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
-E:\KÌ 7 MÃI ĐỈNH\SWD392\project\CarRescueSystem\bin\Debug\net9.0\pt-BR\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
-E:\KÌ 7 MÃI ĐỈNH\SWD392\project\CarRescueSystem\bin\Debug\net9.0\ru\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
-E:\KÌ 7 MÃI ĐỈNH\SWD392\project\CarRescueSystem\bin\Debug\net9.0\tr\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
-E:\KÌ 7 MÃI ĐỈNH\SWD392\project\CarRescueSystem\bin\Debug\net9.0\zh-Hans\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
-E:\KÌ 7 MÃI ĐỈNH\SWD392\project\CarRescueSystem\bin\Debug\net9.0\zh-Hant\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
-E:\KÌ 7 MÃI ĐỈNH\SWD392\project\CarRescueSystem\bin\Debug\net9.0\BCrypt.Net-Next.dll
-E:\KÌ 7 MÃI ĐỈNH\SWD392\project\CarRescueSystem\bin\Debug\net9.0\BouncyCastle.Crypto.dll
+D:\HOC\SWD\CarRescueSystem\CarRescueSystemProject\CarRescueSystem\bin\Debug\net9.0\appsettings.Development.json
+D:\HOC\SWD\CarRescueSystem\CarRescueSystemProject\CarRescueSystem\bin\Debug\net9.0\appsettings.json
+D:\HOC\SWD\CarRescueSystem\CarRescueSystemProject\CarRescueSystem\bin\Debug\net9.0\CarRescueSystem.staticwebassets.endpoints.json
+D:\HOC\SWD\CarRescueSystem\CarRescueSystemProject\CarRescueSystem\bin\Debug\net9.0\CarRescueSystem.exe
+D:\HOC\SWD\CarRescueSystem\CarRescueSystemProject\CarRescueSystem\bin\Debug\net9.0\CarRescueSystem.deps.json
+D:\HOC\SWD\CarRescueSystem\CarRescueSystemProject\CarRescueSystem\bin\Debug\net9.0\CarRescueSystem.runtimeconfig.json
+D:\HOC\SWD\CarRescueSystem\CarRescueSystemProject\CarRescueSystem\bin\Debug\net9.0\CarRescueSystem.dll
+D:\HOC\SWD\CarRescueSystem\CarRescueSystemProject\CarRescueSystem\bin\Debug\net9.0\CarRescueSystem.pdb
+D:\HOC\SWD\CarRescueSystem\CarRescueSystemProject\CarRescueSystem\bin\Debug\net9.0\AutoMapper.dll
+D:\HOC\SWD\CarRescueSystem\CarRescueSystemProject\CarRescueSystem\bin\Debug\net9.0\Azure.Core.dll
+D:\HOC\SWD\CarRescueSystem\CarRescueSystemProject\CarRescueSystem\bin\Debug\net9.0\Azure.Identity.dll
+D:\HOC\SWD\CarRescueSystem\CarRescueSystemProject\CarRescueSystem\bin\Debug\net9.0\BCrypt.Net-Next.dll
+D:\HOC\SWD\CarRescueSystem\CarRescueSystemProject\CarRescueSystem\bin\Debug\net9.0\Humanizer.dll
+D:\HOC\SWD\CarRescueSystem\CarRescueSystemProject\CarRescueSystem\bin\Debug\net9.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+D:\HOC\SWD\CarRescueSystem\CarRescueSystemProject\CarRescueSystem\bin\Debug\net9.0\Microsoft.AspNetCore.Authorization.dll
+D:\HOC\SWD\CarRescueSystem\CarRescueSystemProject\CarRescueSystem\bin\Debug\net9.0\Microsoft.AspNetCore.Metadata.dll
+D:\HOC\SWD\CarRescueSystem\CarRescueSystemProject\CarRescueSystem\bin\Debug\net9.0\Microsoft.AspNetCore.OpenApi.dll
+D:\HOC\SWD\CarRescueSystem\CarRescueSystemProject\CarRescueSystem\bin\Debug\net9.0\Microsoft.Bcl.AsyncInterfaces.dll
+D:\HOC\SWD\CarRescueSystem\CarRescueSystemProject\CarRescueSystem\bin\Debug\net9.0\Microsoft.Build.Locator.dll
+D:\HOC\SWD\CarRescueSystem\CarRescueSystemProject\CarRescueSystem\bin\Debug\net9.0\Microsoft.CodeAnalysis.dll
+D:\HOC\SWD\CarRescueSystem\CarRescueSystemProject\CarRescueSystem\bin\Debug\net9.0\Microsoft.CodeAnalysis.CSharp.dll
+D:\HOC\SWD\CarRescueSystem\CarRescueSystemProject\CarRescueSystem\bin\Debug\net9.0\Microsoft.CodeAnalysis.CSharp.Workspaces.dll
+D:\HOC\SWD\CarRescueSystem\CarRescueSystemProject\CarRescueSystem\bin\Debug\net9.0\Microsoft.CodeAnalysis.Workspaces.dll
+D:\HOC\SWD\CarRescueSystem\CarRescueSystemProject\CarRescueSystem\bin\Debug\net9.0\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.dll
+D:\HOC\SWD\CarRescueSystem\CarRescueSystemProject\CarRescueSystem\bin\Debug\net9.0\Microsoft.CodeAnalysis.Workspaces.MSBuild.dll
+D:\HOC\SWD\CarRescueSystem\CarRescueSystemProject\CarRescueSystem\bin\Debug\net9.0\Microsoft.Data.SqlClient.dll
+D:\HOC\SWD\CarRescueSystem\CarRescueSystemProject\CarRescueSystem\bin\Debug\net9.0\Microsoft.EntityFrameworkCore.dll
+D:\HOC\SWD\CarRescueSystem\CarRescueSystemProject\CarRescueSystem\bin\Debug\net9.0\Microsoft.EntityFrameworkCore.Abstractions.dll
+D:\HOC\SWD\CarRescueSystem\CarRescueSystemProject\CarRescueSystem\bin\Debug\net9.0\Microsoft.EntityFrameworkCore.Design.dll
+D:\HOC\SWD\CarRescueSystem\CarRescueSystemProject\CarRescueSystem\bin\Debug\net9.0\Microsoft.EntityFrameworkCore.Relational.dll
+D:\HOC\SWD\CarRescueSystem\CarRescueSystemProject\CarRescueSystem\bin\Debug\net9.0\Microsoft.EntityFrameworkCore.SqlServer.dll
+D:\HOC\SWD\CarRescueSystem\CarRescueSystemProject\CarRescueSystem\bin\Debug\net9.0\Microsoft.Extensions.Caching.Abstractions.dll
+D:\HOC\SWD\CarRescueSystem\CarRescueSystemProject\CarRescueSystem\bin\Debug\net9.0\Microsoft.Extensions.Caching.Memory.dll
+D:\HOC\SWD\CarRescueSystem\CarRescueSystemProject\CarRescueSystem\bin\Debug\net9.0\Microsoft.Extensions.Configuration.dll
+D:\HOC\SWD\CarRescueSystem\CarRescueSystemProject\CarRescueSystem\bin\Debug\net9.0\Microsoft.Extensions.Configuration.Abstractions.dll
+D:\HOC\SWD\CarRescueSystem\CarRescueSystemProject\CarRescueSystem\bin\Debug\net9.0\Microsoft.Extensions.Configuration.FileExtensions.dll
+D:\HOC\SWD\CarRescueSystem\CarRescueSystemProject\CarRescueSystem\bin\Debug\net9.0\Microsoft.Extensions.Configuration.Json.dll
+D:\HOC\SWD\CarRescueSystem\CarRescueSystemProject\CarRescueSystem\bin\Debug\net9.0\Microsoft.Extensions.DependencyInjection.dll
+D:\HOC\SWD\CarRescueSystem\CarRescueSystemProject\CarRescueSystem\bin\Debug\net9.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+D:\HOC\SWD\CarRescueSystem\CarRescueSystemProject\CarRescueSystem\bin\Debug\net9.0\Microsoft.Extensions.DependencyModel.dll
+D:\HOC\SWD\CarRescueSystem\CarRescueSystemProject\CarRescueSystem\bin\Debug\net9.0\Microsoft.Extensions.FileProviders.Abstractions.dll
+D:\HOC\SWD\CarRescueSystem\CarRescueSystemProject\CarRescueSystem\bin\Debug\net9.0\Microsoft.Extensions.FileProviders.Physical.dll
+D:\HOC\SWD\CarRescueSystem\CarRescueSystemProject\CarRescueSystem\bin\Debug\net9.0\Microsoft.Extensions.FileSystemGlobbing.dll
+D:\HOC\SWD\CarRescueSystem\CarRescueSystemProject\CarRescueSystem\bin\Debug\net9.0\Microsoft.Extensions.Logging.dll
+D:\HOC\SWD\CarRescueSystem\CarRescueSystemProject\CarRescueSystem\bin\Debug\net9.0\Microsoft.Extensions.Logging.Abstractions.dll
+D:\HOC\SWD\CarRescueSystem\CarRescueSystemProject\CarRescueSystem\bin\Debug\net9.0\Microsoft.Extensions.Options.dll
+D:\HOC\SWD\CarRescueSystem\CarRescueSystemProject\CarRescueSystem\bin\Debug\net9.0\Microsoft.Extensions.Primitives.dll
+D:\HOC\SWD\CarRescueSystem\CarRescueSystemProject\CarRescueSystem\bin\Debug\net9.0\Microsoft.Identity.Client.dll
+D:\HOC\SWD\CarRescueSystem\CarRescueSystemProject\CarRescueSystem\bin\Debug\net9.0\Microsoft.Identity.Client.Extensions.Msal.dll
+D:\HOC\SWD\CarRescueSystem\CarRescueSystemProject\CarRescueSystem\bin\Debug\net9.0\Microsoft.IdentityModel.Abstractions.dll
+D:\HOC\SWD\CarRescueSystem\CarRescueSystemProject\CarRescueSystem\bin\Debug\net9.0\Microsoft.IdentityModel.JsonWebTokens.dll
+D:\HOC\SWD\CarRescueSystem\CarRescueSystemProject\CarRescueSystem\bin\Debug\net9.0\Microsoft.IdentityModel.Logging.dll
+D:\HOC\SWD\CarRescueSystem\CarRescueSystemProject\CarRescueSystem\bin\Debug\net9.0\Microsoft.IdentityModel.Protocols.dll
+D:\HOC\SWD\CarRescueSystem\CarRescueSystemProject\CarRescueSystem\bin\Debug\net9.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+D:\HOC\SWD\CarRescueSystem\CarRescueSystemProject\CarRescueSystem\bin\Debug\net9.0\Microsoft.IdentityModel.Tokens.dll
+D:\HOC\SWD\CarRescueSystem\CarRescueSystemProject\CarRescueSystem\bin\Debug\net9.0\Microsoft.OpenApi.dll
+D:\HOC\SWD\CarRescueSystem\CarRescueSystemProject\CarRescueSystem\bin\Debug\net9.0\Microsoft.SqlServer.Server.dll
+D:\HOC\SWD\CarRescueSystem\CarRescueSystemProject\CarRescueSystem\bin\Debug\net9.0\Microsoft.Win32.SystemEvents.dll
+D:\HOC\SWD\CarRescueSystem\CarRescueSystemProject\CarRescueSystem\bin\Debug\net9.0\Mono.TextTemplating.dll
+D:\HOC\SWD\CarRescueSystem\CarRescueSystemProject\CarRescueSystem\bin\Debug\net9.0\MySqlConnector.dll
+D:\HOC\SWD\CarRescueSystem\CarRescueSystemProject\CarRescueSystem\bin\Debug\net9.0\Pomelo.EntityFrameworkCore.MySql.dll
+D:\HOC\SWD\CarRescueSystem\CarRescueSystemProject\CarRescueSystem\bin\Debug\net9.0\BouncyCastle.Crypto.dll
+D:\HOC\SWD\CarRescueSystem\CarRescueSystemProject\CarRescueSystem\bin\Debug\net9.0\Swashbuckle.AspNetCore.Swagger.dll
+D:\HOC\SWD\CarRescueSystem\CarRescueSystemProject\CarRescueSystem\bin\Debug\net9.0\Swashbuckle.AspNetCore.SwaggerGen.dll
+D:\HOC\SWD\CarRescueSystem\CarRescueSystemProject\CarRescueSystem\bin\Debug\net9.0\Swashbuckle.AspNetCore.SwaggerUI.dll
+D:\HOC\SWD\CarRescueSystem\CarRescueSystemProject\CarRescueSystem\bin\Debug\net9.0\System.ClientModel.dll
+D:\HOC\SWD\CarRescueSystem\CarRescueSystemProject\CarRescueSystem\bin\Debug\net9.0\System.CodeDom.dll
+D:\HOC\SWD\CarRescueSystem\CarRescueSystemProject\CarRescueSystem\bin\Debug\net9.0\System.Composition.AttributedModel.dll
+D:\HOC\SWD\CarRescueSystem\CarRescueSystemProject\CarRescueSystem\bin\Debug\net9.0\System.Composition.Convention.dll
+D:\HOC\SWD\CarRescueSystem\CarRescueSystemProject\CarRescueSystem\bin\Debug\net9.0\System.Composition.Hosting.dll
+D:\HOC\SWD\CarRescueSystem\CarRescueSystemProject\CarRescueSystem\bin\Debug\net9.0\System.Composition.Runtime.dll
+D:\HOC\SWD\CarRescueSystem\CarRescueSystemProject\CarRescueSystem\bin\Debug\net9.0\System.Composition.TypedParts.dll
+D:\HOC\SWD\CarRescueSystem\CarRescueSystemProject\CarRescueSystem\bin\Debug\net9.0\System.Configuration.ConfigurationManager.dll
+D:\HOC\SWD\CarRescueSystem\CarRescueSystemProject\CarRescueSystem\bin\Debug\net9.0\System.Drawing.Common.dll
+D:\HOC\SWD\CarRescueSystem\CarRescueSystemProject\CarRescueSystem\bin\Debug\net9.0\System.Formats.Asn1.dll
+D:\HOC\SWD\CarRescueSystem\CarRescueSystemProject\CarRescueSystem\bin\Debug\net9.0\System.IdentityModel.Tokens.Jwt.dll
+D:\HOC\SWD\CarRescueSystem\CarRescueSystemProject\CarRescueSystem\bin\Debug\net9.0\System.Memory.Data.dll
+D:\HOC\SWD\CarRescueSystem\CarRescueSystemProject\CarRescueSystem\bin\Debug\net9.0\System.Net.Http.Json.dll
+D:\HOC\SWD\CarRescueSystem\CarRescueSystemProject\CarRescueSystem\bin\Debug\net9.0\System.Runtime.Caching.dll
+D:\HOC\SWD\CarRescueSystem\CarRescueSystemProject\CarRescueSystem\bin\Debug\net9.0\System.Security.Cryptography.ProtectedData.dll
+D:\HOC\SWD\CarRescueSystem\CarRescueSystemProject\CarRescueSystem\bin\Debug\net9.0\System.Security.Permissions.dll
+D:\HOC\SWD\CarRescueSystem\CarRescueSystemProject\CarRescueSystem\bin\Debug\net9.0\System.Text.Json.dll
+D:\HOC\SWD\CarRescueSystem\CarRescueSystemProject\CarRescueSystem\bin\Debug\net9.0\System.Windows.Extensions.dll
+D:\HOC\SWD\CarRescueSystem\CarRescueSystemProject\CarRescueSystem\bin\Debug\net9.0\cs\Microsoft.CodeAnalysis.resources.dll
+D:\HOC\SWD\CarRescueSystem\CarRescueSystemProject\CarRescueSystem\bin\Debug\net9.0\de\Microsoft.CodeAnalysis.resources.dll
+D:\HOC\SWD\CarRescueSystem\CarRescueSystemProject\CarRescueSystem\bin\Debug\net9.0\es\Microsoft.CodeAnalysis.resources.dll
+D:\HOC\SWD\CarRescueSystem\CarRescueSystemProject\CarRescueSystem\bin\Debug\net9.0\fr\Microsoft.CodeAnalysis.resources.dll
+D:\HOC\SWD\CarRescueSystem\CarRescueSystemProject\CarRescueSystem\bin\Debug\net9.0\it\Microsoft.CodeAnalysis.resources.dll
+D:\HOC\SWD\CarRescueSystem\CarRescueSystemProject\CarRescueSystem\bin\Debug\net9.0\ja\Microsoft.CodeAnalysis.resources.dll
+D:\HOC\SWD\CarRescueSystem\CarRescueSystemProject\CarRescueSystem\bin\Debug\net9.0\ko\Microsoft.CodeAnalysis.resources.dll
+D:\HOC\SWD\CarRescueSystem\CarRescueSystemProject\CarRescueSystem\bin\Debug\net9.0\pl\Microsoft.CodeAnalysis.resources.dll
+D:\HOC\SWD\CarRescueSystem\CarRescueSystemProject\CarRescueSystem\bin\Debug\net9.0\pt-BR\Microsoft.CodeAnalysis.resources.dll
+D:\HOC\SWD\CarRescueSystem\CarRescueSystemProject\CarRescueSystem\bin\Debug\net9.0\ru\Microsoft.CodeAnalysis.resources.dll
+D:\HOC\SWD\CarRescueSystem\CarRescueSystemProject\CarRescueSystem\bin\Debug\net9.0\tr\Microsoft.CodeAnalysis.resources.dll
+D:\HOC\SWD\CarRescueSystem\CarRescueSystemProject\CarRescueSystem\bin\Debug\net9.0\zh-Hans\Microsoft.CodeAnalysis.resources.dll
+D:\HOC\SWD\CarRescueSystem\CarRescueSystemProject\CarRescueSystem\bin\Debug\net9.0\zh-Hant\Microsoft.CodeAnalysis.resources.dll
+D:\HOC\SWD\CarRescueSystem\CarRescueSystemProject\CarRescueSystem\bin\Debug\net9.0\cs\Microsoft.CodeAnalysis.CSharp.resources.dll
+D:\HOC\SWD\CarRescueSystem\CarRescueSystemProject\CarRescueSystem\bin\Debug\net9.0\de\Microsoft.CodeAnalysis.CSharp.resources.dll
+D:\HOC\SWD\CarRescueSystem\CarRescueSystemProject\CarRescueSystem\bin\Debug\net9.0\es\Microsoft.CodeAnalysis.CSharp.resources.dll
+D:\HOC\SWD\CarRescueSystem\CarRescueSystemProject\CarRescueSystem\bin\Debug\net9.0\fr\Microsoft.CodeAnalysis.CSharp.resources.dll
+D:\HOC\SWD\CarRescueSystem\CarRescueSystemProject\CarRescueSystem\bin\Debug\net9.0\it\Microsoft.CodeAnalysis.CSharp.resources.dll
+D:\HOC\SWD\CarRescueSystem\CarRescueSystemProject\CarRescueSystem\bin\Debug\net9.0\ja\Microsoft.CodeAnalysis.CSharp.resources.dll
+D:\HOC\SWD\CarRescueSystem\CarRescueSystemProject\CarRescueSystem\bin\Debug\net9.0\ko\Microsoft.CodeAnalysis.CSharp.resources.dll
+D:\HOC\SWD\CarRescueSystem\CarRescueSystemProject\CarRescueSystem\bin\Debug\net9.0\pl\Microsoft.CodeAnalysis.CSharp.resources.dll
+D:\HOC\SWD\CarRescueSystem\CarRescueSystemProject\CarRescueSystem\bin\Debug\net9.0\pt-BR\Microsoft.CodeAnalysis.CSharp.resources.dll
+D:\HOC\SWD\CarRescueSystem\CarRescueSystemProject\CarRescueSystem\bin\Debug\net9.0\ru\Microsoft.CodeAnalysis.CSharp.resources.dll
+D:\HOC\SWD\CarRescueSystem\CarRescueSystemProject\CarRescueSystem\bin\Debug\net9.0\tr\Microsoft.CodeAnalysis.CSharp.resources.dll
+D:\HOC\SWD\CarRescueSystem\CarRescueSystemProject\CarRescueSystem\bin\Debug\net9.0\zh-Hans\Microsoft.CodeAnalysis.CSharp.resources.dll
+D:\HOC\SWD\CarRescueSystem\CarRescueSystemProject\CarRescueSystem\bin\Debug\net9.0\zh-Hant\Microsoft.CodeAnalysis.CSharp.resources.dll
+D:\HOC\SWD\CarRescueSystem\CarRescueSystemProject\CarRescueSystem\bin\Debug\net9.0\cs\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+D:\HOC\SWD\CarRescueSystem\CarRescueSystemProject\CarRescueSystem\bin\Debug\net9.0\de\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+D:\HOC\SWD\CarRescueSystem\CarRescueSystemProject\CarRescueSystem\bin\Debug\net9.0\es\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+D:\HOC\SWD\CarRescueSystem\CarRescueSystemProject\CarRescueSystem\bin\Debug\net9.0\fr\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+D:\HOC\SWD\CarRescueSystem\CarRescueSystemProject\CarRescueSystem\bin\Debug\net9.0\it\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+D:\HOC\SWD\CarRescueSystem\CarRescueSystemProject\CarRescueSystem\bin\Debug\net9.0\ja\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+D:\HOC\SWD\CarRescueSystem\CarRescueSystemProject\CarRescueSystem\bin\Debug\net9.0\ko\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+D:\HOC\SWD\CarRescueSystem\CarRescueSystemProject\CarRescueSystem\bin\Debug\net9.0\pl\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+D:\HOC\SWD\CarRescueSystem\CarRescueSystemProject\CarRescueSystem\bin\Debug\net9.0\pt-BR\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+D:\HOC\SWD\CarRescueSystem\CarRescueSystemProject\CarRescueSystem\bin\Debug\net9.0\ru\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+D:\HOC\SWD\CarRescueSystem\CarRescueSystemProject\CarRescueSystem\bin\Debug\net9.0\tr\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+D:\HOC\SWD\CarRescueSystem\CarRescueSystemProject\CarRescueSystem\bin\Debug\net9.0\zh-Hans\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+D:\HOC\SWD\CarRescueSystem\CarRescueSystemProject\CarRescueSystem\bin\Debug\net9.0\zh-Hant\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+D:\HOC\SWD\CarRescueSystem\CarRescueSystemProject\CarRescueSystem\bin\Debug\net9.0\cs\Microsoft.CodeAnalysis.Workspaces.resources.dll
+D:\HOC\SWD\CarRescueSystem\CarRescueSystemProject\CarRescueSystem\bin\Debug\net9.0\de\Microsoft.CodeAnalysis.Workspaces.resources.dll
+D:\HOC\SWD\CarRescueSystem\CarRescueSystemProject\CarRescueSystem\bin\Debug\net9.0\es\Microsoft.CodeAnalysis.Workspaces.resources.dll
+D:\HOC\SWD\CarRescueSystem\CarRescueSystemProject\CarRescueSystem\bin\Debug\net9.0\fr\Microsoft.CodeAnalysis.Workspaces.resources.dll
+D:\HOC\SWD\CarRescueSystem\CarRescueSystemProject\CarRescueSystem\bin\Debug\net9.0\it\Microsoft.CodeAnalysis.Workspaces.resources.dll
+D:\HOC\SWD\CarRescueSystem\CarRescueSystemProject\CarRescueSystem\bin\Debug\net9.0\ja\Microsoft.CodeAnalysis.Workspaces.resources.dll
+D:\HOC\SWD\CarRescueSystem\CarRescueSystemProject\CarRescueSystem\bin\Debug\net9.0\ko\Microsoft.CodeAnalysis.Workspaces.resources.dll
+D:\HOC\SWD\CarRescueSystem\CarRescueSystemProject\CarRescueSystem\bin\Debug\net9.0\pl\Microsoft.CodeAnalysis.Workspaces.resources.dll
+D:\HOC\SWD\CarRescueSystem\CarRescueSystemProject\CarRescueSystem\bin\Debug\net9.0\pt-BR\Microsoft.CodeAnalysis.Workspaces.resources.dll
+D:\HOC\SWD\CarRescueSystem\CarRescueSystemProject\CarRescueSystem\bin\Debug\net9.0\ru\Microsoft.CodeAnalysis.Workspaces.resources.dll
+D:\HOC\SWD\CarRescueSystem\CarRescueSystemProject\CarRescueSystem\bin\Debug\net9.0\tr\Microsoft.CodeAnalysis.Workspaces.resources.dll
+D:\HOC\SWD\CarRescueSystem\CarRescueSystemProject\CarRescueSystem\bin\Debug\net9.0\zh-Hans\Microsoft.CodeAnalysis.Workspaces.resources.dll
+D:\HOC\SWD\CarRescueSystem\CarRescueSystemProject\CarRescueSystem\bin\Debug\net9.0\zh-Hant\Microsoft.CodeAnalysis.Workspaces.resources.dll
+D:\HOC\SWD\CarRescueSystem\CarRescueSystemProject\CarRescueSystem\bin\Debug\net9.0\cs\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+D:\HOC\SWD\CarRescueSystem\CarRescueSystemProject\CarRescueSystem\bin\Debug\net9.0\de\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+D:\HOC\SWD\CarRescueSystem\CarRescueSystemProject\CarRescueSystem\bin\Debug\net9.0\es\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+D:\HOC\SWD\CarRescueSystem\CarRescueSystemProject\CarRescueSystem\bin\Debug\net9.0\fr\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+D:\HOC\SWD\CarRescueSystem\CarRescueSystemProject\CarRescueSystem\bin\Debug\net9.0\it\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+D:\HOC\SWD\CarRescueSystem\CarRescueSystemProject\CarRescueSystem\bin\Debug\net9.0\ja\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+D:\HOC\SWD\CarRescueSystem\CarRescueSystemProject\CarRescueSystem\bin\Debug\net9.0\ko\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+D:\HOC\SWD\CarRescueSystem\CarRescueSystemProject\CarRescueSystem\bin\Debug\net9.0\pl\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+D:\HOC\SWD\CarRescueSystem\CarRescueSystemProject\CarRescueSystem\bin\Debug\net9.0\pt-BR\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+D:\HOC\SWD\CarRescueSystem\CarRescueSystemProject\CarRescueSystem\bin\Debug\net9.0\ru\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+D:\HOC\SWD\CarRescueSystem\CarRescueSystemProject\CarRescueSystem\bin\Debug\net9.0\tr\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+D:\HOC\SWD\CarRescueSystem\CarRescueSystemProject\CarRescueSystem\bin\Debug\net9.0\zh-Hans\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+D:\HOC\SWD\CarRescueSystem\CarRescueSystemProject\CarRescueSystem\bin\Debug\net9.0\zh-Hant\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+D:\HOC\SWD\CarRescueSystem\CarRescueSystemProject\CarRescueSystem\bin\Debug\net9.0\runtimes\unix\lib\net6.0\Microsoft.Data.SqlClient.dll
+D:\HOC\SWD\CarRescueSystem\CarRescueSystemProject\CarRescueSystem\bin\Debug\net9.0\runtimes\win\lib\net6.0\Microsoft.Data.SqlClient.dll
+D:\HOC\SWD\CarRescueSystem\CarRescueSystemProject\CarRescueSystem\bin\Debug\net9.0\runtimes\win-arm\native\Microsoft.Data.SqlClient.SNI.dll
+D:\HOC\SWD\CarRescueSystem\CarRescueSystemProject\CarRescueSystem\bin\Debug\net9.0\runtimes\win-arm64\native\Microsoft.Data.SqlClient.SNI.dll
+D:\HOC\SWD\CarRescueSystem\CarRescueSystemProject\CarRescueSystem\bin\Debug\net9.0\runtimes\win-x64\native\Microsoft.Data.SqlClient.SNI.dll
+D:\HOC\SWD\CarRescueSystem\CarRescueSystemProject\CarRescueSystem\bin\Debug\net9.0\runtimes\win-x86\native\Microsoft.Data.SqlClient.SNI.dll
+D:\HOC\SWD\CarRescueSystem\CarRescueSystemProject\CarRescueSystem\bin\Debug\net9.0\runtimes\win\lib\net6.0\Microsoft.Win32.SystemEvents.dll
+D:\HOC\SWD\CarRescueSystem\CarRescueSystemProject\CarRescueSystem\bin\Debug\net9.0\runtimes\unix\lib\net6.0\System.Drawing.Common.dll
+D:\HOC\SWD\CarRescueSystem\CarRescueSystemProject\CarRescueSystem\bin\Debug\net9.0\runtimes\win\lib\net6.0\System.Drawing.Common.dll
+D:\HOC\SWD\CarRescueSystem\CarRescueSystemProject\CarRescueSystem\bin\Debug\net9.0\runtimes\win\lib\net6.0\System.Runtime.Caching.dll
+D:\HOC\SWD\CarRescueSystem\CarRescueSystemProject\CarRescueSystem\bin\Debug\net9.0\runtimes\win\lib\net6.0\System.Security.Cryptography.ProtectedData.dll
+D:\HOC\SWD\CarRescueSystem\CarRescueSystemProject\CarRescueSystem\bin\Debug\net9.0\runtimes\win\lib\net6.0\System.Windows.Extensions.dll
+D:\HOC\SWD\CarRescueSystem\CarRescueSystemProject\CarRescueSystem\bin\Debug\net9.0\CarRescueSystem.BLL.dll
+D:\HOC\SWD\CarRescueSystem\CarRescueSystemProject\CarRescueSystem\bin\Debug\net9.0\CarRescueSystem.Common.dll
+D:\HOC\SWD\CarRescueSystem\CarRescueSystemProject\CarRescueSystem\bin\Debug\net9.0\CarRescueSystem.DAL.dll
+D:\HOC\SWD\CarRescueSystem\CarRescueSystemProject\CarRescueSystem\bin\Debug\net9.0\CarRescueSystem.BLL.pdb
+D:\HOC\SWD\CarRescueSystem\CarRescueSystemProject\CarRescueSystem\bin\Debug\net9.0\CarRescueSystem.Common.pdb
+D:\HOC\SWD\CarRescueSystem\CarRescueSystemProject\CarRescueSystem\bin\Debug\net9.0\CarRescueSystem.DAL.pdb
+D:\HOC\SWD\CarRescueSystem\CarRescueSystemProject\CarRescueSystem\obj\Debug\net9.0\CarRescueSystem.csproj.AssemblyReference.cache
+D:\HOC\SWD\CarRescueSystem\CarRescueSystemProject\CarRescueSystem\obj\Debug\net9.0\CarRescueSystem.GeneratedMSBuildEditorConfig.editorconfig
+D:\HOC\SWD\CarRescueSystem\CarRescueSystemProject\CarRescueSystem\obj\Debug\net9.0\CarRescueSystem.AssemblyInfoInputs.cache
+D:\HOC\SWD\CarRescueSystem\CarRescueSystemProject\CarRescueSystem\obj\Debug\net9.0\CarRescueSystem.AssemblyInfo.cs
+D:\HOC\SWD\CarRescueSystem\CarRescueSystemProject\CarRescueSystem\obj\Debug\net9.0\CarRescueSystem.csproj.CoreCompileInputs.cache
+D:\HOC\SWD\CarRescueSystem\CarRescueSystemProject\CarRescueSystem\obj\Debug\net9.0\CarRescueSystem.MvcApplicationPartsAssemblyInfo.cs
+D:\HOC\SWD\CarRescueSystem\CarRescueSystemProject\CarRescueSystem\obj\Debug\net9.0\CarRescueSystem.MvcApplicationPartsAssemblyInfo.cache
+D:\HOC\SWD\CarRescueSystem\CarRescueSystemProject\CarRescueSystem\obj\Debug\net9.0\CarRescueSystem.sourcelink.json
+D:\HOC\SWD\CarRescueSystem\CarRescueSystemProject\CarRescueSystem\obj\Debug\net9.0\scopedcss\bundle\CarRescueSystem.styles.css
+D:\HOC\SWD\CarRescueSystem\CarRescueSystemProject\CarRescueSystem\obj\Debug\net9.0\staticwebassets.build.json
+D:\HOC\SWD\CarRescueSystem\CarRescueSystemProject\CarRescueSystem\obj\Debug\net9.0\staticwebassets.development.json
+D:\HOC\SWD\CarRescueSystem\CarRescueSystemProject\CarRescueSystem\obj\Debug\net9.0\staticwebassets.build.endpoints.json
+D:\HOC\SWD\CarRescueSystem\CarRescueSystemProject\CarRescueSystem\obj\Debug\net9.0\staticwebassets\msbuild.CarRescueSystem.Microsoft.AspNetCore.StaticWebAssets.props
+D:\HOC\SWD\CarRescueSystem\CarRescueSystemProject\CarRescueSystem\obj\Debug\net9.0\staticwebassets\msbuild.CarRescueSystem.Microsoft.AspNetCore.StaticWebAssetEndpoints.props
+D:\HOC\SWD\CarRescueSystem\CarRescueSystemProject\CarRescueSystem\obj\Debug\net9.0\staticwebassets\msbuild.build.CarRescueSystem.props
+D:\HOC\SWD\CarRescueSystem\CarRescueSystemProject\CarRescueSystem\obj\Debug\net9.0\staticwebassets\msbuild.buildMultiTargeting.CarRescueSystem.props
+D:\HOC\SWD\CarRescueSystem\CarRescueSystemProject\CarRescueSystem\obj\Debug\net9.0\staticwebassets\msbuild.buildTransitive.CarRescueSystem.props
+D:\HOC\SWD\CarRescueSystem\CarRescueSystemProject\CarRescueSystem\obj\Debug\net9.0\staticwebassets.pack.json
+D:\HOC\SWD\CarRescueSystem\CarRescueSystemProject\CarRescueSystem\obj\Debug\net9.0\staticwebassets.upToDateCheck.txt
+D:\HOC\SWD\CarRescueSystem\CarRescueSystemProject\CarRescueSystem\obj\Debug\net9.0\CarRescu.E4816C73.Up2Date
+D:\HOC\SWD\CarRescueSystem\CarRescueSystemProject\CarRescueSystem\obj\Debug\net9.0\CarRescueSystem.dll
+D:\HOC\SWD\CarRescueSystem\CarRescueSystemProject\CarRescueSystem\obj\Debug\net9.0\refint\CarRescueSystem.dll
+D:\HOC\SWD\CarRescueSystem\CarRescueSystemProject\CarRescueSystem\obj\Debug\net9.0\CarRescueSystem.pdb
+D:\HOC\SWD\CarRescueSystem\CarRescueSystemProject\CarRescueSystem\obj\Debug\net9.0\CarRescueSystem.genruntimeconfig.cache
+D:\HOC\SWD\CarRescueSystem\CarRescueSystemProject\CarRescueSystem\obj\Debug\net9.0\ref\CarRescueSystem.dll

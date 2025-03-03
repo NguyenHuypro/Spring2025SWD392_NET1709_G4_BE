@@ -23,10 +23,29 @@ namespace CarRescueSystem.DAL.Model
 
         [Required, EmailAddress, MaxLength(255)]
         public string Email { get; set; }
+
         public string PasswordHash { get; set; }
 
         public string PasswordSalt { get; set; }
 
         public virtual Role Role { get; set; }
+
+
+        public StaffStatus ?StaffStatus { get; set; }
+        // Quan hệ với BookingStaff (Staff phụ trách bookings)
+        public virtual ICollection<BookingStaff> BookingsStaffs { get; set; } = new HashSet<BookingStaff>();
+        // Quan hệ N-N với Package thông qua bảng UserPackage
+       
+
+        // 🆕 Nhân viên thuộc về một trạm cứu hộ
+        public Guid? RescueStationId { get; set; }
+        public virtual RescueStation? RescueStation { get; set; }
+        // Quan hệ 1-N với bảng Schedule
+        public virtual ICollection<Schedule> Schedules { get; set; } = new HashSet<Schedule>();
+    }
+    public enum StaffStatus
+    {
+        ACTIVE,
+        INACTIVE,
     }
 }

@@ -22,5 +22,28 @@ namespace CarRescueSystem.DAL.Repository.Implement
         {
             return await _context.Users.FirstOrDefaultAsync(u => u.Email == email);
         }
+        public async Task<List<User>> GetActiveStaffsAsync(int count)
+        {
+            return await _context.Users
+                .Where(u => u.Role.RoleName == "Staff" && u.StaffStatus == StaffStatus.ACTIVE)
+                .Take(count)
+                .ToListAsync();
+        }
+        public async Task<List<User>> GetAvailableStaffByStationAsync(Guid rescueStationId)
+        {
+            return await _context.Users
+                .Where(u => u.RescueStationId == rescueStationId && u.StaffStatus == StaffStatus.ACTIVE)
+                .ToListAsync();
+        }
+
+        public async Task<List<User>> GetUsersByIdsAsync(List<Guid> userIds)
+        {
+            return await _context.Users
+                .Where(u => userIds.Contains(u.UserId) && u.Role.RoleName == "Staff" && u.StaffStatus == StaffStatus.ACTIVE)
+                .ToListAsync();
+        }
+
+
+
     }
 }
