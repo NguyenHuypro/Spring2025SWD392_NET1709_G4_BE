@@ -8,11 +8,11 @@ namespace CarRescueSystem.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class ServiceRescueController : ControllerBase
+    public class servicesController : ControllerBase
     {
         private readonly IServiceRescueService _serviceRescueService;
 
-        public ServiceRescueController(IServiceRescueService serviceRescueService)
+        public servicesController(IServiceRescueService serviceRescueService)
         {
             _serviceRescueService = serviceRescueService;
         }
@@ -20,7 +20,7 @@ namespace CarRescueSystem.API.Controllers
         /// <summary>
         /// Lấy danh sách tất cả dịch vụ
         /// </summary>
-        [HttpGet("get-all")]
+        [HttpGet()]
         public async Task<IActionResult> GetAllServices()
         {
             var response = await _serviceRescueService.GetAllService();
@@ -40,7 +40,7 @@ namespace CarRescueSystem.API.Controllers
         /// <summary>
         /// Tạo một dịch vụ mới
         /// </summary>
-        [HttpPost("create")]
+        [HttpPost()]
         public async Task<IActionResult> CreateService([FromBody] ServiceDTO serviceDTO)
         {
             var response = await _serviceRescueService.CreateService(serviceDTO);
@@ -50,7 +50,7 @@ namespace CarRescueSystem.API.Controllers
         /// <summary>
         /// Cập nhật thông tin dịch vụ
         /// </summary>
-        [HttpPut("update/{serviceId}")]
+        [HttpPut("{serviceId}")]
         public async Task<IActionResult> UpdateService(Guid serviceId, [FromBody] ServiceDTO serviceDTO)
         {
             var response = await _serviceRescueService.UpdateService(serviceId, serviceDTO);
@@ -60,11 +60,24 @@ namespace CarRescueSystem.API.Controllers
         /// <summary>
         /// Xóa dịch vụ theo ID
         /// </summary>
-        [HttpDelete("delete/{serviceId}")]
+        [HttpDelete("{serviceId}")]
         public async Task<IActionResult> DeleteService(Guid serviceId)
         {
             var response = await _serviceRescueService.DeleteService(serviceId);
             return StatusCode(response.StatusCode, response);
         }
+
+        // /api/services/package/:packageId method: GET
+        /// <summary>
+        /// Lấy danh sách dịch vụ theo packageId
+        /// </summary>
+        [HttpGet("package/{packageId}")]
+        public async Task<IActionResult> GetServicesByPackageId(Guid packageId)
+        {
+            var response = await _serviceRescueService.GetServicesByPackageId(packageId);
+            return StatusCode(response.StatusCode, response);
+        }
+
+
     }
 }

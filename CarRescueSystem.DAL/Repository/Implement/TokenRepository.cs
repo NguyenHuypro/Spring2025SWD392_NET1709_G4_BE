@@ -22,7 +22,7 @@ namespace CarRescueSystem.DAL.Repository.Implement
         {
             // lấy token đúng id và chưa bị thu hồi
             return await _context.RefreshTokens
-                .Where(rt => rt.UserId == userId && !rt.IsRevoked)
+                .Where(rt => rt.id == userId && !rt.isRevoked)
                 .FirstOrDefaultAsync();
         }
         public async Task<RefreshToken?> GetRefreshTokenByKey(string refreshTokenKey)
@@ -34,7 +34,7 @@ namespace CarRescueSystem.DAL.Repository.Implement
 
             // Thực hiện truy vấn để tìm RefreshToken theo RefreshTokenKey
             var refreshTokenEntity = await _context.RefreshTokens
-                .FirstOrDefaultAsync(rt => rt.RefreshTokenKey == refreshTokenKey);
+                .FirstOrDefaultAsync(rt => rt.refreshTokenKey == refreshTokenKey);
 
             return refreshTokenEntity;
         }

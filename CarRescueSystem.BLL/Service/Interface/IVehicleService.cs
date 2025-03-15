@@ -16,6 +16,8 @@ namespace CarRescueSystem.BLL.Service.Interface
         Task<ResponseDTO> PurchasePackage(Guid vehicleId, Guid packageId);
         Task<ResponseDTO> GetVehiclePackage(Guid vehicleId);
         Task<ResponseDTO> RemovePackage(Guid vehicleId);
-        Task<ResponseDTO> UpgradePackage(Guid vehicleId, Guid newPackageId);
+        //Task<ResponseDTO> UpgradePackage(Guid vehicleId, Guid newPackageId);
+
+        Task<ResponseDTO> GetCarByUserId();
     }
 }

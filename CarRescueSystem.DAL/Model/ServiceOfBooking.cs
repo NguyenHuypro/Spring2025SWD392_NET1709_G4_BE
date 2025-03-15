@@ -12,15 +12,15 @@ namespace CarRescueSystem.DAL.Model
     public class ServiceOfBooking
     {
         [Key]
-        public Guid ServiceOfBookingId { get; set; }
+        public Guid id { get; set; }
 
         [Required]
         [ForeignKey("Booking")]
-        public Guid BookingId { get; set; }
+        public Guid bookingId { get; set; }
 
         [Required]
         [ForeignKey("Service")]
-        public Guid ServiceId { get; set; }
+        public Guid serviceId { get; set; }
 
         [JsonIgnore]
         public virtual Booking Booking { get; set; }

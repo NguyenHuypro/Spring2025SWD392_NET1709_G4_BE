@@ -15,6 +15,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using System.Text;
+using VNPAY.NET;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -24,12 +25,13 @@ builder.Services.AddCors(options =>
     options.AddPolicy("AllowReactApp",
         policy =>
         {
-            policy.WithOrigins("http://localhost:3000","http://localhost:5210", "http://localhost:5173") // URL React chạy trên cổng 3000 , 5210 chay local
+            policy.WithOrigins("http://localhost:3000", "http://localhost:5210", "http://localhost:5173")
                   .AllowAnyHeader()
-                  .AllowAnyMethod();
-                  
+                  .AllowAnyMethod()
+                  .AllowCredentials(); // 🔥 Cho phép gửi cookies và headers xác thực
         });
 });
+
 
 // Setup SQL Server Database
 //builder.Services.AddDbContext<ApplicationDbContext>(options =>
@@ -127,11 +129,31 @@ builder.Services.AddScoped<IVehicleService, VehicleService>();
 builder.Services.AddScoped<IRescueStationService, RescueStationService>();
 builder.Services.AddScoped<IStaffService, StaffService>();
 builder.Services.AddScoped<IPackageService, PackageService>();
-builder.Services.AddScoped<IWalletService, WalletService>();
+//builder.Services.AddScoped<IWalletService, WalletService>();
 builder.Services.AddScoped<ITransactionService, TransactionService>();
+builder.Services.AddScoped<IUserService, UserService>();
 
 builder.Services.AddScoped<IScheduleService,  ScheduleService>();
 builder.Services.AddHttpClient<IOsmService, OsmService>();
+builder.Services.AddScoped<IVnPayService, VnPayService>();
+
+builder.Services.AddSingleton<IVnpay>(provider =>
+{
+    var config = provider.GetRequiredService<IConfiguration>();
+    var vnpay = new Vnpay();
+    vnpay.Initialize(
+        config["VNPAY:TmnCode"],
+        config["VNPAY:HashSecret"],
+        config["VNPAY:Url"], // 🔥 Sửa "BaseUrl" -> "Url"
+        config["VNPAY:ReturnUrl"] // 🔥 Đảm bảo đúng key
+    );
+    return vnpay;
+});
+
+
+
+
+//builder.Services.AddScoped<IApplicationDbContext, ApplicationDbContext>();
 
 builder.Services.AddScoped<UserUtility>();
 builder.Services.AddAutoMapper(typeof(VehicleProfile));

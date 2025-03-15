@@ -11,6 +11,11 @@ namespace CarRescueSystem.DAL.Repository.Interface
     {
         Task<Booking> GetByIdWithBookingStaffsAsync(Guid bookingId);
         Task<IEnumerable<Booking>> GetBookingsByCustomerIdAsync(Guid customerId);
+        Task<IEnumerable<Booking>> GetBookingsByStaffIdAsync(Guid staffId);
 
+
+        Task<Booking> GetBookingForHistoryAsync(Guid bookingId);
+
+        Task<List<Booking>> GetAllBookingsForManagerAsync();
     }
 }

@@ -8,22 +8,22 @@ namespace CarRescueSystem.DAL.Model
     {
         [Key]
         [Required]
-        public Guid ScheduleId { get; set; }
+        public Guid id { get; set; }
 
         [Required]
-        public Guid UserId { get; set; } // Nhân viên làm việc
+        public Guid userId { get; set; } // Nhân viên làm việc
 
-        [ForeignKey("UserId")]
+        [ForeignKey("userId")]
         public virtual User Staff { get; set; }
 
         [Required]
-        public DateTime StartTime { get; set; }
+        public DateTime startTime { get; set; }
 
         [Required]
-        public DateTime EndTime { get; set; }
+        public DateTime endTime { get; set; }
 
         [Required]
-        public ShiftType Shift { get; set; } // Ca làm sáng/tối
+        public ShiftType shift { get; set; } // Ca làm sáng/tối
     }
 
     public enum ShiftType

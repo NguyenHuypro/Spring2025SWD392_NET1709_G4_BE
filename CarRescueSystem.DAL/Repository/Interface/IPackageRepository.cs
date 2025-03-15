@@ -16,6 +16,9 @@ namespace CarRescueSystem.DAL.Repository.Interface
         // Thêm phương thức mới
         // Sửa lại trả về bool
         Task<bool> AddServiceToPackageAsync(Guid packageId, List<Guid> serviceIds);
+        Task<List<Package>> GetAllPackageWithServiceAsync();
+        Task<Package> GetPackageByIdWithServiceAsync(Guid id);
     }
+
 
 }

@@ -12,17 +12,19 @@ namespace CarRescueSystem.DAL.Model
     public class BookingStaff
     {
         [Key]
-        public Guid BookingStaffId { get; set; }
+        public Guid id { get; set; }
 
         [Required]
-        [ForeignKey("Booking")]
-        public Guid BookingId { get; set; }
+        [ForeignKey("booking")]
+        public Guid bookingId { get; set; }
 
         [Required]
         [ForeignKey("User")]
-        public Guid StaffId { get; set; } // Nhân viên phụ trách
+        public Guid staffId { get; set; } // Nhân viên phụ trách
 
-        public DateTime AssignedAt { get; set; } = DateTime.UtcNow; // Thời điểm được giao
+        public DateTime assignedAt { get; set; } = DateTime.UtcNow; // Thời điểm được giao
+
+        public bool? confirmStaff { get; set; } = false;
 
         [JsonIgnore]
         public virtual Booking Booking { get; set; }

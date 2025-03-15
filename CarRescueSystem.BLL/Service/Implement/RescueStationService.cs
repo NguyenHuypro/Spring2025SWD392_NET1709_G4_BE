@@ -26,7 +26,7 @@ namespace CarRescueSystem.BLL.Service.Implement
                 .Select(station => new
                 {
                     Station = station,
-                    Distance = GetDistance(bookingLat, bookingLng, station.Latitude, station.Longitude)
+                    Distance = GetDistance(bookingLat, bookingLng, station.latitude, station.longitude)
                 })
                 .OrderBy(x => x.Distance)
                 .FirstOrDefault()?.Station;

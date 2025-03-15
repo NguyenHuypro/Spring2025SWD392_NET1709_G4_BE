@@ -10,19 +10,21 @@ namespace CarRescueSystem.DAL.Model
     public class Package
     {
         [Key]
-        public Guid PackageId { get; set; }
+        public Guid id { get; set; }
 
         [Required, MaxLength(100)]
-        public string PackageName { get; set; }
+        public string name { get; set; }
 
         [Required]
-        public decimal PackagePrice { get; set; }
+        public decimal price { get; set; }
 
 
 
         public virtual ICollection<ServicePackage> ServicePackages { get; set; } = new HashSet<ServicePackage>();
         // Một Package có thể được sử dụng bởi nhiều Vehicle (1-N)
         public virtual ICollection<Vehicle> Vehicles { get; set; } = new HashSet<Vehicle>();
+        public virtual ICollection<Transaction> Transactions { get; set; } = new HashSet<Transaction>();
+
     }
 
 }

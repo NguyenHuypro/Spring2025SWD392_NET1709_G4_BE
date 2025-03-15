@@ -13,7 +13,7 @@ namespace CarRescueSystem.DAL.Repository.Interface
         Task<List<User>> GetActiveStaffsAsync(int count);
         Task<List<User>> GetAvailableStaffByStationAsync(Guid rescueStationId);
         Task<List<User>> GetUsersByIdsAsync(List<Guid> userIds);
-
-
+        Task<List<User>> GetAllStaffsAsync();
+        Task<List<User>> GetAllCustomersAsync();
     }
 }

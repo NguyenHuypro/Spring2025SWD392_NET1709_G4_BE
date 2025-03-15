@@ -33,12 +33,12 @@ namespace CarRescueSystem.BLL.Service.Implement
 
                 var serviceDTOs = listService.Select(s => new ServiceDTO
                 {
-                    ServiceId = s.ServiceId,
-                    ServiceName = s.ServiceName,
-                    ServicePrice = s.ServicePrice
+                    ServiceId = s.id,
+                    ServiceName = s.name,
+                    ServicePrice = s.price
                 }).ToList();
 
-                return new ResponseDTO("Successfully retrieved service list.", 200, true);
+                return new ResponseDTO("Successfully retrieved service list.", 200, true, listService);
             }
             catch (Exception ex)
             {
@@ -60,9 +60,9 @@ namespace CarRescueSystem.BLL.Service.Implement
 
                 var serviceDTO = new ServiceDTO
                 {
-                    ServiceId = service.ServiceId,
-                    ServiceName = service.ServiceName,
-                    ServicePrice = service.ServicePrice
+                    ServiceId = service.id,
+                    ServiceName = service.name,
+                    ServicePrice = service.price
                 };
 
                 return new ResponseDTO("Successfully retrieved service.", 200, true);
@@ -86,9 +86,9 @@ namespace CarRescueSystem.BLL.Service.Implement
                 // Convert DTO to Entity
                 var service = new DAL.Model.Service
                 {
-                    ServiceId = Guid.NewGuid(),
-                    ServiceName = serviceDTO.ServiceName,
-                    ServicePrice = serviceDTO.ServicePrice
+                    id = Guid.NewGuid(),
+                    name = serviceDTO.ServiceName,
+                    price = serviceDTO.ServicePrice
                 };
 
                 // Add new service
@@ -97,9 +97,9 @@ namespace CarRescueSystem.BLL.Service.Implement
 
                 var createdServiceDTO = new ServiceDTO
                 {
-                    ServiceId = service.ServiceId,
-                    ServiceName = service.ServiceName,
-                    ServicePrice = service.ServicePrice
+                    ServiceId = service.id,
+                    ServiceName = service.name,
+                    ServicePrice = service.price
                 };
 
                 return new ResponseDTO("Service created successfully.", 201, true);
@@ -123,17 +123,17 @@ namespace CarRescueSystem.BLL.Service.Implement
                 }
 
                 // Update service details from DTO
-                service.ServiceName = serviceDTO.ServiceName ?? service.ServiceName;
-                service.ServicePrice = serviceDTO.ServicePrice != default ? serviceDTO.ServicePrice : service.ServicePrice;
+                service.name = serviceDTO.ServiceName ?? service.name;
+                service.price = serviceDTO.ServicePrice != default ? serviceDTO.ServicePrice : service.price;
 
                 await _unitOfWork.ServiceRepo.UpdateAsync(service);
                 await _unitOfWork.SaveChangeAsync();
 
                 var updatedServiceDTO = new ServiceDTO
                 {
-                    ServiceId = service.ServiceId,
-                    ServiceName = service.ServiceName,
-                    ServicePrice = service.ServicePrice
+                    ServiceId = service.id,
+                    ServiceName = service.name,
+                    ServicePrice = service.price
                 };
 
                 return new ResponseDTO("Service updated successfully.", 200, true);
@@ -167,5 +167,22 @@ namespace CarRescueSystem.BLL.Service.Implement
                 return new ResponseDTO($"Internal server error: {ex.Message}", 500, false);
             }
         }
+        public async Task<ResponseDTO> GetServicesByPackageId(Guid packageId)
+        {
+            var servicePackages =  _unitOfWork.ServicePackageRepo.GetAll();
+            var services = servicePackages
+                .Where(sp => sp.packageID == packageId)
+                .Select(sp => sp.Service)
+                .ToList();
+
+            if (!services.Any())
+            {
+                return new ResponseDTO("Không tìm thấy dịch vụ nào trong gói này.", 404, false);
+            }
+
+            return new ResponseDTO("Lấy danh sách dịch vụ thành công", 200, true, services);
+        }
+
+
     }
 }

@@ -8,11 +8,11 @@ namespace CarRescueSystem.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class PackageController : ControllerBase
+    public class packagesController : ControllerBase
     {
         private readonly IPackageService _packageService;
 
-        public PackageController(IPackageService packageService)
+        public packagesController(IPackageService packageService)
         {
             _packageService = packageService;
         }
@@ -20,7 +20,7 @@ namespace CarRescueSystem.API.Controllers
         /// <summary>
         /// Lấy danh sách tất cả các gói dịch vụ
         /// </summary>
-        [HttpGet("get-all")]
+        [HttpGet()]
         public async Task<IActionResult> GetAllPackages()
         {
             var response = await _packageService.GetAllAsync();
@@ -40,7 +40,7 @@ namespace CarRescueSystem.API.Controllers
         /// <summary>
         /// Tạo mới một gói dịch vụ
         /// </summary>
-        [HttpPost("create")]
+        [HttpPost()]
         public async Task<IActionResult> CreatePackage([FromBody] PackageDTO packageDTO)
         {
             var response = await _packageService.AddAsync(packageDTO);
