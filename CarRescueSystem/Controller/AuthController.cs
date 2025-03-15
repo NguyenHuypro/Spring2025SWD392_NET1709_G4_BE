@@ -71,5 +71,34 @@ namespace CarRescueSystem.Controller
             var response = await _authService.LogoutAsync(refreshToken);
             return StatusCode(response.StatusCode, response);
         }
+
+        // /api/auth/admin/register method: POST
+        /// <summary>
+        /// Đăng ký admin hoặc nhân viên
+        /// </summary>
+        [HttpPost("admin/register")]
+        public async Task<IActionResult> RegisterAdmin([FromBody] CreateStaffDTO createStaffDTO)
+        {
+            // Validate the CreateStaffDTO model
+            if (createStaffDTO == null)
+            {
+                return BadRequest(new ResponseDTO("Invalid input.", 400, false));
+            }
+
+            if (createStaffDTO.Password != createStaffDTO.PasswordConfirm)
+            {
+                return BadRequest(new ResponseDTO("Password and confirmation do not match.", 400, false));
+            }
+
+            var response = await _authService.RegisterAdminAsync(createStaffDTO);
+
+            if (response.IsSuccess)
+            {
+                return Ok(new ResponseDTO("Admin registered successfully.", 201, true));
+            }
+
+            return StatusCode(response.StatusCode, response);
+        }
+
     }
 }

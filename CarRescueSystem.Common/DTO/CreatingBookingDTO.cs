@@ -10,19 +10,18 @@ namespace CarRescueSystem.Common.DTO
     public class CreatingBookingDTO
     {
         
-        public Guid CustomerId { get; set; }
+        //public Guid CustomerId { get; set; }
 
-        public Guid? VehicleId { get; set; } // Có thể null nếu khách chưa có xe
+        public Guid? carId { get; set; } // Có thể null nếu khách chưa có xe
 
-        [Required(ErrorMessage = "Description is required")]
-        [MaxLength(500, ErrorMessage = "Description cannot exceed 500 characters")]
-        public string Description { get; set; }
+      
+        public string description { get; set; }
 
-        public string? Evidence { get; set; }
+        public string? evidence { get; set; }
 
         [Required(ErrorMessage = "Location is required")]
-        public string Location { get; set; }
-        public string? LicensePlate { get; set; }
-        public string? PhoneNumber { get; set; }
+        public string location { get; set; }
+        public string? licensePlate { get; set; }
+        public string? phone { get; set; }
     }
 }

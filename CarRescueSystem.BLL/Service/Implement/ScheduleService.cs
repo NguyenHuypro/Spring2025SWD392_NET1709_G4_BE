@@ -77,11 +77,11 @@ namespace CarRescueSystem.BLL.Service.Implement
 
             var newSchedule = new Schedule
             {
-                ScheduleId = Guid.NewGuid(),
-                UserId = scheduleDto.UserId,
-                StartTime = scheduleDto.StartTime,
-                EndTime = scheduleDto.EndTime,
-                Shift = Enum.TryParse<ShiftType>(scheduleDto.Shift, out var shiftType) ? shiftType : ShiftType.MORBING,
+                id = Guid.NewGuid(),
+                userId = scheduleDto.UserId,
+                startTime = scheduleDto.StartTime,
+                endTime = scheduleDto.EndTime,
+                shift = Enum.TryParse<ShiftType>(scheduleDto.Shift, out var shiftType) ? shiftType : ShiftType.MORBING,
             };
 
             await _unitOfWork.ScheduleRepo.AddAsync(newSchedule);
@@ -96,9 +96,9 @@ namespace CarRescueSystem.BLL.Service.Implement
             if (schedule == null)
                 return new ResponseDTO("Schedule not found", 404, false);
 
-            schedule.StartTime = scheduleDto.StartTime;
-            schedule.EndTime = scheduleDto.EndTime;
-            schedule.Shift = Enum.TryParse<ShiftType>(scheduleDto.Shift, out var shiftType) ? shiftType : schedule.Shift;
+            schedule.startTime = scheduleDto.StartTime;
+            schedule.endTime = scheduleDto.EndTime;
+            schedule.shift = Enum.TryParse<ShiftType>(scheduleDto.Shift, out var shiftType) ? shiftType : schedule.shift;
 
             await _unitOfWork.ScheduleRepo.UpdateAsync(schedule);
             await _unitOfWork.SaveChangeAsync();

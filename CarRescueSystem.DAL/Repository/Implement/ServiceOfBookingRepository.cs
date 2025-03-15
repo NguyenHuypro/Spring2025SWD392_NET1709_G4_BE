@@ -21,11 +21,11 @@ namespace CarRescueSystem.DAL.Repository.Implement
         public async Task<ServiceOfBooking?> GetByBookingAndServiceAsync(Guid bookingId, Guid serviceId)
         {
             return await _context.ServiceOfBookings
-                .FirstOrDefaultAsync(sob => sob.BookingId == bookingId && sob.ServiceId == serviceId);
+                .FirstOrDefaultAsync(sob => sob.id == bookingId && sob.serviceId == serviceId);
         }
         public async Task<bool> ServiceInPackageAsync(Guid serviceId)
         {
-            return await _context.ServicePackages.AnyAsync(sp => sp.ServiceId == serviceId);
+            return await _context.ServicePackages.AnyAsync(sp => sp.serviceId == serviceId);
         }
 
 

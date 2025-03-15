@@ -20,14 +20,14 @@ namespace CarRescueSystem.DAL.Repository.Implement
         public async Task<List<Schedule>> GetSchedulesByDateAsync(DateTime date)
         {
             return await _context.Schedules
-                .Where(s => s.StartTime.Date == date.Date)
+                .Where(s => s.startTime.Date == date.Date)
                 .Include(s => s.Staff) // Lấy thông tin Staff (User)
                 .ToListAsync();
         }
         public async Task<IEnumerable<Schedule>> GetSchedulesByStaffIdAsync(Guid staffId)
         {
             return await _context.Schedules
-                .Where(s => s.UserId == staffId)
+                .Where(s => s.userId == staffId)
                 .ToListAsync();
         }
     }

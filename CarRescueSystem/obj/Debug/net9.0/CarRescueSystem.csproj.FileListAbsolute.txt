@@ -182,10 +182,11 @@ D:\HOC\SWD\CarRescueSystem\CarRescueSystemProject\CarRescueSystem\obj\Debug\net9
 D:\HOC\SWD\CarRescueSystem\CarRescueSystemProject\CarRescueSystem\obj\Debug\net9.0\staticwebassets\msbuild.buildMultiTargeting.CarRescueSystem.props
 D:\HOC\SWD\CarRescueSystem\CarRescueSystemProject\CarRescueSystem\obj\Debug\net9.0\staticwebassets\msbuild.buildTransitive.CarRescueSystem.props
 D:\HOC\SWD\CarRescueSystem\CarRescueSystemProject\CarRescueSystem\obj\Debug\net9.0\staticwebassets.pack.json
-D:\HOC\SWD\CarRescueSystem\CarRescueSystemProject\CarRescueSystem\obj\Debug\net9.0\staticwebassets.upToDateCheck.txt
 D:\HOC\SWD\CarRescueSystem\CarRescueSystemProject\CarRescueSystem\obj\Debug\net9.0\CarRescu.E4816C73.Up2Date
 D:\HOC\SWD\CarRescueSystem\CarRescueSystemProject\CarRescueSystem\obj\Debug\net9.0\CarRescueSystem.dll
 D:\HOC\SWD\CarRescueSystem\CarRescueSystemProject\CarRescueSystem\obj\Debug\net9.0\refint\CarRescueSystem.dll
 D:\HOC\SWD\CarRescueSystem\CarRescueSystemProject\CarRescueSystem\obj\Debug\net9.0\CarRescueSystem.pdb
 D:\HOC\SWD\CarRescueSystem\CarRescueSystemProject\CarRescueSystem\obj\Debug\net9.0\CarRescueSystem.genruntimeconfig.cache
 D:\HOC\SWD\CarRescueSystem\CarRescueSystemProject\CarRescueSystem\obj\Debug\net9.0\ref\CarRescueSystem.dll
+D:\HOC\SWD\CarRescueSystem\CarRescueSystemProject\CarRescueSystem\bin\Debug\net9.0\VNPAY.NET.dll
+D:\HOC\SWD\CarRescueSystem\CarRescueSystemProject\CarRescueSystem\obj\Debug\net9.0\staticwebassets.upToDateCheck.txt

@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,39 +12,48 @@ namespace CarRescueSystem.DAL.Model
     {
         [Key]
         [Required(ErrorMessage = "Id is required")]
-        public Guid UserId { get; set; }
-        [Required, MaxLength(100)]
-        public string FullName { get; set; }
-        public string PhoneNumber { get; set; }
+        public Guid id { get; set; }
 
-        [ForeignKey("Role")]
-        public Guid RoleID { get; set; }
+        [Required, MaxLength(100)]
+        public string fullName { get; set; }
+
+        public string phone { get; set; }
 
         [Required, EmailAddress, MaxLength(255)]
-        public string Email { get; set; }
+        public string email { get; set; }
 
-        public string PasswordHash { get; set; }
+        public string password { get; set; }
 
-        public string PasswordSalt { get; set; }
+        public string passwordSalt { get; set; }
 
-        public virtual Role Role { get; set; }
+        [Required]
+        public RoleType role { get; set; }
 
+        public staffStatus? staffStatus { get; set; }
 
-        public StaffStatus ?StaffStatus { get; set; }
         // Quan hệ với BookingStaff (Staff phụ trách bookings)
         public virtual ICollection<BookingStaff> BookingsStaffs { get; set; } = new HashSet<BookingStaff>();
-        // Quan hệ N-N với Package thông qua bảng UserPackage
-       
 
-        // 🆕 Nhân viên thuộc về một trạm cứu hộ
-        public Guid? RescueStationId { get; set; }
+        // Nhân viên thuộc về một trạm cứu hộ
+        public Guid? rescueStationId { get; set; }
         public virtual RescueStation? RescueStation { get; set; }
+
         // Quan hệ 1-N với bảng Schedule
         public virtual ICollection<Schedule> Schedules { get; set; } = new HashSet<Schedule>();
     }
-    public enum StaffStatus
+
+    public enum staffStatus
     {
         ACTIVE,
         INACTIVE,
+    }
+
+    public enum RoleType
+    {
+        CUSTOMER,
+        STAFF,
+        RECEPTIONIST,
+        ADMIN,
+        MANAGER
     }
 }

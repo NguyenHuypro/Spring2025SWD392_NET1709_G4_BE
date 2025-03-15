@@ -56,10 +56,10 @@ namespace CarRescueSystem.BLL.Service.Implement
                     return null;
                 }
 
-                var validLocation = locationData.FirstOrDefault(loc => loc.Latitude.HasValue && loc.Longitude.HasValue);
+                var validLocation = locationData.FirstOrDefault(loc => loc.latitude.HasValue && loc.longitude.HasValue);
                 if (validLocation != null)
                 {
-                    Console.WriteLine($"Valid Location: {validLocation.Latitude}, {validLocation.Longitude}");
+                    Console.WriteLine($"Valid Location: {validLocation.latitude}, {validLocation.longitude}");
                     return validLocation;
                 }
             }

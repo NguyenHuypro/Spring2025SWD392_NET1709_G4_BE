@@ -10,6 +10,7 @@ namespace CarRescueSystem.Common.DTO
     public class PackageDTO
     {
        
+        public Guid? id { get; set; }
 
         [Required, MaxLength(100)]
         public string PackageName { get; set; }

@@ -9,13 +9,13 @@ using CarRescueSystem.DAL.Repository.Interface;
 
 namespace CarRescueSystem.DAL.Repository.Implement
 {
-    public class RoleRepository : GenericRepository<Role>, IRoleRepository
-    {
-        private readonly ApplicationDbContext _context;
-        public RoleRepository(ApplicationDbContext context) : base(context)
-        {
-            _context = context;
-        }
+    //public class RoleRepository : GenericRepository<Role>, IRoleRepository
+    //{
+    //    private readonly ApplicationDbContext _context;
+    //    public RoleRepository(ApplicationDbContext context) : base(context)
+    //    {
+    //        _context = context;
+    //    }
     
-    }
+    //}
 }

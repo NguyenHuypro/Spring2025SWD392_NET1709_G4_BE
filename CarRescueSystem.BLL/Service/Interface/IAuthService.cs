@@ -13,5 +13,7 @@ namespace CarRescueSystem.BLL.Service.Interface
         Task<ResponseDTO> Register(RegisterDTO registerDTO);
         Task<ResponseDTO> RefreshBothTokens(string oldAccessToken, string refreshTokenKey);
         Task<ResponseDTO> LogoutAsync(string refreshTokenKey);
+
+        Task<ResponseDTO> RegisterAdminAsync(CreateStaffDTO createStaffDTO);
     }
 }

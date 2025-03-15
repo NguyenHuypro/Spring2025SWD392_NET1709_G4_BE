@@ -1,13 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using CarRescueSystem.DAL.Model;
+﻿//using System;
+//using System.Collections.Generic;
+//using System.Linq;
+//using System.Text;
+//using System.Threading.Tasks;
+//using CarRescueSystem.DAL.Model;
 
-namespace CarRescueSystem.DAL.Repository.Interface
-{
-    public interface IWalletRepository : IGenericRepository<Wallet>
-    {
-    }
-}
+//namespace CarRescueSystem.DAL.Repository.Interface
+//{
+//    public interface IWalletRepository : IGenericRepository<Wallet>
+//    {
+//    }
+//}

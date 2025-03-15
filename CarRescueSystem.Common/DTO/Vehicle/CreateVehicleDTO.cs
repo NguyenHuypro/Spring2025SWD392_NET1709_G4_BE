@@ -3,10 +3,10 @@ namespace CarRescueSystem.Common.DTO.Vehicle
     public class CreateVehicleDTO
     {
         public Guid CustomerId { get; set; }
-        public string VehicleName { get; set; }
-        public string VehicleColor { get; set; }
-        public string VehicleBrand { get; set; }
-        public int NumberOfSeats { get; set; }
-        public string LicensePlate { get; set; }
+        public string model { get; set; }
+        public string color { get; set; }
+        public string brand { get; set; }
+        public int numberOfSeats { get; set; }
+        public string licensePlate { get; set; }
     }
 } 

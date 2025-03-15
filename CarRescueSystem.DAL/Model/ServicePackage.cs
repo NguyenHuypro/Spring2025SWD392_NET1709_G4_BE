@@ -11,15 +11,15 @@ namespace CarRescueSystem.DAL.Model
     public class ServicePackage
     {
         [Key]
-        public Guid ServicePackageId { get; set; }
+        public Guid id { get; set; }
 
         [Required]
         [ForeignKey("Service")]
-        public Guid ServiceId { get; set; }
+        public Guid serviceId { get; set; }
 
         [Required]
         [ForeignKey("Package")]
-        public Guid PackageID { get; set; }
+        public Guid packageID { get; set; }
 
 
 

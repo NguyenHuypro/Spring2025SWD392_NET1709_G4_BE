@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.WebSockets;
 using System.Text;
 using System.Threading.Tasks;
+
 using CarRescueSystem.BLL.Service.Interface;
 using CarRescueSystem.BLL.Utilities;
 using CarRescueSystem.Common.DTO;
@@ -10,6 +12,8 @@ using CarRescueSystem.DAL.Model;
 using CarRescueSystem.DAL.Repository.Implement;
 using CarRescueSystem.DAL.Repository.Interface;
 using CarRescueSystem.DAL.UnitOfWork;
+using VNPAY.NET.Enums;
+using VNPAY.NET.Models;
 
 namespace CarRescueSystem.BLL.Service.Implement
 {
@@ -20,16 +24,18 @@ namespace CarRescueSystem.BLL.Service.Implement
         private readonly IOsmService _osmService;
         private readonly IRescueStationService _rescueStationService;
         private readonly IStaffService _staffService;
-        private readonly IWalletService _walletService;
+        //private readonly IWalletService _walletService;
+        private readonly IVnPayService _vpnPayService;
 
-        public BookingService(IUnitOfWork unitOfWork, UserUtility userUtility, IOsmService osmService, IRescueStationService rescueStationService, IStaffService staffService, IWalletService walletService)
+        public BookingService(IUnitOfWork unitOfWork, UserUtility userUtility, IOsmService osmService, IRescueStationService rescueStationService, IStaffService staffService, IVnPayService vnPayService)
         {
             _unitOfWork = unitOfWork;
             _userUtility = userUtility;
             _osmService = osmService;
             _rescueStationService = rescueStationService;
             _staffService = staffService;
-            _walletService = walletService;
+            //_walletService = walletService;
+            _vpnPayService = vnPayService;
         }
 
         public async Task<ResponseDTO> CreateBookingAsync(CreatingBookingDTO request)
@@ -47,41 +53,42 @@ namespace CarRescueSystem.BLL.Service.Implement
                 Vehicle? vehicle = null;
                 Guid? packageId = null;
 
-                if (request.VehicleId.HasValue)
+                if (request.carId.HasValue)
                 {
                     // Tìm vehicle theo VehicleId
-                    vehicle = await _unitOfWork.VehicleRepo.GetByIdAsync(request.VehicleId.Value);
+                    vehicle = await _unitOfWork.VehicleRepo.GetByIdAsync(request.carId.Value);
                 }
 
                 // Nếu không tìm thấy vehicle bằng VehicleId, thử tìm bằng LicensePlate
-                if (vehicle == null && !string.IsNullOrEmpty(request.LicensePlate))
+                if (vehicle == null && !string.IsNullOrEmpty(request.licensePlate))
                 {
-                    vehicle = await _unitOfWork.VehicleRepo.GetByLicensePlateAsync(request.LicensePlate);
+                    vehicle = await _unitOfWork.VehicleRepo.GetByLicensePlateAsync(request.licensePlate);
                 }
 
                 // Nếu tìm được vehicle, lấy PackageId
                 if (vehicle != null)
                 {
-                    packageId = vehicle.PackageId;
+                    packageId = vehicle.packageId;
                 }
 
                 // Mã hóa location để tránh lỗi ký tự đặc biệt
-                string encodedAddress = Uri.EscapeDataString(request.Location);
+                string encodedAddress = Uri.EscapeDataString(request.location);
 
                 // Tạo Booking mới
                 var newBooking = new Booking
                 {
-                    BookingId = Guid.NewGuid(),
-                    CustomerId = request.CustomerId,
-                    VehicleId = vehicle?.VehicleId,  
-                    Description = request.Description,
-                    Evidence = request.Evidence,
-                    Location = encodedAddress,
-                    CreatedAt = DateTime.UtcNow,
-                    Status = BookingStatus.PENDING,
-                    PackageId = packageId, 
-                    LicensePlate = request.LicensePlate,
-                    PhoneNumber = request.PhoneNumber  
+                    id = Guid.NewGuid(),
+                    customerId = customer.id,
+                    vehicleId = vehicle?.id,  
+                    description = request.description,
+                    evidence = request.evidence,
+                    location = encodedAddress,
+                    bookingDate = DateTime.UtcNow,
+                    //--------------------------
+                    status = BookingStatus.PENDING,
+                    packageId = packageId, 
+                    licensePlate = request.licensePlate,
+                    phone = request.phone  
                 };
 
                 // Lưu vào DB
@@ -98,76 +105,78 @@ namespace CarRescueSystem.BLL.Service.Implement
         }
 
 
-        public async Task<ResponseDTO> ConfirmBookingAsync(Guid bookingId)
-        {
-            try
-            {
-                // 1️⃣ Kiểm tra Booking có tồn tại không
-                var booking = await _unitOfWork.BookingRepo.GetByIdAsync(bookingId);
-                if (booking == null)
-                {
-                    return new ResponseDTO("Booking not found", 404, false);
-                }
+        //public async Task<ResponseDTO> ConfirmBookingAsync(Guid bookingId)
+        //{
+        //    try
+        //    {
+        //        // 1️⃣ Kiểm tra Booking có tồn tại không
+        //        var booking = await _unitOfWork.BookingRepo.GetByIdAsync(bookingId);
+        //        if (booking == null)
+        //        {
+        //            return new ResponseDTO("Booking not found", 404, false);
+        //        }
 
-                // 2️⃣ Kiểm tra trạng thái Booking (Chỉ cập nhật nếu là Pending)
-                if (booking.Status != BookingStatus.PENDING)
-                {
-                    return new ResponseDTO("Booking is not in a valid state for confirmation", 400, false);
-                }
+        //        // 2️⃣ Kiểm tra trạng thái Booking (Chỉ cập nhật nếu là Pending)
+        //        if (booking.status != BookingStatus.PENDING)
+        //        {
+        //            return new ResponseDTO("Booking is not in a valid state for confirmation", 400, false);
+        //        }
 
-                var coordinates = await _osmService.GetCoordinatesFromAddressAsync(booking.Location);
-                if (coordinates == null)
-                {
-                    return new ResponseDTO("Failed to retrieve coordinates for booking location", 400, false);
-                }
+        //        var coordinates = await _osmService.GetCoordinatesFromAddressAsync(booking.location);
+        //        if (coordinates == null)
+        //        {
+        //            return new ResponseDTO("Failed to retrieve coordinates for booking location", 400, false);
+        //        }
 
-                // ✅ Luôn cập nhật tọa độ
-                booking.Latitude = coordinates.Latitude;
-                booking.Longitude = coordinates.Longitude;
+        //        // ✅ Luôn cập nhật tọa độ
+        //        booking.latitude = coordinates.latitude;
+        //        booking.longitude = coordinates.longitude;
 
 
-                // 4️⃣ Tìm trạm cứu hộ gần nhất
-                var nearestStation = await _rescueStationService.FindNearestStationAsync(booking.Latitude ?? 0.0, booking.Longitude ?? 0.0);
-                if (nearestStation == null)
-                {
-                    return new ResponseDTO("No rescue station found nearby", 404, false);
-                }
 
-                // 5️⃣ Chọn nhân viên phù hợp từ trạm đó
-                var availableStaff = await _staffService.GetAvailableStaffAsync(nearestStation.RescueStationId);
-                if (availableStaff == null || !availableStaff.Any())
-                {
-                    return new ResponseDTO("No available staff at the nearest rescue station", 404, false);
-                }
+        //        // 4️⃣ Tìm trạm cứu hộ gần nhất
+        //        var nearestStation = await _rescueStationService.FindNearestStationAsync(booking.latitude ?? 0.0, booking.longitude ?? 0.0);
+        //        if (nearestStation == null)
+        //        {
+        //            return new ResponseDTO("No rescue station found nearby", 404, false);
+        //        }
 
-                // 6️⃣ Cập nhật thông tin RescueStationId và Staff cho Booking
-                booking.Status = BookingStatus.CONFIRMED;
-                booking.RescueStationId = nearestStation.RescueStationId;
+        //        // 5️⃣ Chọn nhân viên phù hợp từ trạm đó
+        //        var availableStaff = await _staffService.GetAvailableStaffAsync(nearestStation.id);
+        //        if (availableStaff == null || !availableStaff.Any())
+        //        {
+        //            return new ResponseDTO("No available staff at the nearest rescue station", 404, false);
+        //        }
 
-                // ✅ Thêm tất cả nhân viên vào BookingStaff
-                var bookingStaffList = availableStaff.Select(staff => new BookingStaff
-                {
-                    BookingId = booking.BookingId,
-                    StaffId = staff.UserId
-                }).ToList();
-                Console.WriteLine(booking.Latitude);
-                Console.WriteLine(booking.Longitude);
-                await _unitOfWork.BookingStaffRepo.AddRangeAsync(bookingStaffList);
-                await _unitOfWork.BookingRepo.UpdateAsync(booking);
-                await _unitOfWork.SaveChangeAsync();
+        //        // 6️⃣ Cập nhật thông tin RescueStationId và Staff cho Booking
+                
+        //        booking.rescueStationId = nearestStation.id;
 
-                return new ResponseDTO("Booking confirmed and assigned to nearest rescue station", 200, true, new
-                {
-                    BookingId = booking.BookingId,
-                    RescueStation = nearestStation.Name,
-                    AssignedStaffIds = bookingStaffList.Select(bs => bs.StaffId).ToList() // Trả về danh sách StaffId
-                });
-            }
-            catch (Exception ex)
-            {
-                return new ResponseDTO($"Error: {ex.Message}", 500, false);
-            }
-        }
+        //        // ✅ Thêm tất cả nhân viên vào BookingStaff
+        //        var bookingStaffList = availableStaff.Select(staff => new BookingStaff
+        //        {
+        //            id = Guid.NewGuid(),
+        //            bookingId = booking.id,
+        //            staffId = staff.id
+        //        }).ToList();
+        //        //Console.WriteLine(booking.Latitude);
+        //        //Console.WriteLine(booking.Longitude);
+        //        await _unitOfWork.BookingStaffRepo.AddRangeAsync(bookingStaffList);
+        //        await _unitOfWork.BookingRepo.UpdateAsync(booking);
+        //        await _unitOfWork.SaveChangeAsync();
+
+        //        return new ResponseDTO("Booking confirmed and assigned to nearest rescue station", 200, true, new
+        //        {
+        //            BookingId = booking.id,
+        //            RescueStation = nearestStation.name,
+        //            AssignedStaffIds = bookingStaffList.Select(bs => bs.staffId).ToList() // Trả về danh sách StaffId
+        //        });
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        return new ResponseDTO($"Error: {ex.Message}", 500, false);
+        //    }
+        //}
 
 
 
@@ -182,11 +191,11 @@ namespace CarRescueSystem.BLL.Service.Implement
                     return new ResponseDTO("Booking not found", 404, false);
                 }
 
-                // 2️⃣ Kiểm tra trạng thái Booking (Chỉ assign staff khi đã Confirmed)
-                if (booking.Status != BookingStatus.CONFIRMED)
-                {
-                    return new ResponseDTO("Booking is not confirmed yet", 400, false);
-                }
+                //// 2️⃣ Kiểm tra trạng thái Booking (Chỉ assign staff khi đã Confirmed)
+                //if (booking.status != BookingStatus.PENDING)
+                //{
+                //    return new ResponseDTO("Booking is not confirmed yet", 400, false);
+                //}
 
                 // 3️⃣ Kiểm tra danh sách staff có hợp lệ không
                 if (staffIds == null || !staffIds.Any())
@@ -208,21 +217,21 @@ namespace CarRescueSystem.BLL.Service.Implement
                     // 5️⃣ Gán Staff vào Booking
                     var bookingStaff = new BookingStaff
                     {
-                        BookingStaffId = Guid.NewGuid(),
-                        BookingId = bookingId,
-                        StaffId = staff.UserId
+                        id = Guid.NewGuid(),
+                        bookingId = bookingId,
+                        staffId = staff.id
                     };
                     assignedStaffs.Add(bookingStaff);
                     await _unitOfWork.BookingStaffRepo.AddAsync(bookingStaff);
 
                     // 6️⃣ Cập nhật trạng thái Staff → Inactive
-                    staff.StaffStatus = StaffStatus.INACTIVE;
+                    staff.staffStatus = staffStatus.INACTIVE;
                     await _unitOfWork.UserRepo.UpdateAsync(staff);
                 }
 
                 // 7️⃣ Cập nhật trạng thái Booking → InProgress
-                booking.Status = BookingStatus.INPROGRESS;
-                booking.StartAt = DateTime.UtcNow;
+                booking.status = BookingStatus.COMING;
+                //booking.arrivalDate = DateTime.UtcNow;
                 await _unitOfWork.BookingRepo.UpdateAsync(booking);
 
                 await _unitOfWork.SaveChangeAsync();
@@ -237,6 +246,16 @@ namespace CarRescueSystem.BLL.Service.Implement
 
 
 
+
+        // CHECK CONFIRM STAFF 
+        // LẤY THG STAFF    
+        // ĐỔI STATUS - ID
+        // LẤY STATUS CONFIRM ( 2 THẰNG )
+        // FALSE ( COMING - COMFIRM STATUS )
+        // TRUE ( IN_PROGRESS )
+
+
+
         public async Task<ResponseDTO> AddServiceToBookingAsync(Guid bookingId, List<Guid> serviceIds)
         {
             var booking = await _unitOfWork.BookingRepo.GetByIdWithBookingStaffsAsync(bookingId);
@@ -245,146 +264,512 @@ namespace CarRescueSystem.BLL.Service.Implement
 
             decimal totalPrice = 0;
             decimal totalDiscount = 0;
+            bool servicesAdded = false;
 
             // Kiểm tra xem Booking có Vehicle không
             Vehicle? vehicle = null;
+            bool isPackageExpired = true;
             Guid? packageId = null;
-            bool isPackageExpired = true; // Giả định gói đã hết hạn
 
-            if (booking.VehicleId.HasValue)
+            if (booking.vehicleId.HasValue)
             {
-                vehicle = await _unitOfWork.VehicleRepo.GetByIdAsync(booking.VehicleId.Value);
-                if (vehicle != null)
+                vehicle = await _unitOfWork.VehicleRepo.GetByIdAsync(booking.vehicleId.Value);
+                if (vehicle != null && vehicle.packageId.HasValue)
                 {
-                    packageId = vehicle.PackageId;
+                    packageId = vehicle.packageId;
 
-                    // Kiểm tra nếu gói dịch vụ còn hạn sử dụng
-                    if (vehicle.ExpirationDate.HasValue && vehicle.ExpirationDate.Value >= DateTime.UtcNow)
+                    // Kiểm tra gói còn hạn không
+                    if (vehicle.expirationDate.HasValue && vehicle.expirationDate.Value >= DateTime.UtcNow)
                     {
-                        isPackageExpired = false; // Gói còn hạn
+                        isPackageExpired = false;
                     }
                 }
             }
 
             foreach (var serviceId in serviceIds)
             {
-                // Kiểm tra service có tồn tại không
                 var service = await _unitOfWork.ServiceRepo.GetByIdAsync(serviceId);
                 if (service == null) continue;
 
-                // Kiểm tra service đã có trong booking chưa
                 var existingService = await _unitOfWork.ServiceOfBookingRepo.GetByBookingAndServiceAsync(bookingId, serviceId);
                 if (existingService == null)
                 {
                     var newService = new ServiceOfBooking
                     {
-                        BookingId = bookingId,
-                        ServiceId = serviceId
+                        bookingId = bookingId,
+                        serviceId = serviceId
                     };
                     await _unitOfWork.ServiceOfBookingRepo.AddAsync(newService);
+                    servicesAdded = true;
                 }
 
-                decimal originalPrice = service.ServicePrice;
+                decimal originalPrice = service.price;
                 decimal discountAmount = 0;
 
-                // Nếu xe có package và gói còn hạn, kiểm tra xem service có trong package không
-                if (packageId.HasValue && !isPackageExpired)
+                // Nếu có package và gói chưa hết hạn, kiểm tra xem dịch vụ có miễn phí không
+                if (!isPackageExpired && packageId.HasValue)
                 {
                     var serviceInPackage = await _unitOfWork.PackageRepo.GetServiceInPackageAsync(packageId.Value, serviceId);
                     if (serviceInPackage != null)
                     {
-                        // Giảm giá 20% nếu service có trong package và gói còn hạn
-                        discountAmount = originalPrice * 0.2m;
+                        discountAmount = originalPrice;
                     }
                 }
 
                 totalDiscount += discountAmount;
-                totalPrice += (originalPrice - discountAmount);
+                totalPrice += (originalPrice - discountAmount); // Chỉ cộng số tiền còn lại sau khi giảm giá
+            }
+
+            if (!servicesAdded)
+            {
+                return new ResponseDTO("No services were added to the booking", 400, false);
             }
 
             // Cập nhật tổng giá Booking
-            booking.TotalPrice = totalPrice;
+            booking.totalPrice = (booking.totalPrice ?? 0) + totalPrice;
             await _unitOfWork.BookingRepo.UpdateAsync(booking);
             await _unitOfWork.SaveChangeAsync();
 
             return new ResponseDTO("Services added and total price updated", 200, true, new
             {
                 TotalPrice = totalPrice,
-                TotalDiscount = totalDiscount,
-                PackageExpired = isPackageExpired // Trả về thông tin gói có hết hạn không
+                TotalDiscount = totalDiscount
+                //PackageExpired = isPackageExpired // Trả về thông tin gói có hết hạn không
+
             });
         }
 
-
+        public async Task<ResponseDTO> AcceptBooking(Guid id)
+        {
+            var booking = await _unitOfWork.BookingRepo.GetByIdAsync(id);
+            if (booking == null)
+            {
+                return new ResponseDTO("Booking not found", 404, false);
+            }
+            booking.status = BookingStatus.PENDING_PAYMENT;
+            await _unitOfWork.SaveChangeAsync();
+            return new ResponseDTO("Booking accepted", 200, true);
+        }
 
         public async Task<ResponseDTO> CompleteOrCancelBookingAsync(Guid bookingId, bool isCompleted)
         {
+            var userId = _userUtility.GetUserIdFromToken();
             var booking = await _unitOfWork.BookingRepo.GetByIdWithBookingStaffsAsync(bookingId);
             if (booking == null)
                 return new ResponseDTO("Booking not found", 404, false);
 
+            decimal amount = booking.totalPrice.GetValueOrDefault();
+
             if (isCompleted)
             {
-                // 🛠 **Kiểm tra số dư trong ví khách hàng**
-                var response = await _walletService.GetWalletByUserId(booking.CustomerId);
-                var wallet = response.Result as Wallet;
-                if (wallet.Balance < booking.TotalPrice)
-                {
-                    return new ResponseDTO("Not enough balance to complete the booking", 400, false);
-                }
 
-                // 💰 **Trừ tiền nếu đủ số dư**
-                if (!booking.TotalPrice.HasValue)
+                // ✅ **Tạo transaction thanh toán**
+                var transaction = new Transaction
                 {
-                    return new ResponseDTO("Total price is not set", 400, false);
-                }
-                var deductResponse = await _walletService.DeductAmount(booking.CustomerId, booking.TotalPrice.Value);
+                    id = Guid.NewGuid(),
+                    userId = booking.customerId,
+                    amount = amount,
+                    createdAt = DateTime.UtcNow,
+                    status = Transaction.TransactionStatus.PENDING,
+                    bookingId = bookingId
+                };
 
-                if (!deductResponse.IsSuccess)
+                await _unitOfWork.TransactionRepo.AddAsync(transaction);
+                await _unitOfWork.SaveChangeAsync();
+
+                // ✅ Lấy IP Address của người dùng
+                var ipAddress = "127.0.0.1"; // Hoặc lấy từ request
+
+                // ✅ Tạo PaymentRequest đúng format
+                var paymentRequest = new PaymentRequest
                 {
-                    return new ResponseDTO("Payment failed", 400, false);
-                }
+                    PaymentId = DateTime.UtcNow.Ticks,
+                    Money = (double)transaction.amount,
+                    Description = $"{transaction.id}/booking",
+                    IpAddress = ipAddress,
+                    BankCode = BankCode.ANY, // Cho phép chọn ngân hàng
+                    CreatedDate = DateTime.UtcNow,
+                    Currency = Currency.VND,
+                    Language = DisplayLanguage.Vietnamese
+                };
 
-                booking.Status = BookingStatus.COMPLETE;
+                // ✅ Gọi đúng `CreatePaymentUrlAsync`
+                var paymentUrl = await _vpnPayService.CreatePaymentUrlAsync(paymentRequest, userId, bookingId,null, null ,transaction.id);
+
+                return new ResponseDTO("Redirect to payment", 200, true, paymentUrl);
             }
+
+            
             else
             {
-                // ❌ Nếu bị hủy, chỉ cập nhật trạng thái
-                booking.Status = BookingStatus.CANCELLED;
+                // ❌ Nếu bị hủy, chỉ cập nhật trạng thái booking
+                booking.status = BookingStatus.CANCELLED;
+                booking.completedDate = DateTime.UtcNow;
+
+                await _unitOfWork.BookingRepo.UpdateAsync(booking);
+
+                // ✅ **Kích hoạt lại nhân viên**
+                foreach (var staffBooking in booking.BookingStaffs)
+                {
+                    var staff = await _unitOfWork.UserRepo.GetByIdAsync(staffBooking.staffId);
+                    staff.staffStatus = staffStatus.ACTIVE;
+                    await _unitOfWork.UserRepo.UpdateAsync(staff);
+                }
+
+                await _unitOfWork.SaveChangeAsync();
+                return new ResponseDTO("Booking cancelled", 200, true, null);
             }
+        }
 
-            await _unitOfWork.BookingRepo.UpdateAsync(booking);
-
-            // ✅ **Kích hoạt lại nhân viên**
-            foreach (var staffBooking in booking.BookingStaffs)
+        public async Task<ResponseDTO> FinishedBooking(Guid id)
+        {
+            var booking = await _unitOfWork.BookingRepo.GetByIdWithBookingStaffsAsync(id);
+            if (booking == null)
             {
-                var staff = await _unitOfWork.UserRepo.GetByIdAsync(staffBooking.StaffId);
-                staff.StaffStatus = StaffStatus.ACTIVE;
-                await _unitOfWork.UserRepo.UpdateAsync(staff);
+                return new ResponseDTO("Booking not found", 404, false);
             }
-
+            booking.status = BookingStatus.FINISHED;
+            booking.completedDate = DateTime.UtcNow;
+            await _unitOfWork.BookingRepo.UpdateAsync(booking);
             await _unitOfWork.SaveChangeAsync();
-
-            string message = isCompleted ? "Booking completed successfully and payment processed" : "Booking cancelled";
-            return new ResponseDTO(message, 200, true);
+            return new ResponseDTO("Booking finished", 200, true);
         }
 
         public async Task<ResponseDTO> GetAllBookingAsync()
         {
-            var bookings =  _unitOfWork.BookingRepo.GetAll();
-            return new ResponseDTO("Successfully retrieved all bookings", 200, true, bookings);
+            var bookings = await _unitOfWork.BookingRepo.GetAllBookingsForManagerAsync();
+
+            if (!bookings.Any())
+            {
+                return new ResponseDTO("Không tìm thấy booking nào", 404, false);
+            }
+
+            // Map bookings to GetAllBookingDTO
+            var allbookingDTO = bookings.Select(booking => new GetAllBookingDTO
+            {
+                id = booking.id,
+                name = booking.Customer?.fullName ?? "Không xác định", // Name of the customer
+                phone = booking.Customer?.phone ?? "Không xác định", // Phone of the customer
+                description = booking.description ?? "Không xác định",
+                status = BookingStatusMap.GetValueOrDefault(booking.status, "Không xác định"),
+                totalPrice = booking.totalPrice ?? 0,
+                licensePlate = booking.Vehicle?.licensePlate ?? "Không xác định", // License Plate of the vehicle
+                location = string.IsNullOrEmpty(booking.location) ? "Không xác định" : Uri.UnescapeDataString(booking.location), // Giải mã location
+                evidence = booking.evidence ?? "Không xác định", // Evidence of booking
+                arrivalDate = booking.arrivalDate?.ToString("dd-MM-yyyy HH:mm:ss") ?? "Invalid date",
+                completedDate = booking.completedDate?.ToString("dd-MM-yyyy HH:mm:ss") ?? "Invalid date",
+
+                // Mapping services
+                services = booking.ServiceBookings?
+                    .Select(s => new ServiceDetailInBookingDTO
+                    {
+                        id = s.Service.id,
+                        name = s.Service.name,
+                        price = s.Service.price
+                    }).ToList() ?? new List<ServiceDetailInBookingDTO>(),
+
+                // Mapping staff1 and staff2
+                staff1 = booking.BookingStaffs?.ElementAtOrDefault(0) != null
+                    ? new StaffDTO
+                    {
+                        id = booking.BookingStaffs.ElementAtOrDefault(0)?.Staff.id,
+                        fullName = booking.BookingStaffs.ElementAtOrDefault(0)?.Staff?.fullName ?? "Không xác định",
+                        phone = booking.BookingStaffs.ElementAtOrDefault(0)?.Staff?.phone ?? "Không xác định"
+                    }
+                    : new StaffDTO(), // Fallback to an empty StaffDTO if no staff1
+
+                staff2 = booking.BookingStaffs?.ElementAtOrDefault(1) != null
+                    ? new StaffDTO
+                    {
+                        id = booking.BookingStaffs.ElementAtOrDefault(0)?.Staff.id,
+                        fullName = booking.BookingStaffs.ElementAtOrDefault(1)?.Staff?.fullName ?? "Không xác định",
+                        phone = booking.BookingStaffs.ElementAtOrDefault(1)?.Staff?.phone ?? "Không xác định"
+                    }
+                    : new StaffDTO() // Fallback to an empty StaffDTO if no staff2
+            }).ToList(); // Ensure that it's a list of DTOs
+
+            return new ResponseDTO("Successfully retrieved all bookings", 200, true, allbookingDTO);
         }
 
         public async Task<ResponseDTO> GetBookingByCustomerIdAsync(Guid? customerId = null)
         {
-            if (customerId == null)
-            {
-                customerId = _userUtility.GetUserIdFromToken();
-            }
+            customerId ??= _userUtility.GetUserIdFromToken();
 
             var bookings = await _unitOfWork.BookingRepo.GetBookingsByCustomerIdAsync(customerId.Value);
-            return new ResponseDTO("Successfully retrieved customer bookings", 200, true, bookings);
+
+            if (!bookings.Any())
+            {
+                return new ResponseDTO("Không tìm thấy booking nào", 404, false);
+            }
+
+            var bookingDTOs = bookings.Select(booking => new BookingByUserIdDTO
+            {
+                id = booking.id,
+                arrivalDate = booking.arrivalDate,
+                completedDate = booking.completedDate,
+                Description = booking.description ?? "Không xác định",
+                Status = BookingStatusMap.GetValueOrDefault(booking.status, "Không xác định"),
+                TotalPrice = booking.totalPrice ?? 0,
+                LicensePlate = booking.Vehicle?.licensePlate ?? "Không xác định"
+            }).ToList();
+
+            return new ResponseDTO("Lấy dữ liệu thành công", 200, true, bookingDTOs);
         }
+
+
+
+        /// <summary>
+        /// Lấy thông tin Booking theo ID
+        /// </summary>
+        public async Task<ResponseDTO> GetBookingByIdAsync(Guid bookingId)
+        {
+            // Fetch a single booking (assuming GetBookingsForHistoryAsync might return multiple bookings)
+            var booking = (await _unitOfWork.BookingRepo.GetBookingForHistoryAsync(bookingId));
+
+            if (booking == null)
+            {
+                return new ResponseDTO("Không tìm thấy booking với ID này", 404, false);
+            }
+
+            var bookingDTOs = new DetailBookingDTO
+            {
+                id = booking.id,
+                name = booking.Customer?.fullName ?? "Không xác định",
+                phone = booking.Customer?.phone ?? "Không xác định",
+                licensePlate = booking.Vehicle?.licensePlate ?? "Không xác định",
+                location = string.IsNullOrEmpty(booking.location) ? "Không xác định" : Uri.UnescapeDataString(booking.location), // Giải mã location
+                description = booking.description ?? "không xác định",
+                evidence = booking.evidence ?? "Không xác định",
+                status = BookingStatusMap.GetValueOrDefault(booking.status, "Không xác định"),
+                arrivalDate = booking.arrivalDate ?? DateTime.MinValue,
+                completedDate = booking.completedDate ?? DateTime.MinValue,
+
+                services = booking.ServiceBookings?
+                    .Select(s => new ServiceDetailInBookingDTO
+                    {
+                        id = s.Service.id,
+                        name = s.Service.name
+                    }).ToList() ?? new List<ServiceDetailInBookingDTO>(),
+
+                totalPrice = booking.totalPrice ?? 0,
+
+                // ✅ Lấy nhân viên thứ 1 (nếu có)
+                staff1 = booking.BookingStaffs?.ElementAtOrDefault(0) != null
+                    ? new StaffDTO
+                    {
+                        fullName = booking.BookingStaffs.ElementAtOrDefault(0)?.Staff?.fullName ?? "Không xác định",
+                        phone = booking.BookingStaffs.ElementAtOrDefault(0)?.Staff?.phone ?? "Không xác định"
+                    }
+                    : new StaffDTO(),
+
+                // ✅ Lấy nhân viên thứ 2 (nếu có)
+                staff2 = booking.BookingStaffs?.ElementAtOrDefault(1) != null
+                    ? new StaffDTO
+                    {
+                        fullName = booking.BookingStaffs.ElementAtOrDefault(1)?.Staff?.fullName ?? "Không xác định",
+                        phone = booking.BookingStaffs.ElementAtOrDefault(1)?.Staff?.phone ?? "Không xác định"
+                    }
+                    : new StaffDTO()
+            };
+
+            return new ResponseDTO("Lấy thông tin booking thành công", 200, true, bookingDTOs);
+        }
+
+        /// <summary>
+        /// Lấy danh sách Booking của một Staff
+        /// </summary>
+        public async Task<ResponseDTO> GetBookingsByStaffAsync(Guid staffId)
+        {
+            // Lấy danh sách bookings mà nhân viên tham gia
+            var staffBookings = await _unitOfWork.BookingRepo.GetBookingsByStaffIdAsync(staffId);
+            if (staffBookings == null || !staffBookings.Any())
+            {
+                return new ResponseDTO("Không tìm thấy booking nào cho staff này", 404, false);
+            }
+
+            // Tạo danh sách BookingDTO để trả về thông tin chi tiết booking và nhân viên
+            var bookingDTOs = new List<DetailBookingDTO>();
+
+            foreach (var booking in staffBookings)
+            {
+                var bookingDTO = new DetailBookingDTO
+                {
+                    id = booking.id,
+                    name = booking.Customer?.fullName ?? "Không xác định",
+                    phone = booking.Customer?.phone ?? "Không xác định",
+                    licensePlate = booking.Vehicle?.licensePlate ?? "Không xác định",
+                    location = string.IsNullOrEmpty(booking.location) ? "Không xác định" : Uri.UnescapeDataString(booking.location),
+                    description = booking.description ?? "không xác định",
+                    evidence = booking.evidence ?? "Không xác định",
+                    status = BookingStatusMap.GetValueOrDefault(booking.status, "Không xác định"),
+                    arrivalDate = booking.arrivalDate ?? DateTime.MinValue,
+                    completedDate = booking.completedDate ?? DateTime.MinValue,
+
+                    services = booking.ServiceBookings?
+                        .Select(s => new ServiceDetailInBookingDTO
+                        {
+                            id = s.Service.id,
+                            name = s.Service.name
+                        }).ToList() ?? new List<ServiceDetailInBookingDTO>(),
+
+                    totalPrice = booking.totalPrice ?? 0
+                };
+
+                // Lấy danh sách nhân viên trong booking có staffId tương ứng
+                var staffInBooking = booking.BookingStaffs
+                    .Where(bs => bs.bookingId == booking.id)
+                    
+                    .ToList();
+
+                if (staffInBooking.Any())
+                {
+                    bookingDTO.staff1 = new StaffDTO
+                    {
+                        id = staffInBooking[0].Staff?.id,
+                        fullName = staffInBooking[0].Staff?.fullName ?? "Không xác định",
+                        phone = staffInBooking[0].Staff?.phone ?? "Không xác định",
+                        confirmStaff = staffInBooking[0].confirmStaff // Convert từ bool thành string ("true" hoặc "false")
+                    };
+
+                    
+                    bookingDTO.staff2 = new StaffDTO
+                        {
+                            id = staffInBooking[1].Staff?.id,
+                            fullName = staffInBooking[1].Staff?.fullName ?? "Không xác định",
+                            phone = staffInBooking[1].Staff?.phone ?? "Không xác định",
+                            confirmStaff = staffInBooking[1].confirmStaff
+                        };
+                    
+                }
+
+                bookingDTOs.Add(bookingDTO);
+            }
+
+            // Trả về danh sách các booking cùng thông tin nhân viên
+            return new ResponseDTO("Lấy danh sách booking thành công", 200, true, bookingDTOs);
+        }
+
+
+
+        public async Task<ResponseDTO> UpdateBookingToInProgressAsync(Guid bookingId)
+        {
+            try
+            {
+                var foundBooking = await _unitOfWork.BookingRepo.GetByIdAsync(bookingId);
+                if (foundBooking == null)
+                {
+                    return new ResponseDTO("Không tìm thấy booking với ID này", 404, false);
+                }
+
+                // Cập nhật trạng thái và thời gian đến
+                foundBooking.status = BookingStatus.IN_PROGRESS;
+                //foundBooking.arrivalDate = DateTime.UtcNow;
+
+                await _unitOfWork.BookingRepo.UpdateAsync(foundBooking);
+                await _unitOfWork.SaveChangeAsync();
+
+                return new ResponseDTO("Cập nhật trạng thái booking thành công", 200, true, foundBooking);
+            }
+            catch (Exception ex)
+            {
+                return new ResponseDTO($"Lỗi: {ex.Message}", 500, false);
+            }
+        }
+
+        public async Task<ResponseDTO> ConfirmStaffArrivalAsync(Guid bookingId, Guid staffId)
+        {
+            var booking = await _unitOfWork.BookingRepo.GetBookingForHistoryAsync(bookingId);
+            if (booking == null)
+            {
+                return new ResponseDTO("Không tìm thấy Booking", 404, false);
+            }
+
+            var bookingStaffs = await _unitOfWork.BookingStaffRepo.GetBookingStaffsByBookingIdAsync(bookingId);
+
+            var staff = bookingStaffs.FirstOrDefault(bs => bs.staffId == staffId);
+            if (staff == null)
+            {
+                return new ResponseDTO("Nhân viên không thuộc Booking này", 400, false);
+            }
+
+            // Cập nhật confirmStaff cho nhân viên hiện tại
+            staff.confirmStaff = true;
+            await _unitOfWork.BookingStaffRepo.UpdateAsync(staff);
+
+            // Kiểm tra xem tất cả nhân viên đã xác nhận chưa
+            bool allConfirmed = bookingStaffs.All(bs => bs.confirmStaff == true);
+
+            if (allConfirmed)
+            {
+                booking.status = BookingStatus.CHECKING;
+                booking.arrivalDate = DateTime.UtcNow;
+                await _unitOfWork.BookingRepo.UpdateAsync(booking);
+            }
+
+            await _unitOfWork.SaveChangeAsync();
+
+            // Trả về thông tin Booking với StaffDTO mới
+            var bookingDTOs = new DetailBookingDTO
+            {
+                id = booking.id,
+                name = booking.Customer?.fullName ?? "Không xác định",
+                phone = booking.Customer?.phone ?? "Không xác định",
+                licensePlate = booking.Vehicle?.licensePlate ?? "Không xác định",
+                location = string.IsNullOrEmpty(booking.location) ? "Không xác định" : Uri.UnescapeDataString(booking.location), // Giải mã location
+                description = booking.description ?? "không xác định",
+                evidence = booking.evidence ?? "Không xác định",
+                status = BookingStatusMap.GetValueOrDefault(booking.status, "Không xác định"),
+                arrivalDate = booking.arrivalDate ?? DateTime.MinValue,
+                completedDate = booking.completedDate ?? DateTime.MinValue,
+
+                services = booking.ServiceBookings?
+                    .Select(s => new ServiceDetailInBookingDTO
+                    {
+                        id = s.Service.id,
+                        name = s.Service.name
+                    }).ToList() ?? new List<ServiceDetailInBookingDTO>(),
+
+                totalPrice = booking.totalPrice ?? 0,
+
+                // ✅ Lấy thông tin nhân viên từ bookingStaffs
+                staff1 = bookingStaffs?.ElementAtOrDefault(0) != null
+                    ? new StaffDTO
+                    {
+                        fullName = bookingStaffs.ElementAtOrDefault(0)?.Staff?.fullName ?? "Không xác định",
+                        phone = bookingStaffs.ElementAtOrDefault(0)?.Staff?.phone ?? "Không xác định",
+                        confirmStaff = bookingStaffs.ElementAtOrDefault(0)?.confirmStaff == true ? true : false
+                    }
+                    : new StaffDTO(),
+
+                staff2 = bookingStaffs?.ElementAtOrDefault(1) != null
+                    ? new StaffDTO
+                    {
+                        fullName = bookingStaffs.ElementAtOrDefault(1)?.Staff?.fullName ?? "Không xác định",
+                        phone = bookingStaffs.ElementAtOrDefault(1)?.Staff?.phone ?? "Không xác định",
+                        confirmStaff = bookingStaffs.ElementAtOrDefault(0)?.confirmStaff == true ? true : false
+                    }
+                    : new StaffDTO()
+            };
+
+            return new ResponseDTO(
+                allConfirmed ? "Tất cả nhân viên đã xác nhận, chuyển sang IN_PROGRESS" : "Nhân viên đã xác nhận, chờ người còn lại",
+                200, true, bookingDTOs
+            );
+        }
+
+
+
+        private static readonly Dictionary<BookingStatus, string> BookingStatusMap = new()
+{
+    { BookingStatus.DEPOSIT, "DEPOSIT" },
+    { BookingStatus.PENDING, "PENDING" },
+    { BookingStatus.COMING, "COMING" },
+    { BookingStatus.CHECKING, "CHECKING" },
+    { BookingStatus.IN_PROGRESS, "IN_PROGRESS" },
+    { BookingStatus.CANCELLED, "CANCELLED" },
+    { BookingStatus.FINISHED, "FINISHED" },
+    { BookingStatus.PENDING_PAYMENT, "PENDING_PAYMENT" }
+};
 
     }
 

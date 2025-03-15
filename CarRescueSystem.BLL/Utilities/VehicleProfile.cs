@@ -10,7 +10,7 @@ namespace CarRescueSystem.BLL.Utilities
         {
             CreateMap<Vehicle, VehicleDTO>()
                 .ForMember(dest => dest.CustomerName,
-                    opt => opt.MapFrom(src => src.Customer.FullName));
+                    opt => opt.MapFrom(src => src.Customer.fullName));
             
             CreateMap<CreateVehicleDTO, Vehicle>();
             CreateMap<UpdateVehicleDTO, Vehicle>();

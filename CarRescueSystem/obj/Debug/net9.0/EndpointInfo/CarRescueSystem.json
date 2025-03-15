@@ -129,26 +129,26 @@
         }
       }
     },
-    "/api/Booking/create": {
+    "/api/auth/admin/register": {
       "post": {
         "tags": [
-          "Booking"
+          "Auth"
         ],
         "requestBody": {
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/CreatingBookingDTO"
+                "$ref": "#/components/schemas/CreateStaffDTO"
               }
             },
             "text/json": {
               "schema": {
-                "$ref": "#/components/schemas/CreatingBookingDTO"
+                "$ref": "#/components/schemas/CreateStaffDTO"
               }
             },
             "application/*+json": {
               "schema": {
-                "$ref": "#/components/schemas/CreatingBookingDTO"
+                "$ref": "#/components/schemas/CreateStaffDTO"
               }
             }
           }
@@ -160,87 +160,51 @@
         }
       }
     },
-    "/api/Booking/confirm/{bookingId}": {
-      "put": {
-        "tags": [
-          "Booking"
-        ],
-        "parameters": [
-          {
-            "name": "bookingId",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "format": "uuid"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
-    "/api/Booking/assign-staff/{bookingId}": {
-      "put": {
-        "tags": [
-          "Booking"
-        ],
-        "parameters": [
-          {
-            "name": "bookingId",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "format": "uuid"
-            }
-          }
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "type": "array",
-                "items": {
-                  "type": "string",
-                  "format": "uuid"
-                }
-              }
-            },
-            "text/json": {
-              "schema": {
-                "type": "array",
-                "items": {
-                  "type": "string",
-                  "format": "uuid"
-                }
-              }
-            },
-            "application/*+json": {
-              "schema": {
-                "type": "array",
-                "items": {
-                  "type": "string",
-                  "format": "uuid"
-                }
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
-    "/api/Booking/add-service/{bookingId}": {
+    "/api/bookings": {
       "post": {
         "tags": [
-          "Booking"
+          "bookings"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreatingBookingDTO"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreatingBookingDTO"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreatingBookingDTO"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "bookings"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/bookings/assign-staff/{bookingId}": {
+      "put": {
+        "tags": [
+          "bookings"
         ],
         "parameters": [
           {
@@ -291,10 +255,52 @@
         }
       }
     },
-    "/api/Booking/complete-or-cancel/{bookingId}": {
+    "/api/bookings/add-service/{bookingId}": {
+      "post": {
+        "tags": [
+          "bookings"
+        ],
+        "parameters": [
+          {
+            "name": "bookingId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ListServiceDTO"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ListServiceDTO"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/ListServiceDTO"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/bookings/complete-or-cancel/{bookingId}": {
       "put": {
         "tags": [
-          "Booking"
+          "bookings"
         ],
         "parameters": [
           {
@@ -321,10 +327,10 @@
         }
       }
     },
-    "/api/Booking/getAll": {
+    "/api/bookings/user": {
       "get": {
         "tags": [
-          "Booking"
+          "bookings"
         ],
         "responses": {
           "200": {
@@ -333,38 +339,14 @@
         }
       }
     },
-    "/api/Booking/getByCustomerId": {
+    "/api/bookings/{bookingId}": {
       "get": {
         "tags": [
-          "Booking"
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
-    "/api/Package/get-all": {
-      "get": {
-        "tags": [
-          "Package"
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
-    "/api/Package/{packageId}": {
-      "get": {
-        "tags": [
-          "Package"
+          "bookings"
         ],
         "parameters": [
           {
-            "name": "packageId",
+            "name": "bookingId",
             "in": "path",
             "required": true,
             "schema": {
@@ -380,30 +362,22 @@
         }
       }
     },
-    "/api/Package/create": {
-      "post": {
+    "/api/bookings/staff/{staffId}": {
+      "get": {
         "tags": [
-          "Package"
+          "bookings"
         ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/PackageDTO"
-              }
-            },
-            "text/json": {
-              "schema": {
-                "$ref": "#/components/schemas/PackageDTO"
-              }
-            },
-            "application/*+json": {
-              "schema": {
-                "$ref": "#/components/schemas/PackageDTO"
-              }
+        "parameters": [
+          {
+            "name": "staffId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
             }
           }
-        },
+        ],
         "responses": {
           "200": {
             "description": "OK"
@@ -411,10 +385,190 @@
         }
       }
     },
-    "/api/Package/update/{packageId}": {
+    "/api/bookings/{bookingId}/assign": {
       "put": {
         "tags": [
-          "Package"
+          "bookings"
+        ],
+        "parameters": [
+          {
+            "name": "bookingId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/StaffAssignDTO"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/StaffAssignDTO"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/StaffAssignDTO"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/bookings/{bookingId}/status": {
+      "put": {
+        "tags": [
+          "bookings"
+        ],
+        "parameters": [
+          {
+            "name": "bookingId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AllInOneBookingDTO"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AllInOneBookingDTO"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/AllInOneBookingDTO"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/bookings/{bookingId}/confirm-staff/{staffId}": {
+      "post": {
+        "tags": [
+          "bookings"
+        ],
+        "parameters": [
+          {
+            "name": "bookingId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "name": "staffId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/packages": {
+      "get": {
+        "tags": [
+          "packages"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "packages"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PackageDTO"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PackageDTO"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/PackageDTO"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/packages/{packageId}": {
+      "get": {
+        "tags": [
+          "packages"
+        ],
+        "parameters": [
+          {
+            "name": "packageId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/packages/update/{packageId}": {
+      "put": {
+        "tags": [
+          "packages"
         ],
         "parameters": [
           {
@@ -453,10 +607,10 @@
         }
       }
     },
-    "/api/Package/delete/{packageId}": {
+    "/api/packages/delete/{packageId}": {
       "delete": {
         "tags": [
-          "Package"
+          "packages"
         ],
         "parameters": [
           {
@@ -469,6 +623,99 @@
             }
           }
         ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/payment/callback": {
+      "post": {
+        "tags": [
+          "Payment"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PaymentCallbackDTO"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PaymentCallbackDTO"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/PaymentCallbackDTO"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/payment/callback-booking": {
+      "post": {
+        "tags": [
+          "Payment"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PaymentCallbackDTO"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PaymentCallbackDTO"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/PaymentCallbackDTO"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/payment/booking": {
+      "post": {
+        "tags": [
+          "Payment"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PaymentBookingDTO"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PaymentBookingDTO"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/PaymentBookingDTO"
+              }
+            }
+          }
+        },
         "responses": {
           "200": {
             "description": "OK"
@@ -651,45 +898,20 @@
         }
       }
     },
-    "/api/ServiceRescue/get-all": {
+    "/api/services": {
       "get": {
         "tags": [
-          "ServiceRescue"
+          "services"
         ],
         "responses": {
           "200": {
             "description": "OK"
           }
         }
-      }
-    },
-    "/api/ServiceRescue/{serviceId}": {
-      "get": {
-        "tags": [
-          "ServiceRescue"
-        ],
-        "parameters": [
-          {
-            "name": "serviceId",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "format": "uuid"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
-    "/api/ServiceRescue/create": {
+      },
       "post": {
         "tags": [
-          "ServiceRescue"
+          "services"
         ],
         "requestBody": {
           "content": {
@@ -717,10 +939,31 @@
         }
       }
     },
-    "/api/ServiceRescue/update/{serviceId}": {
+    "/api/services/{serviceId}": {
+      "get": {
+        "tags": [
+          "services"
+        ],
+        "parameters": [
+          {
+            "name": "serviceId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
       "put": {
         "tags": [
-          "ServiceRescue"
+          "services"
         ],
         "parameters": [
           {
@@ -757,12 +1000,10 @@
             "description": "OK"
           }
         }
-      }
-    },
-    "/api/ServiceRescue/delete/{serviceId}": {
+      },
       "delete": {
         "tags": [
-          "ServiceRescue"
+          "services"
         ],
         "parameters": [
           {
@@ -782,154 +1023,16 @@
         }
       }
     },
-    "/api/Vehicle/create": {
-      "post": {
-        "tags": [
-          "Vehicle"
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/CreateVehicleDTO"
-              }
-            },
-            "text/json": {
-              "schema": {
-                "$ref": "#/components/schemas/CreateVehicleDTO"
-              }
-            },
-            "application/*+json": {
-              "schema": {
-                "$ref": "#/components/schemas/CreateVehicleDTO"
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
-    "/api/Vehicle/get/{id}": {
+    "/api/services/package/{packageId}": {
       "get": {
         "tags": [
-          "Vehicle"
+          "services"
         ],
         "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "format": "uuid"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
-    "/api/Vehicle/get-all": {
-      "get": {
-        "tags": [
-          "Vehicle"
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
-    "/api/Vehicle/update/{id}": {
-      "put": {
-        "tags": [
-          "Vehicle"
-        ],
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "format": "uuid"
-            }
-          }
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/UpdateVehicleDTO"
-              }
-            },
-            "text/json": {
-              "schema": {
-                "$ref": "#/components/schemas/UpdateVehicleDTO"
-              }
-            },
-            "application/*+json": {
-              "schema": {
-                "$ref": "#/components/schemas/UpdateVehicleDTO"
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
-    "/api/Vehicle/delete/{id}": {
-      "delete": {
-        "tags": [
-          "Vehicle"
-        ],
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "format": "uuid"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
-    "/api/Vehicle/purchase-package": {
-      "post": {
-        "tags": [
-          "Vehicle"
-        ],
-        "parameters": [
-          {
-            "name": "vehicleId",
-            "in": "query",
-            "schema": {
-              "type": "string",
-              "format": "uuid"
-            }
-          },
           {
             "name": "packageId",
-            "in": "query",
+            "in": "path",
+            "required": true,
             "schema": {
               "type": "string",
               "format": "uuid"
@@ -943,21 +1046,10 @@
         }
       }
     },
-    "/api/Vehicle/package/{vehicleId}": {
+    "/api/users/staffs": {
       "get": {
         "tags": [
-          "Vehicle"
-        ],
-        "parameters": [
-          {
-            "name": "vehicleId",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "format": "uuid"
-            }
-          }
+          "Users"
         ],
         "responses": {
           "200": {
@@ -966,14 +1058,79 @@
         }
       }
     },
-    "/api/Vehicle/remove-package/{vehicleId}": {
-      "delete": {
+    "/api/users/customers": {
+      "get": {
         "tags": [
-          "Vehicle"
+          "Users"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/users/available-staffs": {
+      "get": {
+        "tags": [
+          "Users"
         ],
         "parameters": [
           {
-            "name": "vehicleId",
+            "name": "bookingId",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/cars": {
+      "post": {
+        "tags": [
+          "vehicles"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateVehicleDTO"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateVehicleDTO"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateVehicleDTO"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/cars/get/{id}": {
+      "get": {
+        "tags": [
+          "vehicles"
+        ],
+        "parameters": [
+          {
+            "name": "id",
             "in": "path",
             "required": true,
             "schema": {
@@ -989,29 +1146,119 @@
         }
       }
     },
-    "/api/Vehicle/upgrade-package": {
+    "/api/cars/get-all": {
+      "get": {
+        "tags": [
+          "vehicles"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/cars/{id}": {
       "put": {
         "tags": [
-          "Vehicle"
+          "vehicles"
         ],
         "parameters": [
           {
-            "name": "vehicleId",
-            "in": "query",
-            "schema": {
-              "type": "string",
-              "format": "uuid"
-            }
-          },
-          {
-            "name": "newPackageId",
-            "in": "query",
+            "name": "id",
+            "in": "path",
+            "required": true,
             "schema": {
               "type": "string",
               "format": "uuid"
             }
           }
         ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateVehicleDTO"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateVehicleDTO"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateVehicleDTO"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/{id}": {
+      "delete": {
+        "tags": [
+          "vehicles"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/cars/my-cars": {
+      "get": {
+        "tags": [
+          "vehicles"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/cars/purchase-package": {
+      "post": {
+        "tags": [
+          "vehicles"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PurchasePackageDTO"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PurchasePackageDTO"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/PurchasePackageDTO"
+              }
+            }
+          }
+        },
         "responses": {
           "200": {
             "description": "OK"
@@ -1022,6 +1269,65 @@
   },
   "components": {
     "schemas": {
+      "AllInOneBookingDTO": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "string",
+            "nullable": true
+          },
+          "creatingBookingDto": {
+            "$ref": "#/components/schemas/CreatingBookingDTO"
+          },
+          "staffIds": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "format": "uuid"
+            },
+            "nullable": true
+          },
+          "serviceIds": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "format": "uuid"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "CreateStaffDTO": {
+        "type": "object",
+        "properties": {
+          "fullName": {
+            "type": "string",
+            "nullable": true
+          },
+          "phone": {
+            "type": "string",
+            "nullable": true
+          },
+          "email": {
+            "type": "string",
+            "nullable": true
+          },
+          "role": {
+            "type": "string",
+            "nullable": true
+          },
+          "password": {
+            "type": "string",
+            "nullable": true
+          },
+          "passwordConfirm": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
       "CreateVehicleDTO": {
         "type": "object",
         "properties": {
@@ -1029,15 +1335,15 @@
             "type": "string",
             "format": "uuid"
           },
-          "vehicleName": {
+          "model": {
             "type": "string",
             "nullable": true
           },
-          "vehicleColor": {
+          "color": {
             "type": "string",
             "nullable": true
           },
-          "vehicleBrand": {
+          "brand": {
             "type": "string",
             "nullable": true
           },
@@ -1054,24 +1360,18 @@
       },
       "CreatingBookingDTO": {
         "required": [
-          "description",
           "location"
         ],
         "type": "object",
         "properties": {
-          "customerId": {
-            "type": "string",
-            "format": "uuid"
-          },
-          "vehicleId": {
+          "carId": {
             "type": "string",
             "format": "uuid",
             "nullable": true
           },
           "description": {
-            "maxLength": 500,
-            "minLength": 1,
-            "type": "string"
+            "type": "string",
+            "nullable": true
           },
           "evidence": {
             "type": "string",
@@ -1085,8 +1385,22 @@
             "type": "string",
             "nullable": true
           },
-          "phoneNumber": {
+          "phone": {
             "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "ListServiceDTO": {
+        "type": "object",
+        "properties": {
+          "selectedServices": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "format": "uuid"
+            },
             "nullable": true
           }
         },
@@ -1113,6 +1427,11 @@
         ],
         "type": "object",
         "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "nullable": true
+          },
           "packageName": {
             "maxLength": 100,
             "minLength": 1,
@@ -1129,6 +1448,40 @@
               "format": "uuid"
             },
             "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "PaymentBookingDTO": {
+        "type": "object",
+        "properties": {
+          "bookingId": {
+            "type": "string",
+            "format": "uuid"
+          }
+        },
+        "additionalProperties": false
+      },
+      "PaymentCallbackDTO": {
+        "type": "object",
+        "properties": {
+          "transactionId": {
+            "type": "string",
+            "format": "uuid"
+          }
+        },
+        "additionalProperties": false
+      },
+      "PurchasePackageDTO": {
+        "type": "object",
+        "properties": {
+          "carId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "packageId": {
+            "type": "string",
+            "format": "uuid"
           }
         },
         "additionalProperties": false
@@ -1207,6 +1560,20 @@
         },
         "additionalProperties": false
       },
+      "StaffAssignDTO": {
+        "type": "object",
+        "properties": {
+          "staff1": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "staff2": {
+            "type": "string",
+            "format": "uuid"
+          }
+        },
+        "additionalProperties": false
+      },
       "TokenDTO": {
         "type": "object",
         "properties": {
@@ -1224,23 +1591,7 @@
       "UpdateVehicleDTO": {
         "type": "object",
         "properties": {
-          "vehicleName": {
-            "type": "string",
-            "nullable": true
-          },
-          "vehicleColor": {
-            "type": "string",
-            "nullable": true
-          },
-          "vehicleBrand": {
-            "type": "string",
-            "nullable": true
-          },
-          "numberOfSeats": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "licensePlate": {
+          "color": {
             "type": "string",
             "nullable": true
           }

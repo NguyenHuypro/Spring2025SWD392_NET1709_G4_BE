@@ -6,6 +6,10 @@ using CarRescueSystem.BLL.Service.Interface;
 using CarRescueSystem.DAL.UnitOfWork;
 using CarRescueSystem.BLL.Utilities;
 using CarRescueSystem.Common.DTO;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
+using VNPAY.NET.Enums;
+using VNPAY.NET.Models;
 
 namespace CarRescueSystem.BLL.Service.Implement
 {
@@ -14,14 +18,16 @@ namespace CarRescueSystem.BLL.Service.Implement
         
         private readonly IUnitOfWork _unitOfWork;
         private readonly UserUtility _userUtility;
-        private readonly IWalletService _walletService;
+        //private readonly IWalletService _walletService;
+        private readonly IVnPayService _vpnPayService;
 
-        public VehicleService(IUnitOfWork unitOfWork, UserUtility userUtility, IWalletService walletService)
+        public VehicleService(IUnitOfWork unitOfWork, UserUtility userUtility,  IVnPayService vnPayService)
         {
             
             _unitOfWork = unitOfWork;
             _userUtility = userUtility;
-            _walletService = walletService;
+            //_walletService = walletService;
+            _vpnPayService = vnPayService;
         }
 
         public async Task<ResponseDTO> CreateCar(CreateVehicleDTO request)
@@ -35,13 +41,13 @@ namespace CarRescueSystem.BLL.Service.Implement
                     return new ResponseDTO("User not found", 404, false);
                 }
                 var vehicle = new Vehicle{
-                    CustomerId = request.CustomerId,
-                    VehicleId = Guid.NewGuid(),
-                    VehicleName = request.VehicleName,
-                    VehicleColor = request.VehicleColor,
-                    VehicleBrand = request.VehicleBrand,
-                    NumberOfSeats = request.NumberOfSeats,
-                    LicensePlate = request.LicensePlate
+                    customerId = customer.id,
+                    id = Guid.NewGuid(),
+                    model = request.model,
+                    color = request.color,
+                    brand = request.brand,
+                    numberOfSeats = request.numberOfSeats,
+                    licensePlate = request.licensePlate
                 };
                 await _unitOfWork.VehicleRepo.AddAsync(vehicle);
                 await _unitOfWork.SaveChangeAsync();
@@ -96,27 +102,14 @@ namespace CarRescueSystem.BLL.Service.Implement
                 if (oldvehicle == null)
                     return new ResponseDTO($"Error: {"No Vehicle with this id found!"}", 404, false);
                     //update oldvehicle
-                    oldvehicle.VehicleName = request.VehicleName;
-                    oldvehicle.VehicleColor = request.VehicleColor;
-                    oldvehicle.VehicleBrand = request.VehicleBrand;
-                    oldvehicle.NumberOfSeats = request.NumberOfSeats;
-                    oldvehicle.LicensePlate = request.LicensePlate;
+                    
+                    oldvehicle.color = request.color;
 
 
-                if (!string.IsNullOrWhiteSpace(request.VehicleName))
-                    oldvehicle.VehicleName = request.VehicleName;
+                if (!string.IsNullOrWhiteSpace(request.color))
+                    oldvehicle.color = request.color;
 
-                if (!string.IsNullOrWhiteSpace(request.VehicleColor))
-                    oldvehicle.VehicleColor = request.VehicleColor;
-
-                if (!string.IsNullOrWhiteSpace(request.VehicleBrand))
-                    oldvehicle.VehicleBrand = request.VehicleBrand;
-
-                if (request.NumberOfSeats > 0)
-                    oldvehicle.NumberOfSeats = request.NumberOfSeats;
-
-                if (!string.IsNullOrWhiteSpace(request.LicensePlate))
-                    oldvehicle.LicensePlate = request.LicensePlate;
+             
 
                 await _unitOfWork.VehicleRepo.UpdateAsync(oldvehicle);
                 await _unitOfWork.SaveChangeAsync();
@@ -153,43 +146,65 @@ namespace CarRescueSystem.BLL.Service.Implement
             var userId = _userUtility.GetUserIdFromToken();
             var vehicle = await _unitOfWork.VehicleRepo.GetByIdAsync(vehicleId);
 
-            if (vehicle == null || vehicle.CustomerId != userId)
+            if (vehicle == null || vehicle.customerId != userId)
                 return new ResponseDTO("Vehicle not found or unauthorized", 403, false);
 
             var package = await _unitOfWork.PackageRepo.GetByIdAsync(packageId);
             if (package == null)
                 return new ResponseDTO("Package not found", 404, false);
 
-            // Thanh toán
-            decimal totalPrice = package.PackagePrice;
-            var deductResponse = await _walletService.DeductAmount(userId, totalPrice);
-            if (!deductResponse.IsSuccess)
-                return deductResponse;
+            // ✅ Tạo giao dịch mới trước khi thanh toán
+            var transaction = new Transaction
+            {
+                id = Guid.NewGuid(), // Tạo ID giao dịch
+                userId = userId,
+                packageId = packageId,
+                carId = vehicleId, // Liên kết xe
+                amount = package.price,
+                createdAt = DateTime.UtcNow,
+                status = Transaction.TransactionStatus.PENDING
+            };
 
-            // Gán package cho xe
-            vehicle.PackageId = packageId;
-         
-            vehicle.ExpirationDate = DateTime.UtcNow.AddMonths(1); // Thêm thời hạn 1 tháng
+            await _unitOfWork.TransactionRepo.AddAsync(transaction);
+            await _unitOfWork.SaveChangeAsync(); // ✅ Lưu vào DB
 
-            await _unitOfWork.VehicleRepo.UpdateAsync(vehicle);
-            await _unitOfWork.SaveChangeAsync();
+            // ✅ Lấy IP Address của người dùng
+            var ipAddress = "127.0.0.1"; // Hoặc lấy từ request
 
-            return new ResponseDTO("Package purchased successfully", 200, true);
+            // ✅ Tạo PaymentRequest đúng format
+            var paymentRequest = new PaymentRequest
+            {
+                PaymentId = DateTime.UtcNow.Ticks,
+                Money = (double)transaction.amount,
+                Description = $"{transaction.id}/package",
+                IpAddress = ipAddress,
+                BankCode = BankCode.ANY, // Cho phép chọn ngân hàng
+                CreatedDate = DateTime.UtcNow,
+                Currency = Currency.VND,
+                Language = DisplayLanguage.Vietnamese
+            };
+
+            // ✅ Gọi đúng `CreatePaymentUrlAsync`
+            var paymentUrl = await _vpnPayService.CreatePaymentUrlAsync(paymentRequest, userId, null, packageId, vehicleId, transaction.id);
+
+            return new ResponseDTO("Redirect to payment", 200, true, paymentUrl);
         }
+
+
 
         public async Task<ResponseDTO> GetVehiclePackage(Guid vehicleId)
         {
             var vehicle = await _unitOfWork.VehicleRepo.GetByIdAsync(vehicleId);
-            if (vehicle == null || vehicle.PackageId == null)
+            if (vehicle == null || vehicle.packageId == null)
                 return new ResponseDTO("No package found for this vehicle", 404, false);
 
-            var package = await _unitOfWork.PackageRepo.GetByIdAsync(vehicle.PackageId.Value);
+            var package = await _unitOfWork.PackageRepo.GetByIdAsync(vehicle.packageId.Value);
             var response = new
             {
-                PackageId = package.PackageId,
-                PackageName = package.PackageName,
+                PackageId = package.id,
+                PackageName = package.name,
           
-                ExpirationDate = vehicle.ExpirationDate
+                ExpirationDate = vehicle.expirationDate
             };
 
             return new ResponseDTO("Package retrieved successfully", 200, true, response);
@@ -200,15 +215,15 @@ namespace CarRescueSystem.BLL.Service.Implement
             var userId = _userUtility.GetUserIdFromToken();
             var vehicle = await _unitOfWork.VehicleRepo.GetByIdAsync(vehicleId);
 
-            if (vehicle == null || vehicle.PackageId == null)
+            if (vehicle == null || vehicle.packageId == null)
                 return new ResponseDTO("No package found for this vehicle", 404, false);
 
-            if (vehicle.CustomerId != userId)
+            if (vehicle.customerId != userId)
                 return new ResponseDTO("Unauthorized: You do not own this vehicle", 403, false);
 
-            vehicle.PackageId = null;
+            vehicle.packageId = null;
            
-            vehicle.ExpirationDate = null;
+            vehicle.expirationDate = null;
 
             await _unitOfWork.VehicleRepo.UpdateAsync(vehicle);
             await _unitOfWork.SaveChangeAsync();
@@ -216,76 +231,115 @@ namespace CarRescueSystem.BLL.Service.Implement
             return new ResponseDTO("Package removed successfully", 200, true);
         }
 
-        public async Task<ResponseDTO> UpgradePackage(Guid vehicleId, Guid newPackageId)
+        //public async Task<ResponseDTO> UpgradePackage(Guid vehicleId, Guid newPackageId)
+        //{
+        //    var userId = _userUtility.GetUserIdFromToken();
+        //    var vehicle = await _unitOfWork.VehicleRepo.GetByIdAsync(vehicleId);
+
+        //    if (vehicle == null || vehicle.customerId != userId)
+        //        return new ResponseDTO("Vehicle not found or unauthorized", 403, false);
+
+        //    var newPackage = await _unitOfWork.PackageRepo.GetByIdAsync(newPackageId);
+        //    if (newPackage == null)
+        //        return new ResponseDTO("New package not found", 404, false);
+
+        //    if (vehicle.packageId == null)
+        //    {
+        //        return new ResponseDTO("lôi", 400, false);
+        //    }
+
+        //    var currentPackage = await _unitOfWork.PackageRepo.GetByIdAsync(vehicle.packageId.Value);
+        //    if (currentPackage == null)
+        //        return new ResponseDTO("Current package not found", 404, false);
+
+        //    if (currentPackage.id == newPackage.id)
+        //    {
+        //        //var paymentUrl = _vpnPayService.CreatePaymentUrl(newPackage.price, $"PACKAGE_{vehicleId}_{newPackageId}");
+
+        //        // ✅ Tạo transaction
+        //        var transaction = new Transaction
+        //        {
+        //            id = Guid.NewGuid(),
+        //            userId = userId,
+        //            amount = newPackage.price,
+        //            createdAt = DateTime.UtcNow,
+        //            status = Transaction.TransactionStatus.PENDING,
+        //            carId = vehicleId,
+        //            packageId = newPackageId
+        //        };
+        //        await _unitOfWork.TransactionRepo.AddAsync(transaction);
+        //        await _unitOfWork.SaveChangeAsync();
+
+        //        return new ResponseDTO("Redirect to payment", 200, true);
+        //    }
+
+        //    if (IsUpgradeValid(currentPackage.name, newPackage.name))
+        //    {
+        //        decimal priceDifference = (newPackage.price as decimal? ?? 0m) - (currentPackage.price as decimal? ?? 0m);
+        //        if (priceDifference <= 0)
+        //            return new ResponseDTO("Invalid upgrade path", 400, false);
+
+        //        //var paymentUrl = _vpnPayService.CreatePaymentUrl(priceDifference, $"UPGRADE_{vehicleId}_{newPackageId}");
+
+        //        // ✅ Tạo transaction cho nâng cấp
+        //        var transaction = new Transaction
+        //        {
+        //            id = Guid.NewGuid(),
+        //            userId = userId,
+        //            amount = priceDifference,
+        //            createdAt = DateTime.UtcNow,
+        //            status = Transaction.TransactionStatus.PENDING,
+        //            carId = vehicleId,
+        //            packageId = newPackageId
+        //        };
+        //        await _unitOfWork.TransactionRepo.AddAsync(transaction);
+        //        await _unitOfWork.SaveChangeAsync();
+
+        //        return new ResponseDTO("Redirect to payment", 200, true);
+        //    }
+
+        //    return new ResponseDTO("Invalid upgrade path", 400, false);
+        //}
+        //private bool IsUpgradeValid(string currentPackage, string newPackage)
+        //{
+        //    if (currentPackage == "Gói Cơ Bản" && (newPackage == "Gói Toàn Diện" || newPackage == "Gói Cao Cấp"))
+        //        return true;
+        //    if (currentPackage == "Gói Toàn Diện" && newPackage == "Gói Cao Cấp")
+        //        return true;
+        //    return false;
+        //}
+
+
+        public async Task<ResponseDTO> GetCarByUserId()
         {
             var userId = _userUtility.GetUserIdFromToken();
-            var vehicle = await _unitOfWork.VehicleRepo.GetByIdAsync(vehicleId);
 
-            if (vehicle == null || vehicle.CustomerId != userId)
-                return new ResponseDTO("Vehicle not found or unauthorized", 403, false);
+            var myCars = await _unitOfWork.VehicleRepo.GetVehiclesByUserIdAsync(userId);
 
-            var newPackage = await _unitOfWork.PackageRepo.GetByIdAsync(newPackageId);
-            if (newPackage == null)
-                return new ResponseDTO("New package not found", 404, false);
-
-            if (vehicle.PackageId == null)
+            if (myCars == null || !myCars.Any())
             {
-                var deductResponse = await _walletService.DeductAmount(userId, newPackage.PackagePrice);
-                if (!deductResponse.IsSuccess)
-                    return deductResponse;
-
-                vehicle.PackageId = newPackage.PackageId;
-               
-                vehicle.ExpirationDate = DateTime.UtcNow.AddMonths(1);
-
-                await _unitOfWork.VehicleRepo.UpdateAsync(vehicle);
-                await _unitOfWork.SaveChangeAsync();
-                return new ResponseDTO($"Purchased {newPackage.PackageName} package", 200, true);
+                return new ResponseDTO("Không tìm thấy xe nào!", 404, false);
             }
 
-            var currentPackage = await _unitOfWork.PackageRepo.GetByIdAsync(vehicle.PackageId.Value);
-            if (currentPackage == null)
-                return new ResponseDTO("Current package not found", 404, false);
-
-            if (currentPackage.PackageId == newPackage.PackageId)
+            // 🔥 Chuyển danh sách Vehicle thành danh sách GetMyCarDTO
+            var carDTOs = myCars.Select(car => new GetMyCarDTO
             {
-                var deductResponse = await _walletService.DeductAmount(userId, newPackage.PackagePrice);
-                if (!deductResponse.IsSuccess)
-                    return deductResponse;
+                id = car.id,
+                model = car.model,
+                brand = car.brand,
+                color = car.color,
+                numberOfSeats = car.numberOfSeats,
+                licensePlate = car.licensePlate,
+                expiredDate = car.expirationDate?.ToString("yyyy-MM-dd") ?? "Chưa xác định",
+                package = car.Package != null ? new PackageOfCarDTO
+                {
+                    id = car.Package.id,
+                    name = car.Package.name
+                } : null
+            }).ToList();
 
-                
-                vehicle.ExpirationDate = vehicle.ExpirationDate?.AddMonths(1) ?? DateTime.UtcNow.AddMonths(1);
-
-                await _unitOfWork.VehicleRepo.UpdateAsync(vehicle);
-                await _unitOfWork.SaveChangeAsync();
-                return new ResponseDTO($"Extended {newPackage.PackageName} package (+50 uses)", 200, true);
-            }
-
-            if (IsUpgradeValid(currentPackage.PackageName, newPackage.PackageName))
-            {
-                decimal priceDifference = newPackage.PackagePrice - currentPackage.PackagePrice;
-                if (priceDifference <= 0)
-                    return new ResponseDTO("Invalid upgrade path", 400, false);
-
-                vehicle.PackageId = newPackage.PackageId;
-                
-                vehicle.ExpirationDate = DateTime.UtcNow.AddMonths(1);
-
-                await _unitOfWork.VehicleRepo.UpdateAsync(vehicle);
-                await _unitOfWork.SaveChangeAsync();
-
-                return new ResponseDTO($"Upgraded to {newPackage.PackageName} (Paid difference: {priceDifference})", 200, true);
-            }
-
-            return new ResponseDTO("Invalid upgrade path", 400, false);
+            return new ResponseDTO("Lấy danh sách xe thành công!", 200, true, carDTOs);
         }
-        private bool IsUpgradeValid(string currentPackage, string newPackage)
-        {
-            if (currentPackage == "Basic Package" && (newPackage == "Comprehensive Package" || newPackage == "Premium Package"))
-                return true;
-            if (currentPackage == "Comprehensive Package" && newPackage == "Premium Package")
-                return true;
-            return false;
-        }
+
     }
 } 

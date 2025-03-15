@@ -10,16 +10,16 @@ namespace CarRescueSystem.DAL.Model
     public class LocationData
     {
         [JsonPropertyName("lat")]
-        public string LatString { get; set; }
+        public string latString { get; set; }
 
         [JsonPropertyName("lon")]
-        public string LonString { get; set; }
+        public string lonString { get; set; }
 
         [JsonIgnore]
-        public double? Latitude => double.TryParse(LatString, out var lat) ? lat : null;
+        public double? latitude => double.TryParse(latString, out var lat) ? lat : null;
 
         [JsonIgnore]
-        public double? Longitude => double.TryParse(LonString, out var lon) ? lon : null;
+        public double? longitude => double.TryParse(lonString, out var lon) ? lon : null;
     }
 
 

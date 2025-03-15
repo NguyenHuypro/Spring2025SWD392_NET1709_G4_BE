@@ -14,5 +14,6 @@ namespace CarRescueSystem.BLL.Service.Interface
         Task<ResponseDTO> CreateService(ServiceDTO serviceDTO);
         Task<ResponseDTO> UpdateService(Guid serviceId, ServiceDTO serviceDTO);
         Task<ResponseDTO> DeleteService(Guid serviceId);
+        Task<ResponseDTO> GetServicesByPackageId(Guid packageId);
     }
 }

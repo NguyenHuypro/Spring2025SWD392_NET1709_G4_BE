@@ -12,6 +12,7 @@ namespace CarRescueSystem.DAL.Repository.Interface
         Task<BookingStaff?> GetByBookingIdAsync(Guid bookingId);
 
         Task AddRangeAsync(IEnumerable<BookingStaff> entities);
+        Task<List<BookingStaff>> GetBookingStaffsByBookingIdAsync(Guid bookingId);
 
     }
 }

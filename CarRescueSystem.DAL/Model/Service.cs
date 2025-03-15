@@ -10,13 +10,13 @@ namespace CarRescueSystem.DAL.Model
     public class Service
     {
         [Key]
-        public Guid ServiceId { get; set; }
+        public Guid id { get; set; }
 
         [Required, MaxLength(100)]
-        public string ServiceName { get; set; }
+        public string name { get; set; }
 
         [Required]
-        public decimal ServicePrice { get; set; }
+        public decimal price { get; set; }
 
         public virtual ICollection<ServiceOfBooking> ServiceOfBookings { get; set; } = new HashSet<ServiceOfBooking>();
         public virtual ICollection<ServicePackage> ServicePackages { get; set; } = new HashSet<ServicePackage>();
