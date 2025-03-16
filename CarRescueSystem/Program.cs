@@ -108,6 +108,7 @@ builder.Services.AddScoped<IBookingService, BookingService>();
 builder.Services.AddScoped<IServiceRescueService, ServiceRescueService>();
 builder.Services.AddScoped<IVehicleRepository, VehicleRepository>();
 builder.Services.AddScoped<IVehicleService, VehicleService>();
+builder.Services.AddScoped<IDashboardService,DashboardService>();
 builder.Services.AddScoped<UserUtility>();
 builder.Services.AddAutoMapper(typeof(VehicleProfile));
 builder.Services.AddScoped<DbSeeder>();
