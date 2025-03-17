@@ -11,27 +11,37 @@ namespace CarRescueSystem.DAL.Model
     public class Vehicle
     {
         [Key]
-        public Guid VehicleId { get; set; }
+        public Guid id { get; set; }
 
         [Required]
         [ForeignKey("User")]
-        public Guid CustomerId { get; set; }
+        public Guid customerId { get; set; }
 
         [Required, MaxLength(100)]
-        public string VehicleName { get; set; }
+        public string model { get; set; }
 
         [MaxLength(50)]
-        public string VehicleColor { get; set; }
+        public string color { get; set; }
 
         [Required, MaxLength(100)]
-        public string VehicleBrand { get; set; }
+        public string brand { get; set; }
+        
 
         [Required]
-        public int NumberOfSeats { get; set; }
+        public int numberOfSeats { get; set; }
         [Required, MaxLength(15)]
-        public string LicensePlate { get; set; }
+        public string licensePlate { get; set; }
         public virtual User Customer { get; set; }
-        
+
+        // Gói dịch vụ hiện tại của xe (quan hệ 1-N)
+        [ForeignKey("Package")]
+        public Guid? packageId { get; set; }
+        public virtual Package? Package { get; set; }
+
+        // 🆕 Ngày hết hạn của gói dịch vụ
+        public DateTime? expirationDate { get; set; }
+        public virtual ICollection<Transaction> Transactions { get; set; } = new HashSet<Transaction>();
+
 
     }
 }

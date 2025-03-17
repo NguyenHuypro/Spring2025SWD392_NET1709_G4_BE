@@ -1,20 +1,24 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Kaz\\Desktop\\code\\SWDSU25\\Spring2025SWD392_NET1709_G4_BE\\CarRescueSystem.BLL\\CarRescueSystem.BLL.csproj": {}
+    "D:\\HOC\\SWD\\CarRescueSystem\\CarRescueSystemProject\\CarRescueSystem.BLL\\CarRescueSystem.BLL.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Kaz\\Desktop\\code\\SWDSU25\\Spring2025SWD392_NET1709_G4_BE\\CarRescueSystem.BLL\\CarRescueSystem.BLL.csproj": {
+    "D:\\HOC\\SWD\\CarRescueSystem\\CarRescueSystemProject\\CarRescueSystem.BLL\\CarRescueSystem.BLL.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Kaz\\Desktop\\code\\SWDSU25\\Spring2025SWD392_NET1709_G4_BE\\CarRescueSystem.BLL\\CarRescueSystem.BLL.csproj",
+        "projectUniqueName": "D:\\HOC\\SWD\\CarRescueSystem\\CarRescueSystemProject\\CarRescueSystem.BLL\\CarRescueSystem.BLL.csproj",
         "projectName": "CarRescueSystem.BLL",
-        "projectPath": "C:\\Users\\Kaz\\Desktop\\code\\SWDSU25\\Spring2025SWD392_NET1709_G4_BE\\CarRescueSystem.BLL\\CarRescueSystem.BLL.csproj",
-        "packagesPath": "C:\\Users\\Kaz\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Kaz\\Desktop\\code\\SWDSU25\\Spring2025SWD392_NET1709_G4_BE\\CarRescueSystem.BLL\\obj\\",
+        "projectPath": "D:\\HOC\\SWD\\CarRescueSystem\\CarRescueSystemProject\\CarRescueSystem.BLL\\CarRescueSystem.BLL.csproj",
+        "packagesPath": "C:\\Users\\dangl\\.nuget\\packages\\",
+        "outputPath": "D:\\HOC\\SWD\\CarRescueSystem\\CarRescueSystemProject\\CarRescueSystem.BLL\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\Kaz\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\dangl\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -22,18 +26,18 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "C:\\Users\\Kaz\\.nuget\\packages": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net9.0": {
             "targetAlias": "net9.0",
             "projectReferences": {
-              "C:\\Users\\Kaz\\Desktop\\code\\SWDSU25\\Spring2025SWD392_NET1709_G4_BE\\CarRescueSystem.Common\\CarRescueSystem.Common.csproj": {
-                "projectPath": "C:\\Users\\Kaz\\Desktop\\code\\SWDSU25\\Spring2025SWD392_NET1709_G4_BE\\CarRescueSystem.Common\\CarRescueSystem.Common.csproj"
+              "D:\\HOC\\SWD\\CarRescueSystem\\CarRescueSystemProject\\CarRescueSystem.Common\\CarRescueSystem.Common.csproj": {
+                "projectPath": "D:\\HOC\\SWD\\CarRescueSystem\\CarRescueSystemProject\\CarRescueSystem.Common\\CarRescueSystem.Common.csproj"
               },
-              "C:\\Users\\Kaz\\Desktop\\code\\SWDSU25\\Spring2025SWD392_NET1709_G4_BE\\CarRescueSystem.DAL\\CarRescueSystem.DAL.csproj": {
-                "projectPath": "C:\\Users\\Kaz\\Desktop\\code\\SWDSU25\\Spring2025SWD392_NET1709_G4_BE\\CarRescueSystem.DAL\\CarRescueSystem.DAL.csproj"
+              "D:\\HOC\\SWD\\CarRescueSystem\\CarRescueSystemProject\\CarRescueSystem.DAL\\CarRescueSystem.DAL.csproj": {
+                "projectPath": "D:\\HOC\\SWD\\CarRescueSystem\\CarRescueSystemProject\\CarRescueSystem.DAL\\CarRescueSystem.DAL.csproj"
               }
             }
           }
@@ -48,7 +52,7 @@
           "auditLevel": "low",
           "auditMode": "direct"
         },
-        "SdkAnalysisLevel": "9.0.200"
+        "SdkAnalysisLevel": "9.0.100"
       },
       "frameworks": {
         "net9.0": {
@@ -69,6 +73,10 @@
             "Portable.BouncyCastle": {
               "target": "Package",
               "version": "[1.9.0, )"
+            },
+            "VNPAY.NET": {
+              "target": "Package",
+              "version": "[8.5.0, )"
             }
           },
           "imports": [
@@ -87,21 +95,25 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.200/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.102/PortableRuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\Kaz\\Desktop\\code\\SWDSU25\\Spring2025SWD392_NET1709_G4_BE\\CarRescueSystem.Common\\CarRescueSystem.Common.csproj": {
+    "D:\\HOC\\SWD\\CarRescueSystem\\CarRescueSystemProject\\CarRescueSystem.Common\\CarRescueSystem.Common.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Kaz\\Desktop\\code\\SWDSU25\\Spring2025SWD392_NET1709_G4_BE\\CarRescueSystem.Common\\CarRescueSystem.Common.csproj",
+        "projectUniqueName": "D:\\HOC\\SWD\\CarRescueSystem\\CarRescueSystemProject\\CarRescueSystem.Common\\CarRescueSystem.Common.csproj",
         "projectName": "CarRescueSystem.Common",
-        "projectPath": "C:\\Users\\Kaz\\Desktop\\code\\SWDSU25\\Spring2025SWD392_NET1709_G4_BE\\CarRescueSystem.Common\\CarRescueSystem.Common.csproj",
-        "packagesPath": "C:\\Users\\Kaz\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Kaz\\Desktop\\code\\SWDSU25\\Spring2025SWD392_NET1709_G4_BE\\CarRescueSystem.Common\\obj\\",
+        "projectPath": "D:\\HOC\\SWD\\CarRescueSystem\\CarRescueSystemProject\\CarRescueSystem.Common\\CarRescueSystem.Common.csproj",
+        "packagesPath": "C:\\Users\\dangl\\.nuget\\packages\\",
+        "outputPath": "D:\\HOC\\SWD\\CarRescueSystem\\CarRescueSystemProject\\CarRescueSystem.Common\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\Kaz\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\dangl\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -109,7 +121,7 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "C:\\Users\\Kaz\\.nuget\\packages": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -128,7 +140,7 @@
           "auditLevel": "low",
           "auditMode": "direct"
         },
-        "SdkAnalysisLevel": "9.0.200"
+        "SdkAnalysisLevel": "9.0.100"
       },
       "frameworks": {
         "net9.0": {
@@ -149,21 +161,25 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.200/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.102/PortableRuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\Kaz\\Desktop\\code\\SWDSU25\\Spring2025SWD392_NET1709_G4_BE\\CarRescueSystem.DAL\\CarRescueSystem.DAL.csproj": {
+    "D:\\HOC\\SWD\\CarRescueSystem\\CarRescueSystemProject\\CarRescueSystem.DAL\\CarRescueSystem.DAL.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Kaz\\Desktop\\code\\SWDSU25\\Spring2025SWD392_NET1709_G4_BE\\CarRescueSystem.DAL\\CarRescueSystem.DAL.csproj",
+        "projectUniqueName": "D:\\HOC\\SWD\\CarRescueSystem\\CarRescueSystemProject\\CarRescueSystem.DAL\\CarRescueSystem.DAL.csproj",
         "projectName": "CarRescueSystem.DAL",
-        "projectPath": "C:\\Users\\Kaz\\Desktop\\code\\SWDSU25\\Spring2025SWD392_NET1709_G4_BE\\CarRescueSystem.DAL\\CarRescueSystem.DAL.csproj",
-        "packagesPath": "C:\\Users\\Kaz\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Kaz\\Desktop\\code\\SWDSU25\\Spring2025SWD392_NET1709_G4_BE\\CarRescueSystem.DAL\\obj\\",
+        "projectPath": "D:\\HOC\\SWD\\CarRescueSystem\\CarRescueSystemProject\\CarRescueSystem.DAL\\CarRescueSystem.DAL.csproj",
+        "packagesPath": "C:\\Users\\dangl\\.nuget\\packages\\",
+        "outputPath": "D:\\HOC\\SWD\\CarRescueSystem\\CarRescueSystemProject\\CarRescueSystem.DAL\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\Kaz\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\dangl\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -171,15 +187,15 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "C:\\Users\\Kaz\\.nuget\\packages": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net9.0": {
             "targetAlias": "net9.0",
             "projectReferences": {
-              "C:\\Users\\Kaz\\Desktop\\code\\SWDSU25\\Spring2025SWD392_NET1709_G4_BE\\CarRescueSystem.Common\\CarRescueSystem.Common.csproj": {
-                "projectPath": "C:\\Users\\Kaz\\Desktop\\code\\SWDSU25\\Spring2025SWD392_NET1709_G4_BE\\CarRescueSystem.Common\\CarRescueSystem.Common.csproj"
+              "D:\\HOC\\SWD\\CarRescueSystem\\CarRescueSystemProject\\CarRescueSystem.Common\\CarRescueSystem.Common.csproj": {
+                "projectPath": "D:\\HOC\\SWD\\CarRescueSystem\\CarRescueSystemProject\\CarRescueSystem.Common\\CarRescueSystem.Common.csproj"
               }
             }
           }
@@ -194,7 +210,7 @@
           "auditLevel": "low",
           "auditMode": "direct"
         },
-        "SdkAnalysisLevel": "9.0.200"
+        "SdkAnalysisLevel": "9.0.100"
       },
       "frameworks": {
         "net9.0": {
@@ -202,31 +218,39 @@
           "dependencies": {
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
-              "version": "[9.0.1, )"
+              "version": "[9.0.2, )"
             },
             "Microsoft.EntityFrameworkCore.Design": {
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
               "suppressParent": "All",
               "target": "Package",
-              "version": "[9.0.1, )"
+              "version": "[9.0.2, )"
             },
             "Microsoft.EntityFrameworkCore.SqlServer": {
               "target": "Package",
-              "version": "[9.0.1, )"
+              "version": "[9.0.2, )"
             },
             "Microsoft.EntityFrameworkCore.Tools": {
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
               "suppressParent": "All",
               "target": "Package",
-              "version": "[9.0.1, )"
+              "version": "[9.0.2, )"
             },
             "Microsoft.Extensions.Configuration": {
               "target": "Package",
-              "version": "[9.0.0, )"
+              "version": "[9.0.2, )"
             },
             "Microsoft.Extensions.Configuration.Json": {
               "target": "Package",
-              "version": "[9.0.0, )"
+              "version": "[9.0.2, )"
+            },
+            "Pomelo.EntityFrameworkCore.MySql": {
+              "target": "Package",
+              "version": "[9.0.0-preview.3.efcore.9.0.0, )"
+            },
+            "VNPAY.NET": {
+              "target": "Package",
+              "version": "[8.5.0, )"
             }
           },
           "imports": [
@@ -245,7 +269,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.200/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.102/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

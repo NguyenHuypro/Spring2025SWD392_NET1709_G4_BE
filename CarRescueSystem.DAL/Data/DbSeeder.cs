@@ -19,13 +19,17 @@ namespace CarRescueSystem.DAL.Data
         private static readonly Guid StaffIDTest1 = Guid.Parse("D3DAB1C3-6D48-4B23-8369-2D1C9C828F24");
         private static readonly Guid StaffIDTest2 = Guid.Parse("E9DB2278-2C9A-40D9-82B8-F8AF452A382F");
         private static readonly Guid ReceptionistIDTest = Guid.Parse("E3DAB1C3-6D48-4B23-8369-2D1C9C828F25");
+        private static readonly Guid ManagerIDTest = Guid.Parse("E1B2C3D4-F5A6-7890-1234-56789ABCDEF7");
 
 
-        // RoleId
-        private static readonly Guid CustomerRole = Guid.Parse("A1A2A3A4-B5B6-C7C8-D9D0-E1E2E3E4E5E6");
-        private static readonly Guid StaffRole = Guid.Parse("B1B2B3B4-C5C6-D7D8-E9E0-F1F2F3F4F5F6");
-        private static readonly Guid AdminRole = Guid.Parse("C1C2C3C4-D5D6-E7E8-F9F0-A1A2A3A4A5A6");
-        private static readonly Guid ReceptionistRole = Guid.Parse("D1D2D3D4-E5E6-F7F8-A9A0-B1B2B3B4B5B6");
+
+        //// RoleId
+        //private static readonly Guid CustomerRole = Guid.Parse("A1A2A3A4-B5B6-C7C8-D9D0-E1E2E3E4E5E6");
+        //private static readonly Guid StaffRole = Guid.Parse("B1B2B3B4-C5C6-D7D8-E9E0-F1F2F3F4F5F6");
+        //private static readonly Guid AdminRole = Guid.Parse("C1C2C3C4-D5D6-E7E8-F9F0-A1A2A3A4A5A6");
+        //private static readonly Guid ReceptionistRole = Guid.Parse("D1D2D3D4-E5E6-F7F8-A9A0-B1B2B3B4B5B6");
+        //private static readonly Guid ManagerRole = Guid.Parse("E2F3A4B5-C6D7-E8F9-A0B1-C2D3E4F5A6B7");
+
 
         // Service
         private static readonly Guid Brakes = Guid.Parse("A1E2C3D4-5F6A-7B8C-9D0E-1F2A3B4C5D6E");
@@ -103,6 +107,12 @@ namespace CarRescueSystem.DAL.Data
 
         // Vehicle ID mới
         private static readonly Guid VehicleCustomerTestId = Guid.Parse("12345678-90AB-CDEF-1234-567890ABCDEF");
+        // ID của các trạm cứu hộ
+        private static readonly Guid RescueStationId1 = Guid.Parse("A1B2C3D4-E5F6-7890-1234-56789ABCDEF1");
+        private static readonly Guid RescueStationId2 = Guid.Parse("A1B2C3D4-E5F6-7890-1234-56789ABCDEF2");
+        private static readonly Guid RescueStationId3 = Guid.Parse("A1B2C3D4-E5F6-7890-1234-56789ABCDEF3");
+        private static readonly Guid RescueStationId4 = Guid.Parse("A1B2C3D4-E5F6-7890-1234-56789ABCDEF4");
+        private static readonly Guid RescueStationId5 = Guid.Parse("A1B2C3D4-E5F6-7890-1234-56789ABCDEF5");
 
         public DbSeeder(ApplicationDbContext context)
         {
@@ -111,11 +121,13 @@ namespace CarRescueSystem.DAL.Data
         public static void Seed(ModelBuilder modelBuilder)
         {
             SeedUser(modelBuilder);
-            SeedRoles(modelBuilder);
+            //SeedRoles(modelBuilder);
             SeedServices(modelBuilder);
             SeedPackages(modelBuilder);
             SeedServicePackage(modelBuilder);
             SeedVehicle(modelBuilder);
+            SeedRescueStations(modelBuilder);
+            //SeedWallet(modelBuilder);
         }
         private static void SeedUser(ModelBuilder modelBuilder)
         {
@@ -124,89 +136,204 @@ namespace CarRescueSystem.DAL.Data
             modelBuilder.Entity<User>().HasData(
                 new User
                 {
-                    UserId = UserIDTest,
-                    FullName = "Test User",
-                    Email = "testUser@gmail.com",
-                    PasswordHash = fixedHashedPassword,
-                    PasswordSalt = "",
-                    PhoneNumber = "0999888777",
-                    RoleID = new Guid("A1A2A3A4-B5B6-C7C8-D9D0-E1E2E3E4E5E6")
+                    id = UserIDTest,
+                    fullName = "Test User",
+                    email = "testUser@gmail.com",
+                    password = fixedHashedPassword,
+                    passwordSalt = "",
+                    phone = "0999888777",
+                    role = RoleType.CUSTOMER,
                 },
                 new User
                 {
-                    UserId = AdminIDTest,
-                    FullName = "Test Admin",
-                    Email = "testAdmin@gmail.com",
-                    PasswordHash = fixedHashedPassword,
-                    PasswordSalt = "",
-                    PhoneNumber = "0999888777",
-                    RoleID = new Guid("C1C2C3C4-D5D6-E7E8-F9F0-A1A2A3A4A5A6")
+                    id = AdminIDTest,
+                    fullName = "Test Admin",
+                    email = "testAdmin@gmail.com",
+                    password = fixedHashedPassword,
+                    passwordSalt = "",
+                    phone = "0999888777",
+                    role = RoleType.ADMIN,
                 },
                 new User
                 {
-                    UserId = StaffIDTest1,
-                    FullName = "Test Staff 1",
-                    Email = "testStaff1@gmail.com",
-                    PasswordHash = fixedHashedPassword,
-                    PasswordSalt = "",
-                    PhoneNumber = "0999888777",
-                    RoleID = new Guid("B1B2B3B4-C5C6-D7D8-E9E0-F1F2F3F4F5F6"),
-                    StaffStatus = StaffStatus.Active
+                    id = ManagerIDTest,
+                    fullName = "Test Manager",
+                    email = "testManager@gmail.com",
+                    password = fixedHashedPassword,
+                    passwordSalt = "",
+                    phone = "0999888777",
+                    role = RoleType.MANAGER,
+                },
+
+                new User
+                {
+                    id = StaffIDTest1,
+                    fullName = "Test Staff 1",
+                    email = "testStaff1@gmail.com",
+                    password = fixedHashedPassword,
+                    passwordSalt = "",
+                    phone = "0999888777",
+                    role = RoleType.STAFF,
+                    staffStatus = staffStatus.ACTIVE,
+                    rescueStationId = RescueStationId1
+
                 },
                 new User
                 {
-                    UserId = StaffIDTest2,
-                    FullName = "Test Staff 2",
-                    Email = "testStaff2@gmail.com",
-                    PasswordHash = fixedHashedPassword,
-                    PasswordSalt = "",
-                    PhoneNumber = "0999888777",
-                    RoleID = new Guid("B1B2B3B4-C5C6-D7D8-E9E0-F1F2F3F4F5F6"),
-                    StaffStatus = StaffStatus.Active
+                    id = StaffIDTest2,
+                    fullName = "Test Staff 2",
+                    email = "testStaff2@gmail.com",
+                    password = fixedHashedPassword,
+                    passwordSalt = "",
+                    phone = "0999888777",
+                    role = RoleType.STAFF,
+                    staffStatus = staffStatus.ACTIVE,
+                    rescueStationId = RescueStationId1
+
                 },
                 new User
                 {
-                    UserId = ReceptionistIDTest,
-                    FullName = "Test Receptionist",
-                    Email = "testReceptionist@gmail.com",
-                    PasswordHash = fixedHashedPassword,
-                    PasswordSalt = "",
-                    PhoneNumber = "0999888777",
-                    RoleID = new Guid("D1D2D3D4-E5E6-F7F8-A9A0-B1B2B3B4B5B6")
-                }
+                    id = ReceptionistIDTest,
+                    fullName = "Test Receptionist",
+                    email = "testReceptionist@gmail.com",
+                    password = fixedHashedPassword,
+                    passwordSalt = "",
+                    phone = "0999888777",
+                    role = RoleType.RECEPTIONIST,
+                },
+                new User
+                {
+                    id = Guid.Parse("F1DAB1C3-6D48-4B23-8369-2D1C9C828F26"),
+                    fullName = "Test Staff 3",
+                    email = "testStaff3@gmail.com",
+                    password = fixedHashedPassword,
+                    passwordSalt = "",
+                    phone = "0999888773",
+                    role = RoleType.STAFF,
+                    staffStatus = staffStatus.ACTIVE,
+                    rescueStationId = RescueStationId2
+                },
+            new User
+            {
+                id = Guid.Parse("F2DAB1C3-6D48-4B23-8369-2D1C9C828F27"),
+                fullName = "Test Staff 4",
+                email = "testStaff4@gmail.com",
+                password = fixedHashedPassword,
+                passwordSalt = "",
+                phone = "0999888774",
+                role = RoleType.STAFF,
+                staffStatus = staffStatus.ACTIVE,
+                rescueStationId = RescueStationId2
+            },
+            new User
+            {
+                id = Guid.Parse("F3DAB1C3-6D48-4B23-8369-2D1C9C828F28"),
+                fullName = "Test Staff 5",
+                email = "testStaff5@gmail.com",
+                password = fixedHashedPassword,
+                passwordSalt = "",
+                phone = "0999888775",
+                role = RoleType.STAFF,
+                staffStatus = staffStatus.ACTIVE,
+                rescueStationId = RescueStationId3
+            },
+            new User
+            {
+                id = Guid.Parse("F4DAB1C3-6D48-4B23-8369-2D1C9C828F29"),
+                fullName = "Test Staff 6",
+                email = "testStaff6@gmail.com",
+                password = fixedHashedPassword,
+                passwordSalt = "",
+                phone = "0999888776",
+                role = RoleType.STAFF,
+                staffStatus = staffStatus.ACTIVE,
+                rescueStationId = RescueStationId3
+            },
+            new User
+            {
+                id = Guid.Parse("F5DAB1C3-6D48-4B23-8369-2D1C9C828F30"),
+                fullName = "Test Staff 7",
+                email = "testStaff7@gmail.com",
+                password = fixedHashedPassword,
+                passwordSalt = "",
+                phone = "0999888778",
+                role = RoleType.STAFF,
+                staffStatus = staffStatus.ACTIVE,
+                rescueStationId = RescueStationId4
+            },
+            new User
+            {
+                id = Guid.Parse("F6DAB1C3-6D48-4B23-8369-2D1C9C828F31"),
+                fullName = "Test Staff 8",
+                email = "testStaff8@gmail.com",
+                password = fixedHashedPassword,
+                passwordSalt = "",
+                phone = "0999888779",
+                role = RoleType.STAFF,
+                staffStatus = staffStatus.ACTIVE,
+                rescueStationId = RescueStationId4
+            },
+            new User
+            {
+                id = Guid.Parse("F7DAB1C3-6D48-4B23-8369-2D1C9C828F32"),
+                fullName = "Test Staff 9",
+                email = "testStaff9@gmail.com",
+                password = fixedHashedPassword,
+                passwordSalt = "",
+                phone = "0999888780",
+                role = RoleType.STAFF,
+                staffStatus = staffStatus.ACTIVE,
+                rescueStationId = RescueStationId5
+            },
+            new User
+            {
+                id = Guid.Parse("F8DAB1C3-6D48-4B23-8369-2D1C9C828F33"),
+                fullName = "Test Staff 10",
+                email = "testStaff10@gmail.com",
+                password = fixedHashedPassword,
+                passwordSalt = "",
+                phone = "0999888781",
+                role = RoleType.STAFF,
+                staffStatus = staffStatus.ACTIVE,
+                rescueStationId = RescueStationId5
+            }
+
                 );
+
         }
-        private static void SeedRoles(ModelBuilder modelBuilder)
-        {
-            modelBuilder.Entity<Role>().HasData(
-                new Role { RoleID = CustomerRole, RoleName = "Customer" },
-                new Role { RoleID = StaffRole, RoleName = "Staff" },
-                new Role { RoleID = AdminRole, RoleName = "Admin" },
-                new Role { RoleID = ReceptionistRole, RoleName = "Receptionist" }
-            );
+        //private static void SeedRoles(ModelBuilder modelBuilder)
+        //{
+        //    modelBuilder.Entity<Role>().HasData(
+        //        new Role { RoleID = CustomerRole, RoleName = "CUSTOMER" },
+        //        new Role { RoleID = StaffRole, RoleName = "STAFF" },
+        //        new Role { RoleID = AdminRole, RoleName = "ADMIN" },
+        //        new Role { RoleID = ReceptionistRole, RoleName = "RECEPTIONIST" },
+        //        new Role { RoleID = ManagerRole, RoleName = "MANAGER" }
+        //    );
             
-        }
+        //}
         private static void SeedServices(ModelBuilder modelBuilder)
         {
             var services = new List<Service>
         {
-            new Service { ServiceId = Brakes, ServiceName = "Brakes", ServicePrice = 500000 },
-            new Service { ServiceId = ElectricalIssues, ServiceName = "Electrical Issues", ServicePrice = 400000 },
-            new Service { ServiceId = SteeringSystem, ServiceName = "Steering System", ServicePrice = 450000 },
-            new Service { ServiceId = EngineIssues, ServiceName = "Engine Issues", ServicePrice = 700000 },
-            new Service { ServiceId = TireProblems, ServiceName = "Tire Problems", ServicePrice = 300000 },
-            new Service { ServiceId = BatteryJumpStart, ServiceName = "Battery Jump Start", ServicePrice = 200000 },
-            new Service { ServiceId = FuelRefill, ServiceName = "Fuel Refill", ServicePrice = 250000 },
-            new Service { ServiceId = WrongFuelRefill, ServiceName = "Wrong Fuel Refill", ServicePrice = 350000 },  
-            new Service { ServiceId = LockedOut, ServiceName = "Locked Out (Forgot Keys)", ServicePrice = 150000 },
-            new Service { ServiceId = Collision, ServiceName = "Collision", ServicePrice = 1000000 },
-            new Service { ServiceId = MinorCrash, ServiceName = "Minor Crash", ServicePrice = 800000 },
-            new Service { ServiceId = Rollover, ServiceName = "Rollover", ServicePrice = 1200000 },
-            new Service { ServiceId = FireOrExplosion, ServiceName = "Fire or Explosion", ServicePrice = 2000000 },
-            new Service { ServiceId = VehicleFall, ServiceName = "Vehicle Fall", ServicePrice = 1100000 },
-            new Service { ServiceId = SubmergedVehicle, ServiceName = "Submerged Vehicle", ServicePrice = 1300000 },
-            new Service { ServiceId = Hydrolock, ServiceName = "Hydrolock", ServicePrice = 900000 },
-            new Service { ServiceId = CarTowing, ServiceName = "Car Towing", ServicePrice = 500000 }
+            new Service { id = Brakes, name = "Phanh", price = 500000 },
+            new Service { id = ElectricalIssues, name = "Vấn đề điện", price = 400000 },
+            new Service { id = SteeringSystem, name = "Hệ thống lái", price = 450000 },
+            new Service { id = EngineIssues, name = "Vấn đề động cơ", price = 700000 },
+            new Service { id = TireProblems, name = "Vấn đề lốp xe", price = 300000 },
+            new Service { id = BatteryJumpStart, name = "Kích bình ắc quy", price = 200000 },
+            new Service { id = FuelRefill, name = "Đổ nhiên liệu", price = 250000 },
+            new Service { id = WrongFuelRefill, name = "Đổ sai nhiên liệu", price = 350000 },
+            new Service { id = LockedOut, name = "Bị khóa xe (quên chìa khóa)", price = 150000 },
+            new Service { id = Collision, name = "Va chạm", price = 1000000 },
+            new Service { id = MinorCrash, name = "Va chạm nhẹ", price = 800000 },
+            new Service { id = Rollover, name = "Lật xe", price = 1200000 },
+            new Service { id = FireOrExplosion, name = "Hỏa hoạn hoặc nổ", price = 2000000 },
+            new Service { id = VehicleFall, name = "Xe rơi xuống vực", price = 1100000 },
+            new Service { id = SubmergedVehicle, name = "Xe bị ngập nước", price = 1300000 },
+            new Service { id = Hydrolock, name = "Thủy kích", price = 900000 },
+            new Service { id = CarTowing, name = "Cứu hộ kéo xe", price = 500000 }
+
         };
 
             modelBuilder.Entity<Service>().HasData(services);
@@ -215,9 +342,10 @@ namespace CarRescueSystem.DAL.Data
         {
             var packages = new List<Package>
         {
-            new Package { PackageId = BasicPackage, PackageName = "Basic Package", PackagePrice = 500000 },
-            new Package { PackageId = ComprehensivePackage, PackageName = "Comprehensive Package", PackagePrice = 1000000 },
-            new Package { PackageId = PremiumPackage, PackageName = "Premium Package", PackagePrice = 2000000 }
+            new Package { id = BasicPackage, name = "Gói Cơ Bản", price = 500000 },
+            new Package { id = ComprehensivePackage, name = "Gói Toàn Diện", price = 1000000 },
+            new Package { id = PremiumPackage, name = "Gói Cao Cấp", price = 2000000 }
+
         };
 
             modelBuilder.Entity<Package>().HasData(packages);
@@ -226,68 +354,133 @@ namespace CarRescueSystem.DAL.Data
         {
             var servicePackage = new List<ServicePackage>
             {
-                new ServicePackage { ServicePackageId = BasicService1, PackageID = new Guid("11111111-2222-3333-4444-555555555555"), ServiceId =new Guid( "A1E2C3D4-5F6A-7B8C-9D0E-1F2A3B4C5D6E")},
-                new ServicePackage { ServicePackageId = BasicService2, PackageID = new Guid("11111111-2222-3333-4444-555555555555"), ServiceId =new Guid ( "B2D3E4F5-6A7B-8C9D-0E1F-2A3B4C5D6E7F")},
-                new ServicePackage { ServicePackageId = BasicService3, PackageID = new Guid("11111111-2222-3333-4444-555555555555"), ServiceId = new Guid("C3D4E5F6-7A8B-9C0D-1E2F-3A4B5C6D7E8F")},
-                new ServicePackage { ServicePackageId = BasicService4, PackageID = new Guid("11111111-2222-3333-4444-555555555555"), ServiceId = new Guid("D4E5F6A7-8B9C-0D1E-2F3A-4B5C6D7E8F9A")},
-                new ServicePackage { ServicePackageId = BasicService5, PackageID = new Guid("11111111-2222-3333-4444-555555555555"), ServiceId = new Guid("E5F6A7B8-9C0D-1E2F-3A4B-5C6D7E8F9A0B")},
-                new ServicePackage { ServicePackageId = BasicService6, PackageID = new Guid("11111111-2222-3333-4444-555555555555"), ServiceId = new Guid("F6A7B8C9-0D1E-2F3A-4B5C-6D7E8F9A0B1C")},
-                new ServicePackage { ServicePackageId = BasicService7, PackageID = new Guid("11111111-2222-3333-4444-555555555555"), ServiceId = new Guid("D0E1F2A3-4B5C-6D7E-8F9A-0B1C2D3E4F5A")},
-                new ServicePackage { ServicePackageId = BasicService8, PackageID = new Guid("11111111-2222-3333-4444-555555555555"), ServiceId = new Guid("E1F2A3B4-5C6D-7E8F-9A0B-1C2D3E4F5A6B")},
-                new ServicePackage { ServicePackageId = BasicService9, PackageID = new Guid("11111111-2222-3333-4444-555555555555"), ServiceId = new Guid("F2A3B4C5-6D7E-8F9A-0B1C-2D3E4F5A6B7C")},
-                new ServicePackage { ServicePackageId = BasicService10, PackageID = new Guid("11111111-2222-3333-4444-555555555555"), ServiceId = CarTowing},
+                    new ServicePackage { id = BasicService1, packageID = new Guid("11111111-2222-3333-4444-555555555555"), serviceId =new Guid( "A1E2C3D4-5F6A-7B8C-9D0E-1F2A3B4C5D6E")},
+                    new ServicePackage { id = BasicService2, packageID = new Guid("11111111-2222-3333-4444-555555555555"), serviceId =new Guid ( "B2D3E4F5-6A7B-8C9D-0E1F-2A3B4C5D6E7F")},
+                    new ServicePackage { id = BasicService3, packageID = new Guid("11111111-2222-3333-4444-555555555555"), serviceId = new Guid("C3D4E5F6-7A8B-9C0D-1E2F-3A4B5C6D7E8F")},
+                    new ServicePackage { id = BasicService4, packageID = new Guid("11111111-2222-3333-4444-555555555555"), serviceId = new Guid("D4E5F6A7-8B9C-0D1E-2F3A-4B5C6D7E8F9A")},
+                    new ServicePackage { id = BasicService5, packageID = new Guid("11111111-2222-3333-4444-555555555555"), serviceId = new Guid("E5F6A7B8-9C0D-1E2F-3A4B-5C6D7E8F9A0B")},
+                    new ServicePackage { id = BasicService6, packageID = new Guid("11111111-2222-3333-4444-555555555555"), serviceId = new Guid("F6A7B8C9-0D1E-2F3A-4B5C-6D7E8F9A0B1C")},
+                    new ServicePackage { id = BasicService7, packageID = new Guid("11111111-2222-3333-4444-555555555555"), serviceId = new Guid("D0E1F2A3-4B5C-6D7E-8F9A-0B1C2D3E4F5A")},
+                    new ServicePackage { id = BasicService8, packageID = new Guid("11111111-2222-3333-4444-555555555555"), serviceId = new Guid("E1F2A3B4-5C6D-7E8F-9A0B-1C2D3E4F5A6B")},
+                    new ServicePackage { id = BasicService9, packageID = new Guid("11111111-2222-3333-4444-555555555555"), serviceId = new Guid("F2A3B4C5-6D7E-8F9A-0B1C-2D3E4F5A6B7C")},
+                    new ServicePackage { id = BasicService10, packageID = new Guid("11111111-2222-3333-4444-555555555555"), serviceId = CarTowing},
 
-                new ServicePackage { ServicePackageId = ComprehensiveService1, PackageID = new Guid("66666666-7777-8888-9999-000000000000"), ServiceId = new Guid( "A1E2C3D4-5F6A-7B8C-9D0E-1F2A3B4C5D6E")},
-                new ServicePackage { ServicePackageId = ComprehensiveService2, PackageID = new Guid("66666666-7777-8888-9999-000000000000"), ServiceId = new Guid ( "B2D3E4F5-6A7B-8C9D-0E1F-2A3B4C5D6E7F")},
-                new ServicePackage { ServicePackageId = ComprehensiveService3, PackageID = new Guid("66666666-7777-8888-9999-000000000000"), ServiceId = new Guid("C3D4E5F6-7A8B-9C0D-1E2F-3A4B5C6D7E8F")},
-                new ServicePackage { ServicePackageId = ComprehensiveService4, PackageID = new Guid("66666666-7777-8888-9999-000000000000"), ServiceId = new Guid("D4E5F6A7-8B9C-0D1E-2F3A-4B5C6D7E8F9A")},
-                new ServicePackage { ServicePackageId = ComprehensiveService5, PackageID = new Guid("66666666-7777-8888-9999-000000000000"), ServiceId = new Guid("E5F6A7B8-9C0D-1E2F-3A4B-5C6D7E8F9A0B")},
-                new ServicePackage { ServicePackageId = ComprehensiveService6, PackageID = new Guid("66666666-7777-8888-9999-000000000000"), ServiceId = new Guid("F6A7B8C9-0D1E-2F3A-4B5C-6D7E8F9A0B1C")},
-                new ServicePackage { ServicePackageId = ComprehensiveService7, PackageID = new Guid("66666666-7777-8888-9999-000000000000"), ServiceId = new Guid("A7B8C9D0-1E2F-3A4B-5C6D-7E8F9A0B1C2D")},
-                new ServicePackage { ServicePackageId = ComprehensiveService8, PackageID = new Guid("66666666-7777-8888-9999-000000000000"), ServiceId = new Guid("B8C9D0E1-2F3A-4B5C-6D7E-8F9A0B1C2D3E")},
-                new ServicePackage { ServicePackageId = ComprehensiveService9, PackageID = new Guid("66666666-7777-8888-9999-000000000000"), ServiceId = new Guid("C9D0E1F2-3A4B-5C6D-7E8F-9A0B1C2D3E4F")},
-                new ServicePackage { ServicePackageId = ComprehensiveService10, PackageID = new Guid("66666666-7777-8888-9999-000000000000"), ServiceId = new Guid("D0E1F2A3-4B5C-6D7E-8F9A-0B1C2D3E4F5A")},
-                new ServicePackage { ServicePackageId = ComprehensiveService11, PackageID = new Guid("66666666-7777-8888-9999-000000000000"), ServiceId = new Guid("E1F2A3B4-5C6D-7E8F-9A0B-1C2D3E4F5A6B")},
-                new ServicePackage { ServicePackageId = ComprehensiveService12, PackageID = new Guid("66666666-7777-8888-9999-000000000000"), ServiceId = new Guid("F2A3B4C5-6D7E-8F9A-0B1C-2D3E4F5A6B7C")},
-                new ServicePackage { ServicePackageId = ComprehensiveService13, PackageID = new Guid("66666666-7777-8888-9999-000000000000"), ServiceId = new Guid("A3B4C5D6-7E8F-9A0B-1C2D-3E4F5A6B7C8D")},
-                new ServicePackage { ServicePackageId = ComprehensiveService14, PackageID = new Guid("66666666-7777-8888-9999-000000000000"), ServiceId = new Guid("B4C5D6E7-8F9A-0B1C-2D3E-4F5A6B7C8D9E")},
-                new ServicePackage { ServicePackageId = ComprehensiveService15, PackageID = new Guid("66666666-7777-8888-9999-000000000000"), ServiceId = new Guid("C5D6E7F8-9A0B-1C2D-3E4F-5A6B7C8D9E0F")},
-                new ServicePackage { ServicePackageId = ComprehensiveService16, PackageID = new Guid("66666666-7777-8888-9999-000000000000"), ServiceId = new Guid("E7F8A9B0-1C2D-3E4F-5A6B-7C8D9E0F1A2B")},
+                    new ServicePackage { id = ComprehensiveService1, packageID = new Guid("66666666-7777-8888-9999-000000000000"), serviceId = new Guid( "A1E2C3D4-5F6A-7B8C-9D0E-1F2A3B4C5D6E")},
+                    new ServicePackage { id = ComprehensiveService2, packageID = new Guid("66666666-7777-8888-9999-000000000000"), serviceId = new Guid ( "B2D3E4F5-6A7B-8C9D-0E1F-2A3B4C5D6E7F")},
+                    new ServicePackage { id = ComprehensiveService3, packageID = new Guid("66666666-7777-8888-9999-000000000000"), serviceId = new Guid("C3D4E5F6-7A8B-9C0D-1E2F-3A4B5C6D7E8F")},
+                    new ServicePackage { id = ComprehensiveService4, packageID = new Guid("66666666-7777-8888-9999-000000000000"), serviceId = new Guid("D4E5F6A7-8B9C-0D1E-2F3A-4B5C6D7E8F9A")},
+                    new ServicePackage { id = ComprehensiveService5, packageID = new Guid("66666666-7777-8888-9999-000000000000"), serviceId = new Guid("E5F6A7B8-9C0D-1E2F-3A4B-5C6D7E8F9A0B")},
+                    new ServicePackage { id = ComprehensiveService6, packageID = new Guid("66666666-7777-8888-9999-000000000000"), serviceId = new Guid("F6A7B8C9-0D1E-2F3A-4B5C-6D7E8F9A0B1C")},
+                    new ServicePackage { id = ComprehensiveService7, packageID = new Guid("66666666-7777-8888-9999-000000000000"), serviceId = new Guid("A7B8C9D0-1E2F-3A4B-5C6D-7E8F9A0B1C2D")},
+                    new ServicePackage { id = ComprehensiveService8, packageID = new Guid("66666666-7777-8888-9999-000000000000"), serviceId = new Guid("B8C9D0E1-2F3A-4B5C-6D7E-8F9A0B1C2D3E")},
+                    new ServicePackage { id = ComprehensiveService9, packageID = new Guid("66666666-7777-8888-9999-000000000000"), serviceId = new Guid("C9D0E1F2-3A4B-5C6D-7E8F-9A0B1C2D3E4F")},
+                    new ServicePackage { id = ComprehensiveService10, packageID = new Guid("66666666-7777-8888-9999-000000000000"), serviceId = new Guid("D0E1F2A3-4B5C-6D7E-8F9A-0B1C2D3E4F5A")},
+                    new ServicePackage { id = ComprehensiveService11, packageID = new Guid("66666666-7777-8888-9999-000000000000"), serviceId = new Guid("E1F2A3B4-5C6D-7E8F-9A0B-1C2D3E4F5A6B")},
+                    new ServicePackage { id = ComprehensiveService12, packageID = new Guid("66666666-7777-8888-9999-000000000000"), serviceId = new Guid("F2A3B4C5-6D7E-8F9A-0B1C-2D3E4F5A6B7C")},
+                    new ServicePackage { id = ComprehensiveService13, packageID = new Guid("66666666-7777-8888-9999-000000000000"), serviceId = new Guid("A3B4C5D6-7E8F-9A0B-1C2D-3E4F5A6B7C8D")},
+                    new ServicePackage { id = ComprehensiveService14, packageID = new Guid("66666666-7777-8888-9999-000000000000"), serviceId = new Guid("B4C5D6E7-8F9A-0B1C-2D3E-4F5A6B7C8D9E")},
+                    new ServicePackage { id = ComprehensiveService15, packageID = new Guid("66666666-7777-8888-9999-000000000000"), serviceId = new Guid("C5D6E7F8-9A0B-1C2D-3E4F-5A6B7C8D9E0F")},
+                    new ServicePackage { id = ComprehensiveService16, packageID = new Guid("66666666-7777-8888-9999-000000000000"), serviceId = new Guid("E7F8A9B0-1C2D-3E4F-5A6B-7C8D9E0F1A2B")},
 
-                new ServicePackage { ServicePackageId = PremiumService1, PackageID = new Guid("AAAAAAAA-BBBB-CCCC-DDDD-EEEEEEEEEEEE"), ServiceId = new Guid( "A1E2C3D4-5F6A-7B8C-9D0E-1F2A3B4C5D6E")},
-                new ServicePackage { ServicePackageId = PremiumService2, PackageID = new Guid("AAAAAAAA-BBBB-CCCC-DDDD-EEEEEEEEEEEE"), ServiceId = new Guid ( "B2D3E4F5-6A7B-8C9D-0E1F-2A3B4C5D6E7F")},
-                new ServicePackage { ServicePackageId = PremiumService3, PackageID = new Guid("AAAAAAAA-BBBB-CCCC-DDDD-EEEEEEEEEEEE"), ServiceId = new Guid("C3D4E5F6-7A8B-9C0D-1E2F-3A4B5C6D7E8F")},
-                new ServicePackage { ServicePackageId = PremiumService4, PackageID = new Guid("AAAAAAAA-BBBB-CCCC-DDDD-EEEEEEEEEEEE"), ServiceId = new Guid("D4E5F6A7-8B9C-0D1E-2F3A-4B5C6D7E8F9A")},
-                new ServicePackage { ServicePackageId = PremiumService5, PackageID = new Guid("AAAAAAAA-BBBB-CCCC-DDDD-EEEEEEEEEEEE"), ServiceId = new Guid("E5F6A7B8-9C0D-1E2F-3A4B-5C6D7E8F9A0B")},
-                new ServicePackage { ServicePackageId = PremiumService6, PackageID = new Guid("AAAAAAAA-BBBB-CCCC-DDDD-EEEEEEEEEEEE"), ServiceId = new Guid("F6A7B8C9-0D1E-2F3A-4B5C-6D7E8F9A0B1C")},
-                new ServicePackage { ServicePackageId = PremiumService7, PackageID = new Guid("AAAAAAAA-BBBB-CCCC-DDDD-EEEEEEEEEEEE"), ServiceId = new Guid("A7B8C9D0-1E2F-3A4B-5C6D-7E8F9A0B1C2D")},
-                new ServicePackage { ServicePackageId = PremiumService8, PackageID = new Guid("AAAAAAAA-BBBB-CCCC-DDDD-EEEEEEEEEEEE"), ServiceId = new Guid("B8C9D0E1-2F3A-4B5C-6D7E-8F9A0B1C2D3E")},
-                new ServicePackage { ServicePackageId = PremiumService9, PackageID = new Guid("AAAAAAAA-BBBB-CCCC-DDDD-EEEEEEEEEEEE"), ServiceId = new Guid("C9D0E1F2-3A4B-5C6D-7E8F-9A0B1C2D3E4F")},
-                new ServicePackage { ServicePackageId = PremiumService10, PackageID = new Guid("AAAAAAAA-BBBB-CCCC-DDDD-EEEEEEEEEEEE"), ServiceId = new Guid("D0E1F2A3-4B5C-6D7E-8F9A-0B1C2D3E4F5A")},
-                new ServicePackage { ServicePackageId = PremiumService11, PackageID = new Guid("AAAAAAAA-BBBB-CCCC-DDDD-EEEEEEEEEEEE"), ServiceId = new Guid("E1F2A3B4-5C6D-7E8F-9A0B-1C2D3E4F5A6B")},
-                new ServicePackage { ServicePackageId = PremiumService12, PackageID = new Guid("AAAAAAAA-BBBB-CCCC-DDDD-EEEEEEEEEEEE"), ServiceId = new Guid("F2A3B4C5-6D7E-8F9A-0B1C-2D3E4F5A6B7C")},
-                new ServicePackage { ServicePackageId = PremiumService13, PackageID = new Guid("AAAAAAAA-BBBB-CCCC-DDDD-EEEEEEEEEEEE"), ServiceId = new Guid("A3B4C5D6-7E8F-9A0B-1C2D-3E4F5A6B7C8D")},
-                new ServicePackage { ServicePackageId = PremiumService14, PackageID = new Guid("AAAAAAAA-BBBB-CCCC-DDDD-EEEEEEEEEEEE"), ServiceId = new Guid("B4C5D6E7-8F9A-0B1C-2D3E-4F5A6B7C8D9E")},
-                new ServicePackage { ServicePackageId = PremiumService15, PackageID = new Guid("AAAAAAAA-BBBB-CCCC-DDDD-EEEEEEEEEEEE"), ServiceId = new Guid("C5D6E7F8-9A0B-1C2D-3E4F-5A6B7C8D9E0F")},
-                new ServicePackage { ServicePackageId = PremiumService16, PackageID = new Guid("AAAAAAAA-BBBB-CCCC-DDDD-EEEEEEEEEEEE"), ServiceId = new Guid("D6E7F8A9-0B1C-2D3E-4F5A-6B7C8D9E0F1A")},
-                new ServicePackage { ServicePackageId = PremiumService17, PackageID = new Guid("AAAAAAAA-BBBB-CCCC-DDDD-EEEEEEEEEEEE"), ServiceId = new Guid("E7F8A9B0-1C2D-3E4F-5A6B-7C8D9E0F1A2B")},
+                    new ServicePackage { id = PremiumService1, packageID = new Guid("AAAAAAAA-BBBB-CCCC-DDDD-EEEEEEEEEEEE"), serviceId = new Guid( "A1E2C3D4-5F6A-7B8C-9D0E-1F2A3B4C5D6E")},
+                    new ServicePackage { id = PremiumService2, packageID = new Guid("AAAAAAAA-BBBB-CCCC-DDDD-EEEEEEEEEEEE"), serviceId = new Guid ( "B2D3E4F5-6A7B-8C9D-0E1F-2A3B4C5D6E7F")},
+                    new ServicePackage { id = PremiumService3, packageID = new Guid("AAAAAAAA-BBBB-CCCC-DDDD-EEEEEEEEEEEE"), serviceId = new Guid("C3D4E5F6-7A8B-9C0D-1E2F-3A4B5C6D7E8F")},
+                    new ServicePackage { id = PremiumService4, packageID = new Guid("AAAAAAAA-BBBB-CCCC-DDDD-EEEEEEEEEEEE"), serviceId = new Guid("D4E5F6A7-8B9C-0D1E-2F3A-4B5C6D7E8F9A")},
+                    new ServicePackage { id = PremiumService5, packageID = new Guid("AAAAAAAA-BBBB-CCCC-DDDD-EEEEEEEEEEEE"), serviceId = new Guid("E5F6A7B8-9C0D-1E2F-3A4B-5C6D7E8F9A0B")},
+                    new ServicePackage { id = PremiumService6, packageID = new Guid("AAAAAAAA-BBBB-CCCC-DDDD-EEEEEEEEEEEE"), serviceId = new Guid("F6A7B8C9-0D1E-2F3A-4B5C-6D7E8F9A0B1C")},
+                    new ServicePackage { id = PremiumService7, packageID = new Guid("AAAAAAAA-BBBB-CCCC-DDDD-EEEEEEEEEEEE"), serviceId = new Guid("A7B8C9D0-1E2F-3A4B-5C6D-7E8F9A0B1C2D")},
+                    new ServicePackage { id = PremiumService8, packageID = new Guid("AAAAAAAA-BBBB-CCCC-DDDD-EEEEEEEEEEEE"), serviceId = new Guid("B8C9D0E1-2F3A-4B5C-6D7E-8F9A0B1C2D3E")},
+                    new ServicePackage { id = PremiumService9, packageID = new Guid("AAAAAAAA-BBBB-CCCC-DDDD-EEEEEEEEEEEE"), serviceId = new Guid("C9D0E1F2-3A4B-5C6D-7E8F-9A0B1C2D3E4F")},
+                    new ServicePackage { id = PremiumService10, packageID = new Guid("AAAAAAAA-BBBB-CCCC-DDDD-EEEEEEEEEEEE"), serviceId = new Guid("D0E1F2A3-4B5C-6D7E-8F9A-0B1C2D3E4F5A")},
+                    new ServicePackage { id = PremiumService11, packageID = new Guid("AAAAAAAA-BBBB-CCCC-DDDD-EEEEEEEEEEEE"), serviceId = new Guid("E1F2A3B4-5C6D-7E8F-9A0B-1C2D3E4F5A6B")},
+                    new ServicePackage { id = PremiumService12, packageID = new Guid("AAAAAAAA-BBBB-CCCC-DDDD-EEEEEEEEEEEE"), serviceId = new Guid("F2A3B4C5-6D7E-8F9A-0B1C-2D3E4F5A6B7C")},
+                    new ServicePackage { id = PremiumService13, packageID = new Guid("AAAAAAAA-BBBB-CCCC-DDDD-EEEEEEEEEEEE"), serviceId = new Guid("A3B4C5D6-7E8F-9A0B-1C2D-3E4F5A6B7C8D")},
+                    new ServicePackage { id = PremiumService14, packageID = new Guid("AAAAAAAA-BBBB-CCCC-DDDD-EEEEEEEEEEEE"), serviceId = new Guid("B4C5D6E7-8F9A-0B1C-2D3E-4F5A6B7C8D9E")},
+                    new ServicePackage { id = PremiumService15, packageID = new Guid("AAAAAAAA-BBBB-CCCC-DDDD-EEEEEEEEEEEE"), serviceId = new Guid("C5D6E7F8-9A0B-1C2D-3E4F-5A6B7C8D9E0F")},
+                    new ServicePackage { id = PremiumService16, packageID = new Guid("AAAAAAAA-BBBB-CCCC-DDDD-EEEEEEEEEEEE"), serviceId = new Guid("D6E7F8A9-0B1C-2D3E-4F5A-6B7C8D9E0F1A")},
+                    new ServicePackage { id = PremiumService17, packageID = new Guid("AAAAAAAA-BBBB-CCCC-DDDD-EEEEEEEEEEEE"), serviceId = new Guid("E7F8A9B0-1C2D-3E4F-5A6B-7C8D9E0F1A2B")},
 
-            };
+        };
             modelBuilder.Entity<ServicePackage>().HasData(servicePackage);
         }
         private static void SeedVehicle (ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Vehicle>().HasData(new Vehicle
             {
-                VehicleId = VehicleCustomerTestId,
-                CustomerId = new Guid("B2DAB1C3-6D48-4B23-8369-2D1C9C828F22"),
-                VehicleName = "Test",
-                VehicleColor = "Test",
-                VehicleBrand = "Test",
-                NumberOfSeats = 4,
-                LicensePlate = "30G-49344"
+                id = VehicleCustomerTestId,
+                customerId = new Guid("B2DAB1C3-6D48-4B23-8369-2D1C9C828F22"),
+                model = "Test",
+                color = "Test",
+                brand = "Test",
+                numberOfSeats = 4,
+                licensePlate = "30G-49344"
             }
             );
         }
+        private static void SeedRescueStations(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<RescueStation>().HasData(
+                new RescueStation
+                {
+                    id = RescueStationId1,
+                    name = "Trạm Cứu Hộ Quận 1",
+                    address = "86 Đinh Tiên Hoàng, Đa Kao, Quận 1, TP.HCM",
+                    latitude = 10.782222,
+                    longitude = 106.699722,
+                    phone = "02812345678",
+                    email = "rescue.q1@carrescue.vn"
+                },
+                new RescueStation
+                {
+                    id = RescueStationId2,
+                    name = "Trạm Cứu Hộ Quận 3",
+                    address = "273 Nguyễn Thiện Thuật, Phường 1, Quận 3, TP.HCM",
+                    latitude = 10.770049,
+                    longitude = 106.682846,
+                    phone = "02812345679",
+                    email = "rescue.q3@carrescue.vn"
+                },
+                new RescueStation
+                {
+                    id = RescueStationId3,
+                    name = "Trạm Cứu Hộ Quận 5",
+                    address = "161 Trần Hưng Đạo, Phường 10, Quận 5, TP.HCM",
+                    latitude = 10.754345,
+                    longitude = 106.663983,
+                    phone = "02812345680",
+                    email = "rescue.q5@carrescue.vn"
+                },
+                new RescueStation
+                {
+                    id = RescueStationId4,
+                    name = "Trạm Cứu Hộ Quận 7",
+                    address = "502 Nguyễn Văn Linh, Tân Phong, Quận 7, TP.HCM",
+                    latitude = 10.730745,
+                    longitude = 106.721640,
+                    phone = "02812345681",
+                    email = "rescue.q7@carrescue.vn"
+                },
+                new RescueStation
+                {
+                    id = RescueStationId5,
+                    name = "Trạm Cứu Hộ Quận Bình Thạnh",
+                    address = "208 Xô Viết Nghệ Tĩnh, Phường 21, Bình Thạnh, TP.HCM",
+                    latitude = 10.803537,
+                    longitude = 106.713179,
+                    phone = "02812345682",
+                    email = "rescue.bt@carrescue.vn"
+                }
+
+            );
+        }
+        //private static void SeedWallet(ModelBuilder modelBuilder)
+        //{
+        //    modelBuilder.Entity<Wallet>().HasData(new Wallet
+        //    {
+        //        userId = UserIDTest,
+        //        balance = 50000000
+        //    }
+        //    );
+        //}
     }
 }

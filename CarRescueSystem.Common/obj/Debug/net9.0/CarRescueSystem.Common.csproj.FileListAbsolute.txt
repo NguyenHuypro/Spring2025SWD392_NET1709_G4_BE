@@ -1,26 +1,3 @@
-E:\KÌ 7 MÃI ĐỈNH\SWD392\project\CarRescueSystem.Common\bin\Debug\net9.0\CarRescueSystem.Common.deps.json
-E:\KÌ 7 MÃI ĐỈNH\SWD392\project\CarRescueSystem.Common\bin\Debug\net9.0\CarRescueSystem.Common.dll
-E:\KÌ 7 MÃI ĐỈNH\SWD392\project\CarRescueSystem.Common\bin\Debug\net9.0\CarRescueSystem.Common.pdb
-E:\KÌ 7 MÃI ĐỈNH\SWD392\project\CarRescueSystem.Common\obj\Debug\net9.0\CarRescueSystem.Common.GeneratedMSBuildEditorConfig.editorconfig
-E:\KÌ 7 MÃI ĐỈNH\SWD392\project\CarRescueSystem.Common\obj\Debug\net9.0\CarRescueSystem.Common.AssemblyInfoInputs.cache
-E:\KÌ 7 MÃI ĐỈNH\SWD392\project\CarRescueSystem.Common\obj\Debug\net9.0\CarRescueSystem.Common.AssemblyInfo.cs
-E:\KÌ 7 MÃI ĐỈNH\SWD392\project\CarRescueSystem.Common\obj\Debug\net9.0\CarRescueSystem.Common.csproj.CoreCompileInputs.cache
-E:\KÌ 7 MÃI ĐỈNH\SWD392\project\CarRescueSystem.Common\obj\Debug\net9.0\CarRescueSystem.Common.dll
-E:\KÌ 7 MÃI ĐỈNH\SWD392\project\CarRescueSystem.Common\obj\Debug\net9.0\refint\CarRescueSystem.Common.dll
-E:\KÌ 7 MÃI ĐỈNH\SWD392\project\CarRescueSystem.Common\obj\Debug\net9.0\CarRescueSystem.Common.pdb
-E:\KÌ 7 MÃI ĐỈNH\SWD392\project\CarRescueSystem.Common\obj\Debug\net9.0\ref\CarRescueSystem.Common.dll
-D:\HOC\SWD\CarRescueSystem\new4\CarRescueSystem.Common\bin\Debug\net9.0\CarRescueSystem.Common.deps.json
-D:\HOC\SWD\CarRescueSystem\new4\CarRescueSystem.Common\bin\Debug\net9.0\CarRescueSystem.Common.dll
-D:\HOC\SWD\CarRescueSystem\new4\CarRescueSystem.Common\bin\Debug\net9.0\CarRescueSystem.Common.pdb
-D:\HOC\SWD\CarRescueSystem\new4\CarRescueSystem.Common\obj\Debug\net9.0\CarRescueSystem.Common.GeneratedMSBuildEditorConfig.editorconfig
-D:\HOC\SWD\CarRescueSystem\new4\CarRescueSystem.Common\obj\Debug\net9.0\CarRescueSystem.Common.AssemblyInfoInputs.cache
-D:\HOC\SWD\CarRescueSystem\new4\CarRescueSystem.Common\obj\Debug\net9.0\CarRescueSystem.Common.AssemblyInfo.cs
-D:\HOC\SWD\CarRescueSystem\new4\CarRescueSystem.Common\obj\Debug\net9.0\CarRescueSystem.Common.csproj.CoreCompileInputs.cache
-D:\HOC\SWD\CarRescueSystem\new4\CarRescueSystem.Common\obj\Debug\net9.0\CarRescueSystem.Common.sourcelink.json
-D:\HOC\SWD\CarRescueSystem\new4\CarRescueSystem.Common\obj\Debug\net9.0\CarRescueSystem.Common.dll
-D:\HOC\SWD\CarRescueSystem\new4\CarRescueSystem.Common\obj\Debug\net9.0\refint\CarRescueSystem.Common.dll
-D:\HOC\SWD\CarRescueSystem\new4\CarRescueSystem.Common\obj\Debug\net9.0\CarRescueSystem.Common.pdb
-D:\HOC\SWD\CarRescueSystem\new4\CarRescueSystem.Common\obj\Debug\net9.0\ref\CarRescueSystem.Common.dll
 D:\HOC\SWD\CarRescueSystem\CarRescueSystemProject\CarRescueSystem.Common\bin\Debug\net9.0\CarRescueSystem.Common.deps.json
 D:\HOC\SWD\CarRescueSystem\CarRescueSystemProject\CarRescueSystem.Common\bin\Debug\net9.0\CarRescueSystem.Common.dll
 D:\HOC\SWD\CarRescueSystem\CarRescueSystemProject\CarRescueSystem.Common\bin\Debug\net9.0\CarRescueSystem.Common.pdb
@@ -33,15 +10,3 @@ D:\HOC\SWD\CarRescueSystem\CarRescueSystemProject\CarRescueSystem.Common\obj\Deb
 D:\HOC\SWD\CarRescueSystem\CarRescueSystemProject\CarRescueSystem.Common\obj\Debug\net9.0\refint\CarRescueSystem.Common.dll
 D:\HOC\SWD\CarRescueSystem\CarRescueSystemProject\CarRescueSystem.Common\obj\Debug\net9.0\CarRescueSystem.Common.pdb
 D:\HOC\SWD\CarRescueSystem\CarRescueSystemProject\CarRescueSystem.Common\obj\Debug\net9.0\ref\CarRescueSystem.Common.dll
-C:\Users\Kaz\Desktop\code\SWDSU25\Spring2025SWD392_NET1709_G4_BE\CarRescueSystem.Common\bin\Debug\net9.0\CarRescueSystem.Common.deps.json
-C:\Users\Kaz\Desktop\code\SWDSU25\Spring2025SWD392_NET1709_G4_BE\CarRescueSystem.Common\bin\Debug\net9.0\CarRescueSystem.Common.dll
-C:\Users\Kaz\Desktop\code\SWDSU25\Spring2025SWD392_NET1709_G4_BE\CarRescueSystem.Common\bin\Debug\net9.0\CarRescueSystem.Common.pdb
-C:\Users\Kaz\Desktop\code\SWDSU25\Spring2025SWD392_NET1709_G4_BE\CarRescueSystem.Common\obj\Debug\net9.0\CarRescueSystem.Common.GeneratedMSBuildEditorConfig.editorconfig
-C:\Users\Kaz\Desktop\code\SWDSU25\Spring2025SWD392_NET1709_G4_BE\CarRescueSystem.Common\obj\Debug\net9.0\CarRescueSystem.Common.AssemblyInfoInputs.cache
-C:\Users\Kaz\Desktop\code\SWDSU25\Spring2025SWD392_NET1709_G4_BE\CarRescueSystem.Common\obj\Debug\net9.0\CarRescueSystem.Common.AssemblyInfo.cs
-C:\Users\Kaz\Desktop\code\SWDSU25\Spring2025SWD392_NET1709_G4_BE\CarRescueSystem.Common\obj\Debug\net9.0\CarRescueSystem.Common.csproj.CoreCompileInputs.cache
-C:\Users\Kaz\Desktop\code\SWDSU25\Spring2025SWD392_NET1709_G4_BE\CarRescueSystem.Common\obj\Debug\net9.0\CarRescueSystem.Common.sourcelink.json
-C:\Users\Kaz\Desktop\code\SWDSU25\Spring2025SWD392_NET1709_G4_BE\CarRescueSystem.Common\obj\Debug\net9.0\CarRescueSystem.Common.dll
-C:\Users\Kaz\Desktop\code\SWDSU25\Spring2025SWD392_NET1709_G4_BE\CarRescueSystem.Common\obj\Debug\net9.0\refint\CarRescueSystem.Common.dll
-C:\Users\Kaz\Desktop\code\SWDSU25\Spring2025SWD392_NET1709_G4_BE\CarRescueSystem.Common\obj\Debug\net9.0\CarRescueSystem.Common.pdb
-C:\Users\Kaz\Desktop\code\SWDSU25\Spring2025SWD392_NET1709_G4_BE\CarRescueSystem.Common\obj\Debug\net9.0\ref\CarRescueSystem.Common.dll

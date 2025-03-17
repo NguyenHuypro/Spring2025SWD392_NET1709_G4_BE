@@ -9,5 +9,11 @@ namespace CarRescueSystem.Common.DTO.Vehicle
         public string VehicleBrand { get; set; }
         public int NumberOfSeats { get; set; }
         public string CustomerName { get; set; }
+        
+    }
+    public class PurchasePackageDTO
+    {
+        public Guid carId { get; set; }
+        public Guid packageId { get; set; }
     }
 } 

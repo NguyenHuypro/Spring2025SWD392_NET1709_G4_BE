@@ -21,8 +21,19 @@ namespace CarRescueSystem.DAL.Repository.Implement
         public async Task<BookingStaff?> GetByBookingIdAsync(Guid bookingId)
         {
             return await _context.BookingStaffs
-                .Where(bs => bs.BookingId == bookingId)
+                .Where(bs => bs.id == bookingId)
                 .FirstOrDefaultAsync();
+        }
+        public async Task AddRangeAsync(IEnumerable<BookingStaff> entities)
+        {
+            await _context.BookingStaffs.AddRangeAsync(entities);
+        }
+        public async Task<List<BookingStaff>> GetBookingStaffsByBookingIdAsync(Guid bookingId)
+        {
+            return await _context.BookingStaffs
+                .Where(bs => bs.bookingId == bookingId)
+                .Include(bs => bs.Staff)
+                .ToListAsync();
         }
 
     }

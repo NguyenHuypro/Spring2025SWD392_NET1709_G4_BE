@@ -10,8 +10,9 @@ namespace CarRescueSystem.DAL.Repository.Interface
     public interface IBookingStaffRepository : IGenericRepository<BookingStaff>
     {
         Task<BookingStaff?> GetByBookingIdAsync(Guid bookingId);
-        
-        
+
+        Task AddRangeAsync(IEnumerable<BookingStaff> entities);
+        Task<List<BookingStaff>> GetBookingStaffsByBookingIdAsync(Guid bookingId);
 
     }
 }

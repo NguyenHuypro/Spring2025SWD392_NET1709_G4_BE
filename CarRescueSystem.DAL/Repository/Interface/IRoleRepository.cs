@@ -7,8 +7,8 @@ using CarRescueSystem.DAL.Model;
 
 namespace CarRescueSystem.DAL.Repository.Interface
 {
-    public interface IRoleRepository : IGenericRepository<Role>
-    {
+    //public interface IRoleRepository : IGenericRepository<Role>
+    //{
 
-    }
+    //}
 }

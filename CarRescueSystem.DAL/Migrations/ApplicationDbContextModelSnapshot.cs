@@ -17,826 +17,1011 @@ namespace CarRescueSystem.DAL.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "9.0.1")
-                .HasAnnotation("Relational:MaxIdentifierLength", 128);
+                .HasAnnotation("ProductVersion", "9.0.2")
+                .HasAnnotation("Relational:MaxIdentifierLength", 64);
 
-            SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
+            MySqlModelBuilderExtensions.AutoIncrementColumns(modelBuilder);
 
             modelBuilder.Entity("CarRescueSystem.DAL.Model.Booking", b =>
                 {
-                    b.Property<Guid>("BookingId")
+                    b.Property<Guid>("id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("char(36)");
 
-                    b.Property<DateTime>("CreatedAt")
-                        .HasColumnType("datetime2");
+                    b.Property<DateTime?>("arrivalDate")
+                        .HasColumnType("datetime(6)");
 
-                    b.Property<Guid>("CustomerId")
-                        .HasColumnType("uniqueidentifier");
+                    b.Property<DateTime>("bookingDate")
+                        .HasColumnType("datetime(6)");
 
-                    b.Property<string>("Description")
+                    b.Property<DateTime?>("completedDate")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<Guid>("customerId")
+                        .HasColumnType("char(36)");
+
+                    b.Property<string>("description")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("longtext");
 
-                    b.Property<string>("Evidence")
+                    b.Property<string>("evidence")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("longtext");
 
-                    b.Property<string>("Location")
+                    b.Property<double?>("latitude")
+                        .HasColumnType("double");
+
+                    b.Property<string>("licensePlate")
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("location")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("longtext");
 
-                    b.Property<Guid?>("PackageId")
-                        .HasColumnType("uniqueidentifier");
+                    b.Property<double?>("longitude")
+                        .HasColumnType("double");
 
-                    b.Property<DateTime?>("StartAt")
-                        .HasColumnType("datetime2");
+                    b.Property<Guid?>("packageId")
+                        .HasColumnType("char(36)");
 
-                    b.Property<int>("Status")
+                    b.Property<string>("phone")
+                        .HasColumnType("longtext");
+
+                    b.Property<Guid?>("rescueStationId")
+                        .HasColumnType("char(36)");
+
+                    b.Property<int>("status")
                         .HasColumnType("int");
 
-                    b.Property<decimal?>("TotalPrice")
+                    b.Property<decimal?>("totalPrice")
                         .HasColumnType("decimal(18,2)");
 
-                    b.Property<Guid?>("VehicleId")
-                        .HasColumnType("uniqueidentifier");
+                    b.Property<Guid?>("vehicleId")
+                        .HasColumnType("char(36)");
 
-                    b.HasKey("BookingId");
+                    b.HasKey("id");
 
-                    b.HasIndex("CustomerId");
+                    b.HasIndex("customerId");
 
-                    b.HasIndex("PackageId");
+                    b.HasIndex("packageId");
 
-                    b.HasIndex("VehicleId");
+                    b.HasIndex("rescueStationId");
+
+                    b.HasIndex("vehicleId");
 
                     b.ToTable("Bookings");
                 });
 
             modelBuilder.Entity("CarRescueSystem.DAL.Model.BookingStaff", b =>
                 {
-                    b.Property<Guid>("BookingStaffId")
+                    b.Property<Guid>("id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("char(36)");
 
-                    b.Property<DateTime>("AssignedAt")
-                        .HasColumnType("datetime2");
+                    b.Property<DateTime>("assignedAt")
+                        .HasColumnType("datetime(6)");
 
-                    b.Property<Guid>("BookingId")
-                        .HasColumnType("uniqueidentifier");
+                    b.Property<Guid>("bookingId")
+                        .HasColumnType("char(36)");
 
-                    b.Property<Guid>("StaffId")
-                        .HasColumnType("uniqueidentifier");
+                    b.Property<bool?>("confirmStaff")
+                        .HasColumnType("tinyint(1)");
 
-                    b.HasKey("BookingStaffId");
+                    b.Property<Guid>("staffId")
+                        .HasColumnType("char(36)");
 
-                    b.HasIndex("BookingId");
+                    b.HasKey("id");
 
-                    b.HasIndex("StaffId");
+                    b.HasIndex("bookingId");
+
+                    b.HasIndex("staffId");
 
                     b.ToTable("BookingStaffs");
                 });
 
             modelBuilder.Entity("CarRescueSystem.DAL.Model.Package", b =>
                 {
-                    b.Property<Guid>("PackageId")
+                    b.Property<Guid>("id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("char(36)");
 
-                    b.Property<string>("PackageName")
+                    b.Property<string>("name")
                         .IsRequired()
                         .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)");
+                        .HasColumnType("varchar(100)");
 
-                    b.Property<decimal>("PackagePrice")
+                    b.Property<decimal>("price")
                         .HasColumnType("decimal(18,2)");
 
-                    b.HasKey("PackageId");
+                    b.HasKey("id");
 
                     b.ToTable("Packages");
 
                     b.HasData(
                         new
                         {
-                            PackageId = new Guid("11111111-2222-3333-4444-555555555555"),
-                            PackageName = "Basic Package",
-                            PackagePrice = 500000m
+                            id = new Guid("11111111-2222-3333-4444-555555555555"),
+                            name = "Gói Cơ Bản",
+                            price = 500000m
                         },
                         new
                         {
-                            PackageId = new Guid("66666666-7777-8888-9999-000000000000"),
-                            PackageName = "Comprehensive Package",
-                            PackagePrice = 1000000m
+                            id = new Guid("66666666-7777-8888-9999-000000000000"),
+                            name = "Gói Toàn Diện",
+                            price = 1000000m
                         },
                         new
                         {
-                            PackageId = new Guid("aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee"),
-                            PackageName = "Premium Package",
-                            PackagePrice = 2000000m
+                            id = new Guid("aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee"),
+                            name = "Gói Cao Cấp",
+                            price = 2000000m
                         });
                 });
 
             modelBuilder.Entity("CarRescueSystem.DAL.Model.RefreshToken", b =>
                 {
-                    b.Property<Guid>("RefreshTokenId")
+                    b.Property<Guid>("id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("char(36)");
 
-                    b.Property<DateTime>("CreatedAt")
-                        .HasColumnType("datetime2");
+                    b.Property<DateTime>("createdAt")
+                        .HasColumnType("datetime(6)");
 
-                    b.Property<bool>("IsRevoked")
-                        .HasColumnType("bit");
+                    b.Property<bool>("isRevoked")
+                        .HasColumnType("tinyint(1)");
 
-                    b.Property<string>("RefreshTokenKey")
+                    b.Property<string>("refreshTokenKey")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("longtext");
 
-                    b.Property<Guid>("UserId")
-                        .HasColumnType("uniqueidentifier");
+                    b.Property<Guid>("userId")
+                        .HasColumnType("char(36)");
 
-                    b.HasKey("RefreshTokenId");
+                    b.HasKey("id");
 
-                    b.HasIndex("UserId");
+                    b.HasIndex("userId");
 
                     b.ToTable("RefreshTokens");
                 });
 
-            modelBuilder.Entity("CarRescueSystem.DAL.Model.Role", b =>
+            modelBuilder.Entity("CarRescueSystem.DAL.Model.RescueStation", b =>
                 {
-                    b.Property<Guid>("RoleID")
+                    b.Property<Guid>("id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("char(36)");
 
-                    b.Property<string>("RoleName")
+                    b.Property<string>("address")
                         .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
+                        .HasMaxLength(500)
+                        .HasColumnType("varchar(500)");
 
-                    b.HasKey("RoleID");
+                    b.Property<string>("email")
+                        .IsRequired()
+                        .HasColumnType("longtext");
 
-                    b.ToTable("Roles");
+                    b.Property<double>("latitude")
+                        .HasColumnType("double");
+
+                    b.Property<double>("longitude")
+                        .HasColumnType("double");
+
+                    b.Property<string>("name")
+                        .IsRequired()
+                        .HasMaxLength(255)
+                        .HasColumnType("varchar(255)");
+
+                    b.Property<string>("phone")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.HasKey("id");
+
+                    b.ToTable("RescueStations");
 
                     b.HasData(
                         new
                         {
-                            RoleID = new Guid("a1a2a3a4-b5b6-c7c8-d9d0-e1e2e3e4e5e6"),
-                            RoleName = "Customer"
+                            id = new Guid("a1b2c3d4-e5f6-7890-1234-56789abcdef1"),
+                            address = "86 Đinh Tiên Hoàng, Đa Kao, Quận 1, TP.HCM",
+                            email = "rescue.q1@carrescue.vn",
+                            latitude = 10.782222000000001,
+                            longitude = 106.69972199999999,
+                            name = "Trạm Cứu Hộ Quận 1",
+                            phone = "02812345678"
                         },
                         new
                         {
-                            RoleID = new Guid("b1b2b3b4-c5c6-d7d8-e9e0-f1f2f3f4f5f6"),
-                            RoleName = "Staff"
+                            id = new Guid("a1b2c3d4-e5f6-7890-1234-56789abcdef2"),
+                            address = "273 Nguyễn Thiện Thuật, Phường 1, Quận 3, TP.HCM",
+                            email = "rescue.q3@carrescue.vn",
+                            latitude = 10.770049,
+                            longitude = 106.682846,
+                            name = "Trạm Cứu Hộ Quận 3",
+                            phone = "02812345679"
                         },
                         new
                         {
-                            RoleID = new Guid("c1c2c3c4-d5d6-e7e8-f9f0-a1a2a3a4a5a6"),
-                            RoleName = "Admin"
+                            id = new Guid("a1b2c3d4-e5f6-7890-1234-56789abcdef3"),
+                            address = "161 Trần Hưng Đạo, Phường 10, Quận 5, TP.HCM",
+                            email = "rescue.q5@carrescue.vn",
+                            latitude = 10.754345000000001,
+                            longitude = 106.663983,
+                            name = "Trạm Cứu Hộ Quận 5",
+                            phone = "02812345680"
                         },
                         new
                         {
-                            RoleID = new Guid("d1d2d3d4-e5e6-f7f8-a9a0-b1b2b3b4b5b6"),
-                            RoleName = "Receptionist"
+                            id = new Guid("a1b2c3d4-e5f6-7890-1234-56789abcdef4"),
+                            address = "502 Nguyễn Văn Linh, Tân Phong, Quận 7, TP.HCM",
+                            email = "rescue.q7@carrescue.vn",
+                            latitude = 10.730745000000001,
+                            longitude = 106.72163999999999,
+                            name = "Trạm Cứu Hộ Quận 7",
+                            phone = "02812345681"
+                        },
+                        new
+                        {
+                            id = new Guid("a1b2c3d4-e5f6-7890-1234-56789abcdef5"),
+                            address = "208 Xô Viết Nghệ Tĩnh, Phường 21, Bình Thạnh, TP.HCM",
+                            email = "rescue.bt@carrescue.vn",
+                            latitude = 10.803537,
+                            longitude = 106.713179,
+                            name = "Trạm Cứu Hộ Quận Bình Thạnh",
+                            phone = "02812345682"
                         });
+                });
+
+            modelBuilder.Entity("CarRescueSystem.DAL.Model.Schedule", b =>
+                {
+                    b.Property<Guid>("id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("char(36)");
+
+                    b.Property<DateTime>("endTime")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<int>("shift")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("startTime")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<Guid>("userId")
+                        .HasColumnType("char(36)");
+
+                    b.HasKey("id");
+
+                    b.HasIndex("userId");
+
+                    b.ToTable("Schedules");
                 });
 
             modelBuilder.Entity("CarRescueSystem.DAL.Model.Service", b =>
                 {
-                    b.Property<Guid>("ServiceId")
+                    b.Property<Guid>("id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("char(36)");
 
-                    b.Property<string>("ServiceName")
+                    b.Property<string>("name")
                         .IsRequired()
                         .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)");
+                        .HasColumnType("varchar(100)");
 
-                    b.Property<decimal>("ServicePrice")
+                    b.Property<decimal>("price")
                         .HasColumnType("decimal(18,2)");
 
-                    b.HasKey("ServiceId");
+                    b.HasKey("id");
 
                     b.ToTable("Services");
 
                     b.HasData(
                         new
                         {
-                            ServiceId = new Guid("a1e2c3d4-5f6a-7b8c-9d0e-1f2a3b4c5d6e"),
-                            ServiceName = "Brakes",
-                            ServicePrice = 500000m
+                            id = new Guid("a1e2c3d4-5f6a-7b8c-9d0e-1f2a3b4c5d6e"),
+                            name = "Phanh",
+                            price = 500000m
                         },
                         new
                         {
-                            ServiceId = new Guid("b2d3e4f5-6a7b-8c9d-0e1f-2a3b4c5d6e7f"),
-                            ServiceName = "Electrical Issues",
-                            ServicePrice = 400000m
+                            id = new Guid("b2d3e4f5-6a7b-8c9d-0e1f-2a3b4c5d6e7f"),
+                            name = "Vấn đề điện",
+                            price = 400000m
                         },
                         new
                         {
-                            ServiceId = new Guid("c3d4e5f6-7a8b-9c0d-1e2f-3a4b5c6d7e8f"),
-                            ServiceName = "Steering System",
-                            ServicePrice = 450000m
+                            id = new Guid("c3d4e5f6-7a8b-9c0d-1e2f-3a4b5c6d7e8f"),
+                            name = "Hệ thống lái",
+                            price = 450000m
                         },
                         new
                         {
-                            ServiceId = new Guid("d4e5f6a7-8b9c-0d1e-2f3a-4b5c6d7e8f9a"),
-                            ServiceName = "Engine Issues",
-                            ServicePrice = 700000m
+                            id = new Guid("d4e5f6a7-8b9c-0d1e-2f3a-4b5c6d7e8f9a"),
+                            name = "Vấn đề động cơ",
+                            price = 700000m
                         },
                         new
                         {
-                            ServiceId = new Guid("e5f6a7b8-9c0d-1e2f-3a4b-5c6d7e8f9a0b"),
-                            ServiceName = "Tire Problems",
-                            ServicePrice = 300000m
+                            id = new Guid("e5f6a7b8-9c0d-1e2f-3a4b-5c6d7e8f9a0b"),
+                            name = "Vấn đề lốp xe",
+                            price = 300000m
                         },
                         new
                         {
-                            ServiceId = new Guid("f6a7b8c9-0d1e-2f3a-4b5c-6d7e8f9a0b1c"),
-                            ServiceName = "Battery Jump Start",
-                            ServicePrice = 200000m
+                            id = new Guid("f6a7b8c9-0d1e-2f3a-4b5c-6d7e8f9a0b1c"),
+                            name = "Kích bình ắc quy",
+                            price = 200000m
                         },
                         new
                         {
-                            ServiceId = new Guid("a7b8c9d0-1e2f-3a4b-5c6d-7e8f9a0b1c2d"),
-                            ServiceName = "Fuel Refill",
-                            ServicePrice = 250000m
+                            id = new Guid("a7b8c9d0-1e2f-3a4b-5c6d-7e8f9a0b1c2d"),
+                            name = "Đổ nhiên liệu",
+                            price = 250000m
                         },
                         new
                         {
-                            ServiceId = new Guid("b8c9d0e1-2f3a-4b5c-6d7e-8f9a0b1c2d3e"),
-                            ServiceName = "Wrong Fuel Refill",
-                            ServicePrice = 350000m
+                            id = new Guid("b8c9d0e1-2f3a-4b5c-6d7e-8f9a0b1c2d3e"),
+                            name = "Đổ sai nhiên liệu",
+                            price = 350000m
                         },
                         new
                         {
-                            ServiceId = new Guid("c9d0e1f2-3a4b-5c6d-7e8f-9a0b1c2d3e4f"),
-                            ServiceName = "Locked Out (Forgot Keys)",
-                            ServicePrice = 150000m
+                            id = new Guid("c9d0e1f2-3a4b-5c6d-7e8f-9a0b1c2d3e4f"),
+                            name = "Bị khóa xe (quên chìa khóa)",
+                            price = 150000m
                         },
                         new
                         {
-                            ServiceId = new Guid("d0e1f2a3-4b5c-6d7e-8f9a-0b1c2d3e4f5a"),
-                            ServiceName = "Collision",
-                            ServicePrice = 1000000m
+                            id = new Guid("d0e1f2a3-4b5c-6d7e-8f9a-0b1c2d3e4f5a"),
+                            name = "Va chạm",
+                            price = 1000000m
                         },
                         new
                         {
-                            ServiceId = new Guid("e1f2a3b4-5c6d-7e8f-9a0b-1c2d3e4f5a6b"),
-                            ServiceName = "Minor Crash",
-                            ServicePrice = 800000m
+                            id = new Guid("e1f2a3b4-5c6d-7e8f-9a0b-1c2d3e4f5a6b"),
+                            name = "Va chạm nhẹ",
+                            price = 800000m
                         },
                         new
                         {
-                            ServiceId = new Guid("f2a3b4c5-6d7e-8f9a-0b1c-2d3e4f5a6b7c"),
-                            ServiceName = "Rollover",
-                            ServicePrice = 1200000m
+                            id = new Guid("f2a3b4c5-6d7e-8f9a-0b1c-2d3e4f5a6b7c"),
+                            name = "Lật xe",
+                            price = 1200000m
                         },
                         new
                         {
-                            ServiceId = new Guid("a3b4c5d6-7e8f-9a0b-1c2d-3e4f5a6b7c8d"),
-                            ServiceName = "Fire or Explosion",
-                            ServicePrice = 2000000m
+                            id = new Guid("a3b4c5d6-7e8f-9a0b-1c2d-3e4f5a6b7c8d"),
+                            name = "Hỏa hoạn hoặc nổ",
+                            price = 2000000m
                         },
                         new
                         {
-                            ServiceId = new Guid("b4c5d6e7-8f9a-0b1c-2d3e-4f5a6b7c8d9e"),
-                            ServiceName = "Vehicle Fall",
-                            ServicePrice = 1100000m
+                            id = new Guid("b4c5d6e7-8f9a-0b1c-2d3e-4f5a6b7c8d9e"),
+                            name = "Xe rơi xuống vực",
+                            price = 1100000m
                         },
                         new
                         {
-                            ServiceId = new Guid("c5d6e7f8-9a0b-1c2d-3e4f-5a6b7c8d9e0f"),
-                            ServiceName = "Submerged Vehicle",
-                            ServicePrice = 1300000m
+                            id = new Guid("c5d6e7f8-9a0b-1c2d-3e4f-5a6b7c8d9e0f"),
+                            name = "Xe bị ngập nước",
+                            price = 1300000m
                         },
                         new
                         {
-                            ServiceId = new Guid("d6e7f8a9-0b1c-2d3e-4f5a-6b7c8d9e0f1a"),
-                            ServiceName = "Hydrolock",
-                            ServicePrice = 900000m
+                            id = new Guid("d6e7f8a9-0b1c-2d3e-4f5a-6b7c8d9e0f1a"),
+                            name = "Thủy kích",
+                            price = 900000m
                         },
                         new
                         {
-                            ServiceId = new Guid("e7f8a9b0-1c2d-3e4f-5a6b-7c8d9e0f1a2b"),
-                            ServiceName = "Car Towing",
-                            ServicePrice = 500000m
+                            id = new Guid("e7f8a9b0-1c2d-3e4f-5a6b-7c8d9e0f1a2b"),
+                            name = "Cứu hộ kéo xe",
+                            price = 500000m
                         });
                 });
 
             modelBuilder.Entity("CarRescueSystem.DAL.Model.ServiceOfBooking", b =>
                 {
-                    b.Property<Guid>("ServiceOfBookingId")
+                    b.Property<Guid>("id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("char(36)");
 
-                    b.Property<Guid>("BookingId")
-                        .HasColumnType("uniqueidentifier");
+                    b.Property<Guid>("bookingId")
+                        .HasColumnType("char(36)");
 
-                    b.Property<Guid>("ServiceId")
-                        .HasColumnType("uniqueidentifier");
+                    b.Property<Guid>("serviceId")
+                        .HasColumnType("char(36)");
 
-                    b.HasKey("ServiceOfBookingId");
+                    b.HasKey("id");
 
-                    b.HasIndex("BookingId");
+                    b.HasIndex("bookingId");
 
-                    b.HasIndex("ServiceId");
+                    b.HasIndex("serviceId");
 
                     b.ToTable("ServiceOfBookings");
                 });
 
             modelBuilder.Entity("CarRescueSystem.DAL.Model.ServicePackage", b =>
                 {
-                    b.Property<Guid>("ServicePackageId")
+                    b.Property<Guid>("id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("char(36)");
 
-                    b.Property<Guid>("PackageID")
-                        .HasColumnType("uniqueidentifier");
+                    b.Property<Guid>("packageID")
+                        .HasColumnType("char(36)");
 
-                    b.Property<int>("Quantity")
-                        .HasColumnType("int");
+                    b.Property<Guid>("serviceId")
+                        .HasColumnType("char(36)");
 
-                    b.Property<Guid>("ServiceId")
-                        .HasColumnType("uniqueidentifier");
+                    b.HasKey("id");
 
-                    b.HasKey("ServicePackageId");
+                    b.HasIndex("packageID");
 
-                    b.HasIndex("PackageID");
-
-                    b.HasIndex("ServiceId");
+                    b.HasIndex("serviceId");
 
                     b.ToTable("ServicePackages");
 
                     b.HasData(
                         new
                         {
-                            ServicePackageId = new Guid("12345678-90ab-cdef-1234-567890abcdef"),
-                            PackageID = new Guid("11111111-2222-3333-4444-555555555555"),
-                            Quantity = 0,
-                            ServiceId = new Guid("a1e2c3d4-5f6a-7b8c-9d0e-1f2a3b4c5d6e")
+                            id = new Guid("12345678-90ab-cdef-1234-567890abcdef"),
+                            packageID = new Guid("11111111-2222-3333-4444-555555555555"),
+                            serviceId = new Guid("a1e2c3d4-5f6a-7b8c-9d0e-1f2a3b4c5d6e")
                         },
                         new
                         {
-                            ServicePackageId = new Guid("22345678-90ab-cdef-1234-567890abcdef"),
-                            PackageID = new Guid("11111111-2222-3333-4444-555555555555"),
-                            Quantity = 0,
-                            ServiceId = new Guid("b2d3e4f5-6a7b-8c9d-0e1f-2a3b4c5d6e7f")
+                            id = new Guid("22345678-90ab-cdef-1234-567890abcdef"),
+                            packageID = new Guid("11111111-2222-3333-4444-555555555555"),
+                            serviceId = new Guid("b2d3e4f5-6a7b-8c9d-0e1f-2a3b4c5d6e7f")
                         },
                         new
                         {
-                            ServicePackageId = new Guid("32345678-90ab-cdef-1234-567890abcdef"),
-                            PackageID = new Guid("11111111-2222-3333-4444-555555555555"),
-                            Quantity = 0,
-                            ServiceId = new Guid("c3d4e5f6-7a8b-9c0d-1e2f-3a4b5c6d7e8f")
+                            id = new Guid("32345678-90ab-cdef-1234-567890abcdef"),
+                            packageID = new Guid("11111111-2222-3333-4444-555555555555"),
+                            serviceId = new Guid("c3d4e5f6-7a8b-9c0d-1e2f-3a4b5c6d7e8f")
                         },
                         new
                         {
-                            ServicePackageId = new Guid("42345678-90ab-cdef-1234-567890abcdef"),
-                            PackageID = new Guid("11111111-2222-3333-4444-555555555555"),
-                            Quantity = 0,
-                            ServiceId = new Guid("d4e5f6a7-8b9c-0d1e-2f3a-4b5c6d7e8f9a")
+                            id = new Guid("42345678-90ab-cdef-1234-567890abcdef"),
+                            packageID = new Guid("11111111-2222-3333-4444-555555555555"),
+                            serviceId = new Guid("d4e5f6a7-8b9c-0d1e-2f3a-4b5c6d7e8f9a")
                         },
                         new
                         {
-                            ServicePackageId = new Guid("52345678-90ab-cdef-1234-567890abcdef"),
-                            PackageID = new Guid("11111111-2222-3333-4444-555555555555"),
-                            Quantity = 0,
-                            ServiceId = new Guid("e5f6a7b8-9c0d-1e2f-3a4b-5c6d7e8f9a0b")
+                            id = new Guid("52345678-90ab-cdef-1234-567890abcdef"),
+                            packageID = new Guid("11111111-2222-3333-4444-555555555555"),
+                            serviceId = new Guid("e5f6a7b8-9c0d-1e2f-3a4b-5c6d7e8f9a0b")
                         },
                         new
                         {
-                            ServicePackageId = new Guid("62345678-90ab-cdef-1234-567890abcdef"),
-                            PackageID = new Guid("11111111-2222-3333-4444-555555555555"),
-                            Quantity = 0,
-                            ServiceId = new Guid("f6a7b8c9-0d1e-2f3a-4b5c-6d7e8f9a0b1c")
+                            id = new Guid("62345678-90ab-cdef-1234-567890abcdef"),
+                            packageID = new Guid("11111111-2222-3333-4444-555555555555"),
+                            serviceId = new Guid("f6a7b8c9-0d1e-2f3a-4b5c-6d7e8f9a0b1c")
                         },
                         new
                         {
-                            ServicePackageId = new Guid("72345678-90ab-cdef-1234-567890abcdef"),
-                            PackageID = new Guid("11111111-2222-3333-4444-555555555555"),
-                            Quantity = 0,
-                            ServiceId = new Guid("d0e1f2a3-4b5c-6d7e-8f9a-0b1c2d3e4f5a")
+                            id = new Guid("72345678-90ab-cdef-1234-567890abcdef"),
+                            packageID = new Guid("11111111-2222-3333-4444-555555555555"),
+                            serviceId = new Guid("d0e1f2a3-4b5c-6d7e-8f9a-0b1c2d3e4f5a")
                         },
                         new
                         {
-                            ServicePackageId = new Guid("82345678-90ab-cdef-1234-567890abcdef"),
-                            PackageID = new Guid("11111111-2222-3333-4444-555555555555"),
-                            Quantity = 0,
-                            ServiceId = new Guid("e1f2a3b4-5c6d-7e8f-9a0b-1c2d3e4f5a6b")
+                            id = new Guid("82345678-90ab-cdef-1234-567890abcdef"),
+                            packageID = new Guid("11111111-2222-3333-4444-555555555555"),
+                            serviceId = new Guid("e1f2a3b4-5c6d-7e8f-9a0b-1c2d3e4f5a6b")
                         },
                         new
                         {
-                            ServicePackageId = new Guid("92345678-90ab-cdef-1234-567890abcdef"),
-                            PackageID = new Guid("11111111-2222-3333-4444-555555555555"),
-                            Quantity = 0,
-                            ServiceId = new Guid("f2a3b4c5-6d7e-8f9a-0b1c-2d3e4f5a6b7c")
+                            id = new Guid("92345678-90ab-cdef-1234-567890abcdef"),
+                            packageID = new Guid("11111111-2222-3333-4444-555555555555"),
+                            serviceId = new Guid("f2a3b4c5-6d7e-8f9a-0b1c-2d3e4f5a6b7c")
                         },
                         new
                         {
-                            ServicePackageId = new Guid("a2345678-90ab-cdef-1234-567890abcdef"),
-                            PackageID = new Guid("11111111-2222-3333-4444-555555555555"),
-                            Quantity = 0,
-                            ServiceId = new Guid("e7f8a9b0-1c2d-3e4f-5a6b-7c8d9e0f1a2b")
+                            id = new Guid("a2345678-90ab-cdef-1234-567890abcdef"),
+                            packageID = new Guid("11111111-2222-3333-4444-555555555555"),
+                            serviceId = new Guid("e7f8a9b0-1c2d-3e4f-5a6b-7c8d9e0f1a2b")
                         },
                         new
                         {
-                            ServicePackageId = new Guid("23456789-0abc-def1-2345-67890abcdefa"),
-                            PackageID = new Guid("66666666-7777-8888-9999-000000000000"),
-                            Quantity = 0,
-                            ServiceId = new Guid("a1e2c3d4-5f6a-7b8c-9d0e-1f2a3b4c5d6e")
+                            id = new Guid("23456789-0abc-def1-2345-67890abcdefa"),
+                            packageID = new Guid("66666666-7777-8888-9999-000000000000"),
+                            serviceId = new Guid("a1e2c3d4-5f6a-7b8c-9d0e-1f2a3b4c5d6e")
                         },
                         new
                         {
-                            ServicePackageId = new Guid("b3456789-0abc-def1-2345-67890abcdefa"),
-                            PackageID = new Guid("66666666-7777-8888-9999-000000000000"),
-                            Quantity = 0,
-                            ServiceId = new Guid("b2d3e4f5-6a7b-8c9d-0e1f-2a3b4c5d6e7f")
+                            id = new Guid("b3456789-0abc-def1-2345-67890abcdefa"),
+                            packageID = new Guid("66666666-7777-8888-9999-000000000000"),
+                            serviceId = new Guid("b2d3e4f5-6a7b-8c9d-0e1f-2a3b4c5d6e7f")
                         },
                         new
                         {
-                            ServicePackageId = new Guid("c3456789-0abc-def1-2345-67890abcdefa"),
-                            PackageID = new Guid("66666666-7777-8888-9999-000000000000"),
-                            Quantity = 0,
-                            ServiceId = new Guid("c3d4e5f6-7a8b-9c0d-1e2f-3a4b5c6d7e8f")
+                            id = new Guid("c3456789-0abc-def1-2345-67890abcdefa"),
+                            packageID = new Guid("66666666-7777-8888-9999-000000000000"),
+                            serviceId = new Guid("c3d4e5f6-7a8b-9c0d-1e2f-3a4b5c6d7e8f")
                         },
                         new
                         {
-                            ServicePackageId = new Guid("d3456789-0abc-def1-2345-67890abcdefa"),
-                            PackageID = new Guid("66666666-7777-8888-9999-000000000000"),
-                            Quantity = 0,
-                            ServiceId = new Guid("d4e5f6a7-8b9c-0d1e-2f3a-4b5c6d7e8f9a")
+                            id = new Guid("d3456789-0abc-def1-2345-67890abcdefa"),
+                            packageID = new Guid("66666666-7777-8888-9999-000000000000"),
+                            serviceId = new Guid("d4e5f6a7-8b9c-0d1e-2f3a-4b5c6d7e8f9a")
                         },
                         new
                         {
-                            ServicePackageId = new Guid("e3456789-0abc-def1-2345-67890abcdefa"),
-                            PackageID = new Guid("66666666-7777-8888-9999-000000000000"),
-                            Quantity = 0,
-                            ServiceId = new Guid("e5f6a7b8-9c0d-1e2f-3a4b-5c6d7e8f9a0b")
+                            id = new Guid("e3456789-0abc-def1-2345-67890abcdefa"),
+                            packageID = new Guid("66666666-7777-8888-9999-000000000000"),
+                            serviceId = new Guid("e5f6a7b8-9c0d-1e2f-3a4b-5c6d7e8f9a0b")
                         },
                         new
                         {
-                            ServicePackageId = new Guid("f3456789-0abc-def1-2345-67890abcdefa"),
-                            PackageID = new Guid("66666666-7777-8888-9999-000000000000"),
-                            Quantity = 0,
-                            ServiceId = new Guid("f6a7b8c9-0d1e-2f3a-4b5c-6d7e8f9a0b1c")
+                            id = new Guid("f3456789-0abc-def1-2345-67890abcdefa"),
+                            packageID = new Guid("66666666-7777-8888-9999-000000000000"),
+                            serviceId = new Guid("f6a7b8c9-0d1e-2f3a-4b5c-6d7e8f9a0b1c")
                         },
                         new
                         {
-                            ServicePackageId = new Guid("13456789-0abc-def1-2345-67890abcdefa"),
-                            PackageID = new Guid("66666666-7777-8888-9999-000000000000"),
-                            Quantity = 0,
-                            ServiceId = new Guid("a7b8c9d0-1e2f-3a4b-5c6d-7e8f9a0b1c2d")
+                            id = new Guid("13456789-0abc-def1-2345-67890abcdefa"),
+                            packageID = new Guid("66666666-7777-8888-9999-000000000000"),
+                            serviceId = new Guid("a7b8c9d0-1e2f-3a4b-5c6d-7e8f9a0b1c2d")
                         },
                         new
                         {
-                            ServicePackageId = new Guid("23456789-0abc-def1-2345-67890abcdefb"),
-                            PackageID = new Guid("66666666-7777-8888-9999-000000000000"),
-                            Quantity = 0,
-                            ServiceId = new Guid("b8c9d0e1-2f3a-4b5c-6d7e-8f9a0b1c2d3e")
+                            id = new Guid("23456789-0abc-def1-2345-67890abcdefb"),
+                            packageID = new Guid("66666666-7777-8888-9999-000000000000"),
+                            serviceId = new Guid("b8c9d0e1-2f3a-4b5c-6d7e-8f9a0b1c2d3e")
                         },
                         new
                         {
-                            ServicePackageId = new Guid("33456789-0abc-def1-2345-67890abcdefb"),
-                            PackageID = new Guid("66666666-7777-8888-9999-000000000000"),
-                            Quantity = 0,
-                            ServiceId = new Guid("c9d0e1f2-3a4b-5c6d-7e8f-9a0b1c2d3e4f")
+                            id = new Guid("33456789-0abc-def1-2345-67890abcdefb"),
+                            packageID = new Guid("66666666-7777-8888-9999-000000000000"),
+                            serviceId = new Guid("c9d0e1f2-3a4b-5c6d-7e8f-9a0b1c2d3e4f")
                         },
                         new
                         {
-                            ServicePackageId = new Guid("43456789-0abc-def1-2345-67890abcdefb"),
-                            PackageID = new Guid("66666666-7777-8888-9999-000000000000"),
-                            Quantity = 0,
-                            ServiceId = new Guid("d0e1f2a3-4b5c-6d7e-8f9a-0b1c2d3e4f5a")
+                            id = new Guid("43456789-0abc-def1-2345-67890abcdefb"),
+                            packageID = new Guid("66666666-7777-8888-9999-000000000000"),
+                            serviceId = new Guid("d0e1f2a3-4b5c-6d7e-8f9a-0b1c2d3e4f5a")
                         },
                         new
                         {
-                            ServicePackageId = new Guid("53456789-0abc-def1-2345-67890abcdefb"),
-                            PackageID = new Guid("66666666-7777-8888-9999-000000000000"),
-                            Quantity = 0,
-                            ServiceId = new Guid("e1f2a3b4-5c6d-7e8f-9a0b-1c2d3e4f5a6b")
+                            id = new Guid("53456789-0abc-def1-2345-67890abcdefb"),
+                            packageID = new Guid("66666666-7777-8888-9999-000000000000"),
+                            serviceId = new Guid("e1f2a3b4-5c6d-7e8f-9a0b-1c2d3e4f5a6b")
                         },
                         new
                         {
-                            ServicePackageId = new Guid("63456789-0abc-def1-2345-67890abcdefb"),
-                            PackageID = new Guid("66666666-7777-8888-9999-000000000000"),
-                            Quantity = 0,
-                            ServiceId = new Guid("f2a3b4c5-6d7e-8f9a-0b1c-2d3e4f5a6b7c")
+                            id = new Guid("63456789-0abc-def1-2345-67890abcdefb"),
+                            packageID = new Guid("66666666-7777-8888-9999-000000000000"),
+                            serviceId = new Guid("f2a3b4c5-6d7e-8f9a-0b1c-2d3e4f5a6b7c")
                         },
                         new
                         {
-                            ServicePackageId = new Guid("73456789-0abc-def1-2345-67890abcdefb"),
-                            PackageID = new Guid("66666666-7777-8888-9999-000000000000"),
-                            Quantity = 0,
-                            ServiceId = new Guid("a3b4c5d6-7e8f-9a0b-1c2d-3e4f5a6b7c8d")
+                            id = new Guid("73456789-0abc-def1-2345-67890abcdefb"),
+                            packageID = new Guid("66666666-7777-8888-9999-000000000000"),
+                            serviceId = new Guid("a3b4c5d6-7e8f-9a0b-1c2d-3e4f5a6b7c8d")
                         },
                         new
                         {
-                            ServicePackageId = new Guid("83456789-0abc-def1-2345-67890abcdefb"),
-                            PackageID = new Guid("66666666-7777-8888-9999-000000000000"),
-                            Quantity = 0,
-                            ServiceId = new Guid("b4c5d6e7-8f9a-0b1c-2d3e-4f5a6b7c8d9e")
+                            id = new Guid("83456789-0abc-def1-2345-67890abcdefb"),
+                            packageID = new Guid("66666666-7777-8888-9999-000000000000"),
+                            serviceId = new Guid("b4c5d6e7-8f9a-0b1c-2d3e-4f5a6b7c8d9e")
                         },
                         new
                         {
-                            ServicePackageId = new Guid("93456789-0abc-def1-2345-67890abcdefb"),
-                            PackageID = new Guid("66666666-7777-8888-9999-000000000000"),
-                            Quantity = 0,
-                            ServiceId = new Guid("c5d6e7f8-9a0b-1c2d-3e4f-5a6b7c8d9e0f")
+                            id = new Guid("93456789-0abc-def1-2345-67890abcdefb"),
+                            packageID = new Guid("66666666-7777-8888-9999-000000000000"),
+                            serviceId = new Guid("c5d6e7f8-9a0b-1c2d-3e4f-5a6b7c8d9e0f")
                         },
                         new
                         {
-                            ServicePackageId = new Guid("a3456789-0abc-def1-2345-67890abcdefb"),
-                            PackageID = new Guid("66666666-7777-8888-9999-000000000000"),
-                            Quantity = 0,
-                            ServiceId = new Guid("e7f8a9b0-1c2d-3e4f-5a6b-7c8d9e0f1a2b")
+                            id = new Guid("a3456789-0abc-def1-2345-67890abcdefb"),
+                            packageID = new Guid("66666666-7777-8888-9999-000000000000"),
+                            serviceId = new Guid("e7f8a9b0-1c2d-3e4f-5a6b-7c8d9e0f1a2b")
                         },
                         new
                         {
-                            ServicePackageId = new Guid("34567890-abcd-ef12-3456-7890abcdefab"),
-                            PackageID = new Guid("aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee"),
-                            Quantity = 0,
-                            ServiceId = new Guid("a1e2c3d4-5f6a-7b8c-9d0e-1f2a3b4c5d6e")
+                            id = new Guid("34567890-abcd-ef12-3456-7890abcdefab"),
+                            packageID = new Guid("aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee"),
+                            serviceId = new Guid("a1e2c3d4-5f6a-7b8c-9d0e-1f2a3b4c5d6e")
                         },
                         new
                         {
-                            ServicePackageId = new Guid("b4567890-abcd-ef12-3456-7890abcdefab"),
-                            PackageID = new Guid("aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee"),
-                            Quantity = 0,
-                            ServiceId = new Guid("b2d3e4f5-6a7b-8c9d-0e1f-2a3b4c5d6e7f")
+                            id = new Guid("b4567890-abcd-ef12-3456-7890abcdefab"),
+                            packageID = new Guid("aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee"),
+                            serviceId = new Guid("b2d3e4f5-6a7b-8c9d-0e1f-2a3b4c5d6e7f")
                         },
                         new
                         {
-                            ServicePackageId = new Guid("c4567890-abcd-ef12-3456-7890abcdefab"),
-                            PackageID = new Guid("aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee"),
-                            Quantity = 0,
-                            ServiceId = new Guid("c3d4e5f6-7a8b-9c0d-1e2f-3a4b5c6d7e8f")
+                            id = new Guid("c4567890-abcd-ef12-3456-7890abcdefab"),
+                            packageID = new Guid("aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee"),
+                            serviceId = new Guid("c3d4e5f6-7a8b-9c0d-1e2f-3a4b5c6d7e8f")
                         },
                         new
                         {
-                            ServicePackageId = new Guid("d4567890-abcd-ef12-3456-7890abcdefab"),
-                            PackageID = new Guid("aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee"),
-                            Quantity = 0,
-                            ServiceId = new Guid("d4e5f6a7-8b9c-0d1e-2f3a-4b5c6d7e8f9a")
+                            id = new Guid("d4567890-abcd-ef12-3456-7890abcdefab"),
+                            packageID = new Guid("aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee"),
+                            serviceId = new Guid("d4e5f6a7-8b9c-0d1e-2f3a-4b5c6d7e8f9a")
                         },
                         new
                         {
-                            ServicePackageId = new Guid("e4567890-abcd-ef12-3456-7890abcdefab"),
-                            PackageID = new Guid("aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee"),
-                            Quantity = 0,
-                            ServiceId = new Guid("e5f6a7b8-9c0d-1e2f-3a4b-5c6d7e8f9a0b")
+                            id = new Guid("e4567890-abcd-ef12-3456-7890abcdefab"),
+                            packageID = new Guid("aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee"),
+                            serviceId = new Guid("e5f6a7b8-9c0d-1e2f-3a4b-5c6d7e8f9a0b")
                         },
                         new
                         {
-                            ServicePackageId = new Guid("f4567890-abcd-ef12-3456-7890abcdefab"),
-                            PackageID = new Guid("aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee"),
-                            Quantity = 0,
-                            ServiceId = new Guid("f6a7b8c9-0d1e-2f3a-4b5c-6d7e8f9a0b1c")
+                            id = new Guid("f4567890-abcd-ef12-3456-7890abcdefab"),
+                            packageID = new Guid("aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee"),
+                            serviceId = new Guid("f6a7b8c9-0d1e-2f3a-4b5c-6d7e8f9a0b1c")
                         },
                         new
                         {
-                            ServicePackageId = new Guid("14567890-abcd-ef12-3456-7890abcdefab"),
-                            PackageID = new Guid("aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee"),
-                            Quantity = 0,
-                            ServiceId = new Guid("a7b8c9d0-1e2f-3a4b-5c6d-7e8f9a0b1c2d")
+                            id = new Guid("14567890-abcd-ef12-3456-7890abcdefab"),
+                            packageID = new Guid("aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee"),
+                            serviceId = new Guid("a7b8c9d0-1e2f-3a4b-5c6d-7e8f9a0b1c2d")
                         },
                         new
                         {
-                            ServicePackageId = new Guid("24567890-abcd-ef12-3456-7890abcdefab"),
-                            PackageID = new Guid("aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee"),
-                            Quantity = 0,
-                            ServiceId = new Guid("b8c9d0e1-2f3a-4b5c-6d7e-8f9a0b1c2d3e")
+                            id = new Guid("24567890-abcd-ef12-3456-7890abcdefab"),
+                            packageID = new Guid("aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee"),
+                            serviceId = new Guid("b8c9d0e1-2f3a-4b5c-6d7e-8f9a0b1c2d3e")
                         },
                         new
                         {
-                            ServicePackageId = new Guid("34567890-abcd-ef12-3456-7890abcdefac"),
-                            PackageID = new Guid("aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee"),
-                            Quantity = 0,
-                            ServiceId = new Guid("c9d0e1f2-3a4b-5c6d-7e8f-9a0b1c2d3e4f")
+                            id = new Guid("34567890-abcd-ef12-3456-7890abcdefac"),
+                            packageID = new Guid("aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee"),
+                            serviceId = new Guid("c9d0e1f2-3a4b-5c6d-7e8f-9a0b1c2d3e4f")
                         },
                         new
                         {
-                            ServicePackageId = new Guid("44567890-abcd-ef12-3456-7890abcdefac"),
-                            PackageID = new Guid("aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee"),
-                            Quantity = 0,
-                            ServiceId = new Guid("d0e1f2a3-4b5c-6d7e-8f9a-0b1c2d3e4f5a")
+                            id = new Guid("44567890-abcd-ef12-3456-7890abcdefac"),
+                            packageID = new Guid("aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee"),
+                            serviceId = new Guid("d0e1f2a3-4b5c-6d7e-8f9a-0b1c2d3e4f5a")
                         },
                         new
                         {
-                            ServicePackageId = new Guid("54567890-abcd-ef12-3456-7890abcdefac"),
-                            PackageID = new Guid("aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee"),
-                            Quantity = 0,
-                            ServiceId = new Guid("e1f2a3b4-5c6d-7e8f-9a0b-1c2d3e4f5a6b")
+                            id = new Guid("54567890-abcd-ef12-3456-7890abcdefac"),
+                            packageID = new Guid("aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee"),
+                            serviceId = new Guid("e1f2a3b4-5c6d-7e8f-9a0b-1c2d3e4f5a6b")
                         },
                         new
                         {
-                            ServicePackageId = new Guid("64567890-abcd-ef12-3456-7890abcdefac"),
-                            PackageID = new Guid("aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee"),
-                            Quantity = 0,
-                            ServiceId = new Guid("f2a3b4c5-6d7e-8f9a-0b1c-2d3e4f5a6b7c")
+                            id = new Guid("64567890-abcd-ef12-3456-7890abcdefac"),
+                            packageID = new Guid("aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee"),
+                            serviceId = new Guid("f2a3b4c5-6d7e-8f9a-0b1c-2d3e4f5a6b7c")
                         },
                         new
                         {
-                            ServicePackageId = new Guid("74567890-abcd-ef12-3456-7890abcdefac"),
-                            PackageID = new Guid("aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee"),
-                            Quantity = 0,
-                            ServiceId = new Guid("a3b4c5d6-7e8f-9a0b-1c2d-3e4f5a6b7c8d")
+                            id = new Guid("74567890-abcd-ef12-3456-7890abcdefac"),
+                            packageID = new Guid("aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee"),
+                            serviceId = new Guid("a3b4c5d6-7e8f-9a0b-1c2d-3e4f5a6b7c8d")
                         },
                         new
                         {
-                            ServicePackageId = new Guid("84567890-abcd-ef12-3456-7890abcdefac"),
-                            PackageID = new Guid("aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee"),
-                            Quantity = 0,
-                            ServiceId = new Guid("b4c5d6e7-8f9a-0b1c-2d3e-4f5a6b7c8d9e")
+                            id = new Guid("84567890-abcd-ef12-3456-7890abcdefac"),
+                            packageID = new Guid("aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee"),
+                            serviceId = new Guid("b4c5d6e7-8f9a-0b1c-2d3e-4f5a6b7c8d9e")
                         },
                         new
                         {
-                            ServicePackageId = new Guid("94567890-abcd-ef12-3456-7890abcdefac"),
-                            PackageID = new Guid("aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee"),
-                            Quantity = 0,
-                            ServiceId = new Guid("c5d6e7f8-9a0b-1c2d-3e4f-5a6b7c8d9e0f")
+                            id = new Guid("94567890-abcd-ef12-3456-7890abcdefac"),
+                            packageID = new Guid("aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee"),
+                            serviceId = new Guid("c5d6e7f8-9a0b-1c2d-3e4f-5a6b7c8d9e0f")
                         },
                         new
                         {
-                            ServicePackageId = new Guid("a4567890-abcd-ef12-3456-7890abcdefac"),
-                            PackageID = new Guid("aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee"),
-                            Quantity = 0,
-                            ServiceId = new Guid("d6e7f8a9-0b1c-2d3e-4f5a-6b7c8d9e0f1a")
+                            id = new Guid("a4567890-abcd-ef12-3456-7890abcdefac"),
+                            packageID = new Guid("aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee"),
+                            serviceId = new Guid("d6e7f8a9-0b1c-2d3e-4f5a-6b7c8d9e0f1a")
                         },
                         new
                         {
-                            ServicePackageId = new Guid("b4567890-abcd-ef12-3456-7890abcdefac"),
-                            PackageID = new Guid("aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee"),
-                            Quantity = 0,
-                            ServiceId = new Guid("e7f8a9b0-1c2d-3e4f-5a6b-7c8d9e0f1a2b")
+                            id = new Guid("b4567890-abcd-ef12-3456-7890abcdefac"),
+                            packageID = new Guid("aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee"),
+                            serviceId = new Guid("e7f8a9b0-1c2d-3e4f-5a6b-7c8d9e0f1a2b")
                         });
+                });
+
+            modelBuilder.Entity("CarRescueSystem.DAL.Model.Transaction", b =>
+                {
+                    b.Property<Guid>("id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("char(36)");
+
+                    b.Property<decimal>("amount")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<Guid?>("bookingId")
+                        .HasColumnType("char(36)");
+
+                    b.Property<Guid?>("carId")
+                        .HasColumnType("char(36)");
+
+                    b.Property<DateTime>("createdAt")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<Guid?>("packageId")
+                        .HasColumnType("char(36)");
+
+                    b.Property<int>("status")
+                        .HasMaxLength(20)
+                        .HasColumnType("int");
+
+                    b.Property<Guid>("userId")
+                        .HasColumnType("char(36)");
+
+                    b.HasKey("id");
+
+                    b.HasIndex("bookingId");
+
+                    b.HasIndex("carId");
+
+                    b.HasIndex("packageId");
+
+                    b.ToTable("Transactions");
                 });
 
             modelBuilder.Entity("CarRescueSystem.DAL.Model.User", b =>
                 {
-                    b.Property<Guid>("UserId")
+                    b.Property<Guid>("id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("char(36)");
 
-                    b.Property<string>("Email")
+                    b.Property<string>("email")
                         .IsRequired()
                         .HasMaxLength(255)
-                        .HasColumnType("nvarchar(255)");
+                        .HasColumnType("varchar(255)");
 
-                    b.Property<string>("FullName")
+                    b.Property<string>("fullName")
                         .IsRequired()
                         .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)");
+                        .HasColumnType("varchar(100)");
 
-                    b.Property<string>("PasswordHash")
+                    b.Property<string>("password")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("longtext");
 
-                    b.Property<string>("PasswordSalt")
+                    b.Property<string>("passwordSalt")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("longtext");
 
-                    b.Property<string>("PhoneNumber")
+                    b.Property<string>("phone")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("longtext");
 
-                    b.Property<Guid>("RoleID")
-                        .HasColumnType("uniqueidentifier");
+                    b.Property<Guid?>("rescueStationId")
+                        .HasColumnType("char(36)");
 
-                    b.Property<int?>("StaffStatus")
+                    b.Property<int>("role")
                         .HasColumnType("int");
 
-                    b.HasKey("UserId");
+                    b.Property<int?>("staffStatus")
+                        .HasColumnType("int");
 
-                    b.HasIndex("RoleID");
+                    b.HasKey("id");
+
+                    b.HasIndex("rescueStationId");
 
                     b.ToTable("Users");
 
                     b.HasData(
                         new
                         {
-                            UserId = new Guid("b2dab1c3-6d48-4b23-8369-2d1c9c828f22"),
-                            Email = "testUser@gmail.com",
-                            FullName = "Test User",
-                            PasswordHash = "$2a$11$rTz6DZiEeBqhVrzF25CgTOBPf41jpn2Tg/nnIqnX8KS6uIerB/1dm",
-                            PasswordSalt = "",
-                            PhoneNumber = "0999888777",
-                            RoleID = new Guid("a1a2a3a4-b5b6-c7c8-d9d0-e1e2e3e4e5e6")
+                            id = new Guid("b2dab1c3-6d48-4b23-8369-2d1c9c828f22"),
+                            email = "testUser@gmail.com",
+                            fullName = "Test User",
+                            password = "$2a$11$rTz6DZiEeBqhVrzF25CgTOBPf41jpn2Tg/nnIqnX8KS6uIerB/1dm",
+                            passwordSalt = "",
+                            phone = "0999888777",
+                            role = 0
                         },
                         new
                         {
-                            UserId = new Guid("c3dab1c3-6d48-4b23-8369-2d1c9c828f23"),
-                            Email = "testAdmin@gmail.com",
-                            FullName = "Test Admin",
-                            PasswordHash = "$2a$11$rTz6DZiEeBqhVrzF25CgTOBPf41jpn2Tg/nnIqnX8KS6uIerB/1dm",
-                            PasswordSalt = "",
-                            PhoneNumber = "0999888777",
-                            RoleID = new Guid("c1c2c3c4-d5d6-e7e8-f9f0-a1a2a3a4a5a6")
+                            id = new Guid("c3dab1c3-6d48-4b23-8369-2d1c9c828f23"),
+                            email = "testAdmin@gmail.com",
+                            fullName = "Test Admin",
+                            password = "$2a$11$rTz6DZiEeBqhVrzF25CgTOBPf41jpn2Tg/nnIqnX8KS6uIerB/1dm",
+                            passwordSalt = "",
+                            phone = "0999888777",
+                            role = 3
                         },
                         new
                         {
-                            UserId = new Guid("d3dab1c3-6d48-4b23-8369-2d1c9c828f24"),
-                            Email = "testStaff1@gmail.com",
-                            FullName = "Test Staff 1",
-                            PasswordHash = "$2a$11$rTz6DZiEeBqhVrzF25CgTOBPf41jpn2Tg/nnIqnX8KS6uIerB/1dm",
-                            PasswordSalt = "",
-                            PhoneNumber = "0999888777",
-                            RoleID = new Guid("b1b2b3b4-c5c6-d7d8-e9e0-f1f2f3f4f5f6"),
-                            StaffStatus = 0
+                            id = new Guid("e1b2c3d4-f5a6-7890-1234-56789abcdef7"),
+                            email = "testManager@gmail.com",
+                            fullName = "Test Manager",
+                            password = "$2a$11$rTz6DZiEeBqhVrzF25CgTOBPf41jpn2Tg/nnIqnX8KS6uIerB/1dm",
+                            passwordSalt = "",
+                            phone = "0999888777",
+                            role = 4
                         },
                         new
                         {
-                            UserId = new Guid("e9db2278-2c9a-40d9-82b8-f8af452a382f"),
-                            Email = "testStaff2@gmail.com",
-                            FullName = "Test Staff 2",
-                            PasswordHash = "$2a$11$rTz6DZiEeBqhVrzF25CgTOBPf41jpn2Tg/nnIqnX8KS6uIerB/1dm",
-                            PasswordSalt = "",
-                            PhoneNumber = "0999888777",
-                            RoleID = new Guid("b1b2b3b4-c5c6-d7d8-e9e0-f1f2f3f4f5f6"),
-                            StaffStatus = 0
+                            id = new Guid("d3dab1c3-6d48-4b23-8369-2d1c9c828f24"),
+                            email = "testStaff1@gmail.com",
+                            fullName = "Test Staff 1",
+                            password = "$2a$11$rTz6DZiEeBqhVrzF25CgTOBPf41jpn2Tg/nnIqnX8KS6uIerB/1dm",
+                            passwordSalt = "",
+                            phone = "0999888777",
+                            rescueStationId = new Guid("a1b2c3d4-e5f6-7890-1234-56789abcdef1"),
+                            role = 1,
+                            staffStatus = 0
                         },
                         new
                         {
-                            UserId = new Guid("e3dab1c3-6d48-4b23-8369-2d1c9c828f25"),
-                            Email = "testReceptionist@gmail.com",
-                            FullName = "Test Receptionist",
-                            PasswordHash = "$2a$11$rTz6DZiEeBqhVrzF25CgTOBPf41jpn2Tg/nnIqnX8KS6uIerB/1dm",
-                            PasswordSalt = "",
-                            PhoneNumber = "0999888777",
-                            RoleID = new Guid("d1d2d3d4-e5e6-f7f8-a9a0-b1b2b3b4b5b6")
+                            id = new Guid("e9db2278-2c9a-40d9-82b8-f8af452a382f"),
+                            email = "testStaff2@gmail.com",
+                            fullName = "Test Staff 2",
+                            password = "$2a$11$rTz6DZiEeBqhVrzF25CgTOBPf41jpn2Tg/nnIqnX8KS6uIerB/1dm",
+                            passwordSalt = "",
+                            phone = "0999888777",
+                            rescueStationId = new Guid("a1b2c3d4-e5f6-7890-1234-56789abcdef1"),
+                            role = 1,
+                            staffStatus = 0
+                        },
+                        new
+                        {
+                            id = new Guid("e3dab1c3-6d48-4b23-8369-2d1c9c828f25"),
+                            email = "testReceptionist@gmail.com",
+                            fullName = "Test Receptionist",
+                            password = "$2a$11$rTz6DZiEeBqhVrzF25CgTOBPf41jpn2Tg/nnIqnX8KS6uIerB/1dm",
+                            passwordSalt = "",
+                            phone = "0999888777",
+                            role = 2
+                        },
+                        new
+                        {
+                            id = new Guid("f1dab1c3-6d48-4b23-8369-2d1c9c828f26"),
+                            email = "testStaff3@gmail.com",
+                            fullName = "Test Staff 3",
+                            password = "$2a$11$rTz6DZiEeBqhVrzF25CgTOBPf41jpn2Tg/nnIqnX8KS6uIerB/1dm",
+                            passwordSalt = "",
+                            phone = "0999888773",
+                            rescueStationId = new Guid("a1b2c3d4-e5f6-7890-1234-56789abcdef2"),
+                            role = 1,
+                            staffStatus = 0
+                        },
+                        new
+                        {
+                            id = new Guid("f2dab1c3-6d48-4b23-8369-2d1c9c828f27"),
+                            email = "testStaff4@gmail.com",
+                            fullName = "Test Staff 4",
+                            password = "$2a$11$rTz6DZiEeBqhVrzF25CgTOBPf41jpn2Tg/nnIqnX8KS6uIerB/1dm",
+                            passwordSalt = "",
+                            phone = "0999888774",
+                            rescueStationId = new Guid("a1b2c3d4-e5f6-7890-1234-56789abcdef2"),
+                            role = 1,
+                            staffStatus = 0
+                        },
+                        new
+                        {
+                            id = new Guid("f3dab1c3-6d48-4b23-8369-2d1c9c828f28"),
+                            email = "testStaff5@gmail.com",
+                            fullName = "Test Staff 5",
+                            password = "$2a$11$rTz6DZiEeBqhVrzF25CgTOBPf41jpn2Tg/nnIqnX8KS6uIerB/1dm",
+                            passwordSalt = "",
+                            phone = "0999888775",
+                            rescueStationId = new Guid("a1b2c3d4-e5f6-7890-1234-56789abcdef3"),
+                            role = 1,
+                            staffStatus = 0
+                        },
+                        new
+                        {
+                            id = new Guid("f4dab1c3-6d48-4b23-8369-2d1c9c828f29"),
+                            email = "testStaff6@gmail.com",
+                            fullName = "Test Staff 6",
+                            password = "$2a$11$rTz6DZiEeBqhVrzF25CgTOBPf41jpn2Tg/nnIqnX8KS6uIerB/1dm",
+                            passwordSalt = "",
+                            phone = "0999888776",
+                            rescueStationId = new Guid("a1b2c3d4-e5f6-7890-1234-56789abcdef3"),
+                            role = 1,
+                            staffStatus = 0
+                        },
+                        new
+                        {
+                            id = new Guid("f5dab1c3-6d48-4b23-8369-2d1c9c828f30"),
+                            email = "testStaff7@gmail.com",
+                            fullName = "Test Staff 7",
+                            password = "$2a$11$rTz6DZiEeBqhVrzF25CgTOBPf41jpn2Tg/nnIqnX8KS6uIerB/1dm",
+                            passwordSalt = "",
+                            phone = "0999888778",
+                            rescueStationId = new Guid("a1b2c3d4-e5f6-7890-1234-56789abcdef4"),
+                            role = 1,
+                            staffStatus = 0
+                        },
+                        new
+                        {
+                            id = new Guid("f6dab1c3-6d48-4b23-8369-2d1c9c828f31"),
+                            email = "testStaff8@gmail.com",
+                            fullName = "Test Staff 8",
+                            password = "$2a$11$rTz6DZiEeBqhVrzF25CgTOBPf41jpn2Tg/nnIqnX8KS6uIerB/1dm",
+                            passwordSalt = "",
+                            phone = "0999888779",
+                            rescueStationId = new Guid("a1b2c3d4-e5f6-7890-1234-56789abcdef4"),
+                            role = 1,
+                            staffStatus = 0
+                        },
+                        new
+                        {
+                            id = new Guid("f7dab1c3-6d48-4b23-8369-2d1c9c828f32"),
+                            email = "testStaff9@gmail.com",
+                            fullName = "Test Staff 9",
+                            password = "$2a$11$rTz6DZiEeBqhVrzF25CgTOBPf41jpn2Tg/nnIqnX8KS6uIerB/1dm",
+                            passwordSalt = "",
+                            phone = "0999888780",
+                            rescueStationId = new Guid("a1b2c3d4-e5f6-7890-1234-56789abcdef5"),
+                            role = 1,
+                            staffStatus = 0
+                        },
+                        new
+                        {
+                            id = new Guid("f8dab1c3-6d48-4b23-8369-2d1c9c828f33"),
+                            email = "testStaff10@gmail.com",
+                            fullName = "Test Staff 10",
+                            password = "$2a$11$rTz6DZiEeBqhVrzF25CgTOBPf41jpn2Tg/nnIqnX8KS6uIerB/1dm",
+                            passwordSalt = "",
+                            phone = "0999888781",
+                            rescueStationId = new Guid("a1b2c3d4-e5f6-7890-1234-56789abcdef5"),
+                            role = 1,
+                            staffStatus = 0
                         });
-                });
-
-            modelBuilder.Entity("CarRescueSystem.DAL.Model.UserPackage", b =>
-                {
-                    b.Property<Guid>("UserId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<Guid>("PackageId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<DateTime>("CreatedAt")
-                        .HasColumnType("datetime2");
-
-                    b.Property<int>("Quantity")
-                        .HasColumnType("int");
-
-                    b.Property<Guid>("UserPackageId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.HasKey("UserId", "PackageId");
-
-                    b.HasIndex("PackageId");
-
-                    b.ToTable("UserPackages");
                 });
 
             modelBuilder.Entity("CarRescueSystem.DAL.Model.Vehicle", b =>
                 {
-                    b.Property<Guid>("VehicleId")
+                    b.Property<Guid>("id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("char(36)");
 
-                    b.Property<Guid>("CustomerId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<string>("LicensePlate")
-                        .IsRequired()
-                        .HasMaxLength(15)
-                        .HasColumnType("nvarchar(15)");
-
-                    b.Property<int>("NumberOfSeats")
-                        .HasColumnType("int");
-
-                    b.Property<string>("VehicleBrand")
+                    b.Property<string>("brand")
                         .IsRequired()
                         .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)");
+                        .HasColumnType("varchar(100)");
 
-                    b.Property<string>("VehicleColor")
+                    b.Property<string>("color")
                         .IsRequired()
                         .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
+                        .HasColumnType("varchar(50)");
 
-                    b.Property<string>("VehicleName")
+                    b.Property<Guid>("customerId")
+                        .HasColumnType("char(36)");
+
+                    b.Property<DateTime?>("expirationDate")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<string>("licensePlate")
+                        .IsRequired()
+                        .HasMaxLength(15)
+                        .HasColumnType("varchar(15)");
+
+                    b.Property<string>("model")
                         .IsRequired()
                         .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)");
+                        .HasColumnType("varchar(100)");
 
-                    b.HasKey("VehicleId");
+                    b.Property<int>("numberOfSeats")
+                        .HasColumnType("int");
 
-                    b.HasIndex("CustomerId");
+                    b.Property<Guid?>("packageId")
+                        .HasColumnType("char(36)");
+
+                    b.HasKey("id");
+
+                    b.HasIndex("customerId");
+
+                    b.HasIndex("packageId");
 
                     b.ToTable("Vehicles");
 
                     b.HasData(
                         new
                         {
-                            VehicleId = new Guid("12345678-90ab-cdef-1234-567890abcdef"),
-                            CustomerId = new Guid("b2dab1c3-6d48-4b23-8369-2d1c9c828f22"),
-                            LicensePlate = "30G-49344",
-                            NumberOfSeats = 4,
-                            VehicleBrand = "Test",
-                            VehicleColor = "Test",
-                            VehicleName = "Test"
+                            id = new Guid("12345678-90ab-cdef-1234-567890abcdef"),
+                            brand = "Test",
+                            color = "Test",
+                            customerId = new Guid("b2dab1c3-6d48-4b23-8369-2d1c9c828f22"),
+                            licensePlate = "30G-49344",
+                            model = "Test",
+                            numberOfSeats = 4
                         });
                 });
 
@@ -844,23 +1029,30 @@ namespace CarRescueSystem.DAL.Migrations
                 {
                     b.HasOne("CarRescueSystem.DAL.Model.User", "Customer")
                         .WithMany()
-                        .HasForeignKey("CustomerId")
+                        .HasForeignKey("customerId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.HasOne("CarRescueSystem.DAL.Model.Package", "Package")
                         .WithMany()
-                        .HasForeignKey("PackageId")
+                        .HasForeignKey("packageId")
+                        .OnDelete(DeleteBehavior.SetNull);
+
+                    b.HasOne("CarRescueSystem.DAL.Model.RescueStation", "RescueStation")
+                        .WithMany("Bookings")
+                        .HasForeignKey("rescueStationId")
                         .OnDelete(DeleteBehavior.SetNull);
 
                     b.HasOne("CarRescueSystem.DAL.Model.Vehicle", "Vehicle")
                         .WithMany()
-                        .HasForeignKey("VehicleId")
+                        .HasForeignKey("vehicleId")
                         .OnDelete(DeleteBehavior.SetNull);
 
                     b.Navigation("Customer");
 
                     b.Navigation("Package");
+
+                    b.Navigation("RescueStation");
 
                     b.Navigation("Vehicle");
                 });
@@ -869,13 +1061,13 @@ namespace CarRescueSystem.DAL.Migrations
                 {
                     b.HasOne("CarRescueSystem.DAL.Model.Booking", "Booking")
                         .WithMany("BookingStaffs")
-                        .HasForeignKey("BookingId")
+                        .HasForeignKey("bookingId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("CarRescueSystem.DAL.Model.User", "Staff")
                         .WithMany("BookingsStaffs")
-                        .HasForeignKey("StaffId")
+                        .HasForeignKey("staffId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -888,22 +1080,33 @@ namespace CarRescueSystem.DAL.Migrations
                 {
                     b.HasOne("CarRescueSystem.DAL.Model.User", null)
                         .WithMany()
-                        .HasForeignKey("UserId")
+                        .HasForeignKey("userId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("CarRescueSystem.DAL.Model.Schedule", b =>
+                {
+                    b.HasOne("CarRescueSystem.DAL.Model.User", "Staff")
+                        .WithMany("Schedules")
+                        .HasForeignKey("userId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Staff");
                 });
 
             modelBuilder.Entity("CarRescueSystem.DAL.Model.ServiceOfBooking", b =>
                 {
                     b.HasOne("CarRescueSystem.DAL.Model.Booking", "Booking")
                         .WithMany("ServiceBookings")
-                        .HasForeignKey("BookingId")
+                        .HasForeignKey("bookingId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("CarRescueSystem.DAL.Model.Service", "Service")
                         .WithMany("ServiceOfBookings")
-                        .HasForeignKey("ServiceId")
+                        .HasForeignKey("serviceId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -916,13 +1119,13 @@ namespace CarRescueSystem.DAL.Migrations
                 {
                     b.HasOne("CarRescueSystem.DAL.Model.Package", "Package")
                         .WithMany("ServicePackages")
-                        .HasForeignKey("PackageID")
+                        .HasForeignKey("packageID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("CarRescueSystem.DAL.Model.Service", "Service")
                         .WithMany("ServicePackages")
-                        .HasForeignKey("ServiceId")
+                        .HasForeignKey("serviceId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -931,45 +1134,55 @@ namespace CarRescueSystem.DAL.Migrations
                     b.Navigation("Service");
                 });
 
-            modelBuilder.Entity("CarRescueSystem.DAL.Model.User", b =>
+            modelBuilder.Entity("CarRescueSystem.DAL.Model.Transaction", b =>
                 {
-                    b.HasOne("CarRescueSystem.DAL.Model.Role", "Role")
-                        .WithMany("Users")
-                        .HasForeignKey("RoleID")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
+                    b.HasOne("CarRescueSystem.DAL.Model.Booking", "Booking")
+                        .WithMany("Transactions")
+                        .HasForeignKey("bookingId")
+                        .OnDelete(DeleteBehavior.SetNull);
 
-                    b.Navigation("Role");
-                });
+                    b.HasOne("CarRescueSystem.DAL.Model.Vehicle", "Vehicle")
+                        .WithMany("Transactions")
+                        .HasForeignKey("carId")
+                        .OnDelete(DeleteBehavior.SetNull);
 
-            modelBuilder.Entity("CarRescueSystem.DAL.Model.UserPackage", b =>
-                {
                     b.HasOne("CarRescueSystem.DAL.Model.Package", "Package")
-                        .WithMany("UserPackages")
-                        .HasForeignKey("PackageId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .WithMany("Transactions")
+                        .HasForeignKey("packageId")
+                        .OnDelete(DeleteBehavior.SetNull);
 
-                    b.HasOne("CarRescueSystem.DAL.Model.User", "User")
-                        .WithMany("UserPackages")
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                    b.Navigation("Booking");
 
                     b.Navigation("Package");
 
-                    b.Navigation("User");
+                    b.Navigation("Vehicle");
+                });
+
+            modelBuilder.Entity("CarRescueSystem.DAL.Model.User", b =>
+                {
+                    b.HasOne("CarRescueSystem.DAL.Model.RescueStation", "RescueStation")
+                        .WithMany("Staffs")
+                        .HasForeignKey("rescueStationId")
+                        .OnDelete(DeleteBehavior.SetNull);
+
+                    b.Navigation("RescueStation");
                 });
 
             modelBuilder.Entity("CarRescueSystem.DAL.Model.Vehicle", b =>
                 {
                     b.HasOne("CarRescueSystem.DAL.Model.User", "Customer")
                         .WithMany()
-                        .HasForeignKey("CustomerId")
+                        .HasForeignKey("customerId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.HasOne("CarRescueSystem.DAL.Model.Package", "Package")
+                        .WithMany("Vehicles")
+                        .HasForeignKey("packageId");
+
                     b.Navigation("Customer");
+
+                    b.Navigation("Package");
                 });
 
             modelBuilder.Entity("CarRescueSystem.DAL.Model.Booking", b =>
@@ -977,18 +1190,24 @@ namespace CarRescueSystem.DAL.Migrations
                     b.Navigation("BookingStaffs");
 
                     b.Navigation("ServiceBookings");
+
+                    b.Navigation("Transactions");
                 });
 
             modelBuilder.Entity("CarRescueSystem.DAL.Model.Package", b =>
                 {
                     b.Navigation("ServicePackages");
 
-                    b.Navigation("UserPackages");
+                    b.Navigation("Transactions");
+
+                    b.Navigation("Vehicles");
                 });
 
-            modelBuilder.Entity("CarRescueSystem.DAL.Model.Role", b =>
+            modelBuilder.Entity("CarRescueSystem.DAL.Model.RescueStation", b =>
                 {
-                    b.Navigation("Users");
+                    b.Navigation("Bookings");
+
+                    b.Navigation("Staffs");
                 });
 
             modelBuilder.Entity("CarRescueSystem.DAL.Model.Service", b =>
@@ -1002,7 +1221,12 @@ namespace CarRescueSystem.DAL.Migrations
                 {
                     b.Navigation("BookingsStaffs");
 
-                    b.Navigation("UserPackages");
+                    b.Navigation("Schedules");
+                });
+
+            modelBuilder.Entity("CarRescueSystem.DAL.Model.Vehicle", b =>
+                {
+                    b.Navigation("Transactions");
                 });
 #pragma warning restore 612, 618
         }

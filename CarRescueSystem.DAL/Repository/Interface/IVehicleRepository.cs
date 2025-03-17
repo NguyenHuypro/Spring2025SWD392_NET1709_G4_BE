@@ -9,5 +9,7 @@ namespace CarRescueSystem.DAL.Repository.Interface
 {
     public interface IVehicleRepository : IGenericRepository<Vehicle>
     {
+        Task<Vehicle?> GetByLicensePlateAsync(string licensePlate);
+        Task<List<Vehicle>> GetVehiclesByUserIdAsync(Guid userId);
     }
 }
