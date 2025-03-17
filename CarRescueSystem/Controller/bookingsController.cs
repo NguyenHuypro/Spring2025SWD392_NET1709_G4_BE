@@ -3,6 +3,7 @@ using CarRescueSystem.Common.DTO;
 using CarRescueSystem.DAL.Model;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore.Storage.Json;
 
 namespace CarRescueSystem.API.Controllers
 {
@@ -29,6 +30,12 @@ namespace CarRescueSystem.API.Controllers
             return StatusCode(response.StatusCode, response);
         }
 
+        [HttpPost("receptionist")] 
+        public async Task<IActionResult> CreateBookingForReceptionist([FromBody] ReBookingDTO reBookingDTO)
+        {
+            var response = await _bookingService.CreateBookingforReceptionist(reBookingDTO);
+            return StatusCode(response.StatusCode, response);
+        }
 
 
         ///// <summary>
@@ -104,6 +111,14 @@ namespace CarRescueSystem.API.Controllers
             var response = await _bookingService.GetAllBookingAsync();
             return StatusCode(response.StatusCode, response);
         }
+
+        [HttpGet("guest")]
+        public async Task<IActionResult> GetAllBookingGuest()
+        {
+            var response = await _bookingService.GetBookingGuest();
+            return StatusCode(response.StatusCode, response);
+        }
+
 
         [HttpGet("user")]
         public async Task<IActionResult> GetBookingByCustomerId()
@@ -212,6 +227,9 @@ namespace CarRescueSystem.API.Controllers
                     
                     response = await _bookingService.AcceptBooking(bookingId); 
                     break;
+                //case "PENDING":
+                //    response = await _bookingService.CreateBookingforReceptionist(requestBody);
+                //    break;
 
                 default:
                     return BadRequest(new { message = "Invalid booking status." });

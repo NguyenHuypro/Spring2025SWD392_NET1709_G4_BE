@@ -28,6 +28,8 @@ namespace CarRescueSystem.BLL.Service.Interface
         Task<ResponseDTO> ConfirmStaffArrivalAsync(Guid bookingId, Guid staffId);
 
         Task<ResponseDTO> AcceptBooking(Guid id);
+        Task<ResponseDTO> GetBookingGuest();
+        Task<ResponseDTO> CreateBookingforReceptionist(ReBookingDTO reBookingDTO);
 
 
     }

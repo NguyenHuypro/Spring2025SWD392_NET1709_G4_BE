@@ -265,6 +265,32 @@
   },
   {
     "ContainingType": "CarRescueSystem.API.Controllers.bookingsController",
+    "Method": "GetAllBookingGuest",
+    "RelativePath": "api/bookings/guest",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "CarRescueSystem.API.Controllers.bookingsController",
+    "Method": "CreateBookingForReceptionist",
+    "RelativePath": "api/bookings/receptionist",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "reBookingDTO",
+        "Type": "CarRescueSystem.Common.DTO.ReBookingDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "CarRescueSystem.API.Controllers.bookingsController",
     "Method": "GetBookingsByStaff",
     "RelativePath": "api/bookings/staff/{staffId}",
     "HttpMethod": "GET",
@@ -635,8 +661,8 @@
     "Order": 0,
     "Parameters": [
       {
-        "Name": "serviceDTO",
-        "Type": "CarRescueSystem.Common.DTO.ServiceDTO",
+        "Name": "createServiceDTO",
+        "Type": "CarRescueSystem.Common.DTO.CreateServiceDTO",
         "IsRequired": true
       }
     ],

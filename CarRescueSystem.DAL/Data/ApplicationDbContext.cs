@@ -61,7 +61,7 @@ namespace CarRescueSystem.DAL.Data
                 .HasOne(b => b.Customer)
                 .WithMany()
                 .HasForeignKey(b => b.customerId)
-                .OnDelete(DeleteBehavior.Restrict);
+                .OnDelete(DeleteBehavior.SetNull);
 
             // 🔹 Booking - Vehicle (1-N)
             modelBuilder.Entity<Booking>()

@@ -29,7 +29,7 @@
   <ItemGroup>
     <ProjectReference Include="..\CarRescueSystem.BLL\CarRescueSystem.BLL.csproj" />
     <ProjectReference Include="..\CarRescueSystem.Common\CarRescueSystem.Common.csproj" />
-    <ProjectReference Include="..\CarRescueSystem.DAL\CarRescueSystem.DAL.csproj" />
+    <ProjectReference Include="..\CarRescueSystem.Infrastructure\CarRescueSystem.Infrastructure.csproj" />
   </ItemGroup>
 
 </Project>
