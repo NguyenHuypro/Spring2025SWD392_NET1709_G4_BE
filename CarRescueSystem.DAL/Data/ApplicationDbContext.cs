@@ -21,7 +21,7 @@ namespace CarRescueSystem.DAL.Data
         public DbSet<BookingStaff> BookingStaffs { get; set; }
         public DbSet<ServicePackage> ServicePackages { get; set; }
 
-        public DbSet<Schedule> Schedules {  get; set; }
+
         public DbSet<RescueStation> RescueStations { get; set; }
         //public DbSet<Wallet> Wallets { get; set; }
         public DbSet<Transaction> Transactions { get; set; }
@@ -68,7 +68,7 @@ namespace CarRescueSystem.DAL.Data
                 .HasOne(b => b.Vehicle)
                 .WithMany()
                 .HasForeignKey(b => b.vehicleId)
-                .OnDelete(DeleteBehavior.SetNull);
+                .OnDelete(DeleteBehavior.NoAction);
 
             // 🔹 Booking - Package (1-N)
             modelBuilder.Entity<Booking>()

@@ -330,7 +330,7 @@ namespace CarRescueSystem.BLL.Service.Implement
                 color = car.color,
                 numberOfSeats = car.numberOfSeats,
                 licensePlate = car.licensePlate,
-                expiredDate = car.expirationDate?.ToString("yyyy-MM-dd") ?? "Chưa xác định",
+                expiredDate = car.expirationDate?.ToString("yyyy-MM-dd") ?? "",
                 package = car.Package != null ? new PackageOfCarDTO
                 {
                     id = car.Package.id,

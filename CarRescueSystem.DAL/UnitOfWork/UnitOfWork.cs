@@ -26,7 +26,7 @@ namespace CarRescueSystem.DAL.UnitOfWork
             ServiceOfBookingRepo = new ServiceOfBookingRepository(_context);
             PackageRepo = new PackageRepository(_context);
        
-            ScheduleRepo = new ScheduleRepository(_context);
+     
             RescueStationRepo = new RescueStationRepository(_context);
             //WalletRepo = new WalletRepository(_context);
             TransactionRepo = new TransactionRepository(_context);
@@ -42,7 +42,7 @@ namespace CarRescueSystem.DAL.UnitOfWork
         public IServiceOfBookingRepository ServiceOfBookingRepo { get; private set; }
         public IPackageRepository PackageRepo { get; private set; }
        
-        public IScheduleRepository ScheduleRepo { get; private set; }
+
         public IRescueStationRepository RescueStationRepo { get; private set; }
         //public IWalletRepository WalletRepo { get; private set; }
         public ITransactionRepository TransactionRepo { get; private set; }

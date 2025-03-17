@@ -26,7 +26,7 @@ builder.Services.AddCors(options =>
     options.AddPolicy("AllowReactApp",
         policy =>
         {
-            policy.WithOrigins("http://localhost:3000", "http://localhost:5210", "http://localhost:5175")
+            policy.WithOrigins("http://localhost:3000", "http://localhost:5210", "http://localhost:5174", "http://localhost:5173")
                   .AllowAnyHeader()
                   .AllowAnyMethod()
                   .AllowCredentials(); // 🔥 Cho phép gửi cookies và headers xác thực
@@ -34,10 +34,10 @@ builder.Services.AddCors(options =>
 });
 
 
-// Setup SQL Server Database
+//Setup SQL Server Database
 //builder.Services.AddDbContext<ApplicationDbContext>(options =>
 //    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")),
-//    ServiceLifetime.Scoped
+//   ServiceLifetime.Scoped
 //);
 
 //Setup MySQL Server Database
@@ -50,7 +50,7 @@ builder.Services.AddCors(options =>
 //    )
 //);
 
-// Đăng ký hạ tầng (Infrastructure)
+//// Đăng ký hạ tầng (Infrastructure)
 builder.Services.AddInfrastructure(builder.Configuration);
 
 
@@ -137,7 +137,7 @@ builder.Services.AddScoped<IPackageService, PackageService>();
 builder.Services.AddScoped<ITransactionService, TransactionService>();
 builder.Services.AddScoped<IUserService, UserService>();
 
-builder.Services.AddScoped<IScheduleService,  ScheduleService>();
+
 builder.Services.AddHttpClient<IOsmService, OsmService>();
 builder.Services.AddScoped<IVnPayService, VnPayService>();
 

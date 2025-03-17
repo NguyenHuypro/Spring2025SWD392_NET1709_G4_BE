@@ -39,7 +39,7 @@ namespace CarRescueSystem.DAL.Model
         public virtual RescueStation? RescueStation { get; set; }
 
         // Quan hệ 1-N với bảng Schedule
-        public virtual ICollection<Schedule> Schedules { get; set; } = new HashSet<Schedule>();
+     
     }
 
     public enum staffStatus
