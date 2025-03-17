@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 D:\HOC\SWD\CarRescueSystem\CarRescueSystemProject\CarRescueSystem.BLL\bin\Debug\net9.0\CarRescueSystem.BLL.deps.json
 D:\HOC\SWD\CarRescueSystem\CarRescueSystemProject\CarRescueSystem.BLL\bin\Debug\net9.0\CarRescueSystem.BLL.dll
 D:\HOC\SWD\CarRescueSystem\CarRescueSystemProject\CarRescueSystem.BLL\bin\Debug\net9.0\CarRescueSystem.BLL.pdb
@@ -16,3 +17,5 @@ D:\HOC\SWD\CarRescueSystem\CarRescueSystemProject\CarRescueSystem.BLL\obj\Debug\
 D:\HOC\SWD\CarRescueSystem\CarRescueSystemProject\CarRescueSystem.BLL\obj\Debug\net9.0\refint\CarRescueSystem.BLL.dll
 D:\HOC\SWD\CarRescueSystem\CarRescueSystemProject\CarRescueSystem.BLL\obj\Debug\net9.0\CarRescueSystem.BLL.pdb
 D:\HOC\SWD\CarRescueSystem\CarRescueSystemProject\CarRescueSystem.BLL\obj\Debug\net9.0\ref\CarRescueSystem.BLL.dll
+=======
+>>>>>>> Stashed changes

@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 D:\HOC\SWD\CarRescueSystem\CarRescueSystemProject\CarRescueSystem\bin\Debug\net9.0\appsettings.Development.json
 D:\HOC\SWD\CarRescueSystem\CarRescueSystemProject\CarRescueSystem\bin\Debug\net9.0\appsettings.json
 D:\HOC\SWD\CarRescueSystem\CarRescueSystemProject\CarRescueSystem\bin\Debug\net9.0\CarRescueSystem.staticwebassets.endpoints.json
@@ -190,3 +191,5 @@ D:\HOC\SWD\CarRescueSystem\CarRescueSystemProject\CarRescueSystem\obj\Debug\net9
 D:\HOC\SWD\CarRescueSystem\CarRescueSystemProject\CarRescueSystem\obj\Debug\net9.0\ref\CarRescueSystem.dll
 D:\HOC\SWD\CarRescueSystem\CarRescueSystemProject\CarRescueSystem\bin\Debug\net9.0\VNPAY.NET.dll
 D:\HOC\SWD\CarRescueSystem\CarRescueSystemProject\CarRescueSystem\obj\Debug\net9.0\staticwebassets.upToDateCheck.txt
+=======
+>>>>>>> Stashed changes

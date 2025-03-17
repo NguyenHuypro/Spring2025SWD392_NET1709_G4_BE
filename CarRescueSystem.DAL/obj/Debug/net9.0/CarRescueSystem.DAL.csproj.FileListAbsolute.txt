@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 D:\HOC\SWD\CarRescueSystem\CarRescueSystemProject\CarRescueSystem.DAL\obj\Debug\net9.0\CarRescueSystem.DAL.csproj.AssemblyReference.cache
 D:\HOC\SWD\CarRescueSystem\CarRescueSystemProject\CarRescueSystem.DAL\obj\Debug\net9.0\CarRescueSystem.DAL.GeneratedMSBuildEditorConfig.editorconfig
 D:\HOC\SWD\CarRescueSystem\CarRescueSystemProject\CarRescueSystem.DAL\obj\Debug\net9.0\CarRescueSystem.DAL.AssemblyInfoInputs.cache
@@ -16,3 +17,5 @@ D:\HOC\SWD\CarRescueSystem\CarRescueSystemProject\CarRescueSystem.DAL\obj\Debug\
 D:\HOC\SWD\CarRescueSystem\CarRescueSystemProject\CarRescueSystem.DAL\obj\Debug\net9.0\CarRescueSystem.DAL.pdb
 D:\HOC\SWD\CarRescueSystem\CarRescueSystemProject\CarRescueSystem.DAL\obj\Debug\net9.0\CarRescueSystem.DAL.genruntimeconfig.cache
 D:\HOC\SWD\CarRescueSystem\CarRescueSystemProject\CarRescueSystem.DAL\obj\Debug\net9.0\ref\CarRescueSystem.DAL.dll
+=======
+>>>>>>> Stashed changes
