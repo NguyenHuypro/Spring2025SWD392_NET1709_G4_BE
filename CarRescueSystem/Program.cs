@@ -126,6 +126,7 @@ builder.Services.AddScoped<IBookingService, BookingService>();
 builder.Services.AddScoped<IServiceRescueService, ServiceRescueService>();
 
 builder.Services.AddScoped<IVehicleService, VehicleService>();
+builder.Services.AddScoped<IDashboardService,DashboardService>();
 builder.Services.AddScoped<IRescueStationService, RescueStationService>();
 builder.Services.AddScoped<IStaffService, StaffService>();
 builder.Services.AddScoped<IPackageService, PackageService>();
