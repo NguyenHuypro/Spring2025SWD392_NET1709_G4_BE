@@ -233,8 +233,7 @@
               "RelativeToolTip": "CarRescueSystem.DAL\\Repository\\Implement\\BookingRepository.cs",
               "ViewState": "AgIAAFIAAAAAAAAAAAAwwF0AAAAHAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-17T05:30:45.731Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-17T05:30:45.731Z"
             },
             {
               "$type": "Document",
@@ -246,8 +245,7 @@
               "RelativeToolTip": "CarRescueSystem.DAL\\Repository\\Interface\\IBookingRepository.cs",
               "ViewState": "AgIAAAwAAAAAAAAAAAA2wBkAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-17T05:29:18.302Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-17T05:29:18.302Z"
             },
             {
               "$type": "Document",
@@ -259,8 +257,7 @@
               "RelativeToolTip": "CarRescueSystem\\Program.cs",
               "ViewState": "AgIAABUAAAAAAAAAAAAAAB8AAABVAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-15T07:08:02.736Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-15T07:08:02.736Z"
             },
             {
               "$type": "Document",
@@ -272,8 +269,7 @@
               "RelativeToolTip": "CarRescueSystem\\Controller\\bookingsController.cs",
               "ViewState": "AgIAAM8AAAAAAAAAAAAuwNoAAABTAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-15T12:06:43.861Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-15T12:06:43.861Z"
             },
             {
               "$type": "Document",
@@ -283,7 +279,7 @@
               "RelativeDocumentMoniker": "CarRescueSystem.BLL\\Service\\Implement\\BookingService.cs",
               "ToolTip": "D:\\HOC\\SWD\\CarRescueSystem\\CarRescueSystemProject\\CarRescueSystem.BLL\\Service\\Implement\\BookingService.cs",
               "RelativeToolTip": "CarRescueSystem.BLL\\Service\\Implement\\BookingService.cs",
-              "ViewState": "AgIAAFQCAAAAAAAAAAAmwLMCAABAAAAAAAAAAA==",
+              "ViewState": "AgIAALQBAAAAAAAAAAAuwMoBAAAMAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-03-15T12:07:17.001Z",
               "EditorCaption": ""
@@ -298,8 +294,7 @@
               "RelativeToolTip": "CarRescueSystem\\Controller\\vehiclesController.cs",
               "ViewState": "AgIAADAAAAAAAAAAAAAowD4AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-15T12:18:06.214Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-15T12:18:06.214Z"
             },
             {
               "$type": "Document",
@@ -311,8 +306,7 @@
               "RelativeToolTip": "CarRescueSystem.BLL\\Service\\Interface\\IBookingService.cs",
               "ViewState": "AgIAABAAAAAAAAAAAAAwwBoAAAAaAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-15T12:27:39.998Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-15T12:27:39.998Z"
             },
             {
               "$type": "Document",
@@ -324,8 +318,7 @@
               "RelativeToolTip": "CarRescueSystem.BLL\\Service\\Implement\\VehicleService.cs",
               "ViewState": "AgIAADoBAAAAAAAAAAAUwFABAAArAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-15T12:07:54.595Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-15T12:07:54.595Z"
             },
             {
               "$type": "Document",
@@ -337,8 +330,7 @@
               "RelativeToolTip": "CarRescueSystem.BLL\\Service\\Interface\\IVehicleService.cs",
               "ViewState": "AgIAAAMAAAAAAAAAAAAuwBQAAAAaAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-15T14:37:08.622Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-15T14:37:08.622Z"
             },
             {
               "$type": "Document",
@@ -350,8 +342,7 @@
               "RelativeToolTip": "CarRescueSystem.DAL\\Migrations\\20250317134519_a.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-17T13:45:19.568Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-17T13:45:19.568Z"
             },
             {
               "$type": "Document",
@@ -363,8 +354,7 @@
               "RelativeToolTip": "CarRescueSystem\\appsettings.json",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2025-03-15T12:55:16.699Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-15T12:55:16.699Z"
             },
             {
               "$type": "Document",
@@ -376,8 +366,7 @@
               "RelativeToolTip": "CarRescueSystem.DAL\\Data\\ApplicationDbContext.cs",
               "ViewState": "AgIAADgAAAAAAAAAAAAmwEoAAAAnAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-16T17:53:32.006Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-16T17:53:32.006Z"
             },
             {
               "$type": "Document",
@@ -389,8 +378,7 @@
               "RelativeToolTip": "CarRescueSystem.DAL\\Model\\User.cs",
               "ViewState": "AgIAAA4AAAAAAAAAAAAAwCEAAAA+AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-17T05:25:21.754Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-17T05:25:21.754Z"
             },
             {
               "$type": "Document",
@@ -402,8 +390,7 @@
               "RelativeToolTip": "CarRescueSystem.DAL\\Migrations\\20250317134735_a.cs",
               "ViewState": "AgIAAAkBAAAAAAAAAAAQwAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-17T13:47:35.298Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-17T13:47:35.298Z"
             },
             {
               "$type": "Document",
@@ -415,8 +402,7 @@
               "RelativeToolTip": "CarRescueSystem.DAL\\Migrations\\20250317135053_a.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABsAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-17T13:50:53.453Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-17T13:50:53.453Z"
             },
             {
               "$type": "Document",
@@ -428,8 +414,7 @@
               "RelativeToolTip": "CarRescueSystem.DAL\\Data\\IApplicationDbContext.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAkwBgAAAA3AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-16T17:53:34.773Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-16T17:53:34.773Z"
             },
             {
               "$type": "Document",
@@ -441,8 +426,7 @@
               "RelativeToolTip": "CarRescueSystem.DAL\\Data\\ApplicationDbContextFactory.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-15T06:18:36.455Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-15T06:18:36.455Z"
             },
             {
               "$type": "Document",
@@ -454,8 +438,7 @@
               "RelativeToolTip": "CarRescueSystem.DAL\\UnitOfWork\\IUnitOfWork.cs",
               "ViewState": "AgIAAAYAAAAAAAAAAAAAABcAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-17T13:41:41.372Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-17T13:41:41.372Z"
             },
             {
               "$type": "Document",
@@ -467,8 +450,7 @@
               "RelativeToolTip": "CarRescueSystem.DAL\\UnitOfWork\\UnitOfWork.cs",
               "ViewState": "AgIAACMAAAAAAAAAAAA3wCwAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-17T13:41:46.969Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-17T13:41:46.969Z"
             },
             {
               "$type": "Document",
@@ -480,8 +462,7 @@
               "RelativeToolTip": "CarRescueSystem.DAL\\Data\\DbSeeder.cs",
               "ViewState": "AgIAABcAAAAAAAAAAAAAwAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-17T13:42:22.658Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-17T13:42:22.658Z"
             },
             {
               "$type": "Document",
