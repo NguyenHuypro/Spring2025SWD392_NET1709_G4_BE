@@ -16,7 +16,7 @@ namespace CarRescueSystem.API.Controllers
             _dashboardService = dashboardService;
         }
 
-        [HttpGet]
+        [HttpGet("dashboard-data")]
         public async Task<IActionResult> GetDashboardData()
         {
             var dashboardData = await _dashboardService.GetDashboardDataAsync();
