@@ -91,7 +91,18 @@ namespace CarRescueSystem.DAL.Repository.Implement
         }
 
 
-
+        public async Task<IEnumerable<Booking>> CheckBookingsByCustomerIdAsync(Guid customerId)
+        {
+            return await _context.Bookings
+                .Where(b => b.customerId == customerId)
+                .Where (b => b.status != BookingStatus.FINISHED)
+                .Include(b => b.Vehicle)
+                .Include(b => b.BookingStaffs)
+                    .ThenInclude(bs => bs.Staff)
+                .Include(b => b.ServiceBookings) // ✅ Lấy danh sách dịch vụ
+                    .ThenInclude(bs => bs.Service)
+                .ToListAsync();
+        }
 
 
 

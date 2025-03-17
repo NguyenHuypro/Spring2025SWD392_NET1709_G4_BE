@@ -71,6 +71,13 @@ namespace CarRescueSystem.BLL.Service.Implement
                     packageId = vehicle.packageId;
                 }
 
+                var checkBooking = _unitOfWork.BookingRepo.CheckBookingsByCustomerIdAsync(customer.id);
+                if (checkBooking != null)
+                {
+                    return new ResponseDTO("Lỗi !!! Khách hàng đã có booking chưa hoàn thành.", 200, false);
+                }
+                
+
                 // Mã hóa location để tránh lỗi ký tự đặc biệt
                 string encodedAddress = Uri.EscapeDataString(request.location);
 
@@ -347,7 +354,17 @@ namespace CarRescueSystem.BLL.Service.Implement
             {
                 return new ResponseDTO("Booking not found", 404, false);
             }
-            booking.status = BookingStatus.PENDING_PAYMENT;
+
+            if (booking.bookingType == TypeBooking.MEMBER)
+            {
+                booking.status = BookingStatus.PENDING_PAYMENT;
+            }
+            else
+            {
+                booking.status = BookingStatus.IN_PROGRESS; 
+            }
+
+
             await _unitOfWork.SaveChangeAsync();
             return new ResponseDTO("Booking accepted", 200, true);
         }
@@ -431,6 +448,15 @@ namespace CarRescueSystem.BLL.Service.Implement
             }
             booking.status = BookingStatus.FINISHED;
             booking.completedDate = DateTime.UtcNow;
+            // ✅ **Kích hoạt lại nhân viên**
+            foreach (var staffBooking in booking.BookingStaffs)
+            {
+                var staff = await _unitOfWork.UserRepo.GetByIdAsync(staffBooking.staffId);
+                staff.staffStatus = staffStatus.ACTIVE;
+                await _unitOfWork.UserRepo.UpdateAsync(staff);
+            }
+
+            await _unitOfWork.SaveChangeAsync();
             await _unitOfWork.BookingRepo.UpdateAsync(booking);
             await _unitOfWork.SaveChangeAsync();
             return new ResponseDTO("Booking finished", 200, true);
@@ -596,11 +622,11 @@ namespace CarRescueSystem.BLL.Service.Implement
                 var bookingDTO = new DetailBookingDTO
                 {
                     id = booking.id,
-                    name = booking.Customer?.fullName ?? "Không xác định",
-                    phone = booking.Customer?.phone ?? "Không xác định",
-                    licensePlate = booking.Vehicle?.licensePlate ?? "Không xác định",
+                    name = booking.Customer?.fullName ?? booking.customerName ?? "",
+                    phone = booking.Customer?.phone ?? booking.phone ?? "",
+                    licensePlate = booking.Vehicle?.licensePlate ?? booking.licensePlate ?? "",
                     location = string.IsNullOrEmpty(booking.location) ? "Không xác định" : Uri.UnescapeDataString(booking.location),
-                    description = booking.description ?? "không xác định",
+                    description = booking.description ??  "",
                     evidence = booking.evidence ?? "Không xác định",
                     status = BookingStatusMap.GetValueOrDefault(booking.status, "Không xác định"),
                     arrivalDate = booking.arrivalDate ?? DateTime.MinValue,
@@ -763,7 +789,7 @@ namespace CarRescueSystem.BLL.Service.Implement
 
             if (!bookings.Any())
             {
-                return new ResponseDTO("Không tìm thấy booking nào", 404, false);
+                return new ResponseDTO("Không tìm thấy booking nào", 200, true);
             }
 
             // Map bookings to GetAllBookingDTO

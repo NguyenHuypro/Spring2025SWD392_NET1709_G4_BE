@@ -21,7 +21,7 @@ namespace CarRescueSystem.DAL.UnitOfWork
         IServiceOfBookingRepository ServiceOfBookingRepo { get; }
         IPackageRepository PackageRepo { get; }
        
-        IScheduleRepository ScheduleRepo { get; }
+
         IRescueStationRepository RescueStationRepo { get; }
         //IWalletRepository WalletRepo { get; }
         ITransactionRepository TransactionRepo { get; }
