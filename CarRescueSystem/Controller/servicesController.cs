@@ -41,9 +41,9 @@ namespace CarRescueSystem.API.Controllers
         /// Tạo một dịch vụ mới
         /// </summary>
         [HttpPost()]
-        public async Task<IActionResult> CreateService([FromBody] ServiceDTO serviceDTO)
+        public async Task<IActionResult> CreateService([FromBody] CreateServiceDTO createServiceDTO)
         {
-            var response = await _serviceRescueService.CreateService(serviceDTO);
+            var response = await _serviceRescueService.CreateService(createServiceDTO);
             return StatusCode(response.StatusCode, response);
         }
 

@@ -85,10 +85,7 @@ namespace CarRescueSystem.Controller
                 return BadRequest(new ResponseDTO("Invalid input.", 400, false));
             }
 
-            if (createStaffDTO.Password != createStaffDTO.PasswordConfirm)
-            {
-                return BadRequest(new ResponseDTO("Password and confirmation do not match.", 400, false));
-            }
+            
 
             var response = await _authService.RegisterAdminAsync(createStaffDTO);
 

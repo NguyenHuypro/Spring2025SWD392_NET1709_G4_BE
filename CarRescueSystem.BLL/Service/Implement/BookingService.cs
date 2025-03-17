@@ -88,7 +88,8 @@ namespace CarRescueSystem.BLL.Service.Implement
                     status = BookingStatus.PENDING,
                     packageId = packageId, 
                     licensePlate = request.licensePlate,
-                    phone = request.phone  
+                    phone = request.phone ,
+                    bookingType = TypeBooking.MEMBER
                 };
 
                 // Lưu vào DB
@@ -367,7 +368,7 @@ namespace CarRescueSystem.BLL.Service.Implement
                 var transaction = new Transaction
                 {
                     id = Guid.NewGuid(),
-                    userId = booking.customerId,
+                    userId = booking.customerId ?? new Guid(""),
                     amount = amount,
                     createdAt = DateTime.UtcNow,
                     status = Transaction.TransactionStatus.PENDING,
@@ -448,12 +449,12 @@ namespace CarRescueSystem.BLL.Service.Implement
             var allbookingDTO = bookings.Select(booking => new GetAllBookingDTO
             {
                 id = booking.id,
-                name = booking.Customer?.fullName ?? "Không xác định", // Name of the customer
-                phone = booking.Customer?.phone ?? "Không xác định", // Phone of the customer
+                name = booking.Customer?.fullName ?? booking.customerName ?? "không xác định", // Name of the customer
+                phone = booking.Customer?.phone ?? booking.phone?? "không xác định", // Phone of the customer
                 description = booking.description ?? "Không xác định",
                 status = BookingStatusMap.GetValueOrDefault(booking.status, "Không xác định"),
                 totalPrice = booking.totalPrice ?? 0,
-                licensePlate = booking.Vehicle?.licensePlate ?? "Không xác định", // License Plate of the vehicle
+                licensePlate = booking.Vehicle?.licensePlate ?? booking.licensePlate  ??"Không xác định", // License Plate of the vehicle
                 location = string.IsNullOrEmpty(booking.location) ? "Không xác định" : Uri.UnescapeDataString(booking.location), // Giải mã location
                 evidence = booking.evidence ?? "Không xác định", // Evidence of booking
                 arrivalDate = booking.arrivalDate?.ToString("dd-MM-yyyy HH:mm:ss") ?? "Invalid date",
@@ -756,6 +757,131 @@ namespace CarRescueSystem.BLL.Service.Implement
                 200, true, bookingDTOs
             );
         }
+        public async Task<ResponseDTO> GetBookingGuest()
+        {
+            var bookings = await _unitOfWork.BookingRepo.GetAllBookingsGuest();
+
+            if (!bookings.Any())
+            {
+                return new ResponseDTO("Không tìm thấy booking nào", 404, false);
+            }
+
+            // Map bookings to GetAllBookingDTO
+            var allbookingDTO = bookings.Select(booking => new GetAllBookingDTO
+            {
+                id = booking.id,
+                name = booking.Customer?.fullName ?? booking.customerName ?? "không xác định", // Name of the customer
+                phone = booking.Customer?.phone ?? booking.phone ?? "không xác định", // Phone of the customer
+                description = booking.description ?? "Không xác định",
+                status = BookingStatusMap.GetValueOrDefault(booking.status, "Không xác định"),
+                totalPrice = booking.totalPrice ?? 0,
+                licensePlate = booking.Vehicle?.licensePlate ?? booking.licensePlate ?? "Không xác định", // License Plate of the vehicle
+                location = string.IsNullOrEmpty(booking.location) ? "Không xác định" : Uri.UnescapeDataString(booking.location), // Giải mã location
+                evidence = booking.evidence ?? "Không xác định", // Evidence of booking
+                arrivalDate = booking.arrivalDate?.ToString("dd-MM-yyyy HH:mm:ss") ?? "Invalid date",
+                completedDate = booking.completedDate?.ToString("dd-MM-yyyy HH:mm:ss") ?? "Invalid date",
+
+                // Mapping services
+                services = booking.ServiceBookings?
+                    .Select(s => new ServiceDetailInBookingDTO
+                    {
+                        id = s.Service.id,
+                        name = s.Service.name,
+                        price = s.Service.price
+                    }).ToList() ?? new List<ServiceDetailInBookingDTO>(),
+
+                // Mapping staff1 and staff2
+                staff1 = booking.BookingStaffs?.ElementAtOrDefault(0) != null
+                    ? new StaffDTO
+                    {
+                        id = booking.BookingStaffs.ElementAtOrDefault(0)?.Staff.id,
+                        fullName = booking.BookingStaffs.ElementAtOrDefault(0)?.Staff?.fullName ?? "Không xác định",
+                        phone = booking.BookingStaffs.ElementAtOrDefault(0)?.Staff?.phone ?? "Không xác định"
+                    }
+                    : new StaffDTO(), // Fallback to an empty StaffDTO if no staff1
+
+                staff2 = booking.BookingStaffs?.ElementAtOrDefault(1) != null
+                    ? new StaffDTO
+                    {
+                        id = booking.BookingStaffs.ElementAtOrDefault(0)?.Staff.id,
+                        fullName = booking.BookingStaffs.ElementAtOrDefault(1)?.Staff?.fullName ?? "Không xác định",
+                        phone = booking.BookingStaffs.ElementAtOrDefault(1)?.Staff?.phone ?? "Không xác định"
+                    }
+                    : new StaffDTO() // Fallback to an empty StaffDTO if no staff2
+            }).ToList(); // Ensure that it's a list of DTOs
+
+            return new ResponseDTO("Lấy dữ liệu thành công", 200, true, allbookingDTO);
+        }
+        public async Task<ResponseDTO> CreateBookingforReceptionist(ReBookingDTO reBookingDTO)
+        {
+
+            try
+            {
+                //// Kiểm tra Customer có tồn tại không
+                //var customer = await _unitOfWork.UserRepo.GetByIdAsync(_userUtility.GetUserIdFromToken());
+                //if (customer == null)
+                //{
+                //    return new ResponseDTO("Customer not found", 404, false);
+                //}
+
+                //// Kiểm tra VehicleId hoặc LicensePlate hợp lệ để lấy PackageId
+                Vehicle? vehicle = null;
+                Guid? packageId = null;
+                Guid? customerId = null;
+
+
+
+                if (vehicle == null && !string.IsNullOrEmpty(reBookingDTO.licensePlate))
+                {
+                    vehicle = await _unitOfWork.VehicleRepo.GetByLicensePlateAsync(reBookingDTO.licensePlate);
+                }
+
+                // Nếu tìm được vehicle, lấy PackageId
+                if (vehicle != null)
+                {
+                    packageId = vehicle.packageId;
+                    
+                }
+                
+
+                // Mã hóa location để tránh lỗi ký tự đặc biệt
+                string encodedAddress = Uri.EscapeDataString(reBookingDTO.location);
+
+                // Tạo Booking mới
+                var newBooking = new Booking
+                {
+                    id = Guid.NewGuid(),
+                    customerId = customerId,
+                    customerName = reBookingDTO.customerName,
+                    vehicleId = vehicle?.id,
+                    description = reBookingDTO.description,
+                    evidence =  "null",
+                    location = encodedAddress,
+                    bookingDate = DateTime.UtcNow,
+                    //--------------------------
+                    status = BookingStatus.PENDING,
+                    packageId = packageId,
+                    licensePlate = reBookingDTO.licensePlate,
+                    phone = reBookingDTO.phone,
+                    bookingType = TypeBooking.GUEST
+                };
+
+                // Lưu vào DB
+                await _unitOfWork.BookingRepo.AddAsync(newBooking);
+                await _unitOfWork.SaveChangeAsync();
+
+                // Trả về ResponseDTO
+                return new ResponseDTO("Booking created successfully", 201, true, newBooking);
+            }
+            catch (Exception ex)
+            {
+                return new ResponseDTO($"Error: {ex.Message}", 500, false);
+            }
+
+        }
+
+
+
 
 
 

@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CarRescueSystem.DAL.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20250315125834_a")]
+    [Migration("20250317065538_a")]
     partial class a
     {
         /// <inheritdoc />
@@ -37,18 +37,23 @@ namespace CarRescueSystem.DAL.Migrations
                     b.Property<DateTime>("bookingDate")
                         .HasColumnType("datetime(6)");
 
+                    b.Property<int>("bookingType")
+                        .HasColumnType("int");
+
                     b.Property<DateTime?>("completedDate")
                         .HasColumnType("datetime(6)");
 
-                    b.Property<Guid>("customerId")
+                    b.Property<Guid?>("customerId")
                         .HasColumnType("char(36)");
+
+                    b.Property<string>("customerName")
+                        .HasColumnType("longtext");
 
                     b.Property<string>("description")
                         .IsRequired()
                         .HasColumnType("longtext");
 
                     b.Property<string>("evidence")
-                        .IsRequired()
                         .HasColumnType("longtext");
 
                     b.Property<double?>("latitude")
@@ -1033,8 +1038,7 @@ namespace CarRescueSystem.DAL.Migrations
                     b.HasOne("CarRescueSystem.DAL.Model.User", "Customer")
                         .WithMany()
                         .HasForeignKey("customerId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
+                        .OnDelete(DeleteBehavior.SetNull);
 
                     b.HasOne("CarRescueSystem.DAL.Model.Package", "Package")
                         .WithMany()

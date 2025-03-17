@@ -17,5 +17,8 @@ namespace CarRescueSystem.DAL.Repository.Interface
         Task<Booking> GetBookingForHistoryAsync(Guid bookingId);
 
         Task<List<Booking>> GetAllBookingsForManagerAsync();
+
+        Task<List<Booking>> GetAllBookingsGuest();
+
     }
 }

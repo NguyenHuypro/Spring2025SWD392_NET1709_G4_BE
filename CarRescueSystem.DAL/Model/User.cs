@@ -54,6 +54,7 @@ namespace CarRescueSystem.DAL.Model
         STAFF,
         RECEPTIONIST,
         ADMIN,
-        MANAGER
+        MANAGER, 
+        GUEST
     }
 }

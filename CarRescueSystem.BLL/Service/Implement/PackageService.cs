@@ -74,30 +74,39 @@ namespace CarRescueSystem.BLL.Service.Implement
         public async Task<ResponseDTO> AddAsync(PackageDTO packageDTO)
         {
             // Kiểm tra dữ liệu đầu vào
-            if (packageDTO == null || string.IsNullOrWhiteSpace(packageDTO.PackageName) || packageDTO.PackagePrice <= 0)
+            if (packageDTO == null || string.IsNullOrWhiteSpace(packageDTO.name))
             {
                 return new ResponseDTO("Invalid package data.", 400, false);
+            }
+
+            // Ép kiểu string -> decimal
+            if (!decimal.TryParse(packageDTO.price, out decimal price) || price <= 0)
+            {
+                return new ResponseDTO("Invalid price value.", 400, false);
             }
 
             var package = new Package
             {
                 id = Guid.NewGuid(),
-                name = packageDTO.PackageName,
-                price = packageDTO.PackagePrice
+                name = packageDTO.name,
+                price = price,
+
             };
 
             var result = await _unitOfWork.PackageRepo.AddAsync(package);
-            
 
-            // Nếu có danh sách serviceId, thêm vào bảng trung gian ServicePackage
-            if (packageDTO.ServiceIds != null && packageDTO.ServiceIds.Any())
+
+            if (packageDTO.services != null && packageDTO.services.Any())
             {
-                var serviceResponse = await _unitOfWork.PackageRepo.AddServiceToPackageAsync(package.id, packageDTO.ServiceIds);
+                var serviceGuids = packageDTO.services.Select(Guid.Parse).ToList(); // Chuyển đổi List<string> -> List<Guid>
+
+                var serviceResponse = await _unitOfWork.PackageRepo.AddServiceToPackageAsync(package.id, serviceGuids);
                 if (!serviceResponse)
                 {
                     return new ResponseDTO("Package created, but failed to link services.", 500, false);
                 }
             }
+
 
             return new ResponseDTO("Package created successfully.", 201, true);
         }
@@ -105,9 +114,15 @@ namespace CarRescueSystem.BLL.Service.Implement
         public async Task<ResponseDTO> UpdateAsync(Guid packageId, PackageDTO packageDTO)
         {
             // Kiểm tra dữ liệu đầu vào
-            if (packageId == Guid.Empty || packageDTO == null || string.IsNullOrWhiteSpace(packageDTO.PackageName) || packageDTO.PackagePrice <= 0)
+            if (packageDTO == null || string.IsNullOrWhiteSpace(packageDTO.name))
             {
                 return new ResponseDTO("Invalid package data.", 400, false);
+            }
+
+            // Ép kiểu string -> decimal
+            if (!decimal.TryParse(packageDTO.price, out decimal price) || price <= 0)
+            {
+                return new ResponseDTO("Invalid price value.", 400, false);
             }
 
             var existingPackage = await _unitOfWork.PackageRepo.GetByIdAsync(packageId);
@@ -117,8 +132,8 @@ namespace CarRescueSystem.BLL.Service.Implement
             }
 
             // Cập nhật thông tin package
-            existingPackage.name = packageDTO.PackageName;
-            existingPackage.price = packageDTO.PackagePrice;
+            existingPackage.name = packageDTO.name;
+            existingPackage.price = price;
 
             var result = await _unitOfWork.PackageRepo.UpdateAsync(existingPackage);
             await _unitOfWork.SaveChangeAsync();

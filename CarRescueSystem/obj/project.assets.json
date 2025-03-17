@@ -2004,6 +2004,19 @@
         "runtime": {
           "bin/placeholder/CarRescueSystem.DAL.dll": {}
         }
+      },
+      "CarRescueSystem.Infrastructure/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v9.0",
+        "dependencies": {
+          "CarRescueSystem.DAL": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/CarRescueSystem.Infrastructure.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/CarRescueSystem.Infrastructure.dll": {}
+        }
       }
     }
   },
@@ -5598,6 +5611,11 @@
       "type": "project",
       "path": "../CarRescueSystem.DAL/CarRescueSystem.DAL.csproj",
       "msbuildProject": "../CarRescueSystem.DAL/CarRescueSystem.DAL.csproj"
+    },
+    "CarRescueSystem.Infrastructure/1.0.0": {
+      "type": "project",
+      "path": "../CarRescueSystem.Infrastructure/CarRescueSystem.Infrastructure.csproj",
+      "msbuildProject": "../CarRescueSystem.Infrastructure/CarRescueSystem.Infrastructure.csproj"
     }
   },
   "projectFileDependencyGroups": {
@@ -5605,7 +5623,7 @@
       "BCrypt.Net-Next >= 4.0.3",
       "CarRescueSystem.BLL >= 1.0.0",
       "CarRescueSystem.Common >= 1.0.0",
-      "CarRescueSystem.DAL >= 1.0.0",
+      "CarRescueSystem.Infrastructure >= 1.0.0",
       "Microsoft.AspNetCore.Authentication.JwtBearer >= 9.0.2",
       "Microsoft.AspNetCore.Authorization >= 9.0.2",
       "Microsoft.AspNetCore.OpenApi >= 9.0.1",
@@ -5654,8 +5672,8 @@
             "C:\\Users\\Kaz\\Desktop\\code\\SWDSU25\\Spring2025SWD392_NET1709_G4_BE\\CarRescueSystem.Common\\CarRescueSystem.Common.csproj": {
               "projectPath": "C:\\Users\\Kaz\\Desktop\\code\\SWDSU25\\Spring2025SWD392_NET1709_G4_BE\\CarRescueSystem.Common\\CarRescueSystem.Common.csproj"
             },
-            "C:\\Users\\Kaz\\Desktop\\code\\SWDSU25\\Spring2025SWD392_NET1709_G4_BE\\CarRescueSystem.DAL\\CarRescueSystem.DAL.csproj": {
-              "projectPath": "C:\\Users\\Kaz\\Desktop\\code\\SWDSU25\\Spring2025SWD392_NET1709_G4_BE\\CarRescueSystem.DAL\\CarRescueSystem.DAL.csproj"
+            "C:\\Users\\Kaz\\Desktop\\code\\SWDSU25\\Spring2025SWD392_NET1709_G4_BE\\CarRescueSystem.Infrastructure\\CarRescueSystem.Infrastructure.csproj": {
+              "projectPath": "C:\\Users\\Kaz\\Desktop\\code\\SWDSU25\\Spring2025SWD392_NET1709_G4_BE\\CarRescueSystem.Infrastructure\\CarRescueSystem.Infrastructure.csproj"
             }
           }
         }

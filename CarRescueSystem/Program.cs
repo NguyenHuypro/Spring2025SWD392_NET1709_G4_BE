@@ -1,4 +1,4 @@
-﻿using CarRescueSystem.BLL.Service.Implement;
+using CarRescueSystem.BLL.Service.Implement;
 using CarRescueSystem.BLL.Service.Interface;
 using CarRescueSystem.BLL.Utilities;
 using CarRescueSystem.Common.Settings;
@@ -8,6 +8,7 @@ using CarRescueSystem.DAL.Repository;
 using CarRescueSystem.DAL.Repository.Implement;
 using CarRescueSystem.DAL.Repository.Interface;
 using CarRescueSystem.DAL.UnitOfWork;
+using CarRescueSystem.Infrastructure;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc.Authorization;
@@ -25,7 +26,7 @@ builder.Services.AddCors(options =>
     options.AddPolicy("AllowReactApp",
         policy =>
         {
-            policy.WithOrigins("http://localhost:3000", "http://localhost:5210", "http://localhost:5173")
+            policy.WithOrigins("http://localhost:3000", "http://localhost:5210", "http://localhost:5175")
                   .AllowAnyHeader()
                   .AllowAnyMethod()
                   .AllowCredentials(); // 🔥 Cho phép gửi cookies và headers xác thực
@@ -40,15 +41,17 @@ builder.Services.AddCors(options =>
 //);
 
 //Setup MySQL Server Database
-var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
+//var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
 
-builder.Services.AddDbContext<ApplicationDbContext>(options =>
-    options.UseMySql(connectionString,
-        ServerVersion.AutoDetect(connectionString), // Tự động nhận diện phiên bản
-        b => b.MigrationsAssembly("CarRescueSystem.DAL")
-    )
-);
+//builder.Services.AddDbContext<ApplicationDbContext>(options =>
+//    options.UseMySql(connectionString,
+//        ServerVersion.AutoDetect(connectionString), // Tự động nhận diện phiên bản
+//        b => b.MigrationsAssembly("CarRescueSystem.DAL")
+//    )
+//);
 
+// Đăng ký hạ tầng (Infrastructure)
+builder.Services.AddInfrastructure(builder.Configuration);
 
 
 
@@ -126,7 +129,6 @@ builder.Services.AddScoped<IBookingService, BookingService>();
 builder.Services.AddScoped<IServiceRescueService, ServiceRescueService>();
 
 builder.Services.AddScoped<IVehicleService, VehicleService>();
-builder.Services.AddScoped<IDashboardService,DashboardService>();
 builder.Services.AddScoped<IRescueStationService, RescueStationService>();
 builder.Services.AddScoped<IStaffService, StaffService>();
 builder.Services.AddScoped<IPackageService, PackageService>();

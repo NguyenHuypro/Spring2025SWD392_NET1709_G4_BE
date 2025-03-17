@@ -11,6 +11,7 @@ namespace CarRescueSystem.Common.DTO
     {
         
         //public Guid CustomerId { get; set; }
+        public string? customerName { get; set; }
 
         public Guid? carId { get; set; } // Có thể null nếu khách chưa có xe
 

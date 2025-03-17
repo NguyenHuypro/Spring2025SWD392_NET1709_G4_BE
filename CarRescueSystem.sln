@@ -11,13 +11,12 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarRescueSystem.DAL", "CarR
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarRescueSystem.Common", "CarRescueSystem.Common\CarRescueSystem.Common.csproj", "{A5BBD019-E4E0-4FAB-99EF-9F67F5C878BC}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarRescueSystem.Infrastructure", "CarRescueSystem.Infrastructure\CarRescueSystem.Infrastructure.csproj", "{BCBB15CF-3928-4325-BAF7-E097255FBAFC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
-	EndGlobalSection
-	GlobalSection(SolutionProperties) = preSolution
-		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{8CCD1F63-19E9-42BB-A040-69ABC74BE046}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -36,5 +35,12 @@ Global
 		{A5BBD019-E4E0-4FAB-99EF-9F67F5C878BC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A5BBD019-E4E0-4FAB-99EF-9F67F5C878BC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A5BBD019-E4E0-4FAB-99EF-9F67F5C878BC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BCBB15CF-3928-4325-BAF7-E097255FBAFC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BCBB15CF-3928-4325-BAF7-E097255FBAFC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BCBB15CF-3928-4325-BAF7-E097255FBAFC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BCBB15CF-3928-4325-BAF7-E097255FBAFC}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
 	EndGlobalSection
 EndGlobal

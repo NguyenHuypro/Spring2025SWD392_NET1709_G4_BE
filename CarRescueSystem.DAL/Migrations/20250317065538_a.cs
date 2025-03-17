@@ -210,18 +210,21 @@ namespace CarRescueSystem.DAL.Migrations
                 columns: table => new
                 {
                     id = table.Column<Guid>(type: "char(36)", nullable: false, collation: "ascii_general_ci"),
-                    customerId = table.Column<Guid>(type: "char(36)", nullable: false, collation: "ascii_general_ci"),
+                    customerId = table.Column<Guid>(type: "char(36)", nullable: true, collation: "ascii_general_ci"),
                     vehicleId = table.Column<Guid>(type: "char(36)", nullable: true, collation: "ascii_general_ci"),
+                    customerName = table.Column<string>(type: "longtext", nullable: true)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
                     status = table.Column<int>(type: "int", nullable: false),
                     description = table.Column<string>(type: "longtext", nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    evidence = table.Column<string>(type: "longtext", nullable: false)
+                    evidence = table.Column<string>(type: "longtext", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     location = table.Column<string>(type: "longtext", nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     latitude = table.Column<double>(type: "double", nullable: true),
                     longitude = table.Column<double>(type: "double", nullable: true),
                     totalPrice = table.Column<decimal>(type: "decimal(18,2)", nullable: true),
+                    bookingType = table.Column<int>(type: "int", nullable: false),
                     bookingDate = table.Column<DateTime>(type: "datetime(6)", nullable: false),
                     arrivalDate = table.Column<DateTime>(type: "datetime(6)", nullable: true),
                     completedDate = table.Column<DateTime>(type: "datetime(6)", nullable: true),
@@ -252,7 +255,7 @@ namespace CarRescueSystem.DAL.Migrations
                         column: x => x.customerId,
                         principalTable: "Users",
                         principalColumn: "id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.SetNull);
                     table.ForeignKey(
                         name: "FK_Bookings_Vehicles_vehicleId",
                         column: x => x.vehicleId,

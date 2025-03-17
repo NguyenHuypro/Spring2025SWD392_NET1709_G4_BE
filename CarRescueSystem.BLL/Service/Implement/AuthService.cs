@@ -154,45 +154,42 @@ namespace CarRescueSystem.BLL.Service.Implement
 
         public async Task<ResponseDTO> RegisterAdminAsync(CreateStaffDTO createStaffDTO)
         {
-            // Validate the input fields
-            if (string.IsNullOrWhiteSpace(createStaffDTO.FullName) ||
-                string.IsNullOrWhiteSpace(createStaffDTO.Email) ||
-                string.IsNullOrWhiteSpace(createStaffDTO.Password) ||
-                string.IsNullOrWhiteSpace(createStaffDTO.Phone))
-            {
-                return new ResponseDTO("All fields are required.", 400, false);
-            }
-
-            // Check if password matches confirmation
-            if (createStaffDTO.Password != createStaffDTO.PasswordConfirm)
-            {
-                return new ResponseDTO("Passwords do not match.", 400, false);
-            }
+            //// Validate the input fields
+            //if (string.IsNullOrWhiteSpace(createStaffDTO.email) ||
+            //    string.IsNullOrWhiteSpace(createStaffDTO.fullName) ||
+            //    string.IsNullOrWhiteSpace(createStaffDTO.password) ||
+            //    string.IsNullOrWhiteSpace(createStaffDTO.phone) ||
+            //    string.IsNullOrWhiteSpace(createStaffDTO.role)) // Kiểm tra role luôn
+            //{
+            //    return new ResponseDTO("All fields are required.", 400, false);
+            //}
 
             try
             {
                 // Check if the email already exists
-                var existingUser = await _unitOfWork.UserRepo.FindByEmailAsync(createStaffDTO.Email);
+                var existingUser = await _unitOfWork.UserRepo.FindByEmailAsync(createStaffDTO.email);
                 if (existingUser != null)
                 {
                     return new ResponseDTO("Email already exists.", 400, false);
                 }
 
+                
+
                 // Generate salt and hash the password
                 string salt = BCrypt.Net.BCrypt.GenerateSalt(12);
-                string hashedPassword = BCrypt.Net.BCrypt.HashPassword(createStaffDTO.Password, salt);
+                string hashedPassword = BCrypt.Net.BCrypt.HashPassword(createStaffDTO.password, salt);
 
-                // Create a new User with role 'STAFF' and status 'ACTIVE'
+                // Create a new User
                 var newUser = new User
                 {
                     id = Guid.NewGuid(),
-                    fullName = createStaffDTO.FullName,
-                    email = createStaffDTO.Email,
+                    fullName = createStaffDTO.fullName,
+                    email = createStaffDTO.email,
                     password = hashedPassword,
                     passwordSalt = salt,
-                    phone = createStaffDTO.Phone,
-                    role = RoleType.STAFF, // Set role to STAFF
-                    staffStatus = staffStatus.ACTIVE // Set status to ACTIVE
+                    phone = createStaffDTO.phone,
+                    role = createStaffDTO.role == "STAFF" ? RoleType.STAFF : RoleType.RECEPTIONIST,
+                    staffStatus = staffStatus.ACTIVE 
                 };
 
                 // Add the new user to the repository
@@ -203,9 +200,13 @@ namespace CarRescueSystem.BLL.Service.Implement
             }
             catch (Exception ex)
             {
-                return new ResponseDTO($"Error: {ex.Message}", 500, false);
+                
+                Console.WriteLine($"Error in RegisterAdminAsync: {ex}");
+
+                return new ResponseDTO("An unexpected error occurred. Please try again later.", 500, false);
             }
         }
+
 
     }
 }
