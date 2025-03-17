@@ -8,12 +8,12 @@ namespace CarRescueSystem.Common.DTO
 {
     public class CreateStaffDTO
     {
-        public string FullName { get; set; }
-        public string Phone { get; set; }
-        public string Email { get; set; }
-        public string Role { get; set; }
-        public string Password { get; set; }
-        public string PasswordConfirm { get; set; }
+        public string email { get; set; }
+        public string fullName { get; set; }
+        public string password { get; set; }
+        public string passwordConfirmed { get; set; }
+        public string phone { get; set; }
+        public string role { get; set; }
 
 
     }

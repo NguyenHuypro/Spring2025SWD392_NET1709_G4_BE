@@ -74,11 +74,11 @@ namespace CarRescueSystem.BLL.Service.Implement
         }
 
         // Create a new service
-        public async Task<ResponseDTO> CreateService(ServiceDTO serviceDTO)
+        public async Task<ResponseDTO> CreateService(CreateServiceDTO createServiceDTO)
         {
             try
             {
-                if (serviceDTO == null)
+                if (createServiceDTO == null)
                 {
                     return new ResponseDTO("Invalid service data.", 400, false);
                 }
@@ -87,8 +87,8 @@ namespace CarRescueSystem.BLL.Service.Implement
                 var service = new DAL.Model.Service
                 {
                     id = Guid.NewGuid(),
-                    name = serviceDTO.ServiceName,
-                    price = serviceDTO.ServicePrice
+                    name = createServiceDTO.name,
+                    price = decimal.Parse( createServiceDTO.price)
                 };
 
                 // Add new service

@@ -13,15 +13,14 @@ namespace CarRescueSystem.DAL.Model
         [Key]
         public Guid id { get; set; }
 
-        [Required]
-        [ForeignKey("User")]
-        public Guid customerId { get; set; }
+       
+        public Guid? customerId { get; set; }
         public Guid? vehicleId { get; set; }
 
-
+        public string? customerName { get; set; }
         public BookingStatus status { get; set; }
         public string description { get; set; }
-        public string evidence { get; set; }
+        public string? evidence { get; set; }
         public string location { get; set; }
 
         // Thêm tọa độ để tính khoảng cách
@@ -30,8 +29,11 @@ namespace CarRescueSystem.DAL.Model
 
         public decimal? totalPrice { get; set; }
 
-        public virtual User Customer { get; set; }
+        public TypeBooking bookingType { get; set; }    
+
+        public virtual User? Customer { get; set; }
         public virtual Vehicle? Vehicle { get; set; }
+        
        
         public DateTime bookingDate { get; set; }
         public DateTime? arrivalDate { get; set; } // Có thể null nếu chưa bắt đầu
@@ -71,6 +73,11 @@ namespace CarRescueSystem.DAL.Model
         CANCELLED, // CUS TỪ CHỐI - TRƯỜNG HỢP KHÁC
         FINISHED, // SỬA XONG - PAY THÀNH CÔNG
         PENDING_PAYMENT
+    }
+    public enum TypeBooking
+    {
+        MEMBER,
+        GUEST
     }
 }
 

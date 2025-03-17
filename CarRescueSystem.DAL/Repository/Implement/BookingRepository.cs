@@ -67,6 +67,20 @@ namespace CarRescueSystem.DAL.Repository.Implement
         public async Task<List<Booking>> GetAllBookingsForManagerAsync()
         {
             return await _context.Bookings
+                
+                .Include(b => b.Customer)
+                .Include(b => b.Vehicle)
+                .Include(b => b.BookingStaffs)
+                    .ThenInclude(bs => bs.Staff)
+                .Include(b => b.ServiceBookings) // ✅ Lấy danh sách dịch vụ
+                    .ThenInclude(bs => bs.Service)
+                .ToListAsync();
+        }
+
+        public async Task<List<Booking>> GetAllBookingsGuest()
+        {
+            return await _context.Bookings
+                .Where(b => b.bookingType == TypeBooking.GUEST)
                 .Include(b => b.Customer)
                 .Include(b => b.Vehicle)
                 .Include(b => b.BookingStaffs)

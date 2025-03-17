@@ -10,14 +10,16 @@ namespace CarRescueSystem.Common.DTO
     public class PackageDTO
     {
        
-        public Guid? id { get; set; }
+
+
+        public string? description { get; set; }
 
         [Required, MaxLength(100)]
-        public string PackageName { get; set; }
+        public string name { get; set; }
 
         [Required]
-        public decimal PackagePrice { get; set; }
+        public string price { get; set; }
 
-        public List<Guid> ServiceIds { get; set; } 
+        public List<string> services { get; set; } 
     }
 }

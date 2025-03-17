@@ -9,6 +9,8 @@ namespace CarRescueSystem.Common.DTO
     public class BookingByUserIdDTO
     {
         public Guid id { get; set; }
+        //public string? phone { get; set; }
+        //public string? location { get; set }
         public DateTime? arrivalDate { get; set; } // Thời điểm đặt lịch
         public DateTime? completedDate { get; set; } // Thời điểm kết thúc
         public string Description { get; set; } = "Không xác định"; // Tình trạng
