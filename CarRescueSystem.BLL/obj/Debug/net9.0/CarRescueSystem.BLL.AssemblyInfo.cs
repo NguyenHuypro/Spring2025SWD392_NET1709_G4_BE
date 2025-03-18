@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("CarRescueSystem.BLL")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+9476ee6b78c75d5b0098bd2008e4f0ae50d5cfc6")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+63a988c9097b4ab63e4545a8347dacb952fc56a0")]
 [assembly: System.Reflection.AssemblyProductAttribute("CarRescueSystem.BLL")]
 [assembly: System.Reflection.AssemblyTitleAttribute("CarRescueSystem.BLL")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

@@ -10,3 +10,15 @@ D:\HOC\SWD\CarRescueSystem\CarRescueSystemProject\CarRescueSystem.Common\obj\Deb
 D:\HOC\SWD\CarRescueSystem\CarRescueSystemProject\CarRescueSystem.Common\obj\Debug\net9.0\refint\CarRescueSystem.Common.dll
 D:\HOC\SWD\CarRescueSystem\CarRescueSystemProject\CarRescueSystem.Common\obj\Debug\net9.0\CarRescueSystem.Common.pdb
 D:\HOC\SWD\CarRescueSystem\CarRescueSystemProject\CarRescueSystem.Common\obj\Debug\net9.0\ref\CarRescueSystem.Common.dll
+D:\HOC\SWD\CarRescueSystem\CarRescueSystemFull\Spring2025SWD392_NET1709_G4_BE\CarRescueSystem.Common\bin\Debug\net9.0\CarRescueSystem.Common.deps.json
+D:\HOC\SWD\CarRescueSystem\CarRescueSystemFull\Spring2025SWD392_NET1709_G4_BE\CarRescueSystem.Common\bin\Debug\net9.0\CarRescueSystem.Common.dll
+D:\HOC\SWD\CarRescueSystem\CarRescueSystemFull\Spring2025SWD392_NET1709_G4_BE\CarRescueSystem.Common\bin\Debug\net9.0\CarRescueSystem.Common.pdb
+D:\HOC\SWD\CarRescueSystem\CarRescueSystemFull\Spring2025SWD392_NET1709_G4_BE\CarRescueSystem.Common\obj\Debug\net9.0\CarRescueSystem.Common.GeneratedMSBuildEditorConfig.editorconfig
+D:\HOC\SWD\CarRescueSystem\CarRescueSystemFull\Spring2025SWD392_NET1709_G4_BE\CarRescueSystem.Common\obj\Debug\net9.0\CarRescueSystem.Common.AssemblyInfoInputs.cache
+D:\HOC\SWD\CarRescueSystem\CarRescueSystemFull\Spring2025SWD392_NET1709_G4_BE\CarRescueSystem.Common\obj\Debug\net9.0\CarRescueSystem.Common.AssemblyInfo.cs
+D:\HOC\SWD\CarRescueSystem\CarRescueSystemFull\Spring2025SWD392_NET1709_G4_BE\CarRescueSystem.Common\obj\Debug\net9.0\CarRescueSystem.Common.csproj.CoreCompileInputs.cache
+D:\HOC\SWD\CarRescueSystem\CarRescueSystemFull\Spring2025SWD392_NET1709_G4_BE\CarRescueSystem.Common\obj\Debug\net9.0\CarRescueSystem.Common.sourcelink.json
+D:\HOC\SWD\CarRescueSystem\CarRescueSystemFull\Spring2025SWD392_NET1709_G4_BE\CarRescueSystem.Common\obj\Debug\net9.0\CarRescueSystem.Common.dll
+D:\HOC\SWD\CarRescueSystem\CarRescueSystemFull\Spring2025SWD392_NET1709_G4_BE\CarRescueSystem.Common\obj\Debug\net9.0\refint\CarRescueSystem.Common.dll
+D:\HOC\SWD\CarRescueSystem\CarRescueSystemFull\Spring2025SWD392_NET1709_G4_BE\CarRescueSystem.Common\obj\Debug\net9.0\CarRescueSystem.Common.pdb
+D:\HOC\SWD\CarRescueSystem\CarRescueSystemFull\Spring2025SWD392_NET1709_G4_BE\CarRescueSystem.Common\obj\Debug\net9.0\ref\CarRescueSystem.Common.dll

@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Linq;
 using System.Threading.Tasks;
 using CarRescueSystem.DAL.Data;
@@ -17,11 +17,14 @@ namespace CarRescueSystem.BLL.Service.Implement
             _context = context;
         }
 
-        public async Task<DashboardDto> GetDashboardDataAsync()
+        public async Task<ResponseDTO> GetDashboardDataAsync()
         {
             var customerCount = await _context.Users.CountAsync(u => u.role.ToString().Equals("CUSTOMER"));
             var staffCount = await _context.Users.CountAsync(u => u.role.ToString().Equals("STAFF"));
+            var receptionistCount = await _context.Users.CountAsync(u => u.role.ToString().Equals("RECEPTIONIST"));
             var registeredCarCount = await _context.Vehicles.CountAsync();
+            var packageCount = await _context.Packages.CountAsync();
+            var serviceCount = await _context.Services.CountAsync();
             var bookingCount = await _context.Bookings.CountAsync();
             var monthlyRevenue = await _context.Bookings
                 .Where(b => b.bookingDate.Month == DateTime.Now.Month && b.bookingDate.Year == DateTime.Now.Year)
@@ -37,15 +40,20 @@ namespace CarRescueSystem.BLL.Service.Implement
                 })
                 .ToListAsync();
 
-            return new DashboardDto
+            var dashboardData = new DashboardDto
             {
                 CustomerCount = customerCount,
                 StaffCount = staffCount,
+                ReceptionistCount = receptionistCount,
+                PackageCount = packageCount,
+                ServiceCount = serviceCount,
                 RegisteredCarCount = registeredCarCount,
                 BookingCount = bookingCount,
                 MonthlyRevenue = monthlyRevenue,
                 MonthlyRevenues = monthlyRevenues
             };
+
+            return new ResponseDTO("lấy dashboard thành công", 200, true, dashboardData);
         }
     }
 }

@@ -168,12 +168,21 @@ namespace CarRescueSystem.BLL.Service.Implement
             {
                 // Check if the email already exists
                 var existingUser = await _unitOfWork.UserRepo.FindByEmailAsync(createStaffDTO.email);
-                if (existingUser != null)
-                {
-                    return new ResponseDTO("Email already exists.", 400, false);
-                }
 
                 
+
+                if (existingUser != null)
+                {
+                    return new ResponseDTO("Email đã có người đăng ký !!!", 200, false);
+                }
+
+                var checkPhone = await _unitOfWork.UserRepo.CheckTelephone(createStaffDTO.phone);
+
+                if (checkPhone != null)
+                {
+                    return new ResponseDTO("số điện thoại đã có người đăng ký !!!", 200, false);
+                }
+
 
                 // Generate salt and hash the password
                 string salt = BCrypt.Net.BCrypt.GenerateSalt(12);
@@ -191,12 +200,19 @@ namespace CarRescueSystem.BLL.Service.Implement
                     role = createStaffDTO.role == "STAFF" ? RoleType.STAFF : RoleType.RECEPTIONIST,
                     staffStatus = staffStatus.ACTIVE 
                 };
+                var response = new CreateStaffDTO
+                {
+                    email = newUser.email,
+                    fullName = newUser.fullName,
+                    phone = newUser.phone,
+                    role = newUser.role.ToString(),
+                };
 
                 // Add the new user to the repository
                 await _unitOfWork.UserRepo.AddAsync(newUser);
                 await _unitOfWork.SaveAsync();
 
-                return new ResponseDTO("Staff registered successfully.", 200, true);
+                return new ResponseDTO("Staff registered successfully.", 200, true, response);
             }
             catch (Exception ex)
             {

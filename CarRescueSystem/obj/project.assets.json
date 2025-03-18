@@ -5645,11 +5645,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\HOC\\SWD\\CarRescueSystem\\CarRescueSystemProject\\CarRescueSystem\\CarRescueSystem.csproj",
+      "projectUniqueName": "D:\\HOC\\SWD\\CarRescueSystem\\CarRescueSystemFull\\Spring2025SWD392_NET1709_G4_BE\\CarRescueSystem\\CarRescueSystem.csproj",
       "projectName": "CarRescueSystem",
-      "projectPath": "D:\\HOC\\SWD\\CarRescueSystem\\CarRescueSystemProject\\CarRescueSystem\\CarRescueSystem.csproj",
+      "projectPath": "D:\\HOC\\SWD\\CarRescueSystem\\CarRescueSystemFull\\Spring2025SWD392_NET1709_G4_BE\\CarRescueSystem\\CarRescueSystem.csproj",
       "packagesPath": "C:\\Users\\dangl\\.nuget\\packages\\",
-      "outputPath": "D:\\HOC\\SWD\\CarRescueSystem\\CarRescueSystemProject\\CarRescueSystem\\obj\\",
+      "outputPath": "D:\\HOC\\SWD\\CarRescueSystem\\CarRescueSystemFull\\Spring2025SWD392_NET1709_G4_BE\\CarRescueSystem\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -5671,14 +5671,14 @@
         "net9.0": {
           "targetAlias": "net9.0",
           "projectReferences": {
-            "D:\\HOC\\SWD\\CarRescueSystem\\CarRescueSystemProject\\CarRescueSystem.BLL\\CarRescueSystem.BLL.csproj": {
-              "projectPath": "D:\\HOC\\SWD\\CarRescueSystem\\CarRescueSystemProject\\CarRescueSystem.BLL\\CarRescueSystem.BLL.csproj"
+            "D:\\HOC\\SWD\\CarRescueSystem\\CarRescueSystemFull\\Spring2025SWD392_NET1709_G4_BE\\CarRescueSystem.BLL\\CarRescueSystem.BLL.csproj": {
+              "projectPath": "D:\\HOC\\SWD\\CarRescueSystem\\CarRescueSystemFull\\Spring2025SWD392_NET1709_G4_BE\\CarRescueSystem.BLL\\CarRescueSystem.BLL.csproj"
             },
-            "D:\\HOC\\SWD\\CarRescueSystem\\CarRescueSystemProject\\CarRescueSystem.Common\\CarRescueSystem.Common.csproj": {
-              "projectPath": "D:\\HOC\\SWD\\CarRescueSystem\\CarRescueSystemProject\\CarRescueSystem.Common\\CarRescueSystem.Common.csproj"
+            "D:\\HOC\\SWD\\CarRescueSystem\\CarRescueSystemFull\\Spring2025SWD392_NET1709_G4_BE\\CarRescueSystem.Common\\CarRescueSystem.Common.csproj": {
+              "projectPath": "D:\\HOC\\SWD\\CarRescueSystem\\CarRescueSystemFull\\Spring2025SWD392_NET1709_G4_BE\\CarRescueSystem.Common\\CarRescueSystem.Common.csproj"
             },
-            "D:\\HOC\\SWD\\CarRescueSystem\\CarRescueSystemProject\\CarRescueSystem.Infrastructure\\CarRescueSystem.Infrastructure.csproj": {
-              "projectPath": "D:\\HOC\\SWD\\CarRescueSystem\\CarRescueSystemProject\\CarRescueSystem.Infrastructure\\CarRescueSystem.Infrastructure.csproj"
+            "D:\\HOC\\SWD\\CarRescueSystem\\CarRescueSystemFull\\Spring2025SWD392_NET1709_G4_BE\\CarRescueSystem.Infrastructure\\CarRescueSystem.Infrastructure.csproj": {
+              "projectPath": "D:\\HOC\\SWD\\CarRescueSystem\\CarRescueSystemFull\\Spring2025SWD392_NET1709_G4_BE\\CarRescueSystem.Infrastructure\\CarRescueSystem.Infrastructure.csproj"
             }
           }
         }

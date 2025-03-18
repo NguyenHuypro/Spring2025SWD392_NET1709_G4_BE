@@ -18,8 +18,8 @@ namespace CarRescueSystem.Common.DTO
         public string status { get; set; } = "Không xác định";
         public decimal totalPrice { get; set; } = 0;
 
-        public string arrivalDate { get; set; } = "Invalid date";
-        public string completedDate { get; set; } = "Invalid date";
+        public DateTime? arrivalDate { get; set; } 
+        public DateTime? completedDate { get; set; } 
 
         public List<ServiceDetailInBookingDTO> services { get; set; } = new List<ServiceDetailInBookingDTO>();
 

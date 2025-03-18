@@ -405,6 +405,16 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "CarRescueSystem.API.Controllers.DashboardController",
+    "Method": "GetDashboardData",
+    "RelativePath": "api/Dashboard/dashboard-data",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "CarRescueSystem.API.Controllers.packagesController",
     "Method": "GetAllPackages",
     "RelativePath": "api/packages",

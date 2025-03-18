@@ -3253,11 +3253,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\HOC\\SWD\\CarRescueSystem\\CarRescueSystemProject\\CarRescueSystem.Infrastructure\\CarRescueSystem.Infrastructure.csproj",
+      "projectUniqueName": "D:\\HOC\\SWD\\CarRescueSystem\\CarRescueSystemFull\\Spring2025SWD392_NET1709_G4_BE\\CarRescueSystem.Infrastructure\\CarRescueSystem.Infrastructure.csproj",
       "projectName": "CarRescueSystem.Infrastructure",
-      "projectPath": "D:\\HOC\\SWD\\CarRescueSystem\\CarRescueSystemProject\\CarRescueSystem.Infrastructure\\CarRescueSystem.Infrastructure.csproj",
+      "projectPath": "D:\\HOC\\SWD\\CarRescueSystem\\CarRescueSystemFull\\Spring2025SWD392_NET1709_G4_BE\\CarRescueSystem.Infrastructure\\CarRescueSystem.Infrastructure.csproj",
       "packagesPath": "C:\\Users\\dangl\\.nuget\\packages\\",
-      "outputPath": "D:\\HOC\\SWD\\CarRescueSystem\\CarRescueSystemProject\\CarRescueSystem.Infrastructure\\obj\\",
+      "outputPath": "D:\\HOC\\SWD\\CarRescueSystem\\CarRescueSystemFull\\Spring2025SWD392_NET1709_G4_BE\\CarRescueSystem.Infrastructure\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -3279,8 +3279,8 @@
         "net9.0": {
           "targetAlias": "net9.0",
           "projectReferences": {
-            "D:\\HOC\\SWD\\CarRescueSystem\\CarRescueSystemProject\\CarRescueSystem.DAL\\CarRescueSystem.DAL.csproj": {
-              "projectPath": "D:\\HOC\\SWD\\CarRescueSystem\\CarRescueSystemProject\\CarRescueSystem.DAL\\CarRescueSystem.DAL.csproj"
+            "D:\\HOC\\SWD\\CarRescueSystem\\CarRescueSystemFull\\Spring2025SWD392_NET1709_G4_BE\\CarRescueSystem.DAL\\CarRescueSystem.DAL.csproj": {
+              "projectPath": "D:\\HOC\\SWD\\CarRescueSystem\\CarRescueSystemFull\\Spring2025SWD392_NET1709_G4_BE\\CarRescueSystem.DAL\\CarRescueSystem.DAL.csproj"
             }
           }
         }

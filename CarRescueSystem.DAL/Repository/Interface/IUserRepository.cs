@@ -10,6 +10,7 @@ namespace CarRescueSystem.DAL.Repository.Interface
     public interface IUserRepository : IGenericRepository<User>
     {
         Task<User> FindByEmailAsync(string email);
+        Task<User> CheckTelephone(string phone);
         Task<List<User>> GetActiveStaffsAsync(int count);
         Task<List<User>> GetAvailableStaffByStationAsync(Guid rescueStationId);
         Task<List<User>> GetUsersByIdsAsync(List<Guid> userIds);

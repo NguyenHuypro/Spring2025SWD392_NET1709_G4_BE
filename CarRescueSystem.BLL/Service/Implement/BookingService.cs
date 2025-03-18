@@ -26,8 +26,9 @@ namespace CarRescueSystem.BLL.Service.Implement
         private readonly IStaffService _staffService;
         //private readonly IWalletService _walletService;
         private readonly IVnPayService _vpnPayService;
+        private readonly ISupportFunction _support;
 
-        public BookingService(IUnitOfWork unitOfWork, UserUtility userUtility, IOsmService osmService, IRescueStationService rescueStationService, IStaffService staffService, IVnPayService vnPayService)
+        public BookingService(IUnitOfWork unitOfWork, UserUtility userUtility, IOsmService osmService, IRescueStationService rescueStationService, IStaffService staffService, IVnPayService vnPayService, ISupportFunction support)
         {
             _unitOfWork = unitOfWork;
             _userUtility = userUtility;
@@ -36,6 +37,7 @@ namespace CarRescueSystem.BLL.Service.Implement
             _staffService = staffService;
             //_walletService = walletService;
             _vpnPayService = vnPayService;
+            _support = support;
         }
 
         public async Task<ResponseDTO> CreateBookingAsync(CreatingBookingDTO request)
@@ -483,8 +485,8 @@ namespace CarRescueSystem.BLL.Service.Implement
                 licensePlate = booking.Vehicle?.licensePlate ?? booking.licensePlate  ??"Không xác định", // License Plate of the vehicle
                 location = string.IsNullOrEmpty(booking.location) ? "Không xác định" : Uri.UnescapeDataString(booking.location), // Giải mã location
                 evidence = booking.evidence ?? "Không xác định", // Evidence of booking
-                arrivalDate = booking.arrivalDate?.ToString("dd-MM-yyyy HH:mm:ss") ?? "Invalid date",
-                completedDate = booking.completedDate?.ToString("dd-MM-yyyy HH:mm:ss") ?? "Invalid date",
+                arrivalDate = booking.arrivalDate,
+                completedDate = booking.completedDate,
 
                 // Mapping services
                 services = booking.ServiceBookings?
@@ -515,7 +517,9 @@ namespace CarRescueSystem.BLL.Service.Implement
                     : new StaffDTO() // Fallback to an empty StaffDTO if no staff2
             }).ToList(); // Ensure that it's a list of DTOs
 
-            return new ResponseDTO("Successfully retrieved all bookings", 200, true, allbookingDTO);
+            var sortList = _support.SortByArrivalDate(allbookingDTO, b => b.arrivalDate);
+
+            return new ResponseDTO("Successfully retrieved all bookings", 200, true, sortList);
         }
 
         public async Task<ResponseDTO> GetBookingByCustomerIdAsync(Guid? customerId = null)
@@ -672,8 +676,10 @@ namespace CarRescueSystem.BLL.Service.Implement
                 bookingDTOs.Add(bookingDTO);
             }
 
+            var sortList = _support.SortByArrivalDate(bookingDTOs, b => b.arrivalDate);
+
             // Trả về danh sách các booking cùng thông tin nhân viên
-            return new ResponseDTO("Lấy danh sách booking thành công", 200, true, bookingDTOs);
+            return new ResponseDTO("Lấy danh sách booking thành công", 200, true, sortList);
         }
 
 
@@ -804,8 +810,8 @@ namespace CarRescueSystem.BLL.Service.Implement
                 licensePlate = booking.Vehicle?.licensePlate ?? booking.licensePlate ?? "Không xác định", // License Plate of the vehicle
                 location = string.IsNullOrEmpty(booking.location) ? "Không xác định" : Uri.UnescapeDataString(booking.location), // Giải mã location
                 evidence = booking.evidence ?? "Không xác định", // Evidence of booking
-                arrivalDate = booking.arrivalDate?.ToString("dd-MM-yyyy HH:mm:ss") ?? "Invalid date",
-                completedDate = booking.completedDate?.ToString("dd-MM-yyyy HH:mm:ss") ?? "Invalid date",
+                arrivalDate = booking.arrivalDate,
+                completedDate = booking.completedDate,
 
                 // Mapping services
                 services = booking.ServiceBookings?

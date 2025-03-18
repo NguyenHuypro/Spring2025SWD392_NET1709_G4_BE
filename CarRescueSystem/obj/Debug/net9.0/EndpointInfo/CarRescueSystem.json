@@ -544,6 +544,18 @@
         }
       }
     },
+    "/api/Dashboard/dashboard-data": {
+      "get": {
+        "tags": [
+          "Dashboard"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/api/packages": {
       "get": {
         "tags": [

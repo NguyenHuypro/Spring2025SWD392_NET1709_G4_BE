@@ -22,6 +22,11 @@ namespace CarRescueSystem.DAL.Repository.Implement
             return await _context.Users.FirstOrDefaultAsync(u => u.email == email);
         }
 
+        public async Task<User> CheckTelephone(string phone)
+        {
+            return await _context.Users.FirstOrDefaultAsync(u => u.phone == phone);
+        }
+
         public async Task<List<User>> GetActiveStaffsAsync(int count)
         {
             return await _context.Users
@@ -58,7 +63,7 @@ namespace CarRescueSystem.DAL.Repository.Implement
         public async Task<List<User>> GetAllStaffsAsync()
         {
             return await _context.Users
-                .Where(u => u.role == RoleType.STAFF)
+                .Where(u => u.role == RoleType.STAFF || u.role == RoleType.RECEPTIONIST)
                 
                 .ToListAsync();
         }

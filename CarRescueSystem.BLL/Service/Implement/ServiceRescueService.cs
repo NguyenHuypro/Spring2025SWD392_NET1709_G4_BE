@@ -102,7 +102,7 @@ namespace CarRescueSystem.BLL.Service.Implement
                     ServicePrice = service.price
                 };
 
-                return new ResponseDTO("Service created successfully.", 201, true);
+                return new ResponseDTO("Service created successfully.", 201, true, createdServiceDTO);
             }
             catch (Exception ex)
             {

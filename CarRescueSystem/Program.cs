@@ -26,7 +26,7 @@ builder.Services.AddCors(options =>
     options.AddPolicy("AllowReactApp",
         policy =>
         {
-            policy.WithOrigins("http://localhost:3000", "http://localhost:5210", "http://localhost:5174", "http://localhost:5173")
+            policy.WithOrigins("http://localhost:3000", "http://localhost:5210", "http://localhost:5174", "http://localhost:5173", "http://localhost:5175")
                   .AllowAnyHeader()
                   .AllowAnyMethod()
                   .AllowCredentials(); // 🔥 Cho phép gửi cookies và headers xác thực
@@ -136,6 +136,7 @@ builder.Services.AddScoped<IPackageService, PackageService>();
 //builder.Services.AddScoped<IWalletService, WalletService>();
 builder.Services.AddScoped<ITransactionService, TransactionService>();
 builder.Services.AddScoped<IUserService, UserService>();
+builder.Services.AddScoped<ISupportFunction, SupportFunction>();
 
 
 builder.Services.AddHttpClient<IOsmService, OsmService>();

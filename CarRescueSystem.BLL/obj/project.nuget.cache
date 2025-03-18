@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "2x1e+z/LY00=",
+  "dgSpecHash": "SsUyeqt0ogE=",
   "success": true,
-  "projectFilePath": "D:\\HOC\\SWD\\CarRescueSystem\\CarRescueSystemProject\\CarRescueSystem.BLL\\CarRescueSystem.BLL.csproj",
+  "projectFilePath": "D:\\HOC\\SWD\\CarRescueSystem\\CarRescueSystemFull\\Spring2025SWD392_NET1709_G4_BE\\CarRescueSystem.BLL\\CarRescueSystem.BLL.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\dangl\\.nuget\\packages\\automapper\\14.0.0\\automapper.14.0.0.nupkg.sha512",
     "C:\\Users\\dangl\\.nuget\\packages\\azure.core\\1.38.0\\azure.core.1.38.0.nupkg.sha512",

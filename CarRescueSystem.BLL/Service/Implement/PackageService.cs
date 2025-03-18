@@ -108,7 +108,7 @@ namespace CarRescueSystem.BLL.Service.Implement
             }
 
 
-            return new ResponseDTO("Package created successfully.", 201, true);
+            return new ResponseDTO("Package created successfully.", 201, true, packageDTO);
         }
 
         public async Task<ResponseDTO> UpdateAsync(Guid packageId, PackageDTO packageDTO)

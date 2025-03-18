@@ -5,6 +5,6 @@ namespace CarRescueSystem.BLL.Service.Interface
 {
     public interface IDashboardService
     {
-        Task<DashboardDto> GetDashboardDataAsync(); 
+        Task<ResponseDTO> GetDashboardDataAsync(); 
     }
 } 
