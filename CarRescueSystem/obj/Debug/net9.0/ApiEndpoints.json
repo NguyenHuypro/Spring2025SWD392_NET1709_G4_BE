@@ -1,21 +1,5 @@
 [
   {
-    "ContainingType": "CarRescueSystem.Controller.vehiclesController",
-    "Method": "Delete",
-    "RelativePath": "{id}",
-    "HttpMethod": "DELETE",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "id",
-        "Type": "System.Guid",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
     "ContainingType": "CarRescueSystem.Controller.AuthController",
     "Method": "RegisterAdmin",
     "RelativePath": "api/auth/admin/register",
@@ -27,6 +11,27 @@
         "Name": "createStaffDTO",
         "Type": "CarRescueSystem.Common.DTO.CreateStaffDTO",
         "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "CarRescueSystem.Controller.AuthController",
+    "Method": "ConfirmEmail",
+    "RelativePath": "api/auth/confirm-email",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "email",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "token",
+        "Type": "System.String",
+        "IsRequired": false
       }
     ],
     "ReturnTypes": []
@@ -354,6 +359,22 @@
   },
   {
     "ContainingType": "CarRescueSystem.Controller.vehiclesController",
+    "Method": "Delete",
+    "RelativePath": "api/cars/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Guid",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "CarRescueSystem.Controller.vehiclesController",
     "Method": "GetAll",
     "RelativePath": "api/cars/get-all",
     "HttpMethod": "GET",
@@ -415,6 +436,16 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "CarRescueSystem.Controller.TransactionController",
+    "Method": "GetAllTransaction",
+    "RelativePath": "api/my-transactions",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "CarRescueSystem.API.Controllers.packagesController",
     "Method": "GetAllPackages",
     "RelativePath": "api/packages",
@@ -433,9 +464,30 @@
     "Order": 0,
     "Parameters": [
       {
+        "Name": "dto",
+        "Type": "CarRescueSystem.Common.DTO.AddPackageDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "CarRescueSystem.API.Controllers.packagesController",
+    "Method": "UpdatePackage",
+    "RelativePath": "api/packages/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Guid",
+        "IsRequired": true
+      },
+      {
         "Name": "packageDTO",
         "Type": "CarRescueSystem.Common.DTO.PackageDTO",
-        "IsRequired": true
+        "IsRequired": false
       }
     ],
     "ReturnTypes": []
@@ -467,27 +519,6 @@
       {
         "Name": "packageId",
         "Type": "System.Guid",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "CarRescueSystem.API.Controllers.packagesController",
-    "Method": "UpdatePackage",
-    "RelativePath": "api/packages/update/{packageId}",
-    "HttpMethod": "PUT",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "packageId",
-        "Type": "System.Guid",
-        "IsRequired": true
-      },
-      {
-        "Name": "packageDTO",
-        "Type": "CarRescueSystem.Common.DTO.PackageDTO",
         "IsRequired": true
       }
     ],
@@ -598,7 +629,7 @@
       },
       {
         "Name": "serviceDTO",
-        "Type": "CarRescueSystem.Common.DTO.ServiceDTO",
+        "Type": "CarRescueSystem.Common.DTO.UpdateServiceDTO",
         "IsRequired": true
       }
     ],
@@ -637,6 +668,48 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "CarRescueSystem.Controller.RescueStationController",
+    "Method": "GetAllRescueStation",
+    "RelativePath": "api/stations",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "CarRescueSystem.API.Controllers.UsersController",
+    "Method": "UpdateUser",
+    "RelativePath": "api/users",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "profileDTO",
+        "Type": "CarRescueSystem.Common.DTO.ProfileDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "CarRescueSystem.API.Controllers.UsersController",
+    "Method": "DeleteUser",
+    "RelativePath": "api/users/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Guid",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "CarRescueSystem.API.Controllers.UsersController",
     "Method": "GetStaffAvailable",
     "RelativePath": "api/users/available-staffs",
@@ -660,6 +733,22 @@
     "IsController": true,
     "Order": 0,
     "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "CarRescueSystem.API.Controllers.UsersController",
+    "Method": "UpdateStaff",
+    "RelativePath": "api/users/staff",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userDTO",
+        "Type": "CarRescueSystem.Common.DTO.UpdateUserDTO",
+        "IsRequired": true
+      }
+    ],
     "ReturnTypes": []
   },
   {

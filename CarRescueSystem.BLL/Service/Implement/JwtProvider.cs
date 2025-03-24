@@ -20,7 +20,7 @@ namespace CarRescueSystem.BLL.Service.Implement
             var tokenDescriptor = new SecurityTokenDescriptor
             {
                 Subject = new ClaimsIdentity(claims),
-                Expires = DateTime.UtcNow.AddHours(JwtSettingModel.ExpireDayAccessToken),
+                Expires = DateTime.UtcNow.AddDays(JwtSettingModel.ExpireDayAccessToken),
                 SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature),
                 Issuer = JwtSettingModel.Issuer, // Thêm Issuer
                 Audience = JwtSettingModel.Audience // Thêm Audience

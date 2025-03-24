@@ -47,7 +47,7 @@ namespace CarRescueSystem.Controller
             return StatusCode(response.StatusCode, response);
         }
 
-        [HttpDelete("/{id}")]
+        [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(Guid id)
         {
             var response = await _vehicleService.DeleteAsync(id);

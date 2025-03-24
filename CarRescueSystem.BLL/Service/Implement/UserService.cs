@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using CarRescueSystem.BLL.Service.Interface;
+using CarRescueSystem.BLL.Utilities;
 using CarRescueSystem.Common.DTO;
 using CarRescueSystem.DAL.UnitOfWork;
 
@@ -12,10 +13,12 @@ namespace CarRescueSystem.BLL.Service.Implement
     public class UserService : IUserService
     {
         private IUnitOfWork _unitOfWork;
+        private readonly UserUtility _userUtility;
 
-        public UserService(IUnitOfWork unitOfWork)
+        public UserService(IUnitOfWork unitOfWork, UserUtility userUtility)
         {
             _unitOfWork = unitOfWork;
+            _userUtility = userUtility;
         }
         //public Task<ResponseDTO> CreateStaff(CreateStaffDTO)
         //{
@@ -78,6 +81,70 @@ namespace CarRescueSystem.BLL.Service.Implement
                 return new ResponseDTO($"Error: {ex.Message}", 500, false);
             }
         }
+        public async Task<ResponseDTO> UpdateUser(ProfileDTO profileDTO)
+        {
+            var userID = _userUtility.GetUserIdFromToken();
+            var user = await _unitOfWork.UserRepo.GetByIdAsync(userID);
+            if (user == null)
+            {
+                return new ResponseDTO("không thấy người dùng", 200, false);
+            }
+            user.fullName = profileDTO.fullName;
+            user.phone = profileDTO.phone;
 
+            await _unitOfWork.UserRepo.UpdateAsync(user);
+            await _unitOfWork.SaveChangeAsync();
+
+            var userDTO = new UserDTO
+            {
+                id = user.id,
+                fullName = user.fullName,
+                email = user.email,
+                phone = user.phone,
+                role = user.role.ToString()
+            };
+
+            return new ResponseDTO("thay đổi thành công", 200, true, userDTO);
+        }
+
+        public async Task<ResponseDTO> UpdateStaff(UpdateUserDTO dto) 
+            {
+            
+            var user = await _unitOfWork.UserRepo.GetByIdAsync(dto.id);
+            if (user == null)
+            {
+                return new ResponseDTO("không tìm thấy người dùng", 200, false);
+            }
+            user.fullName = dto.fullName;
+            user.phone = dto.phone;
+
+            await _unitOfWork.UserRepo.UpdateAsync(user);
+            await _unitOfWork.SaveChangeAsync();
+
+            var userDTO = new UserDTO
+            {
+                id = user.id,
+                fullName = user.fullName,
+                email = user.email,
+
+                phone = user.phone,
+                role = user.role.ToString()
+
+            };
+            return new ResponseDTO("Cập nhật người dùng thành công", 200, true, userDTO);
+        } 
+
+        public async Task<ResponseDTO> DeleteUser(Guid id)
+        {
+            var user = await _unitOfWork.UserRepo.GetByIdAsync(id);
+            if (user == null)
+            {
+                return new ResponseDTO("không tìm thấy người dùng", 200, false);
+            }
+            await _unitOfWork.UserRepo.DeleteAsync(id);
+            await _unitOfWork.SaveChangeAsync();
+            return new ResponseDTO("Xóa người dùng thành công", 200, true);
+
+        }
     }
 }

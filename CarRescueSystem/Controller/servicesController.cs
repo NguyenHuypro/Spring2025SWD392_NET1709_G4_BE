@@ -51,7 +51,7 @@ namespace CarRescueSystem.API.Controllers
         /// Cập nhật thông tin dịch vụ
         /// </summary>
         [HttpPut("{serviceId}")]
-        public async Task<IActionResult> UpdateService(Guid serviceId, [FromBody] ServiceDTO serviceDTO)
+        public async Task<IActionResult> UpdateService(Guid serviceId, [FromBody] UpdateServiceDTO serviceDTO)
         {
             var response = await _serviceRescueService.UpdateService(serviceId, serviceDTO);
             return StatusCode(response.StatusCode, response);

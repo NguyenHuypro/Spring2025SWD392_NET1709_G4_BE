@@ -1,8 +1,11 @@
 ﻿using CarRescueSystem.BLL.Service.Interface;
 using CarRescueSystem.Common.DTO;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 using System;
 using System.Threading.Tasks;
+using System.Xml;
+using Formatting = Newtonsoft.Json.Formatting;
 
 namespace CarRescueSystem.API.Controllers
 {
@@ -41,21 +44,28 @@ namespace CarRescueSystem.API.Controllers
         /// Tạo mới một gói dịch vụ
         /// </summary>
         [HttpPost()]
-        public async Task<IActionResult> CreatePackage([FromBody] PackageDTO packageDTO)
+        public async Task<IActionResult> CreatePackage([FromBody] AddPackageDTO dto)
         {
-            var response = await _packageService.AddAsync(packageDTO);
+            var response = await _packageService.AddAsync(dto);
             return StatusCode(response.StatusCode, response);
         }
 
         /// <summary>
         /// Cập nhật thông tin gói dịch vụ
         /// </summary>
-        [HttpPut("update/{packageId}")]
-        public async Task<IActionResult> UpdatePackage(Guid packageId, [FromBody] PackageDTO packageDTO)
+        [HttpPut("{id}")]
+        public async Task<IActionResult> UpdatePackage([FromRoute] Guid id, [FromBody] PackageDTO? packageDTO)
         {
-            var response = await _packageService.UpdateAsync(packageId, packageDTO);
+            //// Ghi log toàn bộ thông tin của DTO
+            //Console.WriteLine($"Nhận id: {id}");
+            //Console.WriteLine("Nhận packageDTO: " + JsonConvert.SerializeObject(packageDTO, Formatting.Indented));
+
+
+
+            var response = await _packageService.UpdateAsync(id, packageDTO);
             return StatusCode(response.StatusCode, response);
         }
+
 
         /// <summary>
         /// Xóa gói dịch vụ theo ID

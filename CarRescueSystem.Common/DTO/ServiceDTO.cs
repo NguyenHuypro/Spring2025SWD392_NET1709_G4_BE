@@ -9,12 +9,12 @@ namespace CarRescueSystem.Common.DTO
 {
     public class ServiceDTO
     {
-        public Guid ServiceId { get; set; } // Sử dụng cho cả Update và Get
+        public Guid ServiceId { get; set; } 
 
-        [Required]
-        public string ServiceName { get; set; } // Sử dụng cho Create và Update
 
-        [Required]
-        public decimal ServicePrice { get; set; } // Sử dụng cho Create và Update
+        public string ServiceName { get; set; } 
+
+
+        public decimal ServicePrice { get; set; } 
     }
 }

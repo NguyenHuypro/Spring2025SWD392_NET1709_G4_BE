@@ -35,8 +35,11 @@ namespace CarRescueSystem.DAL.Model
         public virtual Vehicle? Vehicle { get; set; }
         
        
+
+
+
         public DateTime bookingDate { get; set; }
-        public DateTime? arrivalDate { get; set; } // Có thể null nếu chưa bắt đầu
+        public DateTime? arrivalDate { get; set; } 
 
         public DateTime? completedDate { get; set; }
 

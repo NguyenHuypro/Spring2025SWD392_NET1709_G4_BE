@@ -64,7 +64,7 @@ namespace CarRescueSystem.DAL.Repository.Implement
         {
             return await _context.Users
                 .Where(u => u.role == RoleType.STAFF || u.role == RoleType.RECEPTIONIST)
-                
+     
                 .ToListAsync();
         }
 

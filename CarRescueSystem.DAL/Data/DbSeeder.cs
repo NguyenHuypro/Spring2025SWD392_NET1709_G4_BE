@@ -143,6 +143,7 @@ namespace CarRescueSystem.DAL.Data
                     passwordSalt = "",
                     phone = "0999888777",
                     role = RoleType.CUSTOMER,
+                    isActive = true,
                 },
                 new User
                 {
@@ -153,6 +154,8 @@ namespace CarRescueSystem.DAL.Data
                     passwordSalt = "",
                     phone = "0999888777",
                     role = RoleType.ADMIN,
+                    isActive = true,
+
                 },
                 new User
                 {
@@ -163,6 +166,8 @@ namespace CarRescueSystem.DAL.Data
                     passwordSalt = "",
                     phone = "0999888777",
                     role = RoleType.MANAGER,
+                    isActive = true,
+
                 },
 
                 new User
@@ -175,7 +180,9 @@ namespace CarRescueSystem.DAL.Data
                     phone = "0999888777",
                     role = RoleType.STAFF,
                     staffStatus = staffStatus.ACTIVE,
-                    rescueStationId = RescueStationId1
+                    rescueStationId = RescueStationId1,
+                    isActive = true,
+
 
                 },
                 new User
@@ -188,7 +195,9 @@ namespace CarRescueSystem.DAL.Data
                     phone = "0999888777",
                     role = RoleType.STAFF,
                     staffStatus = staffStatus.ACTIVE,
-                    rescueStationId = RescueStationId1
+                    rescueStationId = RescueStationId1,
+                    isActive = true,
+
 
                 },
                 new User
@@ -200,6 +209,8 @@ namespace CarRescueSystem.DAL.Data
                     passwordSalt = "",
                     phone = "0999888777",
                     role = RoleType.RECEPTIONIST,
+                    isActive = true,
+
                 },
                 new User
                 {
@@ -211,7 +222,9 @@ namespace CarRescueSystem.DAL.Data
                     phone = "0999888773",
                     role = RoleType.STAFF,
                     staffStatus = staffStatus.ACTIVE,
-                    rescueStationId = RescueStationId2
+                    rescueStationId = RescueStationId2,
+                    isActive = true,
+
                 },
             new User
             {
@@ -223,7 +236,9 @@ namespace CarRescueSystem.DAL.Data
                 phone = "0999888774",
                 role = RoleType.STAFF,
                 staffStatus = staffStatus.ACTIVE,
-                rescueStationId = RescueStationId2
+                rescueStationId = RescueStationId2,
+                isActive = true,
+
             },
             new User
             {
@@ -235,7 +250,9 @@ namespace CarRescueSystem.DAL.Data
                 phone = "0999888775",
                 role = RoleType.STAFF,
                 staffStatus = staffStatus.ACTIVE,
-                rescueStationId = RescueStationId3
+                rescueStationId = RescueStationId3,
+                isActive = true,
+
             },
             new User
             {
@@ -247,7 +264,9 @@ namespace CarRescueSystem.DAL.Data
                 phone = "0999888776",
                 role = RoleType.STAFF,
                 staffStatus = staffStatus.ACTIVE,
-                rescueStationId = RescueStationId3
+                rescueStationId = RescueStationId3,
+                isActive = true,
+
             },
             new User
             {
@@ -259,7 +278,9 @@ namespace CarRescueSystem.DAL.Data
                 phone = "0999888778",
                 role = RoleType.STAFF,
                 staffStatus = staffStatus.ACTIVE,
-                rescueStationId = RescueStationId4
+                rescueStationId = RescueStationId4,
+                isActive = true,
+
             },
             new User
             {
@@ -271,7 +292,9 @@ namespace CarRescueSystem.DAL.Data
                 phone = "0999888779",
                 role = RoleType.STAFF,
                 staffStatus = staffStatus.ACTIVE,
-                rescueStationId = RescueStationId4
+                rescueStationId = RescueStationId4,
+                isActive = true,
+
             },
             new User
             {
@@ -283,7 +306,9 @@ namespace CarRescueSystem.DAL.Data
                 phone = "0999888780",
                 role = RoleType.STAFF,
                 staffStatus = staffStatus.ACTIVE,
-                rescueStationId = RescueStationId5
+                rescueStationId = RescueStationId5,
+                isActive = true,
+
             },
             new User
             {
@@ -295,7 +320,9 @@ namespace CarRescueSystem.DAL.Data
                 phone = "0999888781",
                 role = RoleType.STAFF,
                 staffStatus = staffStatus.ACTIVE,
-                rescueStationId = RescueStationId5
+                rescueStationId = RescueStationId5,
+                isActive = true,
+
             }
 
                 );
@@ -342,9 +369,9 @@ namespace CarRescueSystem.DAL.Data
         {
             var packages = new List<Package>
         {
-            new Package { id = BasicPackage, name = "Gói Cơ Bản", price = 500000 },
-            new Package { id = ComprehensivePackage, name = "Gói Toàn Diện", price = 1000000 },
-            new Package { id = PremiumPackage, name = "Gói Cao Cấp", price = 2000000 }
+            new Package { id = BasicPackage, name = "Gói Cơ Bản", price = 500000 , description = "Đây là gói cơ bản"},
+            new Package { id = ComprehensivePackage, name = "Gói Toàn Diện", price = 1000000, description = "Đây là gói toàn diện" },
+            new Package { id = PremiumPackage, name = "Gói Cao Cấp", price = 2000000,  description = "Đây là gói cao cấp" }
 
         };
 

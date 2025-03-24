@@ -95,14 +95,9 @@ namespace CarRescueSystem.BLL.Service.Implement
                 await _unitOfWork.ServiceRepo.AddAsync(service);
                 await _unitOfWork.SaveChangeAsync();
 
-                var createdServiceDTO = new ServiceDTO
-                {
-                    ServiceId = service.id,
-                    ServiceName = service.name,
-                    ServicePrice = service.price
-                };
+                
 
-                return new ResponseDTO("Service created successfully.", 201, true, createdServiceDTO);
+                return new ResponseDTO("Service created successfully.", 201, true, service);
             }
             catch (Exception ex)
             {
@@ -111,7 +106,7 @@ namespace CarRescueSystem.BLL.Service.Implement
         }
 
         // Update an existing service
-        public async Task<ResponseDTO> UpdateService(Guid serviceId, ServiceDTO serviceDTO)
+        public async Task<ResponseDTO> UpdateService(Guid serviceId, UpdateServiceDTO serviceDTO)
         {
             try
             {
@@ -122,18 +117,24 @@ namespace CarRescueSystem.BLL.Service.Implement
                     return new ResponseDTO("Service not found.", 404, false);
                 }
 
-                // Update service details from DTO
-                service.name = serviceDTO.ServiceName ?? service.name;
-                service.price = serviceDTO.ServicePrice != default ? serviceDTO.ServicePrice : service.price;
+                // Update service details from DTO if they are not null
+                if (!string.IsNullOrEmpty(serviceDTO.name))
+                {
+                    service.name = serviceDTO.name;
+                }
+                if (serviceDTO.price.HasValue)
+                {
+                    service.price = serviceDTO.price.Value;
+                }
 
                 await _unitOfWork.ServiceRepo.UpdateAsync(service);
                 await _unitOfWork.SaveChangeAsync();
 
-                var updatedServiceDTO = new ServiceDTO
+                var updatedServiceDTO = new UpdateServiceDTO
                 {
-                    ServiceId = service.id,
-                    ServiceName = service.name,
-                    ServicePrice = service.price
+                    id = service.id,
+                    name = service.name,
+                    price = service.price
                 };
 
                 return new ResponseDTO("Service updated successfully.", 200, true);

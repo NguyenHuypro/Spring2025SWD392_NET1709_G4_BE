@@ -38,8 +38,15 @@ namespace CarRescueSystem.BLL.Service.Implement
                 var customer = await _unitOfWork.UserRepo.GetByIdAsync(_userUtility.GetUserIdFromToken());
                 if (customer == null)
                 {
-                    return new ResponseDTO("User not found", 404, false);
+                    return new ResponseDTO("không thấy người dùng", 200, false);
                 }
+                var checkLicensePlate = await _unitOfWork.VehicleRepo.GetByLicensePlateAsync(request.licensePlate);
+
+                if (checkLicensePlate != null)
+                {
+                    return new ResponseDTO("không được trùng biển số xe", 200, false);
+                }
+
                 var vehicle = new Vehicle{
                     customerId = customer.id,
                     id = Guid.NewGuid(),
@@ -49,11 +56,12 @@ namespace CarRescueSystem.BLL.Service.Implement
                     numberOfSeats = request.numberOfSeats,
                     licensePlate = request.licensePlate
                 };
+
                 await _unitOfWork.VehicleRepo.AddAsync(vehicle);
                 await _unitOfWork.SaveChangeAsync();
 
                 // Trả về ResponseDTO
-                return new ResponseDTO("Vehicle created successfully", 201, true, vehicle);
+                return new ResponseDTO("tạo xe thành công", 200, true, vehicle);
             }
                 catch (Exception ex)
             {
@@ -129,7 +137,7 @@ namespace CarRescueSystem.BLL.Service.Implement
             {
                 var vehicle = await _unitOfWork.VehicleRepo.GetByIdAsync(id);
                 if (vehicle == null)
-                    return new ResponseDTO($"Error: {"No Vehicle with this id found!"}", 404, false);
+                    return new ResponseDTO($"Error: {"không thấy xe"}", 404, false);
                 await _unitOfWork.VehicleRepo.DeleteAsync(id);
                 await _unitOfWork.SaveChangeAsync();
 
@@ -181,7 +189,8 @@ namespace CarRescueSystem.BLL.Service.Implement
                 BankCode = BankCode.ANY, // Cho phép chọn ngân hàng
                 CreatedDate = DateTime.UtcNow,
                 Currency = Currency.VND,
-                Language = DisplayLanguage.Vietnamese
+                Language = DisplayLanguage.Vietnamese,
+                
             };
 
             // ✅ Gọi đúng `CreatePaymentUrlAsync`
@@ -318,7 +327,7 @@ namespace CarRescueSystem.BLL.Service.Implement
 
             if (myCars == null || !myCars.Any())
             {
-                return new ResponseDTO("Không tìm thấy xe nào!", 404, false);
+                return new ResponseDTO("Không tìm thấy xe nào!", 200, true);
             }
 
             // 🔥 Chuyển danh sách Vehicle thành danh sách GetMyCarDTO

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Security.Claims;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using CarRescueSystem.BLL.Service.Interface;
@@ -18,10 +19,12 @@ namespace CarRescueSystem.BLL.Service.Implement
     public class AuthService : IAuthService
     {
         private readonly IUnitOfWork _unitOfWork;
+        private readonly IEmailService _emailService;
 
-        public AuthService(IUnitOfWork unitOfWork)
+        public AuthService(IUnitOfWork unitOfWork, IEmailService emailService)
         {
             _unitOfWork = unitOfWork;
+            _emailService = emailService;
         }
         public async Task<ResponseDTO> Login(LoginDTO loginDTO)
         {
@@ -29,19 +32,24 @@ namespace CarRescueSystem.BLL.Service.Implement
             var user = await _unitOfWork.UserRepo.FindByEmailAsync(loginDTO.Email);
             if (user == null)
             {
-                return new ResponseDTO("User not found", 404, false);
+                return new ResponseDTO("Không tìm thấy người dùng !!!", 404, false);
             }
 
-            Console.WriteLine($"Stored Hash: {user.password}");
+           
             string password = "123";
             string hashedPassword = BCrypt.Net.BCrypt.HashPassword(password);
-            Console.WriteLine($"New Hashed Password: {hashedPassword}");
+            
 
             // kiểm tra mật khẩu
             bool isPasswordValid = BCrypt.Net.BCrypt.Verify(loginDTO.Password, user.password);
             if (!isPasswordValid)
             {
-                return new ResponseDTO("Invalid email or password.", 400, false);
+                return new ResponseDTO("Sai password", 400, false);
+            }
+
+            if (!user.isActive)
+            {
+                return new ResponseDTO("Chưa confirm email", 200, false);
             }
 
             //kiểm tra refreshToken
@@ -83,7 +91,7 @@ namespace CarRescueSystem.BLL.Service.Implement
                 return new ResponseDTO($"Error saving refresh token: {ex.Message}", 500, false);
             }
 
-            return new ResponseDTO("Login successful", 200, true, new
+            return new ResponseDTO("Đăng nhập thành công", 200, true, new
             {
                 AccessToken = accessTokenKey,
                 RefeshToken = refreshTokenKey,
@@ -112,12 +120,12 @@ namespace CarRescueSystem.BLL.Service.Implement
                 string.IsNullOrWhiteSpace(registerDTO.Password) ||
                 string.IsNullOrWhiteSpace(registerDTO.Phone))
             {
-                return new ResponseDTO("All fields are required.", 400, false);
+                return new ResponseDTO("điền đủ đi", 200, false);
             }
 
             if (registerDTO.Password != registerDTO.PasswordConfirmed)
             {
-                return new ResponseDTO("Passwords do not match.", 400, false);
+                return new ResponseDTO("password không trùng", 200, false);
             }
 
             try
@@ -125,7 +133,7 @@ namespace CarRescueSystem.BLL.Service.Implement
                 var existingUser = await _unitOfWork.UserRepo.FindByEmailAsync(registerDTO.Email);
                 if (existingUser != null)
                 {
-                    return new ResponseDTO("Email already exists.", 400, false);
+                    return new ResponseDTO("Email đã tồn tại", 200, false);
                 }
 
                 string salt = BCrypt.Net.BCrypt.GenerateSalt(12);
@@ -139,16 +147,23 @@ namespace CarRescueSystem.BLL.Service.Implement
                     password = hashedPassword,
                     passwordSalt = salt,
                     phone = registerDTO.Phone,
-                    role = RoleType.CUSTOMER
+                    role = RoleType.CUSTOMER,
+                    isActive = false
                 };
                 await _unitOfWork.UserRepo.AddAsync(newUser);
                 await _unitOfWork.SaveAsync();
 
-                return new ResponseDTO("User registered successfully.", 200, true);
+                // 🔹 Tạo token xác nhận email
+                string token = GenerateEmailToken(newUser.email);
+
+                // 🔹 Gửi email xác nhận
+                await _emailService.SendConfirmationEmailAsync(newUser.email, token);
+
+                return new ResponseDTO("Đăng ký thành công.", 200, true);
             }
             catch (Exception ex)
             {
-                return new ResponseDTO($"Error: {ex.Message}", 500, false);
+                return new ResponseDTO($"lỗi: {ex.Message}", 500, false);
             }
         }
 
@@ -198,7 +213,10 @@ namespace CarRescueSystem.BLL.Service.Implement
                     passwordSalt = salt,
                     phone = createStaffDTO.phone,
                     role = createStaffDTO.role == "STAFF" ? RoleType.STAFF : RoleType.RECEPTIONIST,
-                    staffStatus = staffStatus.ACTIVE 
+                    staffStatus = staffStatus.ACTIVE ,
+                    isActive = true,
+                    rescueStationId = createStaffDTO.rescueStation ?? null
+
                 };
                 var response = new CreateStaffDTO
                 {
@@ -223,6 +241,43 @@ namespace CarRescueSystem.BLL.Service.Implement
             }
         }
 
+        
+
+        public async Task<ResponseDTO> ConfirmEmail(string email, string token)
+        {
+            var user = await _unitOfWork.UserRepo.FindByEmailAsync(email);
+            if (user == null)
+            {
+                return new ResponseDTO("User not found.", 200, false);
+            }
+
+            // Kiểm tra token có hợp lệ không
+            if (!ValidateEmailToken(email, token))
+            {
+                return new ResponseDTO("Invalid or expired token.", 200, false);
+            }
+
+            // Cập nhật trạng thái xác nhận email
+            user.isActive = true;
+            _unitOfWork.UserRepo.UpdateAsync(user);
+            await _unitOfWork.SaveAsync();
+
+            return new ResponseDTO("Email confirmed successfully. You can now log in.", 200, true);
+        }
+
+        private string GenerateEmailToken(string email)
+        {
+            using var hmac = new HMACSHA256(Encoding.UTF8.GetBytes("super-secret-key"));
+            return Convert.ToBase64String(hmac.ComputeHash(Encoding.UTF8.GetBytes(email + DateTime.UtcNow.Date)));
+        }
+
+        private bool ValidateEmailToken(string email, string token)
+        {
+            using var hmac = new HMACSHA256(Encoding.UTF8.GetBytes("super-secret-key"));
+            string expectedToken = Convert.ToBase64String(hmac.ComputeHash(Encoding.UTF8.GetBytes(email + DateTime.UtcNow.Date)));
+
+            return expectedToken == token;
+        }
 
     }
 }

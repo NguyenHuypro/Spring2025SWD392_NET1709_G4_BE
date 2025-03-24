@@ -1,3 +1,4 @@
+using CarRescueSystem.BLL.Background;
 using CarRescueSystem.BLL.Service.Implement;
 using CarRescueSystem.BLL.Service.Interface;
 using CarRescueSystem.BLL.Utilities;
@@ -137,6 +138,15 @@ builder.Services.AddScoped<IPackageService, PackageService>();
 builder.Services.AddScoped<ITransactionService, TransactionService>();
 builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddScoped<ISupportFunction, SupportFunction>();
+
+//email
+builder.Services.Configure<EmailSettings>(builder.Configuration.GetSection("Email"));
+builder.Services.AddScoped<IEmailService, EmailService>();
+
+//backgroud
+builder.Services.AddHostedService<OrderStatusBackgroundService>();
+
+
 
 
 builder.Services.AddHttpClient<IOsmService, OsmService>();

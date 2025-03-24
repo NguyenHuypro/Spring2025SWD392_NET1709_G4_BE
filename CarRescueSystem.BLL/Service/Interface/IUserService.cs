@@ -14,6 +14,9 @@ namespace CarRescueSystem.BLL.Service.Interface
         //Task<ResponseDTO> CreateStaff(CreateStaffDTO);
         //Task<ResponseDTO> UpdateStaff(UpdateStaffDTO);
         //Task<ResponseDTO> DeleteStaff(Guid id);
+        Task<ResponseDTO> UpdateUser(ProfileDTO profileDTO);
+        Task<ResponseDTO> UpdateStaff(UpdateUserDTO userDTO);
+        Task<ResponseDTO> DeleteUser(Guid id);
 
     }
 }

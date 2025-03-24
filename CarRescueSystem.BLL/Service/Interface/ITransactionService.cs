@@ -10,5 +10,7 @@ namespace CarRescueSystem.BLL.Service.Interface
     public interface ITransactionService
     {
         Task CreateTransaction(Guid? bookingId = null, Guid? packageId = null);
+
+        Task<ResponseDTO> GetAllTransactionByUserId();
     }
 }

@@ -12,8 +12,8 @@ namespace CarRescueSystem.BLL.Service.Interface
     {
         Task<ResponseDTO> GetAllAsync();
         Task<ResponseDTO> GetByIdAsync(Guid id);
-        Task<ResponseDTO> AddAsync(PackageDTO packageDTO);
-        Task<ResponseDTO> UpdateAsync(Guid packageId, PackageDTO packageDTO);
+        Task<ResponseDTO> AddAsync(AddPackageDTO dto);
+        Task<ResponseDTO> UpdateAsync(Guid id, PackageDTO packageDTO);
         Task<ResponseDTO> DeleteAsync(Guid id);
     }
 }

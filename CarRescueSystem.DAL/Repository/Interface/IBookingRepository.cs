@@ -19,7 +19,7 @@ namespace CarRescueSystem.DAL.Repository.Interface
         Task<List<Booking>> GetAllBookingsForManagerAsync();
 
         Task<List<Booking>> GetAllBookingsGuest();
-        Task<IEnumerable<Booking>> CheckBookingsByCustomerIdAsync(Guid customerId);
+        Task<Booking?> CheckBookingsByCustomerIdAsync(Guid customerId);
 
     }
 }

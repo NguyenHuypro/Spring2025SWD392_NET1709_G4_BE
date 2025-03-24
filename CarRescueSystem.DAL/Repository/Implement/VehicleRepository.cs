@@ -19,8 +19,13 @@ namespace CarRescueSystem.DAL.Repository.Implement
         }
         public async Task<Vehicle?> GetByLicensePlateAsync(string licensePlate)
         {
-            return await _context.Vehicles
+            var check = await _context.Vehicles
                 .FirstOrDefaultAsync(v => v.licensePlate == licensePlate);
+            if (check == null)
+            {
+                return null;
+            }
+            return check;
         }
         public async Task<List<Vehicle>> GetVehiclesByUserIdAsync(Guid userId)
         {

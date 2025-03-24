@@ -13,7 +13,10 @@ namespace CarRescueSystem.Common.DTO
         public string password { get; set; }
         public string passwordConfirmed { get; set; }
         public string phone { get; set; }
+
         public string role { get; set; }
+
+        public Guid? rescueStation { get; set; }
 
 
     }

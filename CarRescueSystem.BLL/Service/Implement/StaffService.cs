@@ -32,44 +32,39 @@ namespace CarRescueSystem.BLL.Service.Implement
                 return new ResponseDTO("Booking not found", 404, false);
             }
 
-            // 2️⃣ Lấy tọa độ từ địa chỉ
-            var coordinates = await _osmService.GetCoordinatesFromAddressAsync(booking.location);
-            if (coordinates == null)
-            {
-                return new ResponseDTO("Failed to retrieve coordinates for booking location", 400, false);
-            }
+            
 
-            // ✅ Cập nhật tọa độ
-            booking.latitude = coordinates.latitude;
-            booking.longitude = coordinates.longitude;
+            // 3️⃣ Lấy danh sách trạm cứu hộ theo khoảng cách
+            var nearestStations = await _rescueStationService.FindNearestStationsAsync(booking.latitude ?? 0.0, booking.longitude ?? 0.0);
 
-            // 3️⃣ Tìm trạm cứu hộ gần nhất
-            var nearestStation = await _rescueStationService.FindNearestStationAsync(booking.latitude ?? 0.0, booking.longitude ?? 0.0);
-            if (nearestStation == null)
+            // Nếu không có trạm nào, trả về lỗi
+            if (nearestStations == null || !nearestStations.Any())
             {
                 return new ResponseDTO("No rescue station found nearby", 404, false);
             }
 
-            // 4️⃣ Lấy danh sách nhân viên có sẵn tại trạm cứu hộ
-            var availableStaffs = await _unitOfWork.UserRepo.GetAvailableStaffByStationAsync(nearestStation.id);
-            if (availableStaffs == null || !availableStaffs.Any())
+            // 4️⃣ Duyệt từng trạm để tìm trạm có staff rảnh
+            RescueStation? selectedStation = null;
+            List<User>? availableStaffs = null;
+
+            foreach (var station in nearestStations)
             {
-                return new ResponseDTO("No available staff found at the rescue station", 404, false);
+                availableStaffs = await _unitOfWork.UserRepo.GetAvailableStaffByStationAsync(station.id);
+                if (availableStaffs != null && availableStaffs.Any())
+                {
+                    selectedStation = station;
+                    break; // Dừng khi tìm được trạm có staff
+                }
             }
 
-            // 5️⃣ Cập nhật thông tin Booking với trạm cứu hộ
-            booking.rescueStationId = nearestStation.id;
+            // Nếu không tìm thấy trạm nào có staff rảnh
+            if (selectedStation == null || availableStaffs == null || !availableStaffs.Any())
+            {
+                return new ResponseDTO("Không có staff rảnh", 200, false, null);
+            }
 
-            //// 6️⃣ Thêm tất cả nhân viên vào BookingStaff
-            //var bookingStaffList = availableStaffs.Select(staff => new BookingStaff
-            //{
-            //    id = Guid.NewGuid(),
-            //    bookingId = booking.id,
-            //    staffId = staff.id
-            //}).ToList();
-
-            // Lưu thông tin BookingStaff và cập nhật Booking
-            //await _unitOfWork.BookingStaffRepo.AddRangeAsync(bookingStaffList);
+            // 5️⃣ Cập nhật Booking với trạm cứu hộ được chọn
+            booking.rescueStationId = selectedStation.id;
             await _unitOfWork.BookingRepo.UpdateAsync(booking);
             await _unitOfWork.SaveChangeAsync();
 
@@ -78,6 +73,7 @@ namespace CarRescueSystem.BLL.Service.Implement
             {
                 Id = staff.id,
                 FullName = staff.fullName,
+                RescueStationName = selectedStation.name
                 
             }).ToList();
 

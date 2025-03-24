@@ -8,6 +8,7 @@ using CarRescueSystem.BLL.Utilities;
 using CarRescueSystem.Common.DTO;
 using CarRescueSystem.DAL.Model;
 using CarRescueSystem.DAL.UnitOfWork;
+using Microsoft.EntityFrameworkCore;
 
 namespace CarRescueSystem.BLL.Service.Implement
 {
@@ -51,7 +52,6 @@ namespace CarRescueSystem.BLL.Service.Implement
                 userId = userId,
                 amount = amount,
                 createdAt = DateTime.UtcNow,
-
                 bookingId = bookingId,
                 packageId = packageId
             };
@@ -60,5 +60,39 @@ namespace CarRescueSystem.BLL.Service.Implement
             await _unitOfWork.SaveChangeAsync();
         }
 
+        public async Task<ResponseDTO> GetAllTransactionByUserId()
+        {
+
+            var id = _userUtility.GetUserIdFromToken(); 
+
+            if (id == Guid.Empty)
+            {
+                return new ResponseDTO("Không tìm thấy user !!!", 200, false);
+            }
+
+            var transactions = await _unitOfWork.TransactionRepo.GetAllTransactionsByUserId(id);
+
+            if (transactions == null || !transactions.Any())
+            {
+                return new ResponseDTO("Không tìm thấy hóa đơn !!!", 200, false);
+            }
+
+            var transactionDTOs = new List<TransactionGetDTO>();
+
+            foreach (var transaction in transactions)
+            {
+                var transactionDTO = new TransactionGetDTO
+                {
+                    id = transaction.id,
+                    amount = transaction.amount,
+                    packageName = transaction.Package?.name ?? "", // Nếu null, gán giá trị mặc định
+                    licensePlate = transaction.Booking?.licensePlate ?? transaction.Vehicle?.licensePlate ?? "", // Nếu null, gán giá trị mặc định
+                    status = transaction.status.ToString(),
+                    createdAt = transaction.createdAt
+                };
+                transactionDTOs.Add(transactionDTO);
+            }
+            return new ResponseDTO("Lấy hóa đơn thành công", 200, true, transactionDTOs);
+        }
     }
 }

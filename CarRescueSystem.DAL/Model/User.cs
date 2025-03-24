@@ -25,6 +25,7 @@ namespace CarRescueSystem.DAL.Model
         public string password { get; set; }
 
         public string passwordSalt { get; set; }
+        public bool isActive { get; set; }
 
         [Required]
         public RoleType role { get; set; }

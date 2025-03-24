@@ -20,7 +20,21 @@ namespace CarRescueSystem.API.Controllers
             _staffService = staffService;
         }
 
-        
+        [HttpPut]
+        public async Task<IActionResult> UpdateUser (ProfileDTO profileDTO)
+        {
+
+            var response = await _userService.UpdateUser(profileDTO);
+            return StatusCode(response.StatusCode, response);
+        }
+
+        [HttpPut("staff")]
+        public async Task<IActionResult> UpdateStaff(UpdateUserDTO userDTO)
+        {
+            var response = await _userService.UpdateStaff(userDTO);
+            return StatusCode(response.StatusCode, response);
+        }
+
 
         /// <summary>
         /// Lấy danh sách nhân viên có sẵn
@@ -50,6 +64,13 @@ namespace CarRescueSystem.API.Controllers
         {
             Console.WriteLine("gọi dc rồi");
             var response = await _staffService.GetAvailableStaffAsync(bookingId); // Get the customer data from the service layer
+            return StatusCode(response.StatusCode, response);
+        }
+
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeleteUser (Guid id)
+        {
+            var response = await _userService.DeleteUser(id);
             return StatusCode(response.StatusCode, response);
         }
 

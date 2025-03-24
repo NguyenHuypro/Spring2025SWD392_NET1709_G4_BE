@@ -35,6 +35,7 @@ namespace CarRescueSystem.DAL.Repository.Implement
                     .ThenInclude(bs => bs.Staff)
                 .Include(b => b.ServiceBookings) // ✅ Lấy danh sách dịch vụ
                     .ThenInclude(bs => bs.Service)
+                .OrderByDescending(b => b.bookingDate)
                 .ToListAsync();
         }
         public async Task<IEnumerable<Booking>> GetBookingsByStaffIdAsync(Guid staffId)
@@ -48,6 +49,7 @@ namespace CarRescueSystem.DAL.Repository.Implement
                 .Include(b => b.Vehicle)
                 .Include(b => b.BookingStaffs)
                     .ThenInclude(bs => bs.Staff)
+                .OrderByDescending(b => b.bookingDate)
                 .ToListAsync();
         }
 
@@ -74,6 +76,7 @@ namespace CarRescueSystem.DAL.Repository.Implement
                     .ThenInclude(bs => bs.Staff)
                 .Include(b => b.ServiceBookings) // ✅ Lấy danh sách dịch vụ
                     .ThenInclude(bs => bs.Service)
+                .OrderByDescending(b => b.bookingDate)
                 .ToListAsync();
         }
 
@@ -87,22 +90,18 @@ namespace CarRescueSystem.DAL.Repository.Implement
                     .ThenInclude(bs => bs.Staff)
                 .Include(b => b.ServiceBookings) // ✅ Lấy danh sách dịch vụ
                     .ThenInclude(bs => bs.Service)
+                .OrderByDescending(b => b.bookingDate)
                 .ToListAsync();
         }
 
 
-        public async Task<IEnumerable<Booking>> CheckBookingsByCustomerIdAsync(Guid customerId)
+        public async Task<Booking?> CheckBookingsByCustomerIdAsync(Guid customerId)
         {
             return await _context.Bookings
-                .Where(b => b.customerId == customerId)
-                .Where (b => b.status != BookingStatus.FINISHED)
-                .Include(b => b.Vehicle)
-                .Include(b => b.BookingStaffs)
-                    .ThenInclude(bs => bs.Staff)
-                .Include(b => b.ServiceBookings) // ✅ Lấy danh sách dịch vụ
-                    .ThenInclude(bs => bs.Service)
-                .ToListAsync();
+                .Where(b => b.customerId == customerId && b.status != BookingStatus.FINISHED)
+                .FirstOrDefaultAsync(); // Chỉ lấy 1 booking để kiểm tra
         }
+
 
 
 

@@ -160,6 +160,34 @@
         }
       }
     },
+    "/api/auth/confirm-email": {
+      "get": {
+        "tags": [
+          "Auth"
+        ],
+        "parameters": [
+          {
+            "name": "email",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "token",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/api/bookings": {
       "post": {
         "tags": [
@@ -575,17 +603,17 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/PackageDTO"
+                "$ref": "#/components/schemas/AddPackageDTO"
               }
             },
             "text/json": {
               "schema": {
-                "$ref": "#/components/schemas/PackageDTO"
+                "$ref": "#/components/schemas/AddPackageDTO"
               }
             },
             "application/*+json": {
               "schema": {
-                "$ref": "#/components/schemas/PackageDTO"
+                "$ref": "#/components/schemas/AddPackageDTO"
               }
             }
           }
@@ -620,14 +648,14 @@
         }
       }
     },
-    "/api/packages/update/{packageId}": {
+    "/api/packages/{id}": {
       "put": {
         "tags": [
           "packages"
         ],
         "parameters": [
           {
-            "name": "packageId",
+            "name": "id",
             "in": "path",
             "required": true,
             "schema": {
@@ -778,6 +806,18 @@
         }
       }
     },
+    "/api/stations": {
+      "get": {
+        "tags": [
+          "RescueStation"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/api/services": {
       "get": {
         "tags": [
@@ -860,17 +900,17 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/ServiceDTO"
+                "$ref": "#/components/schemas/UpdateServiceDTO"
               }
             },
             "text/json": {
               "schema": {
-                "$ref": "#/components/schemas/ServiceDTO"
+                "$ref": "#/components/schemas/UpdateServiceDTO"
               }
             },
             "application/*+json": {
               "schema": {
-                "$ref": "#/components/schemas/ServiceDTO"
+                "$ref": "#/components/schemas/UpdateServiceDTO"
               }
             }
           }
@@ -926,6 +966,80 @@
         }
       }
     },
+    "/api/my-transactions": {
+      "get": {
+        "tags": [
+          "Transaction"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/users": {
+      "put": {
+        "tags": [
+          "Users"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ProfileDTO"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ProfileDTO"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/ProfileDTO"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/users/staff": {
+      "put": {
+        "tags": [
+          "Users"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateUserDTO"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateUserDTO"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateUserDTO"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/api/users/staffs": {
       "get": {
         "tags": [
@@ -959,6 +1073,29 @@
           {
             "name": "bookingId",
             "in": "query",
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/users/{id}": {
+      "delete": {
+        "tags": [
+          "Users"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
             "schema": {
               "type": "string",
               "format": "uuid"
@@ -1078,9 +1215,7 @@
             "description": "OK"
           }
         }
-      }
-    },
-    "/{id}": {
+      },
       "delete": {
         "tags": [
           "vehicles"
@@ -1149,6 +1284,31 @@
   },
   "components": {
     "schemas": {
+      "AddPackageDTO": {
+        "type": "object",
+        "properties": {
+          "description": {
+            "type": "string",
+            "nullable": true
+          },
+          "name": {
+            "type": "string",
+            "nullable": true
+          },
+          "price": {
+            "type": "string",
+            "nullable": true
+          },
+          "services": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
       "AllInOneBookingDTO": {
         "type": "object",
         "properties": {
@@ -1217,6 +1377,11 @@
           },
           "role": {
             "type": "string",
+            "nullable": true
+          },
+          "rescueStation": {
+            "type": "string",
+            "format": "uuid",
             "nullable": true
           }
         },
@@ -1325,6 +1490,11 @@
         ],
         "type": "object",
         "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "nullable": true
+          },
           "description": {
             "type": "string",
             "nullable": true
@@ -1335,8 +1505,8 @@
             "type": "string"
           },
           "price": {
-            "minLength": 1,
-            "type": "string"
+            "type": "number",
+            "format": "double"
           },
           "services": {
             "type": "array",
@@ -1364,6 +1534,20 @@
           "transactionId": {
             "type": "string",
             "format": "uuid"
+          }
+        },
+        "additionalProperties": false
+      },
+      "ProfileDTO": {
+        "type": "object",
+        "properties": {
+          "fullName": {
+            "type": "string",
+            "nullable": true
+          },
+          "phone": {
+            "type": "string",
+            "nullable": true
           }
         },
         "additionalProperties": false
@@ -1434,28 +1618,6 @@
         },
         "additionalProperties": false
       },
-      "ServiceDTO": {
-        "required": [
-          "serviceName",
-          "servicePrice"
-        ],
-        "type": "object",
-        "properties": {
-          "serviceId": {
-            "type": "string",
-            "format": "uuid"
-          },
-          "serviceName": {
-            "minLength": 1,
-            "type": "string"
-          },
-          "servicePrice": {
-            "type": "number",
-            "format": "double"
-          }
-        },
-        "additionalProperties": false
-      },
       "StaffAssignDTO": {
         "type": "object",
         "properties": {
@@ -1478,6 +1640,44 @@
             "nullable": true
           },
           "refreshToken": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "UpdateServiceDTO": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "nullable": true
+          },
+          "name": {
+            "type": "string",
+            "nullable": true
+          },
+          "price": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "UpdateUserDTO": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "fullName": {
+            "type": "string",
+            "nullable": true
+          },
+          "phone": {
             "type": "string",
             "nullable": true
           }

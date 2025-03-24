@@ -15,6 +15,8 @@ namespace CarRescueSystem.DAL.Model
         [Required, MaxLength(100)]
         public string name { get; set; }
 
+        public string description { get; set; }
+
         [Required]
         public decimal price { get; set; }
 

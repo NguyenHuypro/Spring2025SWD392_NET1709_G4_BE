@@ -26,17 +26,33 @@ namespace CarRescueSystem.BLL.Service.Implement
             var packageCount = await _context.Packages.CountAsync();
             var serviceCount = await _context.Services.CountAsync();
             var bookingCount = await _context.Bookings.CountAsync();
-            var monthlyRevenue = await _context.Bookings
+            var monthlyRevenueBooking = await _context.Bookings
                 .Where(b => b.bookingDate.Month == DateTime.Now.Month && b.bookingDate.Year == DateTime.Now.Year)
                 .SumAsync(b => b.totalPrice) ?? 0;
+            var monthlyRevenueTransaction = await _context.Transactions
+                .Where(t => t.createdAt.Month == DateTime.Now.Month && t.createdAt.Year == DateTime.Now.Year)
+                .SumAsync(t => (decimal?)t.amount) ?? 0m;
 
-            var monthlyRevenues = await _context.Bookings
-                .GroupBy(b => new { b.bookingDate.Year, b.bookingDate.Month })
+            var monthlyRevenue = monthlyRevenueBooking + monthlyRevenueTransaction;
+
+
+            //var monthlyRevenues = await _context.Bookings
+            //    .GroupBy(b => new { b.bookingDate.Year, b.bookingDate.Month })
+            //    .Select(g => new MonthlyRevenueDto
+            //    {
+            //        Year = g.Key.Year,
+            //        Month = g.Key.Month,
+            //        Revenue = g.Sum(b => b.totalPrice) ?? 0
+            //    })
+            //    .ToListAsync();
+
+            var monthlyRevenues = await _context.Transactions
+                .GroupBy(t => new { t.createdAt.Year, t.createdAt.Month })
                 .Select(g => new MonthlyRevenueDto
                 {
                     Year = g.Key.Year,
                     Month = g.Key.Month,
-                    Revenue = g.Sum(b => b.totalPrice) ?? 0
+                    Revenue = g.Sum(t => (decimal?)t.amount) ?? 0m
                 })
                 .ToListAsync();
 

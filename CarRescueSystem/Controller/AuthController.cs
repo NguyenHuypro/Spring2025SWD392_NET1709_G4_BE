@@ -24,6 +24,8 @@ namespace CarRescueSystem.Controller
         public async Task<IActionResult> Login([FromBody] LoginDTO loginDTO)
         {
             var response = await _authService.Login(loginDTO);
+            
+
             return StatusCode(response.StatusCode, response);
         }
 
@@ -82,6 +84,23 @@ namespace CarRescueSystem.Controller
            
 
             var response = await _authService.RegisterAdminAsync(createStaffDTO);
+
+            return StatusCode(response.StatusCode, response);
+        }
+
+        /// <summary>
+        /// Xác nhận email từ link gửi qua email
+        /// </summary>
+        [AllowAnonymous]
+        [HttpGet("confirm-email")]
+        public async Task<IActionResult> ConfirmEmail([FromQuery] string email, [FromQuery] string token)
+        {
+            var response = await _authService.ConfirmEmail(email, token);
+
+            if (response.StatusCode == 200) // Nếu xác nhận email thành công
+            {
+                return Redirect("http://localhost:5173/login"); // Thay đổi URL nếu cần
+            }
 
             return StatusCode(response.StatusCode, response);
         }
