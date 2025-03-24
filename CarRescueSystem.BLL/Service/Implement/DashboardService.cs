@@ -1,3 +1,4 @@
+
 ﻿using System;
 using System.Linq;
 using System.Threading.Tasks;
@@ -72,4 +73,5 @@ namespace CarRescueSystem.BLL.Service.Implement
             return new ResponseDTO("lấy dashboard thành công", 200, true, dashboardData);
         }
     }
+
 }
