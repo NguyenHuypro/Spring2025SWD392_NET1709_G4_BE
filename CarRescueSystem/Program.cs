@@ -27,7 +27,7 @@ builder.Services.AddCors(options =>
     options.AddPolicy("AllowReactApp",
         policy =>
         {
-            policy.WithOrigins("http://localhost:3000", "http://localhost:5210", "http://localhost:5174", "http://localhost:5173", "http://localhost:5175")
+            policy.WithOrigins("http://localhost:3000", "http://localhost:5210", "http://localhost:5174", "http://localhost:5173", "http://localhost:5175","https://localhost:7040")
                   .AllowAnyHeader()
                   .AllowAnyMethod()
                   .AllowCredentials(); // 🔥 Cho phép gửi cookies và headers xác thực

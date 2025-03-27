@@ -10,6 +10,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using VNPAY.NET.Enums;
 using VNPAY.NET.Models;
+using System.Text.RegularExpressions;
 
 namespace CarRescueSystem.BLL.Service.Implement
 {
@@ -40,12 +41,28 @@ namespace CarRescueSystem.BLL.Service.Implement
                 {
                     return new ResponseDTO("không thấy người dùng", 200, false);
                 }
+
+                //if (!IsValidLicensePlate(request.licensePlate))
+                //{
+                //    return new ResponseDTO("biển số xe không hợp lệ", 200, false);
+                //}
+
                 var checkLicensePlate = await _unitOfWork.VehicleRepo.GetByLicensePlateAsync(request.licensePlate);
 
                 if (checkLicensePlate != null)
                 {
                     return new ResponseDTO("không được trùng biển số xe", 200, false);
                 }
+
+
+                int[] validSeats = { 4, 5, 7, 16, 29, 32, 45 };
+
+                if (request.numberOfSeats == null || !validSeats.Contains(request.numberOfSeats))
+                {
+                    return new ResponseDTO("Số chỗ ngồi cho xe cứu hộ chỉ có thể là 4, 5, 7, 16, 29, 32 hoặc 45!", 200, false);
+                }
+
+
 
                 var vehicle = new Vehicle{
                     customerId = customer.id,
@@ -105,23 +122,42 @@ namespace CarRescueSystem.BLL.Service.Implement
         public async Task<ResponseDTO> UpdateAsync(Guid id, UpdateVehicleDTO request)
         {
             try
-            {      
+            {
                 var oldvehicle = await _unitOfWork.VehicleRepo.GetByIdAsync(id);
                 if (oldvehicle == null)
-                    return new ResponseDTO($"Error: {"No Vehicle with this id found!"}", 404, false);
-                    //update oldvehicle
-                    
-                    oldvehicle.color = request.color;
+                {
+                    return new ResponseDTO("Error: No Vehicle with this ID found!", 404, false);
+                }
 
+                Console.WriteLine(request.model);
+                Console.WriteLine(request.brand);
+                Console.WriteLine(request.numberOfSeats);
+                Console.WriteLine(request.color);
 
+                // Cập nhật nếu dữ liệu hợp lệ
                 if (!string.IsNullOrWhiteSpace(request.color))
                     oldvehicle.color = request.color;
 
-             
+                if (!string.IsNullOrWhiteSpace(request.brand))
+                    oldvehicle.brand = request.brand;
+
+                if (!string.IsNullOrWhiteSpace(request.model))
+                    oldvehicle.model = request.model;
+
+                if (request.numberOfSeats > 0)
+                    oldvehicle.numberOfSeats = request.numberOfSeats;
+
+                Console.WriteLine(oldvehicle.model);
+                Console.WriteLine(oldvehicle.brand);
+                Console.WriteLine(oldvehicle.numberOfSeats);
+                Console.WriteLine(oldvehicle.color);
+
+
+
+
 
                 await _unitOfWork.VehicleRepo.UpdateAsync(oldvehicle);
                 await _unitOfWork.SaveChangeAsync();
-
 
                 return new ResponseDTO("Vehicle updated successfully", 200, true);
             }
@@ -130,6 +166,7 @@ namespace CarRescueSystem.BLL.Service.Implement
                 return new ResponseDTO($"Error: {ex.Message}", 500, false);
             }
         }
+
 
         public async Task<ResponseDTO> DeleteAsync(Guid id)
         {
@@ -349,6 +386,13 @@ namespace CarRescueSystem.BLL.Service.Implement
 
             return new ResponseDTO("Lấy danh sách xe thành công!", 200, true, carDTOs);
         }
+
+        private bool IsValidLicensePlate(string licensePlate)
+        {
+            string pattern = @"^\d{2}[A-Z]\d?-\d{4,5}$";
+            return Regex.IsMatch(licensePlate, pattern);
+        }
+
 
     }
 } 

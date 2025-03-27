@@ -1,4 +1,4 @@
-
+﻿
 ﻿using System;
 using System.Linq;
 using System.Threading.Tasks;
@@ -27,14 +27,14 @@ namespace CarRescueSystem.BLL.Service.Implement
             var packageCount = await _context.Packages.CountAsync();
             var serviceCount = await _context.Services.CountAsync();
             var bookingCount = await _context.Bookings.CountAsync();
-            var monthlyRevenueBooking = await _context.Bookings
-                .Where(b => b.bookingDate.Month == DateTime.Now.Month && b.bookingDate.Year == DateTime.Now.Year)
-                .SumAsync(b => b.totalPrice) ?? 0;
-            var monthlyRevenueTransaction = await _context.Transactions
-                .Where(t => t.createdAt.Month == DateTime.Now.Month && t.createdAt.Year == DateTime.Now.Year)
+            //var monthlyRevenueBooking = await _context.Bookings
+            //    .Where(b => b.bookingDate.Month == DateTime.Now.Month && b.bookingDate.Year == DateTime.Now.Year)
+            //    .SumAsync(b => b.totalPrice) ?? 0;
+            var monthlyRevenue = await _context.Transactions
+                .Where(t => t.createdAt.Month == DateTime.Now.Month && t.createdAt.Year == DateTime.Now.Year && t.status == DAL.Model.Transaction.TransactionStatus.SUCCESS)
                 .SumAsync(t => (decimal?)t.amount) ?? 0m;
 
-            var monthlyRevenue = monthlyRevenueBooking + monthlyRevenueTransaction;
+            //var monthlyRevenue = monthlyRevenueBooking + monthlyRevenueTransaction;
 
 
             //var monthlyRevenues = await _context.Bookings
